@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "771597919060",
+    "project_id": "splitgo-singaore",
+    "storage_bucket": "splitgo-singaore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771597919060:android:f69e41854d03848fc21ec1",
+        "android_client_info": {
+          "package_name": "com.tiocloud.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771597919060-2l1f6hpl3gqpc76oqpm4g03d1r0ibr95.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tiocloud.chat",
+            "certificate_hash": "bf5352424b9d0ff4a0a2f9e0688607af41c67c50"
+          }
+        },
+        {
+          "client_id": "771597919060-5r2rsejbg8vgmh6quq50i9renq8vv3ee.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tiocloud.chat",
+            "certificate_hash": "2cfd19ddd51560a9ad54a736a038b32bb1e2d9bf"
+          }
+        },
+        {
+          "client_id": "771597919060-atk85p5n5kuf5mivo5qjgg76216lhu4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnEAI-YHB49tUYKHmcoQvakbWnp4x-atU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771597919060-atk85p5n5kuf5mivo5qjgg76216lhu4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

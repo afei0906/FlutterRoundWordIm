@@ -1,0 +1,177 @@
+part of 'index.dart';
+
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginState();
+}
+
+class _LoginState extends State<LoginPage> {
+  final logic = Get.put(LoginLogic());
+  final state = Get.find<LoginLogic>().state;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent, // 设置状态栏背景颜色
+        statusBarIconBrightness: Brightness.dark, // 设置状态栏图标颜色
+      ),
+      child: GetBuilder<LoginLogic>(
+        builder: (controller) {
+          return Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              fit: BoxFit.fill,
+              alignment: Alignment.topCenter,
+              image: AssetImage(Resource.assetsImagesLoginBgPng),
+            )),
+            child: Scaffold(
+                backgroundColor: Colors.transparent,
+                appBar: appBar(),
+                body: Column(
+                  children: [
+                    16.verticalSpace,
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: AppTheme.black.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(12.r)),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 48,
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "中国",
+                                  style: AppTheme()
+                                      .appTextStyle
+                                      .textStyleTitleText,
+                                ),
+                                Icon(
+                                  Icons.chevron_right_outlined,
+                                  size: 24.w,
+                                  color: AppTheme.secondaryText,
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 0.5,
+                            color: AppTheme.bgColor,
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 12),
+                              width: double.infinity,
+                              height: 0.5,
+                              color: AppTheme.loginLine,
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 48,
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "+86",
+                                  style: AppTheme()
+                                      .appTextStyle
+                                      .textStyleTitleText
+                                      .copyWith(
+                                          fontWeight:
+                                              ThemeFontWeight.semiBold.weight),
+                                ),
+                                Expanded(
+                                  child: LoginInput(
+                                    key: const Key("login_phone"),
+                                    hintText: LocaleKeys.text_0016.tr,
+                                    controller: state.phoneController,
+                                    keyboardType: TextInputType.phone,
+                                    autofocus: true,
+                                    onChanged: logic.onChanged,
+                                    inputFormatters: const [
+                                      // FilteringTextInputFormatter.allow(RegExp("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}\$"))
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).marginSymmetric(horizontal: 24.w),
+                    InputAccount(
+                      controller: state.passwordController,
+                      hintText: LocaleKeys.text_0017.tr,
+                      shufflePassword: controller.shufflePassword,
+                      inputType: InputEnum.password,
+                      obscureText: state.obscureText,
+                      onChanged: logic.onChanged,
+                      inputFormatters: [
+                        CustomizedTextInputFormatter(
+                          pattern: RegExp("[a-zA-Z]|[0-9]"),
+                        ),
+                      ],
+                    ).marginSymmetric(horizontal: 24.w, vertical: 12.h),
+                    AppButton.fillPrimaryButton(
+                            LocaleKeys.text_0018.tr, controller.toLogin,
+                            isPress: state.isLogin)
+                        .marginSymmetric(horizontal: 24.w),
+                    InkWell(
+                      onTap: logic.forgetPassword,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 12.h, horizontal: 20.w),
+                        child: Text(
+                          LocaleKeys.text_0019.tr,
+                          style: AppTheme()
+                              .appTextStyle
+                              .textExtraLightStylePrimary,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    AppButton.brandPrimaryButton(
+                      LocaleKeys.text_0020.tr,
+                      controller.toLogin,
+                    ).marginSymmetric(horizontal: 24.w, vertical: 12.h),
+                    RichTextWidget(
+                      model: RichTextModel(
+                        text: LocaleKeys.text_0021.trParams({
+                          'text_0022': LocaleKeys.text_0022.tr,
+                        }),
+                        style: AppTheme().appTextStyle.textExtraLightStyleBlack,
+                        items: [
+                          RichTextItemModel(
+                            text: LocaleKeys.text_0022.tr,
+                            onTap: logic.createAccount,
+                            style: AppTheme()
+                                .appTextStyle
+                                .textExtraLightStylePrimary,
+                          ),
+                        ],
+                      ),
+                    ),
+                    20.verticalSpace
+                    // MediaQuery.of(context).viewInsets.bottom.verticalSpace,
+                  ],
+                )),
+          );
+        },
+      ),
+    );
+  }
+
+  PreferredSizeWidget appBar() {
+    return CusAppBar.leading(context,
+        title: LocaleKeys.text_0015.tr, appBarColor: Colors.transparent);
+  }
+}

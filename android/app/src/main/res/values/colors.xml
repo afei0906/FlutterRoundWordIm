@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="bg_theme">#ff5D38C4</color>
+    <color name="bg_theme_witer">#ffFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="done_button_inner_circle_color">#D0E4FF</color>
+
+</resources>

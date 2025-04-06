@@ -1,0 +1,180 @@
+// DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
+
+// ignore_for_file: lines_longer_than_80_chars
+// ignore: avoid_classes_with_only_static_members
+class AppTranslation {
+  static Map<String, Map<String, String>> translations = {
+    'zh-cn': Locales.zhcn,
+
+  };
+}
+
+class LocaleKeys {
+  LocaleKeys._();
+  static const text_0001 = 'text_0001';
+  static const text_0002 = 'text_0002';
+  static const text_0003 = 'text_0003';
+  static const text_0004 = 'text_0004';
+  static const text_0005 = 'text_0005';
+  static const text_0006 = 'text_0006';
+  static const text_0007 = 'text_0007';
+  static const text_0008 = 'text_0008';
+  static const text_0009 = 'text_0009';
+  static const text_0010 = 'text_0010';
+  static const text_0011 = 'text_0011';
+  static const text_0012 = 'text_0012';
+  static const text_0013 = 'text_0013';
+  static const text_0014 = 'text_0014';
+  static const text_0015 = 'text_0015';
+  static const text_0016 = 'text_0016';
+  static const text_0017 = 'text_0017';
+  static const text_0018 = 'text_0018';
+  static const text_0019 = 'text_0019';
+  static const text_0020 = 'text_0020';
+  static const text_0021 = 'text_0021';
+  static const text_0022 = 'text_0022';
+  static const text_0023 = 'text_0023';
+  static const text_0024 = 'text_0024';
+  static const text_0025 = 'text_0025';
+  static const text_0026 = 'text_0026';
+  static const text_0027 = 'text_0027';
+  static const text_0028 = 'text_0028';
+  static const text_0029 = 'text_0029';
+  static const text_0030 = 'text_0030';
+  static const text_0031 = 'text_0031';
+  static const text_0032 = 'text_0032';
+  static const text_0033 = 'text_0033';
+  static const text_0034 = 'text_0034';
+  static const text_0035 = 'text_0035';
+  static const text_0036 = 'text_0036';
+  static const text_0037 = 'text_0037';
+  static const text_0038 = 'text_0038';
+  static const text_0039 = 'text_0039';
+  static const text_0040 = 'text_0040';
+  static const text_0041 = 'text_0041';
+  static const text_0042 = 'text_0042';
+  static const text_0043 = 'text_0043';
+  static const text_0044 = 'text_0044';
+  static const text_0045 = 'text_0045';
+  static const text_0046 = 'text_0046';
+  static const text_0047 = 'text_0047';
+  static const text_0048 = 'text_0048';
+  static const text_0049 = 'text_0049';
+  static const text_0050 = 'text_0050';
+  static const text_0051 = 'text_0051';
+  static const text_0052 = 'text_0052';
+  static const text_0053 = 'text_0053';
+  static const text_0054 = 'text_0054';
+  static const text_0055 = 'text_0055';
+  static const text_0056 = 'text_0056';
+  static const text_0057 = 'text_0057';
+  static const text_0058 = 'text_0058';
+  static const text_0059 = 'text_0059';
+  static const text_0060 = 'text_0060';
+  static const text_0061 = 'text_0061';
+  static const text_0062 = 'text_0062';
+  static const text_0063 = 'text_0063';
+  static const text_0064 = 'text_0064';
+  static const text_0065 = 'text_0065';
+  static const text_0066 = 'text_0066';
+  static const text_0067 = 'text_0067';
+  static const text_0068 = 'text_0068';
+  static const text_0069 = 'text_0069';
+  static const text_0070 = 'text_0070';
+  static const text_0071 = 'text_0071';
+  static const text_0072 = 'text_0072';
+  static const text_0073 = 'text_0073';
+  static const text_0074 = 'text_0074';
+  static const text_0075 = 'text_0075';
+  static const text_0076 = 'text_0076';
+  static const text_0077 = 'text_0077';
+  static const text_0078 = 'text_0078';
+  static const text_0079 = 'text_0079';
+}
+
+class Locales {
+  static const zhcn = {
+    'text_0001': '环球IM 欢迎您！',
+    'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
+    'text_0003': '用户服务协议',
+    'text_0004': '隐私政策',
+    'text_0005': '聊天',
+    'text_0006': '好友',
+    'text_0007': '发现',
+    'text_0008': '我的',
+    'text_0009': '您需要提供相机和存储权限才能继续提供服务。 请在手机设置-隐私-相机选项中开启相机和存储权限。',
+    'text_0010': '提示',
+    'text_0011': '取消',
+    'text_0012': '设置',
+    'text_0013': '立即登录',
+    'text_0014': '注册账户',
+    'text_0015': '手机号码登录',
+    'text_0016': '请输入手机号',
+    'text_0017': '请输入密码',
+    'text_0018': '登录',
+    'text_0019': '忘记密码',
+    'text_0020': '使用邮箱账号登录',
+    'text_0021': '还没有账户，@text_0022',
+    'text_0022': '创建账户',
+    'text_0023': '邮箱账号登录',
+    'text_0024': '请输入邮箱账号',
+    'text_0025': '使用手机号码登录',
+    'text_0026': '密码不匹配',
+    'text_0027': '不是正确的手机号码',
+    'text_0028': '不是正确的邮箱账号',
+    'text_0029': '密码必须在6到32个字符之间。',
+    'text_0030': '请输入邀请码并选择注册方式',
+    'text_0031': '输入邀请码',
+    'text_0032': '手机号码注册',
+    'text_0033': '邮箱账号注册',
+    'text_0034': '获取验证码',
+    'text_0035': '请输入验证码',
+    'text_0036': '请设置密码',
+    'text_0037': '请重新输入密码',
+    'text_0038': '阅读并同意@text_0003、@text_0004',
+    'text_0039': '注册',
+    'text_0040': '使用邮箱账号注册',
+    'text_0041': '我已有账户，去@text_0018',
+    'text_0042': '重新获取验证码',
+    'text_0043': '请输入邮箱账号',
+    'text_0044': '设置密保',
+    'text_0045': '恭喜您，账户已注册成功！',
+    'text_0046': '为了保护您的账户安全，需要你设置密码保护答案。密保答案可以帮助你在忘记密码时找回账号。',
+    'text_0047': '设置密保问题',
+    'text_0048': '请输入以下问题的答案并牢记，必要时手写记录并妥善保存。',
+    'text_0049': '你的小学学校是？',
+    'text_0050': '请输入答案',
+    'text_0051': '你最好的朋友名字叫什么？',
+    'text_0052': '你的出生地是哪里？',
+    'text_0053': '提交',
+    'text_0054': '密保已设置成功',
+    'text_0055': '请妥善保管好你的密保答案',
+    'text_0056': '去登录',
+    'text_0057': '暂不登录，返回首页',
+    'text_0058': '请选择密码重置方式',
+    'text_0059': '若以下方式均无法找回可尝试@text_0060',
+    'text_0060': '联系客服',
+    'text_0061': '密保重置',
+    'text_0062': '手机验证码重置',
+    'text_0063': '邮箱验证码重置',
+    'text_0064': '重置密码需先验证账号，请输入你的电子邮箱账号',
+    'text_0065': '下一步',
+    'text_0066': '忘记电子邮箱？@text_0060',
+    'text_0067': '如果 @email 已注册环球IM账户，您将收到一封包含验证码的电子邮件。如3分钟未收到邮件，请核查您的邮箱垃圾桶。',
+    'text_0068': '温馨提示：',
+    'text_0069':
+        '如果您3分钟没有收到验证码邮件，请查阅您的邮件垃圾箱，有可能被您的邮箱误放入了垃圾箱，为了确保您的正常操作，您可以把邮件移动到邮件收件箱！',
+    'text_0070': '请设置新密码',
+    'text_0071': '请再次输入新密码',
+    'text_0072': '为账户 @email 设置新密码',
+    'text_0073': '账户 @email  密码已重置',
+    'text_0074': '可使用新密码登录',
+    'text_0075': '重置密码需先验证账号，请输入你的手机号码',
+    'text_0076': '请输入手机号码',
+    'text_0077': '忘记手机号码？@text_0060',
+    'text_0078': '如果 @phone已注册环球IM账户，您将收到一封包含验证码的短信。如3分钟未收到短信，请确认手机信号是否正常。',
+    'text_0079':
+        '如果您3分钟内未收到验证码短信，可能被手机系统或安全软件误拦为骚扰短信，请查看短信拦截箱或垃圾信息，并标记为正常短信，以免影响接收。',
+  };
+  static const en = {};
+}

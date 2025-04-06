@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "splitGo",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "splitGo (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "splitGo (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

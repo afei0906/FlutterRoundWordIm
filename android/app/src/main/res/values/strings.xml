@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="facebook_app_id">764027028033617</string>
+    <string name="facebook_client_token">a6d0582e791911e4494d1a10f36c1e87</string>
+    <string name="fb_login_protocol_scheme">fb764027028033617</string>
+    <string name="app_name">SplitGo</string>
+<!--    <string name="default_web_client_id">618971912566-bkskeuqsh4jmkp86un6uhnpcopl0sqmh.apps.googleusercontent.com</string>-->
+    <string name="image_with_cropper">Original Image With Cropper</string>
+</resources>
