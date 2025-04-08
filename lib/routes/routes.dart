@@ -5,8 +5,10 @@ abstract class Routes {
   static List<String> history = [];
 
   static const splash = '/splash';
-  static const login = '/login';
-  static const sign = '/signPage';
+  static const loginPhone = '/loginPhone';
+  static const loginEmail = '/loginEmail';
+  static const signPhone = '/signPhone';
+  static const signEmail = '/signEmail';
   static const main = '/main';
   static const webView = '/webView';
 
@@ -20,12 +22,20 @@ abstract class Routes {
       page: () => WebViewPage(),
     ),
     GetPage(
-      name: login,
-      page: () => LoginPage(),
+      name: loginEmail,
+      page: () => LoginEmailPage(),
     ),
     GetPage(
-      name: sign,
-      page: () => SignPage(),
+      name: loginPhone,
+      page: () => LoginPhonePage(),
+    ),
+    GetPage(
+      name: signPhone,
+      page: () => SignPhonePage(),
+    ),
+    GetPage(
+      name: signEmail,
+      page: () => SignEmailPage(),
     ),
     GetPage(
       name: main,

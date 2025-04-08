@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:store/generated/locales.g.dart';
 import 'package:store/global.dart';
@@ -14,8 +15,8 @@ import 'store/index.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, // 设置状态栏背景颜色
-      statusBarIconBrightness: Brightness.dark,
+    statusBarColor: Colors.transparent, // 设置状态栏背景颜色
+    statusBarIconBrightness: Brightness.dark,
   ));
   Global.init().then((_) {
     runApp(const MyApp());
@@ -41,9 +42,7 @@ class MyApp extends StatelessWidget {
         customTransition: RouteTransition(),
         initialRoute: Routes.splash,
         getPages: Routes.pages,
-        navigatorObservers: [
-          Routes.observer,
-        ],
+        navigatorObservers: [Routes.observer, FlutterSmartDialog.observer],
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -53,23 +52,26 @@ class MyApp extends StatelessWidget {
         //设置默认语言
         fallbackLocale: const Locale("en", "US"),
         translationsKeys: AppTranslation.translations,
-        builder: EasyLoading.init(
-          builder: (context, child) => MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaler: const TextScaler.linear(1.0),
-            ),
-            child: ScrollConfiguration(
-              behavior: _NoShadowScrollBehavior(),
-              child: child ?? const Material(),
-            ),
-          ),
+
+        builder: FlutterSmartDialog.init(
+          builder: (context, child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: TextScaler.noScaling,
+              ),
+              child: ScrollConfiguration(
+                behavior: _NoShadowScrollBehavior(),
+                child: child ?? const Material(),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 }
 
-class _NoShadowScrollBehavior extends ScrollBehavior{
+class _NoShadowScrollBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
     BuildContext context,
@@ -100,6 +102,4 @@ class _NoShadowScrollBehavior extends ScrollBehavior{
         );
     }
   }
-
-
 }

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:store/services/index.dart';
 import 'package:store/store/index.dart';
@@ -21,7 +23,16 @@ class Global {
       Get.put<HttpService>(HttpService());
       Get.put<UserStore>(UserStore());
       Get.put<LanguageStore>(LanguageStore());
-
+      SmartDialog.config
+        ..toast = SmartConfigToast(
+          // isExist: true,
+          debounceTime: const Duration(milliseconds: 200),
+        )
+        ..custom = SmartConfigCustom()
+        ..attach = SmartConfigAttach()
+        ..notify = SmartConfigNotify()
+        ..loading = SmartConfigLoading(
+        );
     });
   }
 }

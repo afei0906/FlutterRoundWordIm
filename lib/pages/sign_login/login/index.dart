@@ -10,17 +10,23 @@ import 'package:get/get.dart';
 import 'package:store/theme.dart';
 import 'package:store/utils/index.dart';
 
-import '../../generated/locales.g.dart';
-import '../../resource.dart';
-import '../../widgets/index.dart';
+import '../../../generated/locales.g.dart';
+import '../../../resource.dart';
+import '../../../widgets/index.dart';
 
 part 'common/code_utils.dart';
 
-part 'logic.dart';
+part 'login_email/logic.dart';
 
-part 'view.dart';
+part 'login_email/view.dart';
 
-part 'state.dart';
+part 'login_email/state.dart';
+
+part 'login_phone/logic.dart';
+
+part 'login_phone/view.dart';
+
+part 'login_phone/state.dart';
 
 part 'widget/custom_popover.dart';
 

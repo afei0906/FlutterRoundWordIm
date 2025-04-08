@@ -148,3 +148,11 @@ class CusAppBar {
     );
   }
 }
+
+class CustomBoxDecoration {
+  static BoxDecoration topDecoration() {
+    return BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
+        color: AppTheme.bgColor);
+  }
+}

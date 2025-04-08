@@ -1,7 +1,6 @@
-part of 'index.dart';
-
-class LoginLogic extends GetxController {
-  LoginState state = LoginState();
+part of '../index.dart';
+class LoginPhoneLogic extends GetxController {
+  final LoginPhoneState state = LoginPhoneState();
 
   void shufflePassword() {
     state.obscureText = !state.obscureText;

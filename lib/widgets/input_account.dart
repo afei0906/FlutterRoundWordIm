@@ -20,8 +20,10 @@ class InputAccount extends StatefulWidget {
       this.isShowError = false,
       this.inputType = InputEnum.none,
       this.obscureText = false,
+      this.autofocus = false,
       this.prefix,
       this.margin,
+      this.textAlign,
       this.inputFormatters,
       this.lengthLimit = 50,
       this.onChanged});
@@ -33,11 +35,13 @@ class InputAccount extends StatefulWidget {
   final bool isShowError;
   final InputEnum inputType;
   final bool obscureText;
+  final bool autofocus;
   final PrefixBuilder? prefix;
   final EdgeInsetsGeometry? margin;
   final List<TextInputFormatter>? inputFormatters;
   final int lengthLimit;
   final Function()? onChanged;
+  final TextAlign? textAlign;
 
   @override
   State<InputAccount> createState() => _InputAccountState();
@@ -54,10 +58,17 @@ class _InputAccountState extends State<InputAccount> {
       _isShowClear = _focusNode.hasFocus && widget.controller.text.isNotEmpty;
       setState(() {});
     });
-    widget.confirmController?.addListener(() {
-      setState(() {});
-    });
-    super.initState();
+    // 延迟以确保页面渲染完成
+    if (widget.autofocus) {
+      Future.delayed(const Duration(milliseconds: 300), () {
+        FocusScope.of(context).requestFocus(_focusNode);
+      });
+
+      widget.confirmController?.addListener(() {
+        setState(() {});
+      });
+      super.initState();
+    }
   }
 
   @override
@@ -93,8 +104,10 @@ class _InputAccountState extends State<InputAccount> {
                 child: TextField(
                   controller: widget.controller,
                   focusNode: _focusNode,
+                  autofocus: widget.autofocus,
                   style: AppTheme().appTextStyle.textStyleTitleText,
                   textAlignVertical: TextAlignVertical.center,
+                  textAlign: widget.textAlign ?? TextAlign.left,
                   textInputAction: TextInputAction.done,
                   onChanged: (value) {
                     _isShowClear = _focusNode.hasFocus &&
@@ -124,7 +137,7 @@ class _InputAccountState extends State<InputAccount> {
                   obscureText: widget.obscureText,
                 ),
               ),
-              if (widget.isShowError&&_isShowClear)
+              if (widget.isShowError && _isShowClear)
                 InkWell(
                   onTap: () {
                     widget.controller.clear();

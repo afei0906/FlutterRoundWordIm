@@ -1,13 +1,10 @@
-part of 'index.dart';
+part of '../index.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  State<LoginPage> createState() => _LoginState();
-}
+class LoginPhonePage extends StatelessWidget {
+  LoginPhonePage({Key? key}) : super(key: key);
 
-class _LoginState extends State<LoginPage> {
-  final logic = Get.put(LoginLogic());
-  final state = Get.find<LoginLogic>().state;
+  final LoginPhoneLogic logic = Get.put(LoginPhoneLogic());
+  final LoginPhoneState state = Get.find<LoginPhoneLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +13,7 @@ class _LoginState extends State<LoginPage> {
         statusBarColor: Colors.transparent, // 设置状态栏背景颜色
         statusBarIconBrightness: Brightness.dark, // 设置状态栏图标颜色
       ),
-      child: GetBuilder<LoginLogic>(
+      child: GetBuilder<LoginPhoneLogic>(
         builder: (controller) {
           return Container(
             width: double.infinity,
@@ -171,7 +168,7 @@ class _LoginState extends State<LoginPage> {
   }
 
   PreferredSizeWidget appBar() {
-    return CusAppBar.leading(context,
+    return CusAppBar.leading(Get.context!,
         title: LocaleKeys.text_0015.tr, appBarColor: Colors.transparent);
   }
 }

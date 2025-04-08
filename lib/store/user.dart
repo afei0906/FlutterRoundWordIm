@@ -30,7 +30,7 @@ class UserStore extends GetxController {
     await StorageService.to.remove(kLocalToken);
     _token = '';
     _isLogin = false;
-    Get.offNamed(Routes.login);
+    Get.offNamed(Routes.splash);
   }
 
   Future<void> clear() async {

@@ -40,3 +40,4 @@ part 'rich_text_widget.dart';
 part 'theme_image_widget.dart';
 
 part 'input_account.dart';
+part 'view.dart';
