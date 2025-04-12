@@ -3,44 +3,66 @@ part of 'index.dart';
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
 
-  bool _isLogin = false;
-  String _token = '';
-  String? userId;
+  RxBool _isLogin = false.obs;
 
-  bool get isLogin => _isLogin;
+  // String _token = '';
+  // String? userId;
 
-  String get token => _token;
+  RxBool get isLogin => _isLogin;
 
-  bool get hasToken => _token.isNotEmpty;
+  // String get token => _token;
+  //
+  // bool get hasToken => _token.isNotEmpty;
+  Rx<UserInfo> userInfo = UserInfo().obs;
 
   @override
   void onInit() {
     super.onInit();
-    _token = StorageService.to.getString(kLocalToken);
-    _isLogin = !Utils.isEmpty(_token);
+    final String userInfoStr = StorageService.to.getString(kLocalUserInfo);
+    // log(">>>>userInfoStr$userInfoStr");
+    if (!Utils.isEmpty(userInfoStr)) {
+      userInfo.value = UserInfo.fromJson(json.decode(userInfoStr));
+      getIsLoginValue();
+    }
   }
 
-  Future<void> setToken(String value) async {
-    await StorageService.to.setString(kLocalToken, value);
-    _token = value;
+  void getIsLoginValue() {
+    //_isLogin.value = !Utils.isEmpty(userInfo.value.id);
+  }
+
+  void setLogin(bool isLogin) {
+    _isLogin.value = isLogin;
+    update();
+  }
+
+  Future<bool> getUserInfo() async {
+    bool isOk = false;
+    UserInfo? curUserInfo = await LoginSignApi.postUserCurr();
+    isOk = (curUserInfo != null);
+    curUserInfo ??= userInfo.value;
+    curUserInfo.token = userInfo.value.token;
+    userInfo.value = curUserInfo;
+    getIsLoginValue();
+    await StorageService.to
+        .setString(kLocalUserInfo, json.encode(userInfo.value.toJson()));
+    return isOk;
+  }
+
+  Future<void> setUserToken(dynamic token, dynamic userId) async {
+    userInfo.value.token = token;
+    userInfo.value.id = userId;
+    await StorageService.to
+        .setString(kLocalUserInfo, json.encode(userInfo.value.toJson()));
   }
 
   Future<void> logout() async {
-    await StorageService.to.remove(kLocalAccount);
-    await StorageService.to.remove(kLocalToken);
-    _token = '';
-    _isLogin = false;
+    await StorageService.to.remove(kLocalUserInfo);
+    _isLogin = false.obs;
     Get.offNamed(Routes.splash);
-  }
-
-  Future<void> clear() async {
-    await StorageService.to.remove(kLocalFriendHotSearch);
-    await StorageService.to.remove(kLocalSplitHotSearch);
   }
 
   Future<void> delete() async {
     await LanguageStore.to.removeLanguageCode();
-    await StorageService.to.remove(kLocalAccount);
-    await StorageService.to.remove(kLocalToken);
+    await StorageService.to.remove(kLocalUserInfo);
   }
 }

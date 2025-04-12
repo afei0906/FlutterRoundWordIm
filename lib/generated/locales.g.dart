@@ -5,12 +5,12 @@
 class AppTranslation {
   static Map<String, Map<String, String>> translations = {
     'zh-cn': Locales.zhcn,
-
   };
 }
 
 class LocaleKeys {
   LocaleKeys._();
+
   static const text_0001 = 'text_0001';
   static const text_0002 = 'text_0002';
   static const text_0003 = 'text_0003';
@@ -90,10 +90,38 @@ class LocaleKeys {
   static const text_0077 = 'text_0077';
   static const text_0078 = 'text_0078';
   static const text_0079 = 'text_0079';
+  static const text_0080 = 'text_0080';
+  static const text_0081 = 'text_0081';
+  static const text_0082 = 'text_0082';
+  static const text_0083 = 'text_0083';
+  static const text_0084 = 'text_0084';
+  static const text_0085 = 'text_0085';
+  static const text_0086 = 'text_0086';
+  static const text_0087 = 'text_0087';
+  static const text_0088 = 'text_0088';
+  static const text_0089 = 'text_0089';
+  static const text_0090 = 'text_0090';
+  static const text_0091 = 'text_0091';
+  static const text_0092 = 'text_0092';
+  static const text_0093 = 'text_0093';
+  static const text_0094 = 'text_0094';
+
 }
 
 class Locales {
   static const zhcn = {
+    'text_0094':'确定',
+    'text_0093':"请输入国家名称/编码",
+    'text_0092':"选择国家",
+    "text_0090": "验证失败",
+    "text_0091": "@second验证成功",
+    "text_0085": "图形验证",
+    "text_0086": "拖动下方滑块完成拼图",
+    "text_0087": "拖动左边滑块完成上方拼图",
+    "text_0088": "关闭",
+    "text_0089": "刷新",
+    "text_0083": "没有开放登录权限",
+    "text_0084": "没有开放注册权限",
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
     'text_0003': '用户服务协议',
@@ -175,6 +203,9 @@ class Locales {
     'text_0078': '如果 @phone已注册环球IM账户，您将收到一封包含验证码的短信。如3分钟未收到短信，请确认手机信号是否正常。',
     'text_0079':
         '如果您3分钟内未收到验证码短信，可能被手机系统或安全软件误拦为骚扰短信，请查看短信拦截箱或垃圾信息，并标记为正常短信，以免影响接收。',
+    "text_0080": "输入您的昵称",
+    "text_0081": "域名不可用！",
+    "text_0082": "加载中..."
   };
   static const en = {};
 }

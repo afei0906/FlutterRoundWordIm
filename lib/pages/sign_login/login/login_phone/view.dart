@@ -37,25 +37,31 @@ class LoginPhonePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12.r)),
                       child: Column(
                         children: [
-                          Container(
-                            width: double.infinity,
-                            height: 48,
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "中国",
-                                  style: AppTheme()
-                                      .appTextStyle
-                                      .textStyleTitleText,
-                                ),
-                                Icon(
-                                  Icons.chevron_right_outlined,
-                                  size: 24.w,
-                                  color: AppTheme.secondaryText,
-                                )
-                              ],
+                          InkWell(
+                            onTap: controller.selectPhoneCountry,
+                            child: Container(
+                              width: double.infinity,
+                              color: Colors.transparent,
+                              height: 48,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    state.countryCodeModel.name ?? '',
+                                    style: AppTheme()
+                                        .appTextStyle
+                                        .textStyleTitleText,
+                                  ),
+                                  Icon(
+                                    Icons.chevron_right_outlined,
+                                    size: 24.w,
+                                    color: AppTheme.secondaryText,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           Container(
@@ -78,7 +84,7 @@ class LoginPhonePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "+86",
+                                  state.countryCodeModel.code ?? '',
                                   style: AppTheme()
                                       .appTextStyle
                                       .textStyleTitleText
@@ -111,6 +117,7 @@ class LoginPhonePage extends StatelessWidget {
                       shufflePassword: controller.shufflePassword,
                       inputType: InputEnum.password,
                       obscureText: state.obscureText,
+                      isShowError: true,
                       onChanged: logic.onChanged,
                       inputFormatters: [
                         CustomizedTextInputFormatter(
@@ -119,7 +126,7 @@ class LoginPhonePage extends StatelessWidget {
                       ],
                     ).marginSymmetric(horizontal: 24.w, vertical: 12.h),
                     AppButton.fillPrimaryButton(
-                            LocaleKeys.text_0018.tr, controller.toLogin,
+                            LocaleKeys.text_0018.tr, controller.toLoginPhone,
                             isPress: state.isLogin)
                         .marginSymmetric(horizontal: 24.w),
                     InkWell(
@@ -136,27 +143,8 @@ class LoginPhonePage extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    AppButton.brandPrimaryButton(
-                      LocaleKeys.text_0020.tr,
-                      controller.toLogin,
-                    ).marginSymmetric(horizontal: 24.w, vertical: 12.h),
-                    RichTextWidget(
-                      model: RichTextModel(
-                        text: LocaleKeys.text_0021.trParams({
-                          'text_0022': LocaleKeys.text_0022.tr,
-                        }),
-                        style: AppTheme().appTextStyle.textExtraLightStyleBlack,
-                        items: [
-                          RichTextItemModel(
-                            text: LocaleKeys.text_0022.tr,
-                            onTap: logic.createAccount,
-                            style: AppTheme()
-                                .appTextStyle
-                                .textExtraLightStylePrimary,
-                          ),
-                        ],
-                      ),
-                    ),
+                    EmailConfig.login(controller.toLoginEmail),
+                    SignConfig.loginCreateUser(controller.createAccount),
                     20.verticalSpace
                     // MediaQuery.of(context).viewInsets.bottom.verticalSpace,
                   ],

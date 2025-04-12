@@ -9,10 +9,18 @@ class ConfigStore extends GetxController {
 
   String get languageName => 'English';
 
+  RxList<ClientConfigModel> mClientConfigList = RxList();
+
   @override
   Future<void> onInit() async {
     super.onInit();
     await _initConfig();
+  }
+
+  void setClientConfigList(List<ClientConfigModel> clientList) {
+    if (clientList.isNotEmpty) {
+      ConfigStore.to.mClientConfigList.value = clientList;
+    }
   }
 
   Future<void> _initConfig() async {
@@ -27,6 +35,7 @@ class ConfigStore extends GetxController {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     appVersion = packageInfo.version;
     buildNumber = packageInfo.buildNumber;
+    getAppConfig();
   }
 
   Future<void> setLoadDataTime(int isDebugUrl) async {
@@ -39,76 +48,79 @@ class ConfigStore extends GetxController {
   }
 
   bool isLoad() {
-    final int time = DateTime
-        .now()
-        .microsecondsSinceEpoch;
+    final int time = DateTime.now().microsecondsSinceEpoch;
     if ((time - getLoadDataTime()) > 2 * 1000 * 1000 * 60) {
       return true;
     }
     return false;
   }
 
-  Future<bool> setDebugUrl(bool isDebugUrl) async {
-    return StorageService.to.setBool(kLocalDebugBool, isDebugUrl);
-  }
-
-  bool? getDebugUrl() {
-    return StorageService.to.getBool(kLocalDebugBool);
-  }
-
-  Future<bool> setOpenDebug(bool isDebugUrl) async {
-    return StorageService.to.setBool(kLocalOpenDebug, isDebugUrl);
-  }
-
-  bool isOpenDebug() {
-    return StorageService.to.getBool(kLocalOpenDebug) ?? false;
-  }
-
-  bool isStartGuide() {
-    return StorageService.to.getBool(kLocalStartGuide) ?? false;
-  }
-
-  Future<bool> setStartGuide(bool isStartGuide) async {
-    return StorageService.to.setBool(kLocalStartGuide, isStartGuide);
-  }
-
-  bool isHomeStartGuide() {
-    // log(">>>>${ConfigStore.to.isStartGuide()}");
-    if (isStartGuide()) {
-      setHomeStartGuide(false);
-      setSelectPayerStartGuide(false);
-      setBillStartGuide(false);
-      setContactStartGuide(false);
+  void getAppConfig() {
+    final String listStr = StorageService.to.getString(kLocalAppConfig);
+    if (!Utils.isEmpty(listStr)) {
+      final List? list = json.decode(listStr) as List?;
+      final List<ClientConfigModel> clientList = list
+              ?.map(
+                  (e) => ClientConfigModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [];
+      if (clientList.isNotEmpty) {
+        mClientConfigList.value = clientList;
+      }
     }
-    return StorageService.to.getBool(kLocalHomeStartGuide) ?? false;
   }
 
-  Future<bool> setHomeStartGuide(bool isStartGuide) async {
-    return StorageService.to.setBool(kLocalHomeStartGuide, isStartGuide);
+  ///本地存储APP配置信息
+  void setAppConfig(String config) {
+    StorageService.to.setString(kLocalAppConfig, config);
   }
 
-  bool isSelectPayerStartGuide() {
-    return StorageService.to.getBool(kLocalSelectPayerStartGuide) ?? false;
+  ///是否开始Email功能 1：开启，0：关闭
+  bool isOpenEmail() {
+    final ClientConfigModel configModel =
+        mClientConfigList.firstWhere((e) => e.configKey == "isOpenEmail");
+    return configModel.configValue == '1';
   }
 
-  Future<bool> setSelectPayerStartGuide(bool isStartGuide) async {
-    return StorageService.to.setBool(kLocalSelectPayerStartGuide, isStartGuide);
+  ///是否开启手机号功能 1：开启，0：关闭
+  bool isOpenPhone() {
+    final ClientConfigModel configModel =
+        mClientConfigList.firstWhere((e) => e.configKey == "isOpenPhone");
+    return configModel.configValue == '1';
   }
 
-  bool isBillStartGuide() {
-    return StorageService.to.getBool(kLocalBillStartGuide) ?? false;
+  ///是否开启注册 1：开启，0：关闭
+  bool isOpenRegister() {
+    final ClientConfigModel configModel =
+        mClientConfigList.firstWhere((e) => e.configKey == "isOpenRegister");
+    return configModel.configValue == '1';
   }
 
-  Future<bool> setBillStartGuide(bool isStartGuide) async {
-    return StorageService.to.setBool(kLocalBillStartGuide, isStartGuide);
+  ///是否展示密保 1：开启，0：关闭
+  bool isOpenUserIssues() {
+    final ClientConfigModel configModel =
+        mClientConfigList.firstWhere((e) => e.configKey == "isOpenUserIssues");
+    return configModel.configValue == '1';
   }
 
-
-  bool isContactStartGuide() {
-    return StorageService.to.getBool(kLocalContactStartGuide) ?? false;
+  ///是否开启拼图验证 1：开启，0：关闭
+  bool isOpenVerifyCode() {
+    final ClientConfigModel configModel =
+        mClientConfigList.firstWhere((e) => e.configKey == "isOpenVerifyCode");
+    return configModel.configValue == '1';
   }
 
-  Future<bool> setContactStartGuide(bool isStartGuide) async {
-    return StorageService.to.setBool(kLocalContactStartGuide, isStartGuide);
+  /// 16.注册时需要使用邀请码 1：开启，0：关闭
+  bool isOpenInviteCode() {
+    final ClientConfigModel configModel =
+        mClientConfigList.firstWhere((e) => e.configKey == "isOpenInviteCode");
+    return configModel.configValue == '1';
+  }
+
+  ///密保问题数量
+  int getUserIssuesCount(){
+    final ClientConfigModel configModel =
+    mClientConfigList.firstWhere((e) => e.configKey == "userIssuesCount");
+    return int.parse("${configModel.configValue??'0'}");
   }
 }

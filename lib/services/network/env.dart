@@ -19,18 +19,19 @@ class Env {
   static bool get isInDebugMode {
     bool inDebugMode = false;
     assert(inDebugMode = true); //如果debug模式下会触发赋值
-    if (ConfigStore.to.getDebugUrl() == null) {
-      return inDebugMode;
-    } else {
-      return ConfigStore.to.getDebugUrl()!;
-    }
+    return inDebugMode;
+    // if (ConfigStore.to.getDebugUrl() == null) {
+    //   return inDebugMode;
+    // } else {
+    //   return ConfigStore.to.getDebugUrl()!;
+    // }
   }
 
   static String get host {
     if (isInDebugMode) {
-      return 'http://test.splitgo.io:8001/';
+      return 'http://gimapi.opghdm.cn/';
     } else {
-      return 'https://app.splitgo.io:8000/';
+      return 'http://gimapi.opghdm.cn/';
     }
   }
 }

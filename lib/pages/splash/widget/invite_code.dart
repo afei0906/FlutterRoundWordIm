@@ -1,7 +1,15 @@
 part of '../index.dart';
 
 class InviteCodeWidget extends StatelessWidget {
-  const InviteCodeWidget({super.key});
+  final Function? callBack;
+
+  InviteCodeWidget({super.key, this.callBack}) {
+    try {
+      Get.find<SplashLogic>().state.inviteCodeController.text = "";
+    } catch (e) {
+      e.printError();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +28,12 @@ class InviteCodeWidget extends StatelessWidget {
             ).marginSymmetric(horizontal: 24.w, vertical: 12.h),
             Row(
               children: [
-                16.horizontalSpace,
-                Expanded(
-                  child: AppButton.brandPrimaryButton(
-                      LocaleKeys.text_0033.tr, logic.signByEmail),
-                ),
-                16.horizontalSpace,
-                Expanded(
-                  child: AppButton.fillPrimaryButton(
-                      LocaleKeys.text_0032.tr, logic.signByPhone),
-                ),
+                ...EmailConfig.signInviteCode((int type, String text) {
+                  callBack?.call(type, text);
+                }, 1, logic.state.inviteCodeController),
+                ...PhoneConfig.signInviteCode((int type, String text) {
+                  callBack?.call(type, text);
+                }, 0, logic.state.inviteCodeController),
                 16.horizontalSpace,
               ],
             ),

@@ -17,11 +17,11 @@ class LanguageStore extends GetxController {
     final bool isControllerRegistered = GetInstance().isRegistered<UserStore>();
     String result = '';
     if (isControllerRegistered) {
-      result = StorageService.to.getString(
-        UserStore.to.userId == null
-            ? kLocalLanguage
-            : "${UserStore.to.userId}_$kLocalLanguage",
-      );
+      // result = StorageService.to.getString(
+      //   UserStore.to.userId == null
+      //       ? kLocalLanguage
+      //       : "${UserStore.to.userId}_$kLocalLanguage",
+      // );
     }
     if (Utils.isEmpty(result)) {
       result = getLanguageCode();
@@ -39,12 +39,12 @@ class LanguageStore extends GetxController {
 
   void setLanguage(ui.Locale value) {
     locale = value;
-    StorageService.to.setString(
-      UserStore.to.userId == null
-          ? kLocalLanguage
-          : "${UserStore.to.userId}_$kLocalLanguage",
-      getLanguageCode(locale: value),
-    );
+    // StorageService.to.setString(
+    //   UserStore.to.userId == null
+    //       ? kLocalLanguage
+    //       : "${UserStore.to.userId}_$kLocalLanguage",
+    //   getLanguageCode(locale: value),
+    // );
     Get.updateLocale(value);
   }
 
@@ -100,11 +100,11 @@ class LanguageStore extends GetxController {
   }
 
   Future<void> removeLanguageCode() async {
-    await StorageService.to.remove(
-      UserStore.to.userId == null
-          ? kLocalLanguage
-          : "${UserStore.to.userId}_$kLocalLanguage",
-    );
+    // await StorageService.to.remove(
+    //   UserStore.to.userId == null
+    //       ? kLocalLanguage
+    //       : "${UserStore.to.userId}_$kLocalLanguage",
+    // );
     await onInit();
   }
 }

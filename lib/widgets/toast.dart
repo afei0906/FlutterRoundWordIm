@@ -1,82 +1,82 @@
 part of 'index.dart';
 
-abstract class CustomToast {
-  static TransitionBuilder init({
-    required BuildContext context,
-    required TransitionBuilder builder,
-  }) {
-    final colorScheme = Theme.of(context).colorScheme;
-    EasyLoading.instance
-      ..displayDuration = const Duration(milliseconds: 2000)
-      ..indicatorType = EasyLoadingIndicatorType.ring
-      ..loadingStyle = EasyLoadingStyle.custom
-      ..radius = 20
-      ..boxShadow = [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.15),
-          blurRadius: 15,
-        ),
-      ]
-      ..progressColor = Colors.transparent
-      ..contentPadding = const EdgeInsets.symmetric(
-        vertical: 12,
-        horizontal: 16,
-      )
-      ..backgroundColor = colorScheme.surface
-      ..maskColor = Colors.transparent
-      ..indicatorColor = Colors.transparent
-      ..textColor = colorScheme.onSurface
-      ..textStyle = TextStyle(
-        fontSize: 14,
-        color: colorScheme.onSurface,
-      )
-      ..maskType = EasyLoadingMaskType.clear
-      ..userInteractions = true
-      ..dismissOnTap = false
-      ..successWidget = const CustomToastSuccess()
-      ..errorWidget = const CustomToastFail()
-      ..indicatorWidget = const CustomLoadingIndicator();
-    return EasyLoading.init(builder: builder);
-  }
-
-  static void text(
-    String text, {
-    EasyLoadingToastPosition position = EasyLoadingToastPosition.center,
-  }) {
-    EasyLoading.instance
-      ..maskType = EasyLoadingMaskType.clear
-      ..userInteractions = true;
-    EasyLoading.showToast(
-      text,
-      toastPosition: position,
-    );
-  }
-
-  static void success(String text) {
-    EasyLoading.instance
-      ..maskType = EasyLoadingMaskType.clear
-      ..userInteractions = true;
-    EasyLoading.showSuccess(text);
-  }
-
-  static void fail(String text) {
-    EasyLoading.instance
-      ..maskType = EasyLoadingMaskType.clear
-      ..userInteractions = true;
-    EasyLoading.showError(text);
-  }
-
-  static void loading([String? text]) {
-    EasyLoading.instance
-      ..maskType = EasyLoadingMaskType.custom
-      ..maskColor = AppTheme.defaultText.withOpacity(0.65)
-      ..indicatorWidget = const CustomLoadingIndicator()
-      ..userInteractions = false;
-    EasyLoading.show(status: text);
-  }
-
-  static void dismiss() => EasyLoading.dismiss();
-}
+// abstract class CustomToast {
+//   static TransitionBuilder init({
+//     required BuildContext context,
+//     required TransitionBuilder builder,
+//   }) {
+//     final colorScheme = Theme.of(context).colorScheme;
+//     EasyLoading.instance
+//       ..displayDuration = const Duration(milliseconds: 2000)
+//       ..indicatorType = EasyLoadingIndicatorType.ring
+//       ..loadingStyle = EasyLoadingStyle.custom
+//       ..radius = 20
+//       ..boxShadow = [
+//         BoxShadow(
+//           color: Colors.black.withOpacity(0.15),
+//           blurRadius: 15,
+//         ),
+//       ]
+//       ..progressColor = Colors.transparent
+//       ..contentPadding = const EdgeInsets.symmetric(
+//         vertical: 12,
+//         horizontal: 16,
+//       )
+//       ..backgroundColor = colorScheme.surface
+//       ..maskColor = Colors.transparent
+//       ..indicatorColor = Colors.transparent
+//       ..textColor = colorScheme.onSurface
+//       ..textStyle = TextStyle(
+//         fontSize: 14,
+//         color: colorScheme.onSurface,
+//       )
+//       ..maskType = EasyLoadingMaskType.clear
+//       ..userInteractions = true
+//       ..dismissOnTap = false
+//       ..successWidget = const CustomToastSuccess()
+//       ..errorWidget = const CustomToastFail()
+//       ..indicatorWidget = const CustomLoadingIndicator();
+//     return EasyLoading.init(builder: builder);
+//   }
+//
+//   static void text(
+//     String text, {
+//     EasyLoadingToastPosition position = EasyLoadingToastPosition.center,
+//   }) {
+//     EasyLoading.instance
+//       ..maskType = EasyLoadingMaskType.clear
+//       ..userInteractions = true;
+//     EasyLoading.showToast(
+//       text,
+//       toastPosition: position,
+//     );
+//   }
+//
+//   static void success(String text) {
+//     EasyLoading.instance
+//       ..maskType = EasyLoadingMaskType.clear
+//       ..userInteractions = true;
+//     EasyLoading.showSuccess(text);
+//   }
+//
+//   static void fail(String text) {
+//     EasyLoading.instance
+//       ..maskType = EasyLoadingMaskType.clear
+//       ..userInteractions = true;
+//     EasyLoading.showError(text);
+//   }
+//
+//   static void loading([String? text]) {
+//     EasyLoading.instance
+//       ..maskType = EasyLoadingMaskType.custom
+//       ..maskColor = AppTheme.defaultText.withOpacity(0.65)
+//       ..indicatorWidget = const CustomLoadingIndicator()
+//       ..userInteractions = false;
+//     EasyLoading.show(status: text);
+//   }
+//
+//   static void dismiss() => EasyLoading.dismiss();
+// }
 
 class CustomToastFail extends StatelessWidget {
   const CustomToastFail({super.key});

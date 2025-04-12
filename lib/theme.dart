@@ -26,6 +26,9 @@ class AppTheme {
   static const titleText = Color(0xff0A0A0A);
   static const black = Color(0xff000000);
   static const loginLine = Color(0xffD9D9D9);
+  static const checkColor = Color(0xffD4D4D4);
+  static const sliderColor = Color(0xffDCE2E3);
+  static const bgColor2= Color(0xfff5f5f5);
 
   static const onPrimary = Color(0xffB1B1B1);
   static const success = Color(0xFF28CE88);
@@ -340,6 +343,21 @@ class AppTextStyle {
       color: AppTheme.titleText,
       fontSize: 16.sp);
 
+  late TextStyle textStyleSliderText = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.medium.weight,
+      letterSpacing: letter,
+      color: Color(0xff8E8E93),
+      fontSize: 16.sp);
+
+  late TextStyle textStyleSliderTitleText = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.regular.weight,
+      letterSpacing: letter,
+      color: Color(0xff525252),
+      fontSize: 16.sp);
+
+  
   late TextStyle textStyleHintText = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
@@ -387,7 +405,10 @@ class AppButton {
         onPressed: onPressed,
         child: Text(
           title,
-          style: AppTheme().appTextStyle.textStyleBgColor,
+          style: AppTheme()
+              .appTextStyle
+              .textStyleBgColor
+              .copyWith(color:  isPress ? AppTheme.bgColor :  AppTheme.black.withOpacity(0.2)),
         ),
       );
 }

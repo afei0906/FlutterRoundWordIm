@@ -1,6 +1,10 @@
 part of '../index.dart';
 class LoginEmailState {
-  LoginEmailState() {
-    ///Initialize variables
-  }
+  TextEditingController emailFirstController = TextEditingController();
+  TextEditingController emailLastController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+  bool obscureText = true;
+  bool isLogin=false;
+
 }

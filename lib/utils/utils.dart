@@ -28,25 +28,6 @@ class Utils {
     return str.toString();
   }
 
-  //根据userCategoryID 查找 数据
-  static Categories checkID(List<Categories> data, int id) {
-    Categories catesdata = Categories();
-    if (data
-        .where((e) {
-          return e.id.toString() == id.toString();
-        })
-        .toList()
-        .isNotEmpty) {
-      catesdata =
-          data.where((e) => e.id.toString() == id.toString()).toList()[0];
-    }
-    return catesdata;
-  }
-
-
-
-
-
   //获取一个月有多少天
   static int monthToDayFormat(int year, int month) {
     final dayCount = DateTime(year, month + 1, 0).day;
@@ -56,13 +37,12 @@ class Utils {
   static DateTime toDate(String dataStr) {
     final List<String> strArr = dataStr.split("-");
     final dayCount = DateTime(
-        int.parse(strArr[0]), int.parse(strArr[1]), int.parse(strArr[2]),);
+      int.parse(strArr[0]),
+      int.parse(strArr[1]),
+      int.parse(strArr[2]),
+    );
     return dayCount;
   }
-
-
-
-
 
   static String dateFormatYearMonthDay(DateTime date) {
     return DateFormat("yyyy-MM-dd").format(date);
@@ -110,8 +90,6 @@ class Utils {
     ];
     return wiket[index];
   }
-
-
 }
 
 String formatTime(DateTime dateTime, String formatStr) {

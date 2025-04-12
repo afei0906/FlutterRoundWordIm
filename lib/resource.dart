@@ -13,6 +13,9 @@ class Resource {
   /// {@macro assets_generator.assetsImagesNoDataPng.preview}
   static const String assetsImagesNoDataPng = 'assets/images/no_data.png';
 
+  static const String assetsJsonCountryCodeJson =
+      'assets/json/country_code.json';
+
   static const String assetsLocalesEnJson = 'assets/locales/en.json';
 
   static const String assetsLocalesTranslationsXlsx =
@@ -46,4 +49,12 @@ class Resource {
 
   /// {@macro assets_generator.assetsSvgDefaultMeSvg.preview}
   static const String assetsSvgDefaultMeSvg = 'assets/svg/default/me.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultPasswordProtectSvg.preview}
+  static const String assetsSvgDefaultPasswordProtectSvg =
+      'assets/svg/default/password_protect.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultSignSussSvg.preview}
+  static const String assetsSvgDefaultSignSussSvg =
+      'assets/svg/default/sign_suss.svg';
 }

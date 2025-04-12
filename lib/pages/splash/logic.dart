@@ -7,42 +7,72 @@ class SplashLogic extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _initData();
+    appVerify();
   }
 
-  Future<void> _initData() async {}
+  Future<bool> initClientConf() async {
+    await LoginSignApi.postAppGetClientConf();
+    return UserStore.to.isLogin.value;
+  }
+
+  Future<void> appVerify() async {
+    SmartDialog.showLoading(msg: LocaleKeys.text_0082.tr);
+    bool isVerify = await LoginSignApi.postAppVerify();
+    if (isVerify) {
+      bool isLogin = await initClientConf();
+      state.isLoading.value = false;
+      if (isLogin) {
+         Get.offNamed(Routes.main);
+      }else {
+        update();
+      }
+    } else {
+      await SmartDialog.showToast(LocaleKeys.text_0081.tr,
+          alignment: Alignment.center);
+      exit(0);
+    }
+    SmartDialog.dismiss();
+  }
 
   void toLogin() {
-    Get.toNamed(Routes.loginPhone);
+    // Get.offNamedUntil(
+    //     Routes.signSuss, (route) => route.settings.name == Routes.splash,
+    //     arguments: {"type": 0, "formType": 0});
+
+    if (ConfigStore.to.isOpenPhone()) {
+      Get.toNamed(Routes.loginPhone);
+    } else if (ConfigStore.to.isOpenEmail()) {
+      Get.toNamed(Routes.loginEmail);
+    } else {
+      SmartDialog.showToast(LocaleKeys.text_0083.tr,
+          alignment: Alignment.center);
+    }
   }
 
   void toSign() {
-    SmartDialog.show(
-      clickMaskDismiss: false,
-      builder: (_) {
-        return const InviteCodeWidget();
-      },
-      alignment: Alignment.bottomCenter,
-    );
+    InviteCodeConfig.showInviteConde(0);
   }
 
-  void signByEmail() {
-    if (state.inviteCodeController.text.isEmpty) {
-      SmartDialog.showToast(LocaleKeys.text_0031.tr);
-      return;
-    }
-    Get.toNamed(Routes.signEmail,
-        arguments: {"inviteCode": state.inviteCodeController.text});
-  }
-
-  void signByPhone() {
-    if (state.inviteCodeController.text.isEmpty) {
-      SmartDialog.showToast(LocaleKeys.text_0031.tr);
-      return;
-    }
-
-    SmartDialog.dismiss();
-    Get.toNamed(Routes.signPhone,
-        arguments: {"inviteCode": state.inviteCodeController.text});
-  }
+// bool signByEmail() {
+//   // if (state.inviteCodeController.text.isEmpty) {
+//   //   SmartDialog.showToast(LocaleKeys.text_0031.tr);
+//   //   return false;
+//   // }
+//   SmartDialog.dismiss();
+//   Get.toNamed(Routes.signEmail,
+//       arguments: {"inviteCode": state.inviteCodeController.text});
+//   return true;
+// }
+//
+// bool signByPhone() {
+//   // if (state.inviteCodeController.text.isEmpty) {
+//   //   SmartDialog.showToast(LocaleKeys.text_0031.tr);
+//   //   return false;
+//   // }
+//
+//   SmartDialog.dismiss();
+//   Get.toNamed(Routes.signPhone,
+//       arguments: {"inviteCode": state.inviteCodeController.text});
+//   return true;
+// }
 }

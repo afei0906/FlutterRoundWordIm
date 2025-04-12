@@ -31,7 +31,7 @@ class RichTextWidget extends StatelessWidget {
   }
 
   List<RichTextItemModel> get items {
-    List<RichTextItemModel> list = <RichTextItemModel>[];
+    final List<RichTextItemModel> list = <RichTextItemModel>[];
     String full = model.text ?? '';
     if (model.items.isEmpty) {
       list.add(
@@ -60,7 +60,7 @@ class RichTextWidget extends StatelessWidget {
           );
           list.add(e);
           current = e.end;
-        }else {
+        } else {
           list.add(e);
           current = e.end;
         }
@@ -79,23 +79,16 @@ class RichTextWidget extends StatelessWidget {
   }
 }
 
-
 class RichTextModel {
-
   String? text;
   TextStyle? style;
   List<RichTextItemModel> items;
 
-  RichTextModel({
-    this.text,
-    this.style,
-    this.items = const <RichTextItemModel>[]
-  });
-
+  RichTextModel(
+      {this.text, this.style, this.items = const <RichTextItemModel>[]});
 }
 
 class RichTextItemModel {
-
   String? marker;
   String text;
   TextStyle? style;
@@ -111,5 +104,4 @@ class RichTextItemModel {
     this.start = 0,
     this.end = 0,
   });
-
 }

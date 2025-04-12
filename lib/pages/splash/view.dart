@@ -36,7 +36,7 @@ class SplashPage extends StatelessWidget {
           textAlign: TextAlign.center,
         ).marginSymmetric(horizontal: 70.w),
         const Spacer(),
-        if (!UserStore.to.isLogin)
+        if (!controller.state.isLoading.value)
           Row(
             children: [
               16.horizontalSpace,
@@ -45,11 +45,7 @@ class SplashPage extends StatelessWidget {
                     LocaleKeys.text_0013.tr, controller.toLogin),
               ),
               16.horizontalSpace,
-              Expanded(
-                child: AppButton.fillPrimaryButton(
-                    LocaleKeys.text_0014.tr, controller.toSign),
-              ),
-              16.horizontalSpace,
+              ...SignConfig.signUser(controller.toSign)
             ],
           ),
         30.verticalSpace,

@@ -7,6 +7,7 @@ enum InputEnum {
   password,
   confirmPassword,
   email,
+  textType,
   none,
 }
 
@@ -21,11 +22,15 @@ class InputAccount extends StatefulWidget {
       this.inputType = InputEnum.none,
       this.obscureText = false,
       this.autofocus = false,
+      this.isShowClear = false,
       this.prefix,
       this.margin,
       this.textAlign,
       this.inputFormatters,
+      this.decoration,
       this.lengthLimit = 50,
+      this.rightWidget,
+      this.onSubmitted,
       this.onChanged});
 
   final TextEditingController controller;
@@ -33,6 +38,7 @@ class InputAccount extends StatefulWidget {
   final String? hintText;
   final VoidCallback? shufflePassword;
   final bool isShowError;
+  final bool isShowClear;
   final InputEnum inputType;
   final bool obscureText;
   final bool autofocus;
@@ -40,8 +46,11 @@ class InputAccount extends StatefulWidget {
   final EdgeInsetsGeometry? margin;
   final List<TextInputFormatter>? inputFormatters;
   final int lengthLimit;
+  final BoxDecoration? decoration;
   final Function()? onChanged;
+  final Function()? onSubmitted;
   final TextAlign? textAlign;
+  final Widget? rightWidget;
 
   @override
   State<InputAccount> createState() => _InputAccountState();
@@ -85,18 +94,19 @@ class _InputAccountState extends State<InputAccount> {
         Container(
           padding: EdgeInsets.only(right: 4.w),
           margin: widget.margin ?? EdgeInsets.zero,
-          decoration: BoxDecoration(
-            color: AppTheme.black.withOpacity(0.05),
-            borderRadius: BorderRadius.circular(12.r),
-            border: Border.all(
-              color: _focusNode.hasFocus
-                  ? widget.isShowError && getErrorText().tr.isNotEmpty
-                      ? AppTheme.error
-                      : Colors.transparent
-                  : Colors.transparent,
-              width: 1.w,
-            ),
-          ),
+          decoration: widget.decoration ??
+              BoxDecoration(
+                color: AppTheme.black.withOpacity(0.05),
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(
+                  color: _focusNode.hasFocus
+                      ? (widget.isShowError && getErrorText().tr.isNotEmpty
+                          ? AppTheme.error
+                          : Colors.transparent)
+                      : Colors.transparent,
+                  width: 1.w,
+                ),
+              ),
           child: Row(
             children: [
               if (widget.prefix != null) widget.prefix!(_focusNode.hasFocus),
@@ -109,6 +119,9 @@ class _InputAccountState extends State<InputAccount> {
                   textAlignVertical: TextAlignVertical.center,
                   textAlign: widget.textAlign ?? TextAlign.left,
                   textInputAction: TextInputAction.done,
+                  onSubmitted: (value) {
+                    widget.onSubmitted?.call();
+                  },
                   onChanged: (value) {
                     _isShowClear = _focusNode.hasFocus &&
                         widget.controller.text.isNotEmpty;
@@ -137,7 +150,7 @@ class _InputAccountState extends State<InputAccount> {
                   obscureText: widget.obscureText,
                 ),
               ),
-              if (widget.isShowError && _isShowClear)
+              if (widget.isShowClear && _isShowClear)
                 InkWell(
                   onTap: () {
                     widget.controller.clear();
@@ -165,6 +178,7 @@ class _InputAccountState extends State<InputAccount> {
                     ),
                   ),
                 ),
+              if (widget.rightWidget != null) ...[widget.rightWidget!],
             ],
           ),
         ),
@@ -203,12 +217,18 @@ class _InputAccountState extends State<InputAccount> {
           errorText = passwordError.message ?? '';
         }
       case InputEnum.confirmPassword:
+        // developer.log(">>>>>>${widget.controller.text}>>${widget.confirmController?.text}");
         if (widget.controller.text != widget.confirmController?.text) {
           errorText = LocaleKeys.text_0026.tr;
         }
       case InputEnum.email:
         final usernameError = checkNickname(widget.controller.text);
         if (usernameError != EmailError.none) {
+          errorText = usernameError.message ?? '';
+        }
+      case InputEnum.textType:
+        final usernameError = checkInviteCode(widget.controller.text);
+        if (usernameError != TextError.none) {
           errorText = usernameError.message ?? '';
         }
       case InputEnum.none:
@@ -278,25 +298,22 @@ PasswordError checkPassword(String password) {
   return PasswordError.none;
 }
 
-// enum InviteCodeError {
-//   length(LocaleKeys.account_valid_invite_code_length),
-//   none(null);
-//
-//   final String? message;
-//
-//   const InviteCodeError(this.message);
-// }
+enum TextError {
+  // length(LocaleKeys.account_valid_invite_code_length),
+  none(null);
 
-// InviteCodeError checkInviteCode(String inviteCode) {
-//   if (inviteCode.isEmpty) {
-//     return InviteCodeError.none;
-//   } else {
-//     if (inviteCode.length < 6) {
-//       return InviteCodeError.length;
-//     }
-//     return InviteCodeError.none;
-//   }
-// }
+  final String? message;
+
+  const TextError(this.message);
+}
+
+TextError checkInviteCode(String inviteCode) {
+  if (inviteCode.isEmpty) {
+    return TextError.none;
+  } else {
+    return TextError.none;
+  }
+}
 
 class CustomizedTextInputFormatter extends TextInputFormatter {
   final Pattern pattern;
