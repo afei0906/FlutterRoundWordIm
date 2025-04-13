@@ -46,3 +46,5 @@ part 'pass_word_protect/logic.dart';
 part 'pass_word_protect/view.dart';
 
 part 'pass_word_protect/state.dart';
+
+part 'pass_word_protect/widget/select_question.dart';

@@ -14,4 +14,11 @@ extension PrivacyLogic on GetxController {
       "url": "https://www.baidu.com/"
     });
   }
+
+  void contactService() {
+    SmartDialog.showToast(
+      LocaleKeys.text_0060.tr,
+      alignment: Alignment.center
+    );
+  }
 }

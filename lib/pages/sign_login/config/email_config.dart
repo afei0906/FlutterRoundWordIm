@@ -42,4 +42,17 @@ class EmailConfig {
     }
     return list;
   }
+
+  static List<Widget> forgetPassword(Function() callBack) {
+    List<Widget> list = [];
+    if (ConfigStore.to.isOpenEmail()) {
+      list = [
+        12.verticalSpace,
+        AppButton.brandPrimaryButton(LocaleKeys.text_0063.tr, () {
+          callBack.call();
+        }).marginSymmetric(horizontal: 16.w)
+      ];
+    }
+    return list;
+  }
 }

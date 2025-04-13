@@ -11,8 +11,11 @@ abstract class Routes {
   static const signEmail = '/signEmail';
   static const signSuss = '/signSuss';
   static const passWordProtect = '/passWordProtect';
-  static const selectPhoneCountry = '/selectPhoneCountryPage';
-  static const forgetPassword = '/forgetPassword';
+  static const emailRest = '/emailRest';
+  static const phoneRest = '/phoneRest';
+  static const userIssues = '/userIssues';
+  static const selectPhoneCountry = '/selectPhone';
+
   static const main = '/main';
   static const webView = '/webView';
 
@@ -42,10 +45,6 @@ abstract class Routes {
       page: () => SelectPhoneCountryPage(),
     ),
     GetPage(
-      name: forgetPassword,
-      page: () => ForgetPasswordPage(),
-    ),
-    GetPage(
       name: signEmail,
       page: () => SignEmailPage(),
     ),
@@ -56,6 +55,18 @@ abstract class Routes {
     GetPage(
       name: passWordProtect,
       page: () => PassWordProtectPage(),
+    ),
+    GetPage(
+      name: emailRest,
+      page: () => EmailRestPage(),
+    ),
+    GetPage(
+      name: phoneRest,
+      page: () => PhoneRestPage(),
+    ),
+    GetPage(
+      name: userIssues,
+      page: () => UserIssuesPage(),
     ),
     GetPage(
       name: main,

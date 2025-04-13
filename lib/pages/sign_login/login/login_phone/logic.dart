@@ -47,16 +47,18 @@ class LoginPhoneLogic extends GetxController {
   }
 
   void selectPhoneCountry() {
-    Get.toNamed(Routes.selectPhoneCountry, arguments: state.countryCodeModel)?.then((onValue){
-      if(onValue !=null){
-        state.countryCodeModel=onValue as CountryCodeModel;
+    Get.toNamed(Routes.selectPhoneCountry, arguments: state.countryCodeModel)
+        ?.then((onValue) {
+      if (onValue != null) {
+        state.countryCodeModel = onValue as CountryCodeModel;
         update();
       }
     });
   }
 
   void forgetPassword() {
-    Get.toNamed(Routes.forgetPassword);
+    PasswordProtectConfig.showForgetPas(1);
+    // Get.toNamed(Routes.forgetPassword);
   }
 
   void createAccount() {

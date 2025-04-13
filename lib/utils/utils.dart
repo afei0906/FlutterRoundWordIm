@@ -18,6 +18,30 @@ class Utils {
     return false;
   }
 
+  static String numberToChinese(int number) {
+    // const units = ['', '十', '百', '千'];
+    var nums = [
+      LocaleKeys.text_0103.tr,
+      LocaleKeys.text_0104.tr,
+      LocaleKeys.text_0105.tr,
+      LocaleKeys.text_0106.tr,
+      LocaleKeys.text_0107.tr,
+      LocaleKeys.text_0108.tr,
+      LocaleKeys.text_0109.tr,
+      LocaleKeys.text_0110.tr,
+      LocaleKeys.text_0111.tr,
+      LocaleKeys.text_0112.tr,
+    ];
+
+    if (number < 10) return nums[number];
+    if (number == 10) return LocaleKeys.text_0113.tr;
+    if (number < 20) return '${LocaleKeys.text_0113.tr}${nums[number % 10]}';
+
+    final ten = number ~/ 10;
+    final unit = number % 10;
+    return '${nums[ten]}${LocaleKeys.text_0113.tr}${unit > 0 ? nums[unit] : ''}';
+  }
+
   static String? toEmpty(dynamic str) {
     if (str == null ||
         str.toString() == '' ||

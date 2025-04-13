@@ -90,6 +90,7 @@ abstract class LoginSignApi {
     return false;
   }
 
+  ///useType 1注册 2忘记密码 3修改登录密码 4修改支付密码
   static Future<bool> emailCodeSend({String? email, int? useType = 1}) async {
     var params = {"email": email, "useType": useType};
     final res = await HttpService.to.post(
@@ -98,7 +99,7 @@ abstract class LoginSignApi {
       showLoading: true,
     );
     if (res.code != 0) {
-      /**/ showErrorMsg(res.code.toString(), res.msg ?? '');
+      showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
       return true;
     }
@@ -166,5 +167,68 @@ abstract class LoginSignApi {
       return true;
     }
     return false;
+  }
+
+  static Future<bool> saveUserIssues(
+      PasswordProtectRequest passwordProtectRequest) async {
+    final res = await HttpService.to.post(Urls.saveUserIssues,
+        params: passwordProtectRequest.toUserIssuesJson(), showLoading: true);
+    if (res.code != 0) {
+      showErrorMsg(
+        res.code.toString(),
+        res.msg ?? '',
+      );
+    } else {
+      return true;
+    }
+    return false;
+  }
+
+
+
+  static Future<List<CheckIssueList>?> getUserIssues(
+      {String? loginName}) async {
+    final res = await HttpService.to.post(Urls.getUserIssues,
+        showLoading: true, params: {"loginName": loginName});
+    if (res.code != 0) {
+      showErrorMsg(res.code.toString(), res.msg ?? '');
+    } else {
+      final List? list = res.data as List?;
+      final List<CheckIssueList> clientList = list
+              ?.map((e) => CheckIssueList.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [];
+      return clientList;
+    }
+    return null;
+  }
+  static Future<String?> resetPasswordByEmailVerifyCode(
+      String loginName, String verifyCode) async {
+    final res = await HttpService.to.post(Urls.resetPasswordByEmailVerifyCode,
+        params: {"loginName": loginName, "verifyCode": verifyCode},
+        showLoading: true);
+    if (res.code != 0) {
+      showErrorMsg(
+        res.code.toString(),
+        res.msg ?? '',
+      );
+    } else {
+      return res.data.toString();
+    }
+    return null;
+  }
+  static Future<String?> resetPasswordByUserIssue(
+      PasswordProtectRequest passwordProtectRequest) async {
+    final res = await HttpService.to.post(Urls.resetPasswordByUserIssue,
+        params: passwordProtectRequest.toJson(), showLoading: true);
+    if (res.code != 0) {
+      showErrorMsg(
+        res.code.toString(),
+        res.msg ?? '',
+      );
+    } else {
+      return res.data.toString();
+    }
+    return null;
   }
 }

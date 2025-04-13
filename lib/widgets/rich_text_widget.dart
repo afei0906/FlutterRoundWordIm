@@ -2,12 +2,14 @@ part of 'index.dart';
 
 class RichTextWidget extends StatelessWidget {
   final RichTextModel model;
+  TextAlign? textAlign;
 
-  const RichTextWidget({super.key, required this.model});
+  RichTextWidget({super.key, required this.model, this.textAlign});
 
   @override
   Widget build(BuildContext context) {
     return RichText(
+      textAlign: textAlign ?? TextAlign.start,
       text: TextSpan(
         children: items.map((e) {
           if (e.onTap != null) {
@@ -16,6 +18,7 @@ class RichTextWidget extends StatelessWidget {
                 onTap: e.onTap,
                 child: Text(
                   e.text,
+                  textAlign: textAlign,
                   style: e.style,
                 ),
               ),

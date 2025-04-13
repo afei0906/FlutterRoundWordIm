@@ -5,13 +5,15 @@ import 'dart:developer';
 
 import 'package:store/utils/index.dart';
 
-part 'response.dart';
-
-part 'dict_item.dart';
-
 part 'request/login_request.dart';
 
 part 'request/register_request.dart';
+
+part 'request/password_protect_request.dart';
+
+part 'response.dart';
+
+part 'dict_item.dart';
 
 part 'user_info.dart';
 

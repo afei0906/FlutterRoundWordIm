@@ -428,7 +428,8 @@ class _BlockPuzzleCaptchaPageState extends State<BlockPuzzleCaptchaPage>
                 child: FractionalTranslation(
                   translation: Offset(0, offsetAnimation?.value ?? 0),
                   child: Container(
-                    margin: const EdgeInsets.only(left: 15, right: 10),
+                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    padding: const EdgeInsets.only(left: 8),
                     height: 40,
                     color: _checkSuccess
                         ? const Color(0x7F66BB6A)

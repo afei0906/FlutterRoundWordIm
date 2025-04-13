@@ -24,66 +24,19 @@ class PassWordProtectPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: AppTheme().appTextStyle.textStyleTernary,
                     )),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-                    child: Text(
-                      "1.你的小学学校是?",
-                      textAlign: TextAlign.left,
-                      style: AppTheme()
-                          .appTextStyle
-                          .textStyleTitleText
-                          .copyWith(fontSize: 15.sp),
-                    )),
-                InputAccount(
-                  controller: state.ans1Controller,
-                  hintText: LocaleKeys.text_0050.tr,
-                  autofocus: true,
-                  onChanged: logic.onChanged,
-                ).marginSymmetric(
-                  horizontal: 24.w,
-                ),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-                    child: Text(
-                      "2.你的小学学校是?",
-                      textAlign: TextAlign.left,
-                      style: AppTheme()
-                          .appTextStyle
-                          .textStyleTitleText
-                          .copyWith(fontSize: 15.sp),
-                    )),
-                InputAccount(
-                  controller: state.ans2Controller,
-                  hintText: LocaleKeys.text_0050.tr,
-                  onChanged: logic.onChanged,
-                ).marginSymmetric(
-                  horizontal: 24.w,
-                ),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-                    child: Text(
-                      "3.你的小学学校是?",
-                      textAlign: TextAlign.left,
-                      style: AppTheme()
-                          .appTextStyle
-                          .textStyleTitleText
-                          .copyWith(fontSize: 15.sp),
-                    )),
-                InputAccount(
-                  controller: state.ans3Controller,
-                  hintText: LocaleKeys.text_0050.tr,
-                  onChanged: logic.onChanged,
-                  onSubmitted: logic.submit,
-                ).marginSymmetric(
-                  horizontal: 24.w,
-                ),
-                const Spacer(),
+                Obx(() {
+                  return Expanded(
+                      child: state.dictItemList.isNotEmpty
+                          ? ListView.builder(
+                              itemCount: state.count.value,
+                              itemBuilder: (context, index) {
+                                return itemWidget(index);
+                              },
+                              padding: EdgeInsets.zero,
+                            )
+                          : SizedBox());
+                }),
+                25.verticalSpace,
                 Obx(() {
                   return AppButton.fillPrimaryButton(
                       LocaleKeys.text_0053.tr, logic.submit,
@@ -93,6 +46,71 @@ class PassWordProtectPage extends StatelessWidget {
               ],
             ));
       },
+    );
+  }
+
+  Widget itemWidget(int index) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+            alignment: Alignment.centerLeft,
+            margin: EdgeInsets.symmetric(
+              horizontal: 24.w,
+            ),
+            child: Text(
+              LocaleKeys.text_0049
+                  .trParams({"number": Utils.numberToChinese(index + 1)}),
+              textAlign: TextAlign.left,
+              style: AppTheme()
+                  .appTextStyle
+                  .textStyleTitleText
+                  .copyWith(fontSize: 15.sp),
+            )),
+        InkWell(
+          onTap: () {
+            logic.selectQuest(index);
+          },
+          child: Container(
+              alignment: Alignment.centerLeft,
+              width: double.infinity,
+              height: 45.h,
+              decoration: BoxDecoration(
+                  color: AppTheme.black.withOpacity(0.05),
+                  borderRadius: BorderRadius.circular(12.r)),
+              margin: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+              child: Row(
+                children: [
+                  12.horizontalSpace,
+                  Expanded(
+                    child: Text(
+                      "${state.dictItemMap[index]?.dictLabel ?? LocaleKeys.text_0051.tr}",
+                      // state.dictItemList[index].dictLabel.toString(),
+                      textAlign: TextAlign.left,
+                      style: AppTheme()
+                          .appTextStyle
+                          .textStyleTitleText
+                          .copyWith(fontSize: 15.sp),
+                    ),
+                  ),
+                  Icon(
+                    Icons.chevron_right_outlined,
+                    size: 24.w,
+                    color: AppTheme.secondaryText,
+                  ),
+                  12.horizontalSpace,
+                ],
+              )),
+        ),
+        InputAccount(
+          controller: state.controllerMap[index] ?? TextEditingController(),
+          hintText: LocaleKeys.text_0050.tr,
+          onChanged: logic.onChanged,
+        ).marginSymmetric(
+          horizontal: 24.w,
+        ),
+        16.verticalSpace
+      ],
     );
   }
 

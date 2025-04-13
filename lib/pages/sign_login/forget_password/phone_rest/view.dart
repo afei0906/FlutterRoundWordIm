@@ -1,21 +1,22 @@
-part of 'index.dart';
+part of '../index.dart';
+class PhoneRestPage extends StatelessWidget {
+  PhoneRestPage({Key? key}) : super(key: key);
 
-class ForgetPasswordPage extends StatelessWidget {
-  ForgetPasswordPage({Key? key}) : super(key: key);
-
-  final ForgetPasswordLogic logic = Get.put(ForgetPasswordLogic());
-  final ForgetPasswordState state = Get.find<ForgetPasswordLogic>().state;
+  final PhoneRestLogic logic = Get.put(PhoneRestLogic());
+  final PhoneRestState state = Get.find<PhoneRestLogic>().state;
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ForgetPasswordLogic>(
+    return GetBuilder<PhoneRestLogic>(
       builder: (controller) {
         return Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: AppTheme.bgColor,
             appBar: appBar(),
             body: Column(
-              children: [],
+              children: [
+
+              ],
             ));
       },
     );

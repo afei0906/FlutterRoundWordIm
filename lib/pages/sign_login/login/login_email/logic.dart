@@ -49,7 +49,9 @@ class LoginEmailLogic extends GetxController {
   }
 
   void forgetPassword() {
-    Get.toNamed(Routes.forgetPassword);
+    PasswordProtectConfig.showForgetPas(2);
+
+
   }
 
   void createAccount() {

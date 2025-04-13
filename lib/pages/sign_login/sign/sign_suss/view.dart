@@ -33,8 +33,8 @@ class SignSussPage extends StatelessWidget {
                       logic.toHome();
                     }
                   }),
-                if(state.type==1)
-                  ...setProtectPassSuss()
+                if (state.type == 1) ...setProtectPassSuss(),
+                if (state.type == 2) ...resetPassSuss()
               ],
             ));
       },
@@ -52,6 +52,68 @@ class SignSussPage extends StatelessWidget {
       child: Text(
         LocaleKeys.text_0055.tr,
         textAlign: TextAlign.center,
+        style: AppTheme().appTextStyle.textStyleTernary,
+      ),
+    ));
+    list.add(const Spacer());
+    list.add(AppButton.fillPrimaryButton(
+      LocaleKeys.text_0056.tr,
+      logic.toLogin,
+    ).marginSymmetric(horizontal: 16.w, vertical: 12.h));
+    list.add(AppButton.fillPrimaryButton(LocaleKeys.text_0057.tr, logic.toHome,
+            isPress: false)
+        .marginSymmetric(horizontal: 16.w));
+    list.add(20.verticalSpace);
+    return list;
+  }
+
+  List<Widget> resetPassSuss() {
+    List<Widget> list = [];
+    list.add(Text(
+      LocaleKeys.text_0124.tr,
+      style: AppTheme().appTextStyle.textStyleTitleText,
+    ));
+    list.add(Container(
+      margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+      child: Text(
+        LocaleKeys.text_0122.tr,
+        textAlign: TextAlign.center,
+        style: AppTheme().appTextStyle.textStyleTernary,
+      ),
+    ));
+    list.add(Container(
+      margin: EdgeInsets.symmetric(
+        horizontal: 20.w,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            state.passWord.toString(),
+            textAlign: TextAlign.center,
+            style: AppTheme()
+                .appTextStyle
+                .textStyleTitleText
+                .copyWith(fontSize: 30.sp),
+          ),
+          8.horizontalSpace,
+          GestureDetector(
+            onTap: logic.copyPas,
+            child: ThemeImageWidget(
+              path: Resource.assetsSvgDefaultCopySvg,
+              width: 24.w,
+              height: 24.w,
+            ),
+          )
+        ],
+      ),
+    ));
+    list.add(Container(
+      width: double.infinity,
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+      child: Text(
+        LocaleKeys.text_0121.tr,
         style: AppTheme().appTextStyle.textStyleTernary,
       ),
     ));

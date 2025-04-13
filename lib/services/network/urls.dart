@@ -31,8 +31,23 @@ class Urls {
 
   /// 注册
   static const register = 'register';
+
   ///登录
   static const login = 'login';
+
+  ///重置密码和密保
+  static const resetPasswordByUserIssue = 'resetPasswordByUserIssue';
+
+  ///查询用户密码问题
+  static const getUserIssues = 'getUserIssues';
+
+
+  ///保存用户密保问题
+  static const saveUserIssues = 'user/security/saveUserIssues';
+
+  ///保存用户密保问题
+  static const resetPasswordByEmailVerifyCode = 'resetPasswordByEmailVerifyCode';
+
 
 
 

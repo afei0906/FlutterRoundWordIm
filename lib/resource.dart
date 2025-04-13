@@ -16,8 +16,6 @@ class Resource {
   static const String assetsJsonCountryCodeJson =
       'assets/json/country_code.json';
 
-  static const String assetsLocalesEnJson = 'assets/locales/en.json';
-
   static const String assetsLocalesTranslationsXlsx =
       'assets/locales/translations.xlsx';
 
@@ -28,6 +26,9 @@ class Resource {
 
   /// {@macro assets_generator.assetsSvgDefaultCloseSvg.preview}
   static const String assetsSvgDefaultCloseSvg = 'assets/svg/default/close.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultCopySvg.preview}
+  static const String assetsSvgDefaultCopySvg = 'assets/svg/default/copy.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultEyeOffSvg.preview}
   static const String assetsSvgDefaultEyeOffSvg =

@@ -42,4 +42,17 @@ class PhoneConfig {
     }
     return list;
   }
+
+  static List<Widget> forgetPassword(Function() callBack) {
+    List<Widget> list = [];
+    if (ConfigStore.to.isOpenPhone()) {
+      list = [
+        12.verticalSpace,
+        AppButton.brandPrimaryButton(LocaleKeys.text_0062.tr, () {
+          callBack.call();
+        }).marginSymmetric(horizontal: 16.w)
+      ];
+    }
+    return list;
+  }
 }

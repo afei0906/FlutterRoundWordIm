@@ -20,6 +20,7 @@ import '../../../theme.dart';
 import '../../../utils/index.dart';
 import '../../../widgets/index.dart';
 import '../../splash/index.dart';
+import '../forget_password/index.dart';
 import '../login/index.dart';
 
 

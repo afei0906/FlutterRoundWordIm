@@ -81,6 +81,7 @@ class SignEmailLogic extends GetxController {
     }
 
     if (state.isButtonEnable) {
+      state.codeController.text='';
       LoginSignApi.emailCodeSend(email: email);
       _initTimer();
     }
@@ -102,14 +103,19 @@ class SignEmailLogic extends GetxController {
           loginName: email,
           password: state.passwordController.text,
           nick: state.nickController.text,
-          inviteCode: Utils.isEmpty(state.inviteCode));
+          inviteCode: Utils.toEmpty(state.inviteCode));
       VerifyCodeConfig.showCode(1, (String? captchaVerification) async {
         registerRequest.captchaVerification = captchaVerification;
         final bool isOk = await LoginSignApi.register(registerRequest);
         if (isOk) {
           Get.offNamedUntil(
               Routes.signSuss, (route) => route.settings.name == Routes.splash,
-              arguments: {"type": 0, "formType": 0});
+              arguments: {
+                "type": 0,
+                "formType": 0,
+                "captchaVerification": registerRequest.captchaVerification,
+                "loginName":email
+              });
         }
 
         // SmartDialog.dismiss();

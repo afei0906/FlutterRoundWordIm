@@ -1,7 +1,7 @@
 part of 'index.dart';
 
 class VerifyCodeConfig {
-  ///type 0 登录 1 注册
+  ///type 0 登录 1 注册 ,2忘记密码
   static void showCode(
       int type, Function(String? captchaVerification) callBack) {
     if (!ConfigStore.to.isOpenVerifyCode()) {

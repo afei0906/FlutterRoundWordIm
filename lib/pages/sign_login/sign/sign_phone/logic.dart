@@ -22,9 +22,10 @@ class SignPhoneLogic extends GetxController {
   }
 
   void selectPhoneCountry() {
-    Get.toNamed(Routes.selectPhoneCountry, arguments: state.countryCodeModel)?.then((onValue){
-      if(onValue !=null){
-        state.countryCodeModel=onValue as CountryCodeModel;
+    Get.toNamed(Routes.selectPhoneCountry, arguments: state.countryCodeModel)
+        ?.then((onValue) {
+      if (onValue != null) {
+        state.countryCodeModel = onValue as CountryCodeModel;
         update();
       }
     });
@@ -64,7 +65,13 @@ class SignPhoneLogic extends GetxController {
       if (isOk) {
         Get.offNamedUntil(
             Routes.signSuss, (route) => route.settings.name == Routes.splash,
-            arguments: {"type": 0, "formType": 0});
+            arguments: {
+              "type": 0,
+              "formType": 0,
+              "captchaVerification": registerRequest.captchaVerification,
+              "loginName":
+                  "${state.countryCodeModel.code}${state.phoneController.text}"
+            });
       }
       // SmartDialog.dismiss();
     });
