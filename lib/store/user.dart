@@ -27,7 +27,7 @@ class UserStore extends GetxController {
   }
 
   void getIsLoginValue() {
-    //_isLogin.value = !Utils.isEmpty(userInfo.value.id);
+    _isLogin.value = !Utils.isEmpty(userInfo.value.id);
   }
 
   void setLogin(bool isLogin) {

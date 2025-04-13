@@ -1,6 +1,5 @@
 part of 'index.dart';
 
-
 class HomeLogic extends GetxController {
   static HomeLogic get to {
     final bool isControllerRegistered = GetInstance().isRegistered<HomeLogic>();
@@ -23,6 +22,7 @@ class HomeLogic extends GetxController {
     Container(),
     Container(),
     Container(),
+    Container(),
   ];
   List<Map<String, String>> tabItemList = [
     {
@@ -33,15 +33,20 @@ class HomeLogic extends GetxController {
     {
       "id": "1",
       "title": LocaleKeys.text_0006,
-      "default": Resource.assetsSvgDefaultFindSvg,
+      "default": Resource.assetsSvgDefaultContantSvg,
     },
     {
       "id": "2",
-      "title": LocaleKeys.text_0007,
-      "default": Resource.assetsSvgDefaultFriendsSvg,
+      "title": LocaleKeys.text_0126,
+      "default": Resource.assetsSvgDefaultShoppingSvg,
     },
     {
       "id": "3",
+      "title": LocaleKeys.text_0007,
+      "default": Resource.assetsSvgDefaultFindSvg,
+    },
+    {
+      "id": "4",
       "title": LocaleKeys.text_0008,
       "default": Resource.assetsSvgDefaultMeSvg,
     }

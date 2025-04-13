@@ -177,13 +177,13 @@ class AppTheme {
         unselectedLabelStyle: TextStyle(
           fontSize: 12.sp,
           color: onPrimary,
-          fontWeight: FontWeight.w400,
+          fontWeight: ThemeFontWeight.medium.weight,
           fontFamily: fontFamily,
         ),
         selectedLabelStyle: TextStyle(
           fontSize: 12.sp,
           color: primary,
-          fontWeight: FontWeight.w400,
+          fontWeight: ThemeFontWeight.medium.weight,
           fontFamily: fontFamily,
         ),
         unselectedIconTheme: IconThemeData(

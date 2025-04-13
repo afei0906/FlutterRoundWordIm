@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:store/resource.dart';
 import 'package:store/routes/index.dart';
+import 'package:store/widgets/index.dart';
 
 import '../../generated/locales.g.dart';
 import '../../models/index.dart';

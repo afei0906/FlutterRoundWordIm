@@ -10,7 +10,6 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
-
   static const text_0001 = 'text_0001';
   static const text_0002 = 'text_0002';
   static const text_0003 = 'text_0003';
@@ -136,21 +135,17 @@ class LocaleKeys {
   static const text_0123 = 'text_0123';
   static const text_0124 = 'text_0124';
   static const text_0125 = 'text_0125';
+  static const text_0126 = 'text_0126';
 }
 
 class Locales {
   static const zhcn = {
-    "text_0125": "复制@word成功",
-    "text_0121": "1.点击复制密码\n2.点击前往登录\n3.登录成功后请立即使用临时密码修改登录密码(临时密码可长按输入框粘贴)",
-    "text_0122": "您的临时密码",
-    "text_0123": "复制",
-    "text_0124": "密码已重置成功",
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
     'text_0003': '用户服务协议',
     'text_0004': '隐私政策',
-    'text_0005': '聊天',
-    'text_0006': '搜索',
+    'text_0005': '消息',
+    'text_0006': '联系人',
     'text_0007': '发现',
     'text_0008': '我的',
     'text_0009': '您需要提供相机和存储权限才能继续提供服务。 请在手机设置-隐私-相机选项中开启相机和存储权限。',
@@ -266,6 +261,12 @@ class Locales {
     'text_0117': '手机账号',
     'text_0118': '邮箱账号',
     'text_0119': '重置密码需先验证账号，请输入你的手机号码',
-    "text_0120": "您没有设置密保问题"
+    'text_0120': '您没有设置密保问题',
+    'text_0121': '1.点击复制密码\n2.点击前往登录\n3.登录成功后请立即使用临时密码修改登录密码(临时密码可长按输入框粘贴)',
+    'text_0122': '您的临时密码',
+    'text_0123': '复制',
+    'text_0124': '密码已重置成功',
+    'text_0125': '复制@word成功',
+    'text_0126': '商城',
   };
 }

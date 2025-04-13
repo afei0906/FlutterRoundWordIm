@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _tabController = TabController(length: 4, vsync: this)
+    _tabController = TabController(length: 5, vsync: this)
       ..addListener(() {
         setState(() {
           controller.changeTabCurIndex(_tabController!.index);
@@ -100,18 +100,17 @@ class _HomePageState extends State<HomePage>
     // log('aaaaa');
     final List<Widget> tempList = [];
     for (int i = 0; i < controller.tabItemList.length; i++) {
-      final String path = (controller.tabCurIndex == i.obs)
-          ? controller.tabItemList[i]['select'] ?? ''
-          : controller.tabItemList[i]['default'] ?? '';
+      final String path = controller.tabItemList[i]['default'] ?? '';
 
       final Widget iconWidget = Container(
         margin: EdgeInsets.only(top: 10.h),
         width: 24.h,
         height: 24.h,
-        child: Image.asset(
-          path,
+        child: ThemeImageWidget(
+          path: path,
           width: 24.h,
           height: 24.h,
+          color: (controller.tabCurIndex == i.obs) ? AppTheme.primary : null,
         ),
       );
       final w = ColoredBox(
