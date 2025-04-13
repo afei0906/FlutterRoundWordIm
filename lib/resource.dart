@@ -19,7 +19,7 @@ class Resource {
   static const String assetsLocalesTranslationsXlsx =
       'assets/locales/translations.xlsx';
 
-  static const String assetsLocalesZhCnJson = 'assets/locales/zh-cn.json';
+  static const String assetsLocalesZhcnJson = 'assets/locales/zh-cn.json';
 
   /// {@macro assets_generator.assetsSvgDefaultChatSvg.preview}
   static const String assetsSvgDefaultChatSvg = 'assets/svg/default/chat.svg';
