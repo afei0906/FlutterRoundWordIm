@@ -53,7 +53,7 @@ dependencies:
 
   steel_crypt: ^3.0.0+1
   encrypt: ^5.0.3
-
+  text_scroll: ^0.2.0
 
 
 dev_dependencies:

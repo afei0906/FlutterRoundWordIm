@@ -18,7 +18,7 @@ class HomeLogic extends GetxController {
   }
 
   List<Widget> tabWidget = [
-    Container(),
+    ChatListPage(),
     Container(),
     Container(),
     Container(),

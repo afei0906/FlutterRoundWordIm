@@ -4,6 +4,7 @@ abstract class Routes {
   static final RouteObserver<Route> observer = RouteObservers<Route>();
   static List<String> history = [];
 
+  ///注册登录相关
   static const splash = '/splash';
   static const loginPhone = '/loginPhone';
   static const loginEmail = '/loginEmail';
@@ -16,8 +17,12 @@ abstract class Routes {
   static const userIssues = '/userIssues';
   static const selectPhoneCountry = '/selectPhone';
 
+  ///消息聊天相关
   static const main = '/main';
   static const webView = '/webView';
+  static const chatListPage = '/chatListPage';
+
+  //
 
   static final List<GetPage> pages = [
     GetPage(
@@ -71,6 +76,10 @@ abstract class Routes {
     GetPage(
       name: main,
       page: () => const HomePage(),
+    ),
+    GetPage(
+      name: chatListPage,
+      page: () => ChatListPage(),
     ),
   ];
 }

@@ -1,7 +1,7 @@
 part of 'index.dart';
 
 class CusAppBar {
-  static AppBar floatLeading(
+  static PreferredSizeWidget floatLeading(
     BuildContext context, {
     Widget? leftWidget,
     Color? chevronLeftColor,
@@ -14,35 +14,43 @@ class CusAppBar {
     TextStyle? titleTextStyle,
     double toolbarHeight = kToolbarHeight,
     double? elevation,
-    PreferredSizeWidget? bottom,
+    Widget? bottom,
     bool automaticallyImplyLeading = true,
+    bool absorbing = false,
+    bool isCustom = true,
+    double? bottomBarHeight,
+    SystemUiOverlayStyle statusBarStyle = SystemUiOverlayStyle.dark,
   }) {
-    return AppBar(
-      backgroundColor: appBarColor,
-      toolbarHeight: toolbarHeight,
-      elevation: 0,
-      leading: automaticallyImplyLeading
-          ? UnconstrainedBox(
-              child: InkWell(
-                onTap: onBack ?? () => Get.back(),
-                child: Icon(
-                  Icons.arrow_back_ios_new,
-                  size: 20.w,
-                  color: AppTheme.ternaryText,
+    return ThemeNavigationBar(
+        appBarColor: appBarColor,
+        toolbarHeight: toolbarHeight,
+        elevation: 0,
+        automaticallyImplyLeading: automaticallyImplyLeading,
+        leadingWidth: leadingWidth,
+        leftWidget: automaticallyImplyLeading
+            ? UnconstrainedBox(
+                child: InkWell(
+                  onTap: onBack ?? () => Get.back(),
+                  child: Icon(
+                    Icons.arrow_back_ios_new,
+                    size: 20.w,
+                    color: AppTheme.ternaryText,
+                  ),
                 ),
-              ),
-            )
-          : null,
-      leadingWidth: leadingWidth ?? 49.w,
-      title: titleWidget ?? Text(title),
-      titleTextStyle:
-          titleTextStyle ?? AppTheme().appTextStyle.textStyleTitleText,
-      actions: actions,
-      automaticallyImplyLeading: automaticallyImplyLeading,
-    );
+              )
+            : leftWidget,
+        titleStr: title,
+        titleTextStyle:
+            titleTextStyle ?? AppTheme().appTextStyle.textStyleTitleText,
+        actions: actions,
+        statusBarStyle: statusBarStyle,
+        absorbing: absorbing,
+        isCustom: isCustom,
+        bottom: bottom,
+        bottomBarHeight: bottomBarHeight);
   }
 
-  static AppBar leading(
+  static PreferredSizeWidget leading(
     BuildContext context, {
     Widget? leftWidget,
     Color? chevronLeftColor,
@@ -57,9 +65,12 @@ class CusAppBar {
     double? elevation,
     PreferredSizeWidget? bottom,
     bool automaticallyImplyLeading = false,
+    bool absorbing = false,
+    bool isCustom = true,
+    SystemUiOverlayStyle statusBarStyle = SystemUiOverlayStyle.dark,
   }) {
-    return AppBar(
-      backgroundColor: appBarColor,
+    return ThemeNavigationBar(
+      appBarColor: appBarColor,
       toolbarHeight: toolbarHeight,
       elevation: 0,
       // leading: automaticallyImplyLeading
@@ -73,8 +84,8 @@ class CusAppBar {
       //         ),
       //       )
       //     : null,
-      leadingWidth: leadingWidth ?? 49.w,
-      title: titleWidget ?? Text(title),
+      leadingWidth: leadingWidth,
+      titleWidget: titleWidget ?? Text(title),
       titleTextStyle: titleTextStyle ??
           AppTheme()
               .appTextStyle
@@ -94,10 +105,13 @@ class CusAppBar {
         8.horizontalSpace
       ],
       automaticallyImplyLeading: automaticallyImplyLeading,
+      statusBarStyle: statusBarStyle,
+      absorbing: absorbing,
+      isCustom: isCustom,
     );
   }
 
-  static AppBar black(
+  static PreferredSizeWidget black(
     BuildContext context, {
     Widget? leftWidget,
     String title = '',
@@ -109,12 +123,15 @@ class CusAppBar {
     double? elevation,
     PreferredSizeWidget? bottom,
     bool automaticallyImplyLeading = true,
+    bool absorbing = false,
+    bool isCustom = true,
+    SystemUiOverlayStyle statusBarStyle = SystemUiOverlayStyle.dark,
   }) {
-    return AppBar(
-      backgroundColor: appBarColor ?? AppTheme.bgColor,
+    return ThemeNavigationBar(
+      appBarColor: appBarColor ?? AppTheme.bgColor,
       toolbarHeight: toolbarHeight,
       elevation: 0,
-      leading: automaticallyImplyLeading
+      leftWidget: automaticallyImplyLeading
           ? UnconstrainedBox(
               child: InkWell(
                 onTap: onBack ?? () => Get.back(),
@@ -138,7 +155,7 @@ class CusAppBar {
             )
           : null,
       leadingWidth: 80.w,
-      title: titleWidget ?? Text(title),
+      titleWidget: titleWidget ?? Text(title),
       titleTextStyle: TextStyle(
         color: AppTheme.bgColor,
         fontSize: 18.sp,
@@ -146,6 +163,9 @@ class CusAppBar {
       ),
       actions: actions,
       automaticallyImplyLeading: automaticallyImplyLeading,
+      statusBarStyle: statusBarStyle,
+      absorbing: absorbing,
+      isCustom: isCustom,
     );
   }
 }

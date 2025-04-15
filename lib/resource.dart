@@ -19,7 +19,7 @@ class Resource {
   static const String assetsLocalesTranslationsXlsx =
       'assets/locales/translations.xlsx';
 
-  static const String assetsLocalesZhcnJson = 'assets/locales/zhcn.json';
+  static const String assetsLocalesZhCnJson = 'assets/locales/zh-cn.json';
 
   /// {@macro assets_generator.assetsSvgDefaultAddSvg.preview}
   static const String assetsSvgDefaultAddSvg = 'assets/svg/default/add.svg';
@@ -48,11 +48,19 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultFindSvg.preview}
   static const String assetsSvgDefaultFindSvg = 'assets/svg/default/find.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultGroupAddSvg.preview}
+  static const String assetsSvgDefaultGroupAddSvg =
+      'assets/svg/default/group_add.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultLogoSvg.preview}
   static const String assetsSvgDefaultLogoSvg = 'assets/svg/default/logo.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultMeSvg.preview}
   static const String assetsSvgDefaultMeSvg = 'assets/svg/default/me.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultNoticeSvg.preview}
+  static const String assetsSvgDefaultNoticeSvg =
+      'assets/svg/default/notice.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultPasswordProtectSvg.preview}
   static const String assetsSvgDefaultPasswordProtectSvg =
@@ -72,8 +80,4 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultUserAddSvg.preview}
   static const String assetsSvgDefaultUserAddSvg =
       'assets/svg/default/user_add.svg';
-
-  /// {@macro assets_generator.assetsSvgDefaultUsersGroupSvg.preview}
-  static const String assetsSvgDefaultUsersGroupSvg =
-      'assets/svg/default/users_group.svg';
 }

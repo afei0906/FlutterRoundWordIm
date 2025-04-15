@@ -28,7 +28,7 @@ class AppTheme {
   static const loginLine = Color(0xffD9D9D9);
   static const checkColor = Color(0xffD4D4D4);
   static const sliderColor = Color(0xffDCE2E3);
-  static const bgColor2= Color(0xfff5f5f5);
+  static const bgColor2= Color(0xffF0F3F4);
 
   static const onPrimary = Color(0xffB1B1B1);
   static const success = Color(0xFF28CE88);
@@ -306,6 +306,14 @@ class AppTextStyle {
       letterSpacing: letter,
       color: AppTheme.secondaryText,
       fontSize: 20.sp);
+
+  late TextStyle textStyleSecondaryNor = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.regular.weight,
+      letterSpacing: letter,
+      color: AppTheme.secondaryText,
+      fontSize: 14.sp);
+
 
   late TextStyle textStylePrimary = TextStyle(
       fontFamily: fontFamily,

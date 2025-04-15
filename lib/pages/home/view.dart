@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage>
           path: path,
           width: 24.h,
           height: 24.h,
-          color: (controller.tabCurIndex == i.obs) ? AppTheme.primary : null,
+          color: (controller.tabCurIndex == i.obs) ? AppTheme.primary : AppTheme.onPrimary,
         ),
       );
       final w = ColoredBox(
