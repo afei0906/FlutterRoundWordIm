@@ -44,7 +44,9 @@ abstract class LoginSignApi {
     if (res.code != 0) {
       // showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
-      return UserInfo.fromJson(res.data);
+      if(res.data !=null) {
+        return UserInfo.fromJson(res.data);
+      }
     }
     return null;
   }

@@ -25,7 +25,7 @@ class ChatListLogic extends GetxController {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             ThemeImageWidget(
-                              path: Resource.assetsSvgDefaultGroupAddSvg,
+                              path: Resource.assetsSvgDefaultChatGroupAddSvg,
                               width: 24.w,
                               height: 24.w,
                             ),
@@ -46,7 +46,7 @@ class ChatListLogic extends GetxController {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             ThemeImageWidget(
-                              path: Resource.assetsSvgDefaultUserAddSvg,
+                              path: Resource.assetsSvgDefaultChatUserAddSvg,
                               width: 24.w,
                               height: 24.w,
                             ),
@@ -80,7 +80,7 @@ extension SearchChatLogicX on ChatListLogic {
   void onChanged() {
     update();
   }
-  
+
   void onSubmitted(){}
 
 }

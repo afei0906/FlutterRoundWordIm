@@ -111,7 +111,8 @@ class IndexBarOptions {
     this.downColor,
     this.decoration,
     this.downDecoration,
-    this.textStyle = const TextStyle(fontSize: 12, color: Color(0xFF666666)),
+    this.textStyle = const TextStyle(
+        fontSize: 12, color: Color(0xFF126BF6)),
     this.downTextStyle,
     this.selectTextStyle,
     this.downItemDecoration,
@@ -227,7 +228,7 @@ class IndexBar extends StatefulWidget {
     IndexBarDragListener? indexBarDragListener,
     this.options = const IndexBarOptions(),
     this.controller,
-  })  : indexBarDragNotifier = indexBarDragListener as IndexBarDragNotifier?;
+  }) : indexBarDragNotifier = indexBarDragListener as IndexBarDragNotifier?;
 
   /// Index data.
   final List<String> data;
@@ -344,40 +345,43 @@ class IndexBarState extends State<IndexBar> {
   void _addOverlay(BuildContext context) {
     final OverlayState overlayState = Overlay.of(context);
     if (overlayEntry == null) {
-      overlayEntry = OverlayEntry(builder: (BuildContext ctx) {
-        double left;
-        double top;
-        if (widget.options.indexHintPosition != null) {
-          left = widget.options.indexHintPosition!.dx;
-          top = widget.options.indexHintPosition!.dy;
-        } else {
-          if (widget.options.indexHintAlignment == Alignment.centerRight) {
-            left = MediaQuery.of(context).size.width -
-                kIndexBarWidth -
-                widget.options.indexHintWidth +
-                widget.options.indexHintOffset.dx;
-            top = floatTop + widget.options.indexHintOffset.dy;
-          } else if (widget.options.indexHintAlignment ==
-              Alignment.centerLeft) {
-            left = kIndexBarWidth + widget.options.indexHintOffset.dx;
-            top = floatTop + widget.options.indexHintOffset.dy;
+      overlayEntry = OverlayEntry(
+        builder: (BuildContext ctx) {
+          double left;
+          double top;
+          if (widget.options.indexHintPosition != null) {
+            left = widget.options.indexHintPosition!.dx;
+            top = widget.options.indexHintPosition!.dy;
           } else {
-            left = MediaQuery.of(context).size.width / 2 -
-                widget.options.indexHintWidth / 2 +
-                widget.options.indexHintOffset.dx;
-            top = MediaQuery.of(context).size.height / 2 -
-                widget.options.indexHintHeight / 2 +
-                widget.options.indexHintOffset.dy;
+            if (widget.options.indexHintAlignment == Alignment.centerRight) {
+              left = MediaQuery.of(context).size.width -
+                  kIndexBarWidth -
+                  widget.options.indexHintWidth +
+                  widget.options.indexHintOffset.dx;
+              top = floatTop + widget.options.indexHintOffset.dy;
+            } else if (widget.options.indexHintAlignment ==
+                Alignment.centerLeft) {
+              left = kIndexBarWidth + widget.options.indexHintOffset.dx;
+              top = floatTop + widget.options.indexHintOffset.dy;
+            } else {
+              left = MediaQuery.of(context).size.width / 2 -
+                  widget.options.indexHintWidth / 2 +
+                  widget.options.indexHintOffset.dx;
+              top = MediaQuery.of(context).size.height / 2 -
+                  widget.options.indexHintHeight / 2 +
+                  widget.options.indexHintOffset.dy;
+            }
           }
-        }
-        return Positioned(
+          return Positioned(
             left: left,
             top: top,
             child: Material(
               color: Colors.transparent,
               child: _buildIndexHint(ctx, indexTag),
-            ),);
-      },);
+            ),
+          );
+        },
+      );
       overlayState.insert(overlayEntry!);
     } else {
       //重新绘制UI，类似setState

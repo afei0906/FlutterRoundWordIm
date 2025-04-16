@@ -16,9 +16,11 @@ extension PrivacyLogic on GetxController {
   }
 
   void contactService() {
-    SmartDialog.showToast(
-      LocaleKeys.text_0060.tr,
-      alignment: Alignment.center
-    );
+    SmartDialog.showToast(LocaleKeys.text_0060.tr, alignment: Alignment.center);
+  }
+
+  void copy(String str) {
+    Clipboard.setData(ClipboardData(text: str),);
+    SmartDialog.showToast(LocaleKeys.text_0125.trParams({"word": str}),alignment: Alignment.center);
   }
 }

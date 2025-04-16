@@ -17,6 +17,9 @@ class ConfigStore extends GetxController {
     await _initConfig();
   }
 
+  Future<void> featData() async{
+    await LoginSignApi.postAppGetClientConf();
+  }
   void setClientConfigList(List<ClientConfigModel> clientList) {
     if (clientList.isNotEmpty) {
       ConfigStore.to.mClientConfigList.value = clientList;

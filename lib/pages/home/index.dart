@@ -7,12 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:store/extension/index.dart';
 import 'package:store/resource.dart';
 import 'package:store/routes/index.dart';
+import 'package:store/store/index.dart';
 import 'package:store/utils/index.dart';
 import 'package:store/widgets/index.dart';
 import 'package:text_scroll/text_scroll.dart';
 
+import '../../apis/index.dart';
+import '../../common/azlistview/index.dart';
 import '../../generated/locales.g.dart';
 import '../../models/index.dart';
 import '../../theme.dart';
@@ -23,8 +28,34 @@ part 'logic.dart';
 
 part 'view.dart';
 
+part 'widget/view.dart';
+
 part 'chat/chat_list/logic.dart';
 
 part 'chat/chat_list/view.dart';
 
 part 'chat/chat_list/state.dart';
+
+part 'contact/contact_list/logic.dart';
+
+part 'contact/contact_list/view.dart';
+
+part 'contact/contact_list/state.dart';
+
+part 'shop/shop_home/logic.dart';
+
+part 'shop/shop_home/view.dart';
+
+part 'shop/shop_home/state.dart';
+
+part 'find/find_list/logic.dart';
+
+part 'find/find_list/view.dart';
+
+part 'find/find_list/state.dart';
+
+part 'me/me_center/logic.dart';
+
+part 'me/me_center/view.dart';
+
+part 'me/me_center/state.dart';

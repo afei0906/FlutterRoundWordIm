@@ -16,3 +16,5 @@ import '../widgets/index.dart';
 part 'common.dart';
 
 part 'login_sign_api.dart';
+
+part 'user_api.dart';

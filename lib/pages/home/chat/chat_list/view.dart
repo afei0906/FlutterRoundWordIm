@@ -52,36 +52,10 @@ class ChatListPage extends StatelessWidget {
         appBarColor: AppTheme.bgColor2,
         bottom: Column(
           children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: AppTheme.black.withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(12.r)),
-              child: SizedBox(
-                width: double.infinity,
-                height: 48.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
-                      Icons.search,
-                      color: AppTheme.fourthText,
-                      size: 24.w,
-                    ).marginOnly(left: 12.h),
-                    Expanded(
-                      child: InputAccount(
-                        decoration: const BoxDecoration(),
-                        controller: state.searchController,
-                        hintText: LocaleKeys.text_0127.tr,
-                        autofocus: false,
-                        onChanged: logic.onChanged,
-                        onSubmitted: logic.onSubmitted,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ).marginSymmetric(horizontal: 16.w),
+            CustomUtils.onSearchView(
+                    state.searchController, LocaleKeys.text_0127.tr,
+                    onChanged: logic.onChanged, onSubmitted: logic.onSubmitted)
+                .marginSymmetric(horizontal: 16.w),
             Row(
               children: [
                 ThemeImageWidget(

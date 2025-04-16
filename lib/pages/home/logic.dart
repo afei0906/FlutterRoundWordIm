@@ -19,10 +19,10 @@ class HomeLogic extends GetxController {
 
   List<Widget> tabWidget = [
     ChatListPage(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
+    ContactListPage(),
+    ShopHomePage(),
+    FindListPage(),
+    MeCenterPage(),
   ];
   List<Map<String, String>> tabItemList = [
     {

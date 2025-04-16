@@ -38,51 +38,53 @@
 /// showId : "string"
 /// sex : 1073741824
 part of 'index.dart';
-class UserInfo {
+
+class UserInfo extends ISuspensionBean {
   UserInfo({
-      this.id, 
-      this.loginName, 
-      this.email, 
-      this.phone, 
-      this.password, 
-      this.payPassword, 
-      this.level, 
-      this.inviteCode, 
-      this.inviteShow, 
-      this.parentInviteCode, 
-      this.pyramid, 
-      this.nick, 
-      this.avatar, 
-      this.avatarBig, 
-      this.searchFlag, 
-      this.msgRemindFlag, 
-      this.fdValidType, 
-      this.registerType, 
-      this.msgForbiddenFlag, 
-      this.phoneBindFlag, 
-      this.emailBindFlag, 
-      this.openFlag, 
-      this.openid, 
-      this.realNameFlag, 
-      this.remark, 
-      this.status, 
-      this.delFlag, 
-      this.idCard, 
-      this.name, 
-      this.signDay, 
-      this.isCreateGroup, 
-      this.isExclusivePacket, 
-      this.isGroupPacket, 
-      this.isFriendPacket, 
-      this.outUid, 
-      this.createTime, 
-      this.updateTime, 
-      this.showId,
-       this.token,
-      this.sex,});
+    this.id,
+    this.loginName,
+    this.email,
+    this.phone,
+    this.password,
+    this.payPassword,
+    this.level,
+    this.inviteCode,
+    this.inviteShow,
+    this.parentInviteCode,
+    this.pyramid,
+    this.nick,
+    this.avatar,
+    this.avatarBig,
+    this.searchFlag,
+    this.msgRemindFlag,
+    this.fdValidType,
+    this.registerType,
+    this.msgForbiddenFlag,
+    this.phoneBindFlag,
+    this.emailBindFlag,
+    this.openFlag,
+    this.openid,
+    this.realNameFlag,
+    this.remark,
+    this.status,
+    this.delFlag,
+    this.idCard,
+    this.name,
+    this.signDay,
+    this.isCreateGroup,
+    this.isExclusivePacket,
+    this.isGroupPacket,
+    this.isFriendPacket,
+    this.outUid,
+    this.createTime,
+    this.updateTime,
+    this.showId,
+    this.token,
+    this.sex,
+  });
 
   UserInfo.fromJson(dynamic json) {
-    id = json['id'] as  dynamic;
+    id = json['id'] as dynamic;
 
     loginName = json['loginName'];
     email = json['email'];
@@ -122,9 +124,11 @@ class UserInfo {
     updateTime = json['updateTime'];
     showId = json['showId'];
     sex = json['sex'];
-    token= json['token'];
+    token = json['token'];
   }
+
   dynamic id;
+  String? tag;
   dynamic loginName;
   dynamic email;
   dynamic phone;
@@ -164,87 +168,92 @@ class UserInfo {
   dynamic showId;
   dynamic token;
   dynamic sex;
-UserInfo copyWith({  dynamic id,
-  dynamic loginName,
-  dynamic email,
-  dynamic phone,
-  dynamic password,
-  dynamic payPassword,
-  dynamic level,
-  dynamic inviteCode,
-  dynamic inviteShow,
-  dynamic parentInviteCode,
-  dynamic pyramid,
-  dynamic nick,
-  dynamic avatar,
-  dynamic avatarBig,
-  dynamic searchFlag,
-  dynamic msgRemindFlag,
-  dynamic fdValidType,
-  dynamic registerType,
-  dynamic msgForbiddenFlag,
-  dynamic phoneBindFlag,
-  dynamic emailBindFlag,
-  dynamic openFlag,
-  dynamic openid,
-  dynamic realNameFlag,
-  dynamic remark,
-  dynamic status,
-  dynamic delFlag,
-  dynamic idCard,
-  dynamic token,
-  dynamic name,
-  dynamic signDay,
-  dynamic isCreateGroup,
-  dynamic isExclusivePacket,
-  dynamic isGroupPacket,
-  dynamic isFriendPacket,
-  dynamic outUid,
-  dynamic createTime,
-  dynamic updateTime,
-  dynamic showId,
-  dynamic sex,
-}) => UserInfo(  id: id ?? this.id,
-  loginName: loginName ?? this.loginName,
-  email: email ?? this.email,
-  phone: phone ?? this.phone,
-  password: password ?? this.password,
-  payPassword: payPassword ?? this.payPassword,
-  level: level ?? this.level,
-  inviteCode: inviteCode ?? this.inviteCode,
-  inviteShow: inviteShow ?? this.inviteShow,
-  parentInviteCode: parentInviteCode ?? this.parentInviteCode,
-  pyramid: pyramid ?? this.pyramid,
-  nick: nick ?? this.nick,
-  avatar: avatar ?? this.avatar,
-  avatarBig: avatarBig ?? this.avatarBig,
-  searchFlag: searchFlag ?? this.searchFlag,
-  msgRemindFlag: msgRemindFlag ?? this.msgRemindFlag,
-  fdValidType: fdValidType ?? this.fdValidType,
-  registerType: registerType ?? this.registerType,
-  msgForbiddenFlag: msgForbiddenFlag ?? this.msgForbiddenFlag,
-  phoneBindFlag: phoneBindFlag ?? this.phoneBindFlag,
-  emailBindFlag: emailBindFlag ?? this.emailBindFlag,
-  openFlag: openFlag ?? this.openFlag,
-  openid: openid ?? this.openid,
-  realNameFlag: realNameFlag ?? this.realNameFlag,
-  remark: remark ?? this.remark,
-  status: status ?? this.status,
-  delFlag: delFlag ?? this.delFlag,
-  idCard: idCard ?? this.idCard,
-  name: name ?? this.name,
-  signDay: signDay ?? this.signDay,
-  isCreateGroup: isCreateGroup ?? this.isCreateGroup,
-  isExclusivePacket: isExclusivePacket ?? this.isExclusivePacket,
-  isGroupPacket: isGroupPacket ?? this.isGroupPacket,
-  isFriendPacket: isFriendPacket ?? this.isFriendPacket,
-  outUid: outUid ?? this.outUid,
-  createTime: createTime ?? this.createTime,
-  updateTime: updateTime ?? this.updateTime,
-  showId: showId ?? this.showId,
-  sex: sex ?? this.sex,
-  token: token ?? this.token,
-);
+
+  UserInfo copyWith({
+    dynamic id,
+    dynamic loginName,
+    dynamic email,
+    dynamic phone,
+    dynamic password,
+    dynamic payPassword,
+    dynamic level,
+    dynamic inviteCode,
+    dynamic inviteShow,
+    dynamic parentInviteCode,
+    dynamic pyramid,
+    dynamic nick,
+    dynamic avatar,
+    dynamic avatarBig,
+    dynamic searchFlag,
+    dynamic msgRemindFlag,
+    dynamic fdValidType,
+    dynamic registerType,
+    dynamic msgForbiddenFlag,
+    dynamic phoneBindFlag,
+    dynamic emailBindFlag,
+    dynamic openFlag,
+    dynamic openid,
+    dynamic realNameFlag,
+    dynamic remark,
+    dynamic status,
+    dynamic delFlag,
+    dynamic idCard,
+    dynamic token,
+    dynamic name,
+    dynamic signDay,
+    dynamic isCreateGroup,
+    dynamic isExclusivePacket,
+    dynamic isGroupPacket,
+    dynamic isFriendPacket,
+    dynamic outUid,
+    dynamic createTime,
+    dynamic updateTime,
+    dynamic showId,
+    dynamic sex,
+  }) =>
+      UserInfo(
+        id: id ?? this.id,
+        loginName: loginName ?? this.loginName,
+        email: email ?? this.email,
+        phone: phone ?? this.phone,
+        password: password ?? this.password,
+        payPassword: payPassword ?? this.payPassword,
+        level: level ?? this.level,
+        inviteCode: inviteCode ?? this.inviteCode,
+        inviteShow: inviteShow ?? this.inviteShow,
+        parentInviteCode: parentInviteCode ?? this.parentInviteCode,
+        pyramid: pyramid ?? this.pyramid,
+        nick: nick ?? this.nick,
+        avatar: avatar ?? this.avatar,
+        avatarBig: avatarBig ?? this.avatarBig,
+        searchFlag: searchFlag ?? this.searchFlag,
+        msgRemindFlag: msgRemindFlag ?? this.msgRemindFlag,
+        fdValidType: fdValidType ?? this.fdValidType,
+        registerType: registerType ?? this.registerType,
+        msgForbiddenFlag: msgForbiddenFlag ?? this.msgForbiddenFlag,
+        phoneBindFlag: phoneBindFlag ?? this.phoneBindFlag,
+        emailBindFlag: emailBindFlag ?? this.emailBindFlag,
+        openFlag: openFlag ?? this.openFlag,
+        openid: openid ?? this.openid,
+        realNameFlag: realNameFlag ?? this.realNameFlag,
+        remark: remark ?? this.remark,
+        status: status ?? this.status,
+        delFlag: delFlag ?? this.delFlag,
+        idCard: idCard ?? this.idCard,
+        name: name ?? this.name,
+        signDay: signDay ?? this.signDay,
+        isCreateGroup: isCreateGroup ?? this.isCreateGroup,
+        isExclusivePacket: isExclusivePacket ?? this.isExclusivePacket,
+        isGroupPacket: isGroupPacket ?? this.isGroupPacket,
+        isFriendPacket: isFriendPacket ?? this.isFriendPacket,
+        outUid: outUid ?? this.outUid,
+        createTime: createTime ?? this.createTime,
+        updateTime: updateTime ?? this.updateTime,
+        showId: showId ?? this.showId,
+        sex: sex ?? this.sex,
+        token: token ?? this.token,
+      );
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -286,8 +295,21 @@ UserInfo copyWith({  dynamic id,
     map['updateTime'] = updateTime;
     map['showId'] = showId;
     map['sex'] = sex;
-    map['token']=token;
+    map['token'] = token;
     return map;
   }
 
+  @override
+  String getSuspensionTag() {
+    // tag ?? =
+    if (Utils.isEmpty(tag)) {
+      final String pinyin = PinyinHelper.getPinyinE(loginName.toString());
+      String tag = pinyin.substring(0, 1).toUpperCase();
+      if (!RegExp("[A-Z]").hasMatch(tag)) {
+        tag = "#";
+      }
+      this.tag ??= tag;
+    }
+    return tag ?? "#";
+  }
 }

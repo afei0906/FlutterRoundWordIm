@@ -26,9 +26,7 @@ class SignSussLogic extends GetxController {
   }
 
   void copyPas() {
-    Clipboard.setData(ClipboardData(text: state.passWord.toString()));
-    SmartDialog.showToast(
-        LocaleKeys.text_0125.trParams({"word": state.passWord.toString()}));
+    copy(state.passWord.toString());
   }
 
   void toLogin() {

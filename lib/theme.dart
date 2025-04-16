@@ -19,6 +19,7 @@ class AppTheme {
 
   static const bgColor = Color(0xffffffff);
   static const primary = Color(0xff126BF6);
+  static const primary2 = Color(0xff65A1FF);
   static const defaultText = Color(0x0D000000);
   static const secondaryText = Color(0xFF262626);
   static const fourthText = Color(0xffA3A3A3);
@@ -33,7 +34,7 @@ class AppTheme {
   static const onPrimary = Color(0xffB1B1B1);
   static const success = Color(0xFF28CE88);
   static const warning = Color(0xFFFFD575);
-  static const error = Color(0xFFFA6677);
+  static const error = Color(0xFFE53935);
   static const info = Color(0xFF2FA7FF);
   static const lineColor = Color(0xffEDEEF2);
   static const letter = 0.2;

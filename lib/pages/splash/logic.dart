@@ -11,8 +11,9 @@ class SplashLogic extends GetxController {
   }
 
   Future<bool> initClientConf() async {
-    await LoginSignApi.postAppGetClientConf();
-    return UserStore.to.isLogin.value;
+    await ConfigStore.to.featData();
+    // await UserStore.to.getUserInfo();
+    return UserStore.to.getUserInfo();
   }
 
   Future<void> appVerify() async {
@@ -22,8 +23,8 @@ class SplashLogic extends GetxController {
       bool isLogin = await initClientConf();
       state.isLoading.value = false;
       if (isLogin) {
-         Get.offNamed(Routes.main);
-      }else {
+        Get.offNamed(Routes.main);
+      } else {
         update();
       }
     } else {

@@ -10,7 +10,6 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
-
   static const text_0001 = 'text_0001';
   static const text_0002 = 'text_0002';
   static const text_0003 = 'text_0003';
@@ -139,14 +138,55 @@ class LocaleKeys {
   static const text_0126 = 'text_0126';
   static const text_0127 = 'text_0127';
   static const text_0128 = 'text_0128';
-  static const text_0129 = 'text_0129';
+  static const text_0130 = 'text_0130';
+  static const text_0131 = 'text_0131';
+  static const text_0132 = 'text_0132';
+  static const text_0133 = 'text_0133';
+  static const text_0134 = 'text_0134';
+  static const text_0135 = 'text_0135';
+  static const text_0136 = 'text_0136';
+  static const text_0137 = 'text_0137';
+  static const text_0138 = 'text_0138';
+  static const text_0139 = 'text_0139';
+  static const text_0140 = 'text_0140';
+  static const text_0141 = 'text_0141';
+  static const text_0142 = 'text_0142';
+  static const text_0143 = 'text_0143';
+  static const text_0144 = 'text_0144';
+  static const text_0146 = 'text_0146';
+  static const text_0147 = 'text_0147';
+  static const text_0149 = 'text_0149';
+  static const text_0150 = 'text_0150';
+  static const text_0151 = 'text_0151';
+  static const text_0152 = 'text_0152';
+  static const text_0153 = 'text_0153';
+  static const text_0154 = 'text_0154';
+  static const text_0155 = 'text_0155';
+  static const text_0156 = 'text_0156';
+  static const text_0157 = 'text_0157';
+  static const text_0158 = 'text_0158';
+  static const text_0159 = 'text_0159';
+  static const text_0160 = 'text_0160';
+  static const text_0161 = 'text_0161';
+  static const text_0162 = 'text_0162';
+  static const text_0163 = 'text_0163';
+  static const text_0164 = 'text_0164';
+  static const text_0165 = 'text_0165';
+  static const text_0166 = 'text_0166';
+  static const text_0167 = 'text_0167';
+  static const text_0168 = 'text_0168';
+  static const text_0169 = 'text_0169';
+  static const text_0170 = 'text_0170';
+  static const text_0171 = 'text_0171';
+  static const text_0172 = 'text_0172';
+  static const text_0173 = 'text_0173';
+  static const text_0174 = 'text_0174';
+  static const text_0175 = 'text_0175';
 }
 
 class Locales {
   static const zhcn = {
-    'text_0127': '搜索',
-    'text_0128': '创建群聊',
-    'text_0129': '添加好友',
+    'text_0175':'已签到',
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
     'text_0003': '用户服务协议',
@@ -275,5 +315,50 @@ class Locales {
     'text_0124': '密码已重置成功',
     'text_0125': '复制@word成功',
     'text_0126': '商城',
+    'text_0127': '搜索',
+    'text_0128': '创建群聊',
+    'text_0130': '联系人',
+    'text_0131': '新朋友',
+    'text_0132': '我的群聊',
+    'text_0133': '搜索好友',
+    'text_0134': '搜索群聊',
+    'text_0135': '新朋友',
+    'text_0136': '搜索群聊',
+    'text_0137': '忽略',
+    'text_0138': '申请加你为好友',
+    'text_0139': '同意',
+    'text_0140': '默认加为好友',
+    'text_0141': '群主',
+    'text_0142': '@number人',
+    'text_0143': '群管',
+    'text_0144': '成员',
+    'text_0146': '取消',
+    'text_0147': '搜索：@userName',
+    'text_0149': '没有找到该用户',
+    'text_0150': '分享名片',
+    'text_0151': '删除好友',
+    'text_0152': '图片',
+    'text_0153': '语音通话',
+    'text_0154': '语音',
+    'text_0155': '新建对话',
+    'text_0156': '新建频道',
+    'text_0157': '选择好友',
+    'text_0158': '设置群聊名称',
+    'text_0159': '群成员：@number',
+    'text_0160': '你创建了群聊',
+    'text_0161': '群聊详情',
+    'text_0162': '添加成员',
+    'text_0163': '通话时长@time',
+    'text_0164': '签到',
+    'text_0165': '推荐给我的朋友',
+    'text_0166': '分享二维码',
+    'text_0167': '我的钱包',
+    'text_0168': '我的收藏',
+    'text_0169': '我的团队',
+    'text_0170': '我的资料',
+    'text_0171': '实名认证',
+    'text_0172': '安全管理',
+    'text_0173': '在线客服',
+    'text_0174': '我的设置',
   };
 }

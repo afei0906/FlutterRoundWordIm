@@ -7,11 +7,63 @@
 class Resource {
   const Resource._();
 
+  /// {@macro assets_generator.assetsImagesFindListItemPng.preview}
+  static const String assetsImagesFindListItemPng =
+      'assets/images/find_list_item.png';
+
+  /// {@macro assets_generator.assetsImagesGroupAvatarDefualtpng.preview}
+  static const String assetsImagesGroupAvatarDefualtpng =
+      'assets/images/group_avatar_defualt..png';
+
   /// {@macro assets_generator.assetsImagesLoginBgPng.preview}
   static const String assetsImagesLoginBgPng = 'assets/images/login_bg.png';
 
+  /// {@macro assets_generator.assetsImagesMeBgPng.preview}
+  static const String assetsImagesMeBgPng = 'assets/images/me_bg.png';
+
+  /// {@macro assets_generator.assetsImagesMeMyCollectionPng.preview}
+  static const String assetsImagesMeMyCollectionPng =
+      'assets/images/me_my_collection.png';
+
+  /// {@macro assets_generator.assetsImagesMeMyProfilePng.preview}
+  static const String assetsImagesMeMyProfilePng =
+      'assets/images/me_my_profile.png';
+
+  /// {@macro assets_generator.assetsImagesMeMySettingPng.preview}
+  static const String assetsImagesMeMySettingPng =
+      'assets/images/me_my_setting.png';
+
+  /// {@macro assets_generator.assetsImagesMeMyTeamPng.preview}
+  static const String assetsImagesMeMyTeamPng = 'assets/images/me_my_team.png';
+
+  /// {@macro assets_generator.assetsImagesMeMyWalletPng.preview}
+  static const String assetsImagesMeMyWalletPng =
+      'assets/images/me_my_wallet.png';
+
+  /// {@macro assets_generator.assetsImagesMeNameauthenticationPng.preview}
+  static const String assetsImagesMeNameauthenticationPng =
+      'assets/images/me_name _authentication.png';
+
+  /// {@macro assets_generator.assetsImagesMeSafetyManagementPng.preview}
+  static const String assetsImagesMeSafetyManagementPng =
+      'assets/images/me_safety_management.png';
+
+  /// {@macro assets_generator.assetsImagesMeServicePng.preview}
+  static const String assetsImagesMeServicePng = 'assets/images/me_service.png';
+
+  /// {@macro assets_generator.assetsImagesMeShareLeftPng.preview}
+  static const String assetsImagesMeShareLeftPng =
+      'assets/images/me_share_left.png';
+
   /// {@macro assets_generator.assetsImagesNoDataPng.preview}
   static const String assetsImagesNoDataPng = 'assets/images/no_data.png';
+
+  /// {@macro assets_generator.assetsImagesShopBgPng.preview}
+  static const String assetsImagesShopBgPng = 'assets/images/shop_bg.png';
+
+  /// {@macro assets_generator.assetsImagesUserAvatarDefualtPng.preview}
+  static const String assetsImagesUserAvatarDefualtPng =
+      'assets/images/user_avatar_defualt.png';
 
   static const String assetsJsonCountryCodeJson =
       'assets/json/country_code.json';
@@ -19,7 +71,7 @@ class Resource {
   static const String assetsLocalesTranslationsXlsx =
       'assets/locales/translations.xlsx';
 
-  static const String assetsLocalesZhCnJson = 'assets/locales/zh-cn.json';
+  static const String assetsLocalesZhcnJson = 'assets/locales/zhcn.json';
 
   /// {@macro assets_generator.assetsSvgDefaultAddSvg.preview}
   static const String assetsSvgDefaultAddSvg = 'assets/svg/default/add.svg';
@@ -27,8 +79,20 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultChatSvg.preview}
   static const String assetsSvgDefaultChatSvg = 'assets/svg/default/chat.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultChatGroupAddSvg.preview}
+  static const String assetsSvgDefaultChatGroupAddSvg =
+      'assets/svg/default/chat_group_add.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatUserAddSvg.preview}
+  static const String assetsSvgDefaultChatUserAddSvg =
+      'assets/svg/default/chat_user_add.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultCloseSvg.preview}
   static const String assetsSvgDefaultCloseSvg = 'assets/svg/default/close.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultContactUserAddSvg.preview}
+  static const String assetsSvgDefaultContactUserAddSvg =
+      'assets/svg/default/contact_user_add.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultContantSvg.preview}
   static const String assetsSvgDefaultContantSvg =
@@ -48,15 +112,19 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultFindSvg.preview}
   static const String assetsSvgDefaultFindSvg = 'assets/svg/default/find.svg';
 
-  /// {@macro assets_generator.assetsSvgDefaultGroupAddSvg.preview}
-  static const String assetsSvgDefaultGroupAddSvg =
-      'assets/svg/default/group_add.svg';
+  /// {@macro assets_generator.assetsSvgDefaultFindMoreSvg.preview}
+  static const String assetsSvgDefaultFindMoreSvg =
+      'assets/svg/default/find_more.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultLogoSvg.preview}
   static const String assetsSvgDefaultLogoSvg = 'assets/svg/default/logo.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultMeSvg.preview}
   static const String assetsSvgDefaultMeSvg = 'assets/svg/default/me.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultMeShareRightSvg.preview}
+  static const String assetsSvgDefaultMeShareRightSvg =
+      'assets/svg/default/me_share_right.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultNoticeSvg.preview}
   static const String assetsSvgDefaultNoticeSvg =
@@ -69,15 +137,23 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultScanSvg.preview}
   static const String assetsSvgDefaultScanSvg = 'assets/svg/default/scan.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultShopListSvg.preview}
+  static const String assetsSvgDefaultShopListSvg =
+      'assets/svg/default/shop_list.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultShopLocationSvg.preview}
+  static const String assetsSvgDefaultShopLocationSvg =
+      'assets/svg/default/shop_location.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultShoppingSvg.preview}
   static const String assetsSvgDefaultShoppingSvg =
       'assets/svg/default/shopping.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultSignInSvg.preview}
+  static const String assetsSvgDefaultSignInSvg =
+      'assets/svg/default/sign_in.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultSignSussSvg.preview}
   static const String assetsSvgDefaultSignSussSvg =
       'assets/svg/default/sign_suss.svg';
-
-  /// {@macro assets_generator.assetsSvgDefaultUserAddSvg.preview}
-  static const String assetsSvgDefaultUserAddSvg =
-      'assets/svg/default/user_add.svg';
 }

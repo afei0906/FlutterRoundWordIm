@@ -9,10 +9,10 @@ class HttpService extends GetxService {
   final Duration _receiveTimeout = const Duration(seconds: 30);
   final Duration _sendTimeout = const Duration(minutes: 30);
 
-  final cookieJar = CookieJar(); // 独立管理 Cookies
+  late final  PersistCookieJar cookieJar; // 独立管理 Cookies
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
 
     final options = BaseOptions(
@@ -22,10 +22,14 @@ class HttpService extends GetxService {
       sendTimeout: _sendTimeout,
       headers: {},
       contentType: Headers.jsonContentType,
-      responseType: ResponseType.json,
     );
 
     _dio = Dio(options);
+    // 获取应用文档目录用于持久化 Cookie
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    cookieJar = PersistCookieJar(
+      storage: FileStorage("${appDocDir.path}/.cookies/"),
+    );
 
     _dio.httpClientAdapter = IOHttpClientAdapter(
       createHttpClient: () {
@@ -44,8 +48,13 @@ class HttpService extends GetxService {
         return client;
       },
     );
-    _dio.interceptors.add(_RequestInterceptor(cookieJar));
+    _dio.interceptors.add(CookieManager(cookieJar));
+    _dio.interceptors.add(_RequestInterceptor());
     // _dio.interceptors.add(_TokenQueuedInterceptor(_dio));
+  }
+
+  Future<void> clearCookie() async {
+    await cookieJar.deleteAll();
   }
 
   void setOption() {
@@ -293,18 +302,11 @@ class _TokenQueuedInterceptor extends QueuedInterceptor {
 }
 
 class _RequestInterceptor extends InterceptorsWrapper {
-  CookieJar cookieJar;
 
-  _RequestInterceptor(this.cookieJar);
 
-  @override
-  void onRequest(
-      RequestOptions options, RequestInterceptorHandler handler) async {
-    // Cookies
-    final cookies = await cookieJar.loadForRequest(options.uri);
-    options.headers['cookie'] = cookies.join(';');
-    handler.next(options);
-  }
+  _RequestInterceptor();
+
+
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
@@ -318,13 +320,7 @@ class _RequestInterceptor extends InterceptorsWrapper {
         true,
       );
     } else {
-      await cookieJar.saveFromResponse(
-        response.requestOptions.uri,
-        response.headers['set-cookie']
-                ?.map((str) => Cookie.fromSetCookieValue(str))
-                .toList() ??
-            [],
-      );
+
       super.onResponse(response, handler);
     }
   }

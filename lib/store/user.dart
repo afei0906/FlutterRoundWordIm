@@ -45,6 +45,9 @@ class UserStore extends GetxController {
     getIsLoginValue();
     await StorageService.to
         .setString(kLocalUserInfo, json.encode(userInfo.value.toJson()));
+    if (!isOk) {
+      logout();
+    }
     return isOk;
   }
 
@@ -57,6 +60,7 @@ class UserStore extends GetxController {
 
   Future<void> logout() async {
     await StorageService.to.remove(kLocalUserInfo);
+    await HttpService.to.clearCookie();
     _isLogin = false.obs;
     Get.offNamed(Routes.splash);
   }

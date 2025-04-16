@@ -145,7 +145,7 @@ class _InputAccountState extends State<InputAccount> {
                     isDense: true,
                     hintStyle: AppTheme().appTextStyle.textStyleHintText,
                     contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                   ),
                   obscureText: widget.obscureText,
                 ),

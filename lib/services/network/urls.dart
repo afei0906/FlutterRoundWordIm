@@ -50,6 +50,13 @@ class Urls {
 
 
 
+  ///查看签到规则
+  static const getSignInRule = 'user/getSignInRule';
+
+  ///签到
+  static const signIn = 'user/signIn';
+
+
 
 
 
