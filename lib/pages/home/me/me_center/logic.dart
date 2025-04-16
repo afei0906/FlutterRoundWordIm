@@ -9,6 +9,7 @@ class MeCenterLogic extends GetxController {
     featData();
   }
 
+
   Future<void> featData() async {
     await UserApi.getSignInRule();
   }
