@@ -1,11 +1,11 @@
 part of 'index.dart';
 
 class ViewUtils {
-  static Widget topView({
-    String title = '',
-    VoidCallback? onBack,
-    Widget? right,
-  }) {
+  static Widget topView(
+      {String title = '',
+      VoidCallback? onBack,
+      Widget? right,
+      bool isShowRight = true}) {
     return Row(
       children: [
         SizedBox(
@@ -20,17 +20,19 @@ class ViewUtils {
               .textStyleTitleText
               .copyWith(fontWeight: ThemeFontWeight.medium.weight),
         )),
-        UnconstrainedBox(
-          child: InkWell(
-            onTap: onBack ?? () => Get.back(),
-            child: ThemeImageWidget(
-              path: Resource.assetsSvgDefaultCloseSvg,
-              width: 24.w,
-              height: 24.w,
-            ),
-          ),
-        ),
+        if (isShowRight) UnconstrainedBox(
+                child: InkWell(
+                  onTap: onBack ?? () => Get.back(),
+                  child: ThemeImageWidget(
+                    path: Resource.assetsSvgDefaultCloseSvg,
+                    width: 24.w,
+                    height: 24.w,
+                  ),
+                ),
+              ) else SizedBox(
+                width: 24.w,
+              ),
       ],
-    ).marginSymmetric(horizontal: 16.w,vertical: 12.h);
+    ).marginSymmetric(horizontal: 16.w, vertical: 12.h);
   }
 }

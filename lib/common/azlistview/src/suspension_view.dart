@@ -1,29 +1,30 @@
 part of '../index.dart';
 
-
 const double kSusItemHeight = 40;
 
 /// SuspensionView.
 class SuspensionView extends StatefulWidget {
-  const SuspensionView({
-    super.key,
-    required this.data,
-    required this.itemCount,
-    required this.itemBuilder,
-    this.itemScrollController,
-    this.itemPositionsListener,
-    this.susItemBuilder,
-    this.susItemHeight = kSusItemHeight,
-    this.susPosition,
-    this.physics,
-    this.padding,
-  });
+  SuspensionView(
+      {Key? key,
+      required this.data,
+      required this.itemCount,
+      required this.itemBuilder,
+      this.itemScrollController,
+      this.itemPositionsListener,
+      this.susItemBuilder,
+      this.susItemHeight = kSusItemHeight,
+      this.susPosition,
+      this.physics,
+      this.padding,
+      this.isShowSus = true})
+      : super(key: key);
 
   /// Suspension data.
   final List<ISuspensionBean> data;
 
   /// Number of items the [itemBuilder] can produce.
   final int itemCount;
+  final bool isShowSus;
 
   /// Called to build children for the list with
   /// 0 <= index < itemCount.
@@ -56,10 +57,10 @@ class SuspensionView extends StatefulWidget {
   final EdgeInsets? padding;
 
   @override
-  SuspensionViewState createState() => SuspensionViewState();
+  _SuspensionViewState createState() => _SuspensionViewState();
 }
 
-class SuspensionViewState extends State<SuspensionView> {
+class _SuspensionViewState extends State<SuspensionView> {
   /// Controller to scroll or jump to a particular item.
   late ItemScrollController itemScrollController;
 
@@ -91,12 +92,12 @@ class SuspensionViewState extends State<SuspensionView> {
         if (positions.isEmpty || widget.itemCount == 0) {
           return Container();
         }
-        final ItemPosition itemPosition = positions
+        ItemPosition itemPosition = positions
             .where((ItemPosition position) => position.itemTrailingEdge > 0)
             .reduce((ItemPosition min, ItemPosition position) =>
                 position.itemTrailingEdge < min.itemTrailingEdge
                     ? position
-                    : min,);
+                    : min);
         if (itemPosition.itemLeadingEdge > 0) return Container();
         int index = itemPosition.index;
         double left = 0;
@@ -106,12 +107,12 @@ class SuspensionViewState extends State<SuspensionView> {
             left = widget.susPosition!.dx;
             top = widget.susPosition!.dy;
           } else {
-            final int next = math.min(index + 1, widget.itemCount - 1);
-            final ISuspensionBean bean = widget.data[next];
+            int next = math.min(index + 1, widget.itemCount - 1);
+            ISuspensionBean bean = widget.data[next];
             if (bean.isShowSuspension) {
-              final double height =
-                  context.findRenderObject()?.paintBounds.height ?? 0;
-              final double topTemp = itemPosition.itemTrailingEdge * height;
+              double height =
+                  context.findRenderObject()?.paintBounds?.height ?? 0;
+              double topTemp = itemPosition.itemTrailingEdge * height;
               top = math.min(widget.susItemHeight, topTemp) -
                   widget.susItemHeight;
             }
@@ -129,7 +130,10 @@ class SuspensionViewState extends State<SuspensionView> {
   }
 
   Widget _buildItem(BuildContext context, int index) {
-    final ISuspensionBean bean = widget.data[index];
+    if (widget.data.isEmpty) {
+      return Container();
+    }
+    ISuspensionBean bean = widget.data[index];
     if (!bean.isShowSuspension || widget.susItemBuilder == null) {
       return widget.itemBuilder(context, index);
     }
@@ -146,7 +150,9 @@ class SuspensionViewState extends State<SuspensionView> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        if (widget.itemCount == 0) Container() else ScrollablePositionedList.builder(
+        widget.itemCount == 0
+            ? Container()
+            : ScrollablePositionedList.builder(
                 itemCount: widget.itemCount,
                 itemBuilder: (context, index) => _buildItem(context, index),
                 itemScrollController: itemScrollController,
@@ -154,7 +160,7 @@ class SuspensionViewState extends State<SuspensionView> {
                 physics: widget.physics,
                 padding: widget.padding,
               ),
-        _buildSusWidget(context),
+        if (widget.isShowSus) _buildSusWidget(context),
       ],
     );
   }

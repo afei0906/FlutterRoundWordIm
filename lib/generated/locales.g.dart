@@ -182,10 +182,13 @@ class LocaleKeys {
   static const text_0173 = 'text_0173';
   static const text_0174 = 'text_0174';
   static const text_0175 = 'text_0175';
+  static const text_0176 = 'text_0176';
+
 }
 
 class Locales {
   static const zhcn = {
+    'text_0176':'@number个群聊',
     'text_0175':'已签到',
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',

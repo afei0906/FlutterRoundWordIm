@@ -79,7 +79,7 @@ class ThemeImageWidget extends StatelessWidget {
           ),
         );
       } else {
-        if (path!.endsWith('svg')) {
+        if (path?.endsWith('svg')??false) {
           return SvgPicture.asset(
             path!,
             fit: fit,
@@ -91,6 +91,13 @@ class ThemeImageWidget extends StatelessWidget {
                 : null,
           );
         } else {
+          if(Utils.isEmpty(path)){
+            return Image(
+              image: AssetImage(error!),
+              fit: fit,
+              color: color,
+            );
+          }
           return Image(
             image: AssetImage(path!),
             fit: fit,

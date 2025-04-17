@@ -17,12 +17,16 @@ abstract class Routes {
   static const userIssues = '/userIssues';
   static const selectPhoneCountry = '/selectPhone';
 
+  //
+
   ///消息聊天相关
   static const main = '/main';
   static const webView = '/webView';
   static const chatListPage = '/chatListPage';
 
-  //
+  ///联系人相关
+  static const addNewFriendPage = '/addNewFriendPage';
+  static const groupListPage = '/groupListPage';
 
   static final List<GetPage> pages = [
     GetPage(
@@ -80,6 +84,14 @@ abstract class Routes {
     GetPage(
       name: chatListPage,
       page: () => ChatListPage(),
+    ),
+    GetPage(
+      name: addNewFriendPage,
+      page: () => AddNewFriendPage(),
+    ),
+    GetPage(
+      name: groupListPage,
+      page: () => GroupListPage(),
     ),
   ];
 }

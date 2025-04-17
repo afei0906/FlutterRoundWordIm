@@ -90,6 +90,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultCloseSvg.preview}
   static const String assetsSvgDefaultCloseSvg = 'assets/svg/default/close.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultCloseCircleSvg.preview}
+  static const String assetsSvgDefaultCloseCircleSvg =
+      'assets/svg/default/close_circle.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultContactUserAddSvg.preview}
   static const String assetsSvgDefaultContactUserAddSvg =
       'assets/svg/default/contact_user_add.svg';

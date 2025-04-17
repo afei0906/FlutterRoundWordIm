@@ -42,6 +42,22 @@ part 'contact/contact_list/view.dart';
 
 part 'contact/contact_list/state.dart';
 
+part 'contact/group_list/logic.dart';
+
+part 'contact/group_list/view.dart';
+
+part 'contact/group_list/state.dart';
+
+part 'contact/add_new_friend/logic.dart';
+
+part 'contact/add_new_friend/view.dart';
+
+part 'contact/add_new_friend/state.dart';
+
+part 'contact/add_new_friend/widget/add_friend_widget.dart';
+
+part 'contact/add_new_friend/mixin/logic.dart';
+
 part 'shop/shop_home/logic.dart';
 
 part 'shop/shop_home/view.dart';

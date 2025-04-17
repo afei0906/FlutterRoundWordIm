@@ -17,9 +17,10 @@ class ConfigStore extends GetxController {
     await _initConfig();
   }
 
-  Future<void> featData() async{
+  Future<void> featData() async {
     await LoginSignApi.postAppGetClientConf();
   }
+
   void setClientConfigList(List<ClientConfigModel> clientList) {
     if (clientList.isNotEmpty) {
       ConfigStore.to.mClientConfigList.value = clientList;
@@ -39,23 +40,6 @@ class ConfigStore extends GetxController {
     appVersion = packageInfo.version;
     buildNumber = packageInfo.buildNumber;
     getAppConfig();
-  }
-
-  Future<void> setLoadDataTime(int isDebugUrl) async {
-    StorageService.to.setString(kLocalLoadDataTime, isDebugUrl.toString());
-  }
-
-  int getLoadDataTime() {
-    final String time = StorageService.to.getString(kLocalLoadDataTime);
-    return Utils.isEmpty(time) ? 0 : int.parse(time);
-  }
-
-  bool isLoad() {
-    final int time = DateTime.now().microsecondsSinceEpoch;
-    if ((time - getLoadDataTime()) > 2 * 1000 * 1000 * 60) {
-      return true;
-    }
-    return false;
   }
 
   void getAppConfig() {
@@ -121,9 +105,9 @@ class ConfigStore extends GetxController {
   }
 
   ///密保问题数量
-  int getUserIssuesCount(){
+  int getUserIssuesCount() {
     final ClientConfigModel configModel =
-    mClientConfigList.firstWhere((e) => e.configKey == "userIssuesCount");
-    return int.parse("${configModel.configValue??'0'}");
+        mClientConfigList.firstWhere((e) => e.configKey == "userIssuesCount");
+    return int.parse("${configModel.configValue ?? '0'}");
   }
 }

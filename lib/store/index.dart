@@ -12,10 +12,13 @@ import 'package:store/services/index.dart';
 import 'package:store/utils/index.dart';
 
 import '../apis/index.dart';
+import '../common/azlistview/index.dart';
 import '../generated/locales.g.dart';
 import '../models/index.dart';
+import '../pages/home/index.dart';
 import '../routes/index.dart';
 
 part 'config.dart';
 part 'language.dart';
 part 'user.dart';
+part 'contact.dart';

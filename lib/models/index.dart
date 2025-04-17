@@ -25,3 +25,7 @@ part 'country_code_model.dart';
 part 'client_config_model.dart';
 
 part 'verify_code_model.dart';
+
+part 'group_info.dart';
+part 'find_info.dart';
+

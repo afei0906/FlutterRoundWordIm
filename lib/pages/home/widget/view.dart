@@ -3,7 +3,11 @@ part of '../index.dart';
 class CustomUtils {
   static Widget onSearchView(
       TextEditingController searchController, String hintText,
-      {Function? onChanged, Function? onSubmitted, bool autofocus = false}) {
+      {Function? onChanged,
+      Function? onSubmitted,
+      Function? onClear,
+      bool autofocus = false,
+      bool isShowClear = false}) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -11,7 +15,7 @@ class CustomUtils {
           borderRadius: BorderRadius.circular(12.r)),
       child: SizedBox(
         width: double.infinity,
-        height: 48.h,
+        height: 43.h,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -22,17 +26,20 @@ class CustomUtils {
             ).marginOnly(left: 12.h),
             Expanded(
               child: InputAccount(
-                decoration: const BoxDecoration(),
-                controller: searchController,
-                hintText: hintText,
-                autofocus: autofocus,
-                onChanged: () {
-                  onChanged?.call();
-                },
-                onSubmitted: () {
-                  onSubmitted?.call();
-                },
-              ),
+                  decoration: const BoxDecoration(),
+                  controller: searchController,
+                  hintText: hintText,
+                  autofocus: autofocus,
+                  isShowClear: isShowClear,
+                  onChanged: () {
+                    onChanged?.call();
+                  },
+                  onSubmitted: () {
+                    onSubmitted?.call();
+                  },
+                  onClear: () {
+                    onClear?.call();
+                  }),
             ),
           ],
         ),

@@ -42,6 +42,7 @@ part of 'index.dart';
 class UserInfo extends ISuspensionBean {
   UserInfo({
     this.id,
+    this.chatIndex,
     this.loginName,
     this.email,
     this.phone,
@@ -84,8 +85,8 @@ class UserInfo extends ISuspensionBean {
   });
 
   UserInfo.fromJson(dynamic json) {
-    id = json['id'] as dynamic;
-
+    id = json['id'];
+    chatIndex = json['chatIndex'];
     loginName = json['loginName'];
     email = json['email'];
     phone = json['phone'];
@@ -128,6 +129,7 @@ class UserInfo extends ISuspensionBean {
   }
 
   dynamic id;
+  dynamic chatIndex;
   String? tag;
   dynamic loginName;
   dynamic email;
@@ -257,6 +259,7 @@ class UserInfo extends ISuspensionBean {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
+    map['chatIndex'] = chatIndex;
     map['loginName'] = loginName;
     map['email'] = email;
     map['phone'] = phone;
@@ -302,14 +305,14 @@ class UserInfo extends ISuspensionBean {
   @override
   String getSuspensionTag() {
     // tag ?? =
-    if (Utils.isEmpty(tag)) {
+    if (Utils.isEmpty(chatIndex)) {
       final String pinyin = PinyinHelper.getPinyinE(loginName.toString());
       String tag = pinyin.substring(0, 1).toUpperCase();
       if (!RegExp("[A-Z]").hasMatch(tag)) {
         tag = "#";
       }
-      this.tag ??= tag;
+      chatIndex ??= tag;
     }
-    return tag ?? "#";
+    return chatIndex.toString();
   }
 }

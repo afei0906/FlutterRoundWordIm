@@ -3,8 +3,8 @@ part of '../index.dart';
 
 /// AzListView
 class AzListView extends StatefulWidget {
-  const AzListView({
-    super.key,
+  AzListView({
+    Key? key,
     required this.data,
     required this.itemCount,
     required this.itemBuilder,
@@ -24,13 +24,15 @@ class AzListView extends StatefulWidget {
     this.indexBarAlignment = Alignment.centerRight,
     this.indexBarMargin,
     this.indexBarOptions = const IndexBarOptions(),
-  });
+    this.isShowSus=true
+  }) : super(key: key);
 
   /// with  ISuspensionBean Data
   final List<ISuspensionBean> data;
 
   /// Number of items the [itemBuilder] can produce.
   final int itemCount;
+  final bool isShowSus;
 
   /// Called to build children for the list with
   /// 0 <= index < itemCount.
@@ -90,10 +92,10 @@ class AzListView extends StatefulWidget {
   final IndexBarOptions indexBarOptions;
 
   @override
-  AzListViewState createState() => AzListViewState();
+  _AzListViewState createState() => _AzListViewState();
 }
 
-class AzListViewState extends State<AzListView> {
+class _AzListViewState extends State<AzListView> {
   /// Controller to scroll or jump to a particular item.
   late ItemScrollController itemScrollController;
 
@@ -130,7 +132,7 @@ class AzListViewState extends State<AzListView> {
 
   int _getIndex(String tag) {
     for (int i = 0; i < widget.itemCount; i++) {
-      final ISuspensionBean bean = widget.data[i];
+      ISuspensionBean bean = widget.data[i];
       if (tag == bean.getSuspensionTag()) {
         return i;
       }
@@ -139,15 +141,15 @@ class AzListViewState extends State<AzListView> {
   }
 
   void _scrollTopIndex(String tag) {
-    final int index = _getIndex(tag);
+    int index = _getIndex(tag);
     if (index != -1) {
       itemScrollController.jumpTo(index: index);
     }
   }
 
   void _valueChanged() {
-    final IndexBarDragDetails details = dragListener.dragDetails.value;
-    final String tag = details.tag!;
+    IndexBarDragDetails details = dragListener.dragDetails.value;
+    String tag = details.tag!;
     if (details.action == IndexBarDragDetails.actionDown ||
         details.action == IndexBarDragDetails.actionUpdate) {
       selectTag = tag;
@@ -156,17 +158,17 @@ class AzListViewState extends State<AzListView> {
   }
 
   void _positionsChanged() {
-    final Iterable<ItemPosition> positions =
+    Iterable<ItemPosition> positions =
         itemPositionsListener.itemPositions.value;
     if (positions.isNotEmpty) {
-      final ItemPosition itemPosition = positions
+      ItemPosition itemPosition = positions
           .where((ItemPosition position) => position.itemTrailingEdge > 0)
           .reduce((ItemPosition min, ItemPosition position) =>
-              position.itemTrailingEdge < min.itemTrailingEdge
-                  ? position
-                  : min,);
-      final int index = itemPosition.index;
-      final String tag = widget.data[index].getSuspensionTag();
+      position.itemTrailingEdge < min.itemTrailingEdge
+          ? position
+          : min);
+      int index = itemPosition.index;
+      String tag = widget.data[index].getSuspensionTag();
       if (selectTag != tag) {
         selectTag = tag;
         indexBarController.updateTagIndex(tag);
@@ -189,6 +191,7 @@ class AzListViewState extends State<AzListView> {
           susPosition: widget.susPosition,
           padding: widget.padding,
           physics: widget.physics,
+          isShowSus: widget.isShowSus,
         ),
         Align(
           alignment: widget.indexBarAlignment,

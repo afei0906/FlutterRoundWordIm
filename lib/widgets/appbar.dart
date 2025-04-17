@@ -1,7 +1,8 @@
 part of 'index.dart';
 
 class CusAppBar {
-  static PreferredSizeWidget floatLeading(BuildContext context, {
+  static PreferredSizeWidget floatLeading(
+    BuildContext context, {
     Widget? leftWidget,
     Color? chevronLeftColor,
     String title = '',
@@ -28,19 +29,19 @@ class CusAppBar {
         leadingWidth: leadingWidth,
         leftWidget: automaticallyImplyLeading
             ? UnconstrainedBox(
-          child: InkWell(
-            onTap: onBack ?? () => Get.back(),
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              size: 20.w,
-              color: AppTheme.ternaryText,
-            ),
-          ),
-        )
+                child: InkWell(
+                  onTap: onBack ?? () => Get.back(),
+                  child: Icon(
+                    Icons.arrow_back_ios_new,
+                    size: 20.w,
+                    color: AppTheme.ternaryText,
+                  ),
+                ),
+              )
             : leftWidget,
         titleStr: title,
         titleTextStyle:
-        titleTextStyle ?? AppTheme().appTextStyle.textStyleTitleText,
+            titleTextStyle ?? AppTheme().appTextStyle.textStyleTitleText,
         actions: actions,
         statusBarStyle: statusBarStyle,
         absorbing: absorbing,
@@ -49,7 +50,8 @@ class CusAppBar {
         bottomBarHeight: bottomBarHeight);
   }
 
-  static PreferredSizeWidget leading(BuildContext context, {
+  static PreferredSizeWidget leading(
+    BuildContext context, {
     Widget? leftWidget,
     Color? chevronLeftColor,
     String title = '',
@@ -109,7 +111,8 @@ class CusAppBar {
     );
   }
 
-  static PreferredSizeWidget black(BuildContext context, {
+  static PreferredSizeWidget black(
+    BuildContext context, {
     Widget? leftWidget,
     String title = '',
     VoidCallback? onBack,
@@ -130,26 +133,26 @@ class CusAppBar {
       elevation: 0,
       leftWidget: automaticallyImplyLeading
           ? UnconstrainedBox(
-        child: InkWell(
-          onTap: onBack ?? () => Get.back(),
-          child: leftWidget ??
-              Container(
-                width: 40.w,
-                height: 40.w,
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(10.r),
-                  // border: Border.all(color: AppTheme.outline, width: 1.w),
-                ),
-                child: Icon(
-                  Icons.arrow_back_ios_new,
-                  size: 20.w,
-                ),
+              child: InkWell(
+                onTap: onBack ?? () => Get.back(),
+                child: leftWidget ??
+                    Container(
+                      width: 40.w,
+                      height: 40.w,
+                      margin: EdgeInsets.symmetric(horizontal: 20.w),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10.r),
+                        // border: Border.all(color: AppTheme.outline, width: 1.w),
+                      ),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20.w,
+                      ),
+                    ),
               ),
-        ),
-      )
+            )
           : null,
       leadingWidth: 80.w,
       titleWidget: titleWidget ?? Text(title),
@@ -168,13 +171,14 @@ class CusAppBar {
 }
 
 class CustomBoxDecoration {
-  static BoxDecoration topDecoration() {
+  static BoxDecoration topDecoration({double? radius, Color? color}) {
     return BoxDecoration(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
-        color: AppTheme.bgColor);
+        borderRadius:
+            BorderRadius.vertical(top: Radius.circular(radius ?? 16.r)),
+        color: color ?? AppTheme.bgColor);
   }
 
-  static BoxDecoration customDecoration({double? radius, Color? color }) {
+  static BoxDecoration customDecoration({double? radius, Color? color}) {
     return BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 12.r),
         color: color ?? AppTheme.bgColor);

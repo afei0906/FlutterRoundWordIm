@@ -30,6 +30,7 @@ class InputAccount extends StatefulWidget {
       this.decoration,
       this.lengthLimit = 50,
       this.rightWidget,
+      this.onClear,
       this.onSubmitted,
       this.onChanged});
 
@@ -49,6 +50,7 @@ class InputAccount extends StatefulWidget {
   final BoxDecoration? decoration;
   final Function()? onChanged;
   final Function()? onSubmitted;
+  final Function()? onClear;
   final TextAlign? textAlign;
   final Widget? rightWidget;
 
@@ -64,7 +66,7 @@ class _InputAccountState extends State<InputAccount> {
   void initState() {
     _focusNode = FocusNode();
     _focusNode.addListener(() {
-      _isShowClear = _focusNode.hasFocus && widget.controller.text.isNotEmpty;
+      _isShowClear = widget.controller.text.isNotEmpty;
       setState(() {});
     });
     // 延迟以确保页面渲染完成
@@ -126,9 +128,8 @@ class _InputAccountState extends State<InputAccount> {
                     _isShowClear = _focusNode.hasFocus &&
                         widget.controller.text.isNotEmpty;
                     setState(() {});
-                    if (widget.onChanged != null) {
-                      widget.onChanged?.call();
-                    }
+
+                    widget.onChanged?.call();
                   },
                   inputFormatters: [
                     if (widget.inputFormatters != null)
@@ -154,13 +155,16 @@ class _InputAccountState extends State<InputAccount> {
                 InkWell(
                   onTap: () {
                     widget.controller.clear();
+                    _isShowClear = false;
+                    widget.onClear?.call();
+                    setState(() {});
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: const ThemeImageWidget(
-                      path: Resource.assetsSvgDefaultCloseSvg,
-                      width: 20,
-                      height: 20,
+                    child: ThemeImageWidget(
+                      path: Resource.assetsSvgDefaultCloseCircleSvg,
+                      width: 25.w,
+                      height: 25.w,
                     ),
                   ),
                 ),

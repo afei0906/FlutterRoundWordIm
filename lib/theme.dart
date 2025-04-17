@@ -345,6 +345,16 @@ class AppTextStyle {
       height: 1.5,
       fontSize: 14.sp);
 
+
+  late TextStyle textStyleCheck = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.regular.weight,
+      letterSpacing: letter,
+      color: AppTheme.checkColor,
+      height: 1.5,
+      fontSize: 12.sp);
+
+
   late TextStyle textStyleTitleText = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.medium.weight,

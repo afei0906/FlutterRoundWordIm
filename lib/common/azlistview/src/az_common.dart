@@ -1,5 +1,5 @@
-part of '../index.dart';
 
+part of '../index.dart';
 /// ISuspension Bean.
 abstract class ISuspensionBean {
   bool isShowSuspension = false;
@@ -14,51 +14,24 @@ class SuspensionUtil {
   static void sortListBySuspensionTag(List<ISuspensionBean>? list) {
     if (list == null || list.isEmpty) return;
     list.sort((a, b) {
-      if (a.getSuspensionTag() == "*") {
-        return 1;
-      } else if (b.getSuspensionTag() == "*") {
-        return -1;
-      } else if (a.getSuspensionTag() == "@" || b.getSuspensionTag() == "#") {
+      if (a.getSuspensionTag() == "@" || b.getSuspensionTag() == "#") {
         return -1;
       } else if (a.getSuspensionTag() == "#" || b.getSuspensionTag() == "@") {
         return 1;
-      } else if (a.getSuspensionTag() == "@" || b.getSuspensionTag() == "*") {
-        return -1;
       } else {
         return a.getSuspensionTag().compareTo(b.getSuspensionTag());
       }
     });
   }
-
-
-  static void sortListBySuspensionTag1(List<ISuspensionBean>? list) {
-    if (list == null || list.isEmpty) return;
-    list.sort((a, b) {
-      if (a.getSuspensionTag() == "*") {
-        return -1;
-      } else if (b.getSuspensionTag() == "*") {
-        return 1;
-      } else if (a.getSuspensionTag() == "@" || b.getSuspensionTag() == "#") {
-        return -1;
-      } else if (a.getSuspensionTag() == "#" || b.getSuspensionTag() == "@") {
-        return 1;
-      } else if (a.getSuspensionTag() == "@" || b.getSuspensionTag() == "*") {
-        return -1;
-      } else {
-        return a.getSuspensionTag().compareTo(b.getSuspensionTag());
-      }
-    });
-  }
-
 
   /// get index data list by suspension tag.
   /// 获取索引列表。
   static List<String> getTagIndexList(List<ISuspensionBean>? list) {
-    final List<String> indexData = [];
+    List<String> indexData = [];
     if (list != null && list.isNotEmpty) {
       String? tempTag;
       for (int i = 0, length = list.length; i < length; i++) {
-        final String tag = list[i].getSuspensionTag();
+        String tag = list[i].getSuspensionTag();
         if (tempTag != tag) {
           indexData.add(tag);
           tempTag = tag;
@@ -74,7 +47,7 @@ class SuspensionUtil {
     if (list == null || list.isEmpty) return;
     String? tempTag;
     for (int i = 0, length = list.length; i < length; i++) {
-      final String tag = list[i].getSuspensionTag();
+      String tag = list[i].getSuspensionTag();
       if (tempTag != tag) {
         tempTag = tag;
         list[i].isShowSuspension = true;

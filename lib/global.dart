@@ -23,6 +23,7 @@ class Global {
       Get.put<HttpService>(HttpService());
       Get.put<UserStore>(UserStore());
       Get.put<LanguageStore>(LanguageStore());
+      Get.put<ContactStore>(ContactStore());
       SmartDialog.config
         ..toast = SmartConfigToast(
           // isExist: true,

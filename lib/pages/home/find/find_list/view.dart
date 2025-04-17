@@ -8,7 +8,7 @@ class FindListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: double.infinity,
       child: Scaffold(
@@ -17,14 +17,13 @@ class FindListPage extends StatelessWidget {
           body: ListView(
             padding: EdgeInsets.zero,
             children: List.generate(state.dataList.length, (int index) {
-              return _itemList(state.dataList[index]['name'] ?? '',
-                      state.dataList[index]['icon'] ?? '', () {
-                    Get.toNamed(Routes.webView, arguments: {
-                      "title": state.dataList[index]['name'] ?? '',
-                      "url": state.dataList[index]['url'] ?? ''
-                    });
-                  })
-                  .marginOnly(left: 16.w, right: 16.w, top: 12.w);
+              return _itemList(Utils.toEmpty(state.dataList[index].name) ?? '',
+                  Utils.toEmpty(state.dataList[index].logo) ?? '', () {
+                Get.toNamed(Routes.webView, arguments: {
+                  "title": Utils.toEmpty(state.dataList[index].name) ?? '',
+                  "url": Utils.toEmpty(state.dataList[index].url) ?? ''
+                });
+              }).marginOnly(left: 16.w, right: 16.w, top: 12.w);
             }),
           ).marginOnly(bottom: 12.w)),
     );
@@ -42,9 +41,10 @@ class FindListPage extends StatelessWidget {
         child: Row(
           children: [
             ThemeImageWidget(
-              path: png,
+              url: png,
               width: 24.w,
               height: 24.w,
+              radius: 6,
             ),
             12.horizontalSpace,
             Text(

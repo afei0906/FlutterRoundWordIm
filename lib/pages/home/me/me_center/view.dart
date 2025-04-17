@@ -45,7 +45,7 @@ class MeCenterPage extends StatelessWidget {
               color: AppTheme.bgColor.withOpacity(0.3)),
           child: ThemeImageWidget(
             url: UserStore.to.userInfo.value.avatar.toString(),
-            placeholder: Resource.assetsImagesUserAvatarDefualtPng,
+            error: Resource.assetsImagesUserAvatarDefualtPng,
             width: 64.w,
             height: 64.w,
             radius: 64.r,

@@ -61,8 +61,24 @@ class Urls {
 
 
 
+  ///好友列表
+  static const myFriendList = 'friend/myFriendList';
+  ///好友申请列表
+  static const applyList = 'friend/applyList';
+  ///好友申请
+  static const apply = 'friend/apply';
+
+
+  ///用户搜索
+  static const userSearch = 'user/search';
+
+
+  ///群组列表
+  static const myGroupList = 'group/myGroupList';
 
 
 
+  ///发现页列表
+  static const discoveryPage = 'app/discoveryPage';
 
 }

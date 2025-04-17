@@ -1,3 +1,4 @@
+
 part of '../index.dart';
 
 /// IndexHintBuilder.
@@ -17,7 +18,7 @@ abstract class IndexBarDragListener {
 class IndexBarDragNotifier implements IndexBarDragListener {
   @override
   final ValueNotifier<IndexBarDragDetails> dragDetails =
-      ValueNotifier(IndexBarDragDetails());
+  ValueNotifier(IndexBarDragDetails());
 }
 
 /// IndexModel.
@@ -45,7 +46,7 @@ class IndexBarDragDetails {
 }
 
 ///Default Index data.
-const List<String> kIndexBarData = [
+const List<String> kIndexBarData = const [
   'A',
   'B',
   'C',
@@ -72,7 +73,7 @@ const List<String> kIndexBarData = [
   'X',
   'Y',
   'Z',
-  '#',
+  '#'
 ];
 
 const double kIndexBarWidth = 30;
@@ -111,8 +112,7 @@ class IndexBarOptions {
     this.downColor,
     this.decoration,
     this.downDecoration,
-    this.textStyle = const TextStyle(
-        fontSize: 12, color: Color(0xFF126BF6)),
+    this.textStyle = const TextStyle(fontSize: 12, color: Color(0xFF666666)),
     this.downTextStyle,
     this.selectTextStyle,
     this.downItemDecoration,
@@ -121,10 +121,11 @@ class IndexBarOptions {
     this.indexHintHeight = 72,
     this.indexHintDecoration = const BoxDecoration(
       color: Colors.black87,
+      shape: BoxShape.rectangle,
       borderRadius: BorderRadius.all(Radius.circular(6)),
     ),
     this.indexHintTextStyle =
-        const TextStyle(fontSize: 24.0, color: Colors.white),
+    const TextStyle(fontSize: 24.0, color: Colors.white),
     this.indexHintChildAlignment = Alignment.center,
     this.indexHintAlignment = Alignment.center,
     this.indexHintPosition,
@@ -198,7 +199,7 @@ class IndexBarOptions {
 
 /// IndexBarController.
 class IndexBarController {
-  IndexBarState? _indexBarState;
+  _IndexBarState? _indexBarState;
 
   bool get isAttached => _indexBarState != null;
 
@@ -206,7 +207,7 @@ class IndexBarController {
     _indexBarState?._updateTagIndex(tag);
   }
 
-  void _attach(IndexBarState state) {
+  void _attach(_IndexBarState state) {
     _indexBarState = state;
   }
 
@@ -217,8 +218,8 @@ class IndexBarController {
 
 /// IndexBar.
 class IndexBar extends StatefulWidget {
-  const IndexBar({
-    super.key,
+  IndexBar({
+    Key? key,
     this.data = kIndexBarData,
     this.width = kIndexBarWidth,
     this.height,
@@ -228,7 +229,8 @@ class IndexBar extends StatefulWidget {
     IndexBarDragListener? indexBarDragListener,
     this.options = const IndexBarOptions(),
     this.controller,
-  }) : indexBarDragNotifier = indexBarDragListener as IndexBarDragNotifier?;
+  })  : indexBarDragNotifier = indexBarDragListener as IndexBarDragNotifier?,
+        super(key: key);
 
   /// Index data.
   final List<String> data;
@@ -258,10 +260,10 @@ class IndexBar extends StatefulWidget {
   final IndexBarController? controller;
 
   @override
-  IndexBarState createState() => IndexBarState();
+  _IndexBarState createState() => _IndexBarState();
 }
 
-class IndexBarState extends State<IndexBar> {
+class _IndexBarState extends State<IndexBar> {
   /// overlay entry.
   static OverlayEntry? overlayEntry;
 
@@ -273,13 +275,13 @@ class IndexBarState extends State<IndexBar> {
   @override
   void initState() {
     super.initState();
-    widget.indexBarDragNotifier?.dragDetails.addListener(_valueChanged);
+    widget.indexBarDragNotifier?.dragDetails?.addListener(_valueChanged);
     widget.controller?._attach(this);
   }
 
   void _valueChanged() {
     if (widget.indexBarDragNotifier == null) return;
-    final IndexBarDragDetails details =
+    IndexBarDragDetails details =
         widget.indexBarDragNotifier!.dragDetails.value;
     selectIndex = details.index!;
     indexTag = details.tag!;
@@ -287,6 +289,7 @@ class IndexBarState extends State<IndexBar> {
     floatTop = details.globalPositionY! +
         widget.itemHeight / 2 -
         widget.options.indexHintHeight / 2;
+
     if (_isActionDown()) {
       _addOverlay(context);
     } else {
@@ -311,7 +314,7 @@ class IndexBarState extends State<IndexBar> {
   void dispose() {
     widget.controller?._detach();
     _removeOverlay();
-    widget.indexBarDragNotifier?.dragDetails.removeListener(_valueChanged);
+    widget.indexBarDragNotifier?.dragDetails?.removeListener(_valueChanged);
     super.dispose();
   }
 
@@ -320,8 +323,8 @@ class IndexBarState extends State<IndexBar> {
       return widget.indexHintBuilder!(context, tag);
     }
     Widget child;
-    final TextStyle textStyle = widget.options.indexHintTextStyle;
-    final List<String> localImages = widget.options.localImages;
+    TextStyle textStyle = widget.options.indexHintTextStyle;
+    List<String> localImages = widget.options.localImages;
     if (localImages.contains(tag)) {
       child = Image.asset(
         tag,
@@ -330,7 +333,7 @@ class IndexBarState extends State<IndexBar> {
         color: textStyle.color,
       );
     } else {
-      child = Text(tag, style: textStyle);
+      child = Text('$tag', style: textStyle);
     }
     return Container(
       width: widget.options.indexHintWidth,
@@ -343,45 +346,43 @@ class IndexBarState extends State<IndexBar> {
 
   /// add overlay.
   void _addOverlay(BuildContext context) {
-    final OverlayState overlayState = Overlay.of(context);
+    OverlayState? overlayState = Overlay.of(context);
+    if (overlayState == null) return;
     if (overlayEntry == null) {
-      overlayEntry = OverlayEntry(
-        builder: (BuildContext ctx) {
-          double left;
-          double top;
-          if (widget.options.indexHintPosition != null) {
-            left = widget.options.indexHintPosition!.dx;
-            top = widget.options.indexHintPosition!.dy;
+      overlayEntry = OverlayEntry(builder: (BuildContext ctx) {
+        double left;
+        double top;
+        if (widget.options.indexHintPosition != null) {
+          left = widget.options.indexHintPosition!.dx;
+          top = widget.options.indexHintPosition!.dy;
+        } else {
+          if (widget.options.indexHintAlignment == Alignment.centerRight) {
+            left = MediaQuery.of(context).size.width -
+                kIndexBarWidth -
+                widget.options.indexHintWidth +
+                widget.options.indexHintOffset.dx;
+            top = floatTop + widget.options.indexHintOffset.dy;
+          } else if (widget.options.indexHintAlignment ==
+              Alignment.centerLeft) {
+            left = kIndexBarWidth + widget.options.indexHintOffset.dx;
+            top = floatTop + widget.options.indexHintOffset.dy;
           } else {
-            if (widget.options.indexHintAlignment == Alignment.centerRight) {
-              left = MediaQuery.of(context).size.width -
-                  kIndexBarWidth -
-                  widget.options.indexHintWidth +
-                  widget.options.indexHintOffset.dx;
-              top = floatTop + widget.options.indexHintOffset.dy;
-            } else if (widget.options.indexHintAlignment ==
-                Alignment.centerLeft) {
-              left = kIndexBarWidth + widget.options.indexHintOffset.dx;
-              top = floatTop + widget.options.indexHintOffset.dy;
-            } else {
-              left = MediaQuery.of(context).size.width / 2 -
-                  widget.options.indexHintWidth / 2 +
-                  widget.options.indexHintOffset.dx;
-              top = MediaQuery.of(context).size.height / 2 -
-                  widget.options.indexHintHeight / 2 +
-                  widget.options.indexHintOffset.dy;
-            }
+            left = MediaQuery.of(context).size.width / 2 -
+                widget.options.indexHintWidth / 2 +
+                widget.options.indexHintOffset.dx;
+            top = MediaQuery.of(context).size.height / 2 -
+                widget.options.indexHintHeight / 2 +
+                widget.options.indexHintOffset.dy;
           }
-          return Positioned(
+        }
+        return Positioned(
             left: left,
             top: top,
             child: Material(
               color: Colors.transparent,
               child: _buildIndexHint(ctx, indexTag),
-            ),
-          );
-        },
-      );
+            ));
+      });
       overlayState.insert(overlayEntry!);
     } else {
       //重新绘制UI，类似setState
@@ -396,7 +397,7 @@ class IndexBarState extends State<IndexBar> {
   }
 
   Widget _buildItem(BuildContext context, int index) {
-    final String tag = widget.data[index];
+    String tag = widget.data[index];
     Decoration? decoration;
     TextStyle? textStyle;
     if (widget.options.downItemDecoration != null) {
@@ -408,7 +409,7 @@ class IndexBarState extends State<IndexBar> {
           : widget.options.textStyle;
     } else if (widget.options.selectItemDecoration != null) {
       decoration =
-          (selectIndex == index) ? widget.options.selectItemDecoration : null;
+      (selectIndex == index) ? widget.options.selectItemDecoration : null;
       textStyle = (selectIndex == index)
           ? widget.options.selectTextStyle
           : widget.options.textStyle;
@@ -419,7 +420,7 @@ class IndexBarState extends State<IndexBar> {
     }
 
     Widget child;
-    final List<String> localImages = widget.options.localImages;
+    List<String> localImages = widget.options.localImages;
     if (localImages.contains(tag)) {
       child = Image.asset(
         tag,
@@ -428,7 +429,7 @@ class IndexBarState extends State<IndexBar> {
         color: textStyle?.color,
       );
     } else {
-      child = Text(tag, style: textStyle);
+      child = Text('$tag', style: textStyle);
     }
 
     return Container(
@@ -470,8 +471,8 @@ class IndexBarState extends State<IndexBar> {
 }
 
 class BaseIndexBar extends StatefulWidget {
-  const BaseIndexBar({
-    super.key,
+  BaseIndexBar({
+    Key? key,
     this.data = kIndexBarData,
     this.width = kIndexBarWidth,
     this.itemHeight = kIndexBarItemHeight,
@@ -479,7 +480,7 @@ class BaseIndexBar extends StatefulWidget {
     this.textStyle = const TextStyle(fontSize: 12.0, color: Color(0xFF666666)),
     this.itemBuilder,
     this.indexBarDragNotifier,
-  });
+  }) : super(key: key);
 
   /// index data.
   final List<String> data;
@@ -501,16 +502,16 @@ class BaseIndexBar extends StatefulWidget {
   final IndexBarDragNotifier? indexBarDragNotifier;
 
   @override
-  BaseIndexBarState createState() => BaseIndexBarState();
+  _BaseIndexBarState createState() => _BaseIndexBarState();
 }
 
-class BaseIndexBarState extends State<BaseIndexBar> {
+class _BaseIndexBarState extends State<BaseIndexBar> {
   int lastIndex = -1;
   int _widgetTop = 0;
 
   /// get index.
   int _getIndex(double offset) {
-    final int index = offset ~/ widget.itemHeight;
+    int index = offset ~/ widget.itemHeight;
     return math.min(index, widget.data.length - 1);
   }
 
@@ -521,7 +522,7 @@ class BaseIndexBarState extends State<BaseIndexBar> {
             action == IndexBarDragDetails.actionUpdate)) {
       HapticFeedback.vibrate();
     }
-    widget.indexBarDragNotifier?.dragDetails.value = IndexBarDragDetails(
+    widget.indexBarDragNotifier?.dragDetails?.value = IndexBarDragDetails(
       action: action,
       index: lastIndex,
       tag: widget.data[lastIndex],
@@ -531,7 +532,7 @@ class BaseIndexBarState extends State<BaseIndexBar> {
   }
 
   RenderBox? _getRenderBox(BuildContext context) {
-    final RenderObject? renderObject = context.findRenderObject();
+    RenderObject? renderObject = context.findRenderObject();
     RenderBox? box;
     if (renderObject != null) {
       box = renderObject as RenderBox;
@@ -541,9 +542,10 @@ class BaseIndexBarState extends State<BaseIndexBar> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> children = List.generate(widget.data.length, (index) {
-      final Widget child = widget.itemBuilder == null
-          ? Center(child: Text(widget.data[index], style: widget.textStyle))
+    List<Widget> children = List.generate(widget.data.length, (index) {
+      Widget child = widget.itemBuilder == null
+          ? Center(
+          child: Text('${widget.data[index]}', style: widget.textStyle))
           : widget.itemBuilder!(context, index);
       return SizedBox(
         width: widget.width,
@@ -554,19 +556,18 @@ class BaseIndexBarState extends State<BaseIndexBar> {
 
     return GestureDetector(
       onVerticalDragDown: (DragDownDetails details) {
-        final RenderBox? box = _getRenderBox(context);
+        RenderBox? box = _getRenderBox(context);
         if (box == null) return;
-        final Offset topLeftPosition = box.localToGlobal(Offset.zero);
+        Offset topLeftPosition = box.localToGlobal(Offset.zero);
         _widgetTop = topLeftPosition.dy.toInt();
-        final int index = _getIndex(details.localPosition.dy);
-
+        int index = _getIndex(details.localPosition.dy);
         if (index >= 0) {
           lastIndex = index;
           _triggerDragEvent(IndexBarDragDetails.actionDown);
         }
       },
       onVerticalDragUpdate: (DragUpdateDetails details) {
-        final int index = _getIndex(details.localPosition.dy);
+        int index = _getIndex(details.localPosition.dy);
         if (index >= 0 && lastIndex != index) {
           lastIndex = index;
           //HapticFeedback.lightImpact();
