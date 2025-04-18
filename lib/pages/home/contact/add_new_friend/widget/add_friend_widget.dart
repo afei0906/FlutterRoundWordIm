@@ -44,6 +44,48 @@ class AddFriendWidget extends StatelessWidget {
                 )
               ],
             ).marginSymmetric(horizontal: 16.w),
+            if (addFriendLogic.isSearch.isFalse &&
+                !Utils.isEmpty(addFriendLogic.searchStr.value))
+                GestureDetector(
+                  onTap: () {
+                    onSubmitted.call();
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 32.w,
+                        height: 32.w,
+                        decoration: CustomBoxDecoration.customDecoration(
+                            color: AppTheme.primary, radius: 32),
+                        child: Icon(
+                          Icons.search,
+                          color: AppTheme.bgColor,
+                          size: 24.w,
+                        ),
+                      ),
+                      8.horizontalSpace,
+                      RichTextWidget(
+                        model: RichTextModel(
+                          text: LocaleKeys.text_0147.trParams({
+                            'userName': addFriendLogic.searchStr.value,
+                          }),
+                          style: AppTheme().appTextStyle.textStyleTitleText,
+                          items: [
+                            RichTextItemModel(
+                              text: addFriendLogic.searchStr.value,
+                              style: AppTheme()
+                                  .appTextStyle
+                                  .textStylePrimary
+                                  .copyWith(
+                                fontWeight: ThemeFontWeight.medium.weight,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ).marginSymmetric(horizontal: 16.w, vertical: 16.h),
+                ),
             if (addFriendLogic.isSearch.isTrue &&
                 Utils.isEmpty(addFriendLogic.userInfo.value.id))
               Text(

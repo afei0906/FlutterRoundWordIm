@@ -3,8 +3,8 @@ part of '../../index.dart';
 class ChatListPage extends StatelessWidget {
   ChatListPage({Key? key}) : super(key: key);
 
-  final ChatListLogic logic = Get.put(ChatListLogic());
-  final ChatListState state = Get.find<ChatListLogic>().state;
+  final ChatListLogic logic = ChatListLogic.to;
+  final ChatListState chatListState = Get.find<ChatListLogic>().chatListState;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class ChatListPage extends StatelessWidget {
           ),
           16.horizontalSpace,
           InkWell(
-            onTap: logic.toAdd,
+            onTap: logic.toAddNewChat,
             child: ThemeImageWidget(
               path: Resource.assetsSvgDefaultAddSvg,
               width: 24.w,
@@ -53,7 +53,7 @@ class ChatListPage extends StatelessWidget {
         bottom: Column(
           children: [
             CustomUtils.onSearchView(
-                    state.searchController, LocaleKeys.text_0127.tr,
+                    chatListState.searchController, LocaleKeys.text_0127.tr,
                     onChanged: logic.onChanged, onSubmitted: logic.onSubmitted)
                 .marginSymmetric(horizontal: 16.w),
             Row(

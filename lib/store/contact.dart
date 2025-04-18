@@ -6,6 +6,7 @@ class ContactStore extends GetxController {
   RxList<UserInfo> friendList = RxList();
 
   RxList<GroupInfo> groupList = RxList();
+  final throttle = Throttle(const Duration(milliseconds: 800));
 
   @override
   Future<void> onInit() async {
@@ -24,10 +25,11 @@ class ContactStore extends GetxController {
     featLocalFriendData().then((onValue) {
       callBack.call();
     });
-    featServerFriendData().then((onValue) {
-      callBack.call();
+    throttle.run(() {
+      featServerFriendData().then((onValue) {
+        callBack.call();
+      });
     });
-    ;
   }
 
   Future<void> featServerFriendData({String? keyword}) async {
@@ -38,7 +40,7 @@ class ContactStore extends GetxController {
     // show sus tag.
     SuspensionUtil.setShowSuspensionStatus(friendList);
     friendList.refresh();
-    ContactListLogic.to.update();
+    // ContactListLogic.to.update();
   }
 
   Future<void> featLocalFriendData() async {
@@ -53,11 +55,11 @@ class ContactStore extends GetxController {
       if (clientList.isNotEmpty) {
         friendList.value = clientList;
         // A-Z sort.
-        SuspensionUtil.sortListBySuspensionTag(friendList.value);
+        SuspensionUtil.sortListBySuspensionTag(friendList);
         // show sus tag.
-        SuspensionUtil.setShowSuspensionStatus(friendList.value);
+        SuspensionUtil.setShowSuspensionStatus(friendList);
         friendList.refresh();
-        ContactListLogic.to.update();
+        // ContactListLogic.to.update();
       }
     }
   }
@@ -71,10 +73,11 @@ class ContactStore extends GetxController {
   void featGroupData(Function callBack) {
     featLocalGroupData().then((onValue) {
       callBack.call();
-    });;
+    });
     featServerGroupData().then((onValue) {
       callBack.call();
-    });;
+    });
+    ;
   }
 
   Future<void> featServerGroupData({String? keyword}) async {

@@ -3,7 +3,7 @@ part of 'index.dart';
 abstract class GroupApi {
   static Future<List<GroupInfo>> myGroupList(
       {int pageNumber = 1, int pageSize = 500, String? keyword}) async {
-    final Map<String,dynamic> param = {
+    final Map<String, dynamic> param = {
       "pageNumber": pageNumber,
       "pageSize": pageSize,
     };
@@ -15,8 +15,7 @@ abstract class GroupApi {
     if (res.code != 0) {
       // showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
-
-      if (!Utils.isEmpty(keyword)) {
+      if (Utils.isEmpty(keyword)) {
         ContactStore.to.saveGroupData(res.data);
       }
       final List? list = res.data as List?;

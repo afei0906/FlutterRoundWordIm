@@ -10,6 +10,7 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
+
   static const text_0001 = 'text_0001';
   static const text_0002 = 'text_0002';
   static const text_0003 = 'text_0003';
@@ -183,13 +184,16 @@ class LocaleKeys {
   static const text_0174 = 'text_0174';
   static const text_0175 = 'text_0175';
   static const text_0176 = 'text_0176';
-
+  static const text_0177 = 'text_0177';
+  static const text_0178 = 'text_0178';
 }
 
 class Locales {
   static const zhcn = {
-    'text_0176':'@number个群聊',
-    'text_0175':'已签到',
+    'text_0178': '没有搜索结果',
+    'text_0177': '无法识别的的结果',
+    'text_0176': '@number个群聊',
+    'text_0175': '已签到',
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
     'text_0003': '用户服务协议',

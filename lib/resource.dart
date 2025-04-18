@@ -76,6 +76,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultAddSvg.preview}
   static const String assetsSvgDefaultAddSvg = 'assets/svg/default/add.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultCameraPhotoSvg.preview}
+  static const String assetsSvgDefaultCameraPhotoSvg =
+      'assets/svg/default/camera_photo.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultChatSvg.preview}
   static const String assetsSvgDefaultChatSvg = 'assets/svg/default/chat.svg';
 

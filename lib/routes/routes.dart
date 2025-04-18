@@ -23,6 +23,7 @@ abstract class Routes {
   static const main = '/main';
   static const webView = '/webView';
   static const chatListPage = '/chatListPage';
+  static const scanQrCodePage = '/scanQrCodePage';
 
   ///联系人相关
   static const addNewFriendPage = '/addNewFriendPage';
@@ -92,6 +93,10 @@ abstract class Routes {
     GetPage(
       name: groupListPage,
       page: () => GroupListPage(),
+    ),
+    GetPage(
+      name: scanQrCodePage,
+      page: () => ScanQrCodePage(),
     ),
   ];
 }

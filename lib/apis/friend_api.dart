@@ -10,12 +10,13 @@ abstract class FriendApi {
     if (!Utils.isEmpty(keyword)) {
       param['keyword'] = keyword;
     }
-    final res = await HttpService.to.post(Urls.myFriendList, params: param);
+    final res = await HttpService.to.post(Urls.myFriendList,
+        params: param, showLoading: !Utils.isEmpty(keyword));
 
     if (res.code != 0) {
       // showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
-      if (!Utils.isEmpty(keyword)) {
+      if (Utils.isEmpty(keyword)) {
         ContactStore.to.saveFriendData(res.data);
       }
       final List? list = res.data as List?;

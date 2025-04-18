@@ -24,6 +24,9 @@ mixin AddFriendLogic {
             searchStr.refresh();
           },
           () {
+            // 点击空白区域关闭键盘
+            // 关闭键盘
+            SystemChannels.textInput.invokeMethod('TextInput.hide');
             userSearch();
           },
         );
@@ -44,9 +47,9 @@ mixin AddFriendLogic {
   }
 
   Future<void> apply() async {
-    bool isApply = await FriendApi.apply(userInfo.value.id);
+    final bool isApply = await FriendApi.apply(userInfo.value.id);
     if (isApply) {
-      SmartDialog.dismiss();
+      SmartDialog.dismiss(status: SmartStatus.allDialog);
     }
   }
 

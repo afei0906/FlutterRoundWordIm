@@ -2,14 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSMinimumSystemVersion</key>
-    <string>12.0.0</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>SplitGo</string>
+	<string>环球IM</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>SplitGo</string>
+	<string>环球IM</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -47,6 +45,12 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sms</string>
+	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -57,15 +61,15 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>The camera permissions are used for setting up the user's profile picture.</string>
+	<string>The camera permissions are used for setting up the user&apos;s profile picture.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>We only need access to your contacts to easily add friends for bill splitting. No contact information will be saved or uploaded.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>The photos permissions are used for setting up the user's profile picture.</string>
+	<string>The photos permissions are used for setting up the user&apos;s profile picture.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>The album permissions are used for setting up the user's profile picture. </string>
+	<string>The album permissions are used for setting up the user&apos;s profile picture. </string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>We utilize your device identifier solely for monitoring the efficacy of our advertisements, without involving any personal information, thereby enhancing our ability to serve you better.</string>
 	<key>SKAdNetworkItems</key>
@@ -240,13 +244,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array/>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>sms</string>  <!-- 添加 sms scheme 来检查短信应用是否存在 -->
-	</array>
 </dict>
 </plist>

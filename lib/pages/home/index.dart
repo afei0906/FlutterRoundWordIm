@@ -4,9 +4,11 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:scan/scan.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:store/extension/index.dart';
 import 'package:store/resource.dart';
@@ -36,11 +38,26 @@ part 'chat/chat_list/view.dart';
 
 part 'chat/chat_list/state.dart';
 
+part 'chat/chat_list/widget/create_new_chat.dart';
+
+part 'chat/chat_list/widget/create_group_widget.dart';
+part 'chat/chat_list/mixin/create_group_logic.dart';
+
+part 'chat/scan_qr_code/logic.dart';
+
+part 'chat/scan_qr_code/view.dart';
+
+part 'chat/scan_qr_code/state.dart';
+
 part 'contact/contact_list/logic.dart';
 
 part 'contact/contact_list/view.dart';
 
-part 'contact/contact_list/state.dart';
+part 'contact/contact_list/friend_list/logic.dart';
+
+part 'contact/contact_list/friend_list/view.dart';
+
+part 'contact/contact_list/friend_list/state.dart';
 
 part 'contact/group_list/logic.dart';
 

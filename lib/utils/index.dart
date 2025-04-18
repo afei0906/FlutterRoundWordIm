@@ -47,3 +47,5 @@ part 'country_code_manager.dart';
 part 'encrypt_util.dart';
 part 'widget_util.dart';
 part 'object_utils.dart';
+part 'throttle.dart';
+
