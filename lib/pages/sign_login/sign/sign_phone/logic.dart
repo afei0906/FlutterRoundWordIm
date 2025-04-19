@@ -54,8 +54,7 @@ class SignPhoneLogic extends GetxController {
     // SmartDialog.showLoading(msg: LocaleKeys.text_0082.tr);
     final RegisterRequest registerRequest = RegisterRequest(
         regType: 2,
-        loginName:
-            "${state.countryCodeModel.code}${state.phoneController.text}",
+        loginName: "${state.phoneController.text}",
         password: state.passwordController.text,
         nick: state.nickController.text,
         inviteCode: Utils.toEmpty(state.inviteCode));
@@ -69,8 +68,8 @@ class SignPhoneLogic extends GetxController {
               "type": 0,
               "formType": 0,
               "captchaVerification": registerRequest.captchaVerification,
-              "loginName":
-                  "${state.countryCodeModel.code}${state.phoneController.text}"
+              "loginName": state.phoneController.text,
+              "phoneArea": state.countryCodeModel
             });
       }
       // SmartDialog.dismiss();

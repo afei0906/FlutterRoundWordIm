@@ -39,12 +39,14 @@ class ViewUtils {
     ).marginSymmetric(horizontal: 16.w, vertical: 12.h);
   }
 
-  static Widget groupTopView({
-    String title = '',
-    String msg = "",
-    VoidCallback? onBack,
-  }) {
-    return Container(
+  static Widget groupTopView(
+      {String leftStr = '',
+      String title = '',
+      String msg = "",
+      String rightStr = '',
+      VoidCallback? onBack,
+      VoidCallback? onLeftBack}) {
+    return SizedBox(
       width: double.infinity,
       child: Stack(
         alignment: Alignment.center,
@@ -52,9 +54,9 @@ class ViewUtils {
           Positioned(
             left: 0,
             child: GestureDetector(
-              onTap: SmartDialog.dismiss,
+              onTap: onLeftBack ?? SmartDialog.dismiss,
               child: Text(
-                LocaleKeys.text_0011.tr,
+                leftStr,
                 style: AppTheme().appTextStyle.textStyleHintText.copyWith(
                       fontSize: 15.sp,
                       fontWeight: ThemeFontWeight.regular.weight,
@@ -73,14 +75,19 @@ class ViewUtils {
                         fontWeight: ThemeFontWeight.medium.weight,
                         fontSize: 14.sp),
                   ),
-                  4.verticalSpace,
-                  Text(
-                    msg,
-                    textAlign: TextAlign.center,
-                    style: AppTheme().appTextStyle.textStyleTitleText.copyWith(
-                        fontWeight: ThemeFontWeight.medium.weight,
-                        fontSize: 12.sp),
-                  ),
+                  if (!Utils.isEmpty(msg)) ...[
+                    4.verticalSpace,
+                    Text(
+                      msg,
+                      textAlign: TextAlign.center,
+                      style: AppTheme()
+                          .appTextStyle
+                          .textStyleTitleText
+                          .copyWith(
+                              fontWeight: ThemeFontWeight.medium.weight,
+                              fontSize: 12.sp),
+                    ),
+                  ]
                 ],
               )),
           Positioned(
@@ -88,7 +95,7 @@ class ViewUtils {
             child: GestureDetector(
               onTap: onBack,
               child: Text(
-                LocaleKeys.text_0065.tr,
+                rightStr,
                 style: AppTheme().appTextStyle.textStylePrimary.copyWith(
                       fontSize: 15.sp,
                       fontWeight: ThemeFontWeight.medium.weight,

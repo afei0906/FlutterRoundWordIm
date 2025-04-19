@@ -2,6 +2,7 @@ library apis;
 
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';

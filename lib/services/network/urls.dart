@@ -76,6 +76,9 @@ class Urls {
   ///群组列表
   static const myGroupList = 'group/myGroupList';
 
+  ///群组创建
+  static const groupCreate = 'group/create';
+
 
 
   ///发现页列表

@@ -70,8 +70,13 @@ extension RestEmailRestLogicX on EmailRestLogic {
       String? pass = await LoginSignApi.resetPasswordByEmailVerifyCode(
           getEmail(), state.codeController.text);
       if (pass != null) {
-        Get.toNamed(Routes.signSuss,
-            arguments: {"formType": 1, "type": 2, "pass": pass});
+        Get.toNamed(Routes.signSuss, arguments: {
+          "formType": 1,
+          "type": 2,
+          "pass": pass,
+          "phoneAre": null,
+          "loginName": getEmail()
+        });
       }
     }
 

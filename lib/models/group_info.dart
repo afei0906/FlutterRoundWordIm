@@ -13,20 +13,20 @@
 part of 'index.dart';
 
 class GroupInfo {
-  GroupInfo({
-    this.id,
-    this.name,
-    this.uid,
-    this.avatar,
-    this.notice,
-    this.intro,
-    this.maximum,
-    this.useCard,
-    this.historyItem,
-    this.virtualHeadCount,
-    this.createTime,
-    this.joinNum,
-  });
+  GroupInfo(
+      {this.id,
+      this.name,
+      this.uid,
+      this.avatar,
+      this.notice,
+      this.intro,
+      this.maximum,
+      this.useCard,
+      this.historyItem,
+      this.virtualHeadCount,
+      this.createTime,
+      this.joinNum,
+      this.groupRole});
 
   GroupInfo.fromJson(dynamic json) {
     id = json['id'];
@@ -41,6 +41,7 @@ class GroupInfo {
     virtualHeadCount = json['virtualHeadCount'];
     createTime = json['createTime'];
     joinNum = json['joinNum'];
+    groupRole = json['groupRole'];
   }
 
   dynamic id;
@@ -56,6 +57,9 @@ class GroupInfo {
   dynamic createTime;
   dynamic joinNum;
 
+  ///    1：群主；2：成员
+  dynamic groupRole;
+
   GroupInfo copyWith({
     dynamic id,
     dynamic name,
@@ -69,9 +73,11 @@ class GroupInfo {
     dynamic virtualHeadCount,
     dynamic createTime,
     dynamic joinNum,
+    dynamic groupRole,
   }) =>
       GroupInfo(
         id: id ?? this.id,
+        groupRole: groupRole ?? this.groupRole,
         name: name ?? this.name,
         uid: uid ?? this.uid,
         avatar: avatar ?? this.avatar,
@@ -99,6 +105,7 @@ class GroupInfo {
     map['virtualHeadCount'] = virtualHeadCount;
     map['createTime'] = createTime;
     map['joinNum'] = joinNum;
+    map['groupRole'] = groupRole;
     return map;
   }
 }

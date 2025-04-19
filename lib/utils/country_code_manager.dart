@@ -13,7 +13,7 @@ class CountryCodeManager {
     final resp = await getAssetsFile(Resource.assetsJsonCountryCodeJson);
     if (resp != null) {
       if (resp is List) {
-        List<CountryCodeModel> data = resp
+        final List<CountryCodeModel> data = resp
             .map((e) => CountryCodeModel.fromJson(e as Map<String, dynamic>))
             .toList();
         _countries = data;
@@ -37,15 +37,15 @@ class CountryCodeManager {
 
   ///
   /// 获取当前用户的国家地区
-  // Future<CountryCodeModel> get getCurrentUserCountry async {
-  //   List<CountryCodeModel> list = await countries;
-  //   CountryCodeModel? country = list.firstWhereOrNull(
-  //       (e) => e.code == UserManager.instance.current.value.phoneArea);
-  //   if (country != null) {
-  //     return country;
-  //   }
-  //   return getDefaultCountry();
-  // }
+  Future<CountryCodeModel> getCurrentUserCountry(String phoneArea) async {
+    final List<CountryCodeModel> list = await countries;
+    final CountryCodeModel? country =
+        list.firstWhereOrNull((e) => e.code == phoneArea);
+    if (country != null) {
+      return country;
+    }
+    return getDefaultCountry();
+  }
 
   CountryCodeModel getDefaultCountry() {
     return CountryCodeModel(

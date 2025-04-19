@@ -4,10 +4,16 @@ class LoginPhoneLogic extends GetxController {
   final LoginPhoneState state = LoginPhoneState();
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     if (Get.arguments != null) {
       state.phoneController.text = Get.arguments["phone"] as String;
       state.countryCodeModel = Get.arguments["phoneArea"] as CountryCodeModel;
+      update();
+    } else if (UserStore.to.localLoginInfo != null &&
+        UserStore.to.localLoginInfo?.type == 0) {
+      state.phoneController.text = UserStore.to.localLoginInfo?.phone ?? '';
+      state.countryCodeModel = await CountryCodeManager.instance
+          .getCurrentUserCountry(UserStore.to.localLoginInfo?.phone ?? '');
       update();
     }
     super.onInit();
@@ -29,13 +35,16 @@ class LoginPhoneLogic extends GetxController {
       return;
     }
     final LoginRequest loginRequest = LoginRequest(
-        loginName:
-            "${state.countryCodeModel.code}${state.phoneController.text}",
+        loginName: state.phoneController.text,
         password: state.passwordController.text);
     VerifyCodeConfig.showCode(0, (v) async {
       loginRequest.captchaVerification = v;
       bool isOk = await LoginSignApi.login(loginRequest);
       if (isOk) {
+        UserStore.to.setLocalLoginInfo(LocalLoginInfo(
+            type: 0,
+            phoneAre: state.countryCodeModel.code,
+            phone: state.phoneController.text));
         UserStore.to.getUserInfo();
         Get.offNamed(Routes.main);
       }

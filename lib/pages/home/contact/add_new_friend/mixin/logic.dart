@@ -3,15 +3,15 @@ part of '../../../index.dart';
 mixin AddFriendLogic {
   TextEditingController searchFriendController = TextEditingController();
   RxString searchStr = RxString("");
-  Rx<UserInfo> userInfo = UserInfo().obs;
+  Rx<FriendInfo> userInfo = FriendInfo().obs;
   RxBool isSearch = false.obs;
 
-  RxList<UserInfo> applyList = RxList();
+  RxList<FriendInfo> applyList = RxList();
 
   void toAdd() {
     searchStr.value = "";
     searchFriendController.text = searchStr.value;
-    userInfo = UserInfo().obs;
+    userInfo = FriendInfo().obs;
     SmartDialog.show(
       clickMaskDismiss: false,
       builder: (_) {
@@ -37,7 +37,7 @@ mixin AddFriendLogic {
 
   Future<void> userSearch() async {
     if (!Utils.isEmpty(searchFriendController.text)) {
-      final List<UserInfo> list =
+      final List<FriendInfo> list =
           await FriendApi.userSearch(searchFriendController.text);
       isSearch.value = true;
       if (list.isNotEmpty) {
@@ -47,7 +47,7 @@ mixin AddFriendLogic {
   }
 
   Future<void> apply() async {
-    final bool isApply = await FriendApi.apply(userInfo.value.id);
+    final bool isApply = await FriendApi.apply(userInfo.value.friendId);
     if (isApply) {
       SmartDialog.dismiss(status: SmartStatus.allDialog);
     }

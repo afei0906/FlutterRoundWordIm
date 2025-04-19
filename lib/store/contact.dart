@@ -3,7 +3,7 @@ part of 'index.dart';
 class ContactStore extends GetxController {
   static ContactStore get to => Get.find<ContactStore>();
 
-  RxList<UserInfo> friendList = RxList();
+  RxList<FriendInfo> friendList = RxList();
 
   RxList<GroupInfo> groupList = RxList();
   final throttle = Throttle(const Duration(milliseconds: 800));
@@ -48,8 +48,8 @@ class ContactStore extends GetxController {
         .getString("${kLocalFriendList}_${UserStore.to.userInfo.value.id}");
     if (!Utils.isEmpty(listStr)) {
       final List? list = json.decode(listStr) as List?;
-      final List<UserInfo> clientList = list
-              ?.map((e) => UserInfo.fromJson(e as Map<String, dynamic>))
+      final List<FriendInfo> clientList = list
+              ?.map((e) => FriendInfo.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [];
       if (clientList.isNotEmpty) {

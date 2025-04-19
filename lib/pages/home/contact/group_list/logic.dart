@@ -10,8 +10,8 @@ class GroupListLogic extends GetxController {
   }
 
   Future<void> featData() async {
-    state.dataList.clear();
     ContactStore.to.featGroupData(() {
+      state.dataList.clear();
       state.dataList.addAll(ContactStore.to.groupList);
       state.dataList.refresh();
     });

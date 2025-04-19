@@ -15,6 +15,8 @@ class UserStore extends GetxController {
   // bool get hasToken => _token.isNotEmpty;
   Rx<UserInfo> userInfo = UserInfo().obs;
 
+  LocalLoginInfo? localLoginInfo;
+
   @override
   void onInit() {
     super.onInit();
@@ -24,6 +26,7 @@ class UserStore extends GetxController {
       userInfo.value = UserInfo.fromJson(json.decode(userInfoStr));
       getIsLoginValue();
     }
+    getLocalLoginInfo();
   }
 
   void getIsLoginValue() {
@@ -62,11 +65,42 @@ class UserStore extends GetxController {
     await StorageService.to.remove(kLocalUserInfo);
     await HttpService.to.clearCookie();
     _isLogin = false.obs;
-    Get.offNamed(Routes.splash);
+    if (UserStore.to.localLoginInfo?.type == 0) {
+      if (ConfigStore.to.isOpenPhone()) {
+        Get.toNamed(Routes.loginPhone);
+      } else if (ConfigStore.to.isOpenEmail()) {
+        Get.toNamed(Routes.loginEmail);
+      } else {
+        Get.offNamed(Routes.splash);
+      }
+      return;
+    }
+    if (UserStore.to.localLoginInfo?.type == 1) {
+      if (ConfigStore.to.isOpenEmail()) {
+        Get.toNamed(Routes.loginEmail);
+      } else if (ConfigStore.to.isOpenPhone()) {
+        Get.toNamed(Routes.loginPhone);
+      } else {
+        Get.offNamed(Routes.splash);
+      }
+    }
   }
 
   Future<void> delete() async {
     await LanguageStore.to.removeLanguageCode();
     await StorageService.to.remove(kLocalUserInfo);
+  }
+
+  Future<void> setLocalLoginInfo(LocalLoginInfo l) async {
+    localLoginInfo = l;
+    await StorageService.to.setString(kLocalLoginInfo, json.encode(l.toJson()));
+  }
+
+  Future<LocalLoginInfo?> getLocalLoginInfo() async {
+    final String jsonStr = StorageService.to.getString(kLocalLoginInfo);
+    if (!Utils.isEmpty(jsonStr)) {
+      localLoginInfo = LocalLoginInfo.fromJson(json.decode(jsonStr));
+    }
+    return localLoginInfo;
   }
 }

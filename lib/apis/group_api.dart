@@ -27,4 +27,21 @@ abstract class GroupApi {
     }
     return [];
   }
+
+  static Future<GroupInfo?> groupCreate(String? name, List members) async {
+    final Map<String, dynamic> param = {
+      "name": name,
+      "members": members,
+    };
+
+    final res = await HttpService.to
+        .post(Urls.groupCreate, params: param, isShowMsg: true);
+
+    if (res.code != 0) {
+      showErrorMsg(res.code.toString(), res.msg ?? '');
+    } else {
+      return GroupInfo.fromJson(res.data);
+    }
+    return null;
+  }
 }

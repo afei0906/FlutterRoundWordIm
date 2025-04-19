@@ -38,7 +38,8 @@ class GroupListPage extends StatelessWidget {
       );
     }
     final GroupInfo groupInfo = state.dataList[index];
-    bool isGroup = false;
+
+    bool isGroup = groupInfo.groupRole.toString()=='1';
     return GestureDetector(
         onTap: () {
           logic.toGroupDetail(groupInfo);

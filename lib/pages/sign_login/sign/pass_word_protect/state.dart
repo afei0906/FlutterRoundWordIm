@@ -10,6 +10,7 @@ class PassWordProtectState {
   int formType = 0;
   dynamic captchaVerification;
   dynamic loginName;
+  dynamic phoneArea;
   RxBool isSubmit = false.obs;
   RxInt count = ConfigStore.to.getUserIssuesCount().obs;
 

@@ -1,7 +1,7 @@
 part of 'index.dart';
 
 abstract class FriendApi {
-  static Future<List<UserInfo>> myFriendList(
+  static Future<List<FriendInfo>> myFriendList(
       {int pageNumber = 1, int pageSize = 500, String? keyword}) async {
     final Map<String, dynamic> param = {
       "pageNumber": pageNumber,
@@ -20,8 +20,8 @@ abstract class FriendApi {
         ContactStore.to.saveFriendData(res.data);
       }
       final List? list = res.data as List?;
-      final List<UserInfo> clientList = list
-              ?.map((e) => UserInfo.fromJson(e as Map<String, dynamic>))
+      final List<FriendInfo> clientList = list
+              ?.map((e) => FriendInfo.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [];
       return clientList;
@@ -43,7 +43,7 @@ abstract class FriendApi {
   //      * 无效：过期/拒绝
   //      */
   //     int REJECT = 3;
-  static Future<List<UserInfo>> applyList() async {
+  static Future<List<FriendInfo>> applyList() async {
     final res = await HttpService.to.post(
       Urls.applyList,
     );
@@ -52,8 +52,8 @@ abstract class FriendApi {
       showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
       final List? list = res.data as List?;
-      final List<UserInfo> clientList = list
-              ?.map((e) => UserInfo.fromJson(e as Map<String, dynamic>))
+      final List<FriendInfo> clientList = list
+              ?.map((e) => FriendInfo.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [];
       return clientList;
@@ -61,7 +61,7 @@ abstract class FriendApi {
     return [];
   }
 
-  static Future<List<UserInfo>> userSearch(String key) async {
+  static Future<List<FriendInfo>> userSearch(String key) async {
     final Map<String, dynamic> param = {
       "key": key,
     };
@@ -73,8 +73,8 @@ abstract class FriendApi {
         // showErrorMsg(res.code.toString(), res.msg ?? '');
       } else {
         final List? list = res.data as List?;
-        final List<UserInfo> clientList = list
-                ?.map((e) => UserInfo.fromJson(e as Map<String, dynamic>))
+        final List<FriendInfo> clientList = list
+                ?.map((e) => FriendInfo.fromJson(e as Map<String, dynamic>))
                 .toList() ??
             [];
         return clientList;

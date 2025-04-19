@@ -24,10 +24,15 @@ abstract class Routes {
   static const webView = '/webView';
   static const chatListPage = '/chatListPage';
   static const scanQrCodePage = '/scanQrCodePage';
+  static const chatPage = '/chatPage';
 
   ///联系人相关
   static const addNewFriendPage = '/addNewFriendPage';
   static const groupListPage = '/groupListPage';
+
+  ///我的
+  static const mySettingPage = '/mySettingPage';
+
 
   static final List<GetPage> pages = [
     GetPage(
@@ -86,6 +91,15 @@ abstract class Routes {
       name: chatListPage,
       page: () => ChatListPage(),
     ),
+    GetPage(
+      name: chatPage,
+      page: () => ChatPage(),
+    ),
+    GetPage(
+      name: mySettingPage,
+      page: () => MySettingPage(),
+    ),
+
     GetPage(
       name: addNewFriendPage,
       page: () => AddNewFriendPage(),

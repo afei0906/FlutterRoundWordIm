@@ -24,7 +24,7 @@ class AddNewFriendPage extends StatelessWidget {
   }
 
   Widget itemWidget(int index) {
-    final UserInfo userInfo = logic.applyList[index];
+    final FriendInfo userInfo = logic.applyList[index];
 
     return GestureDetector(
         onTap: () {
@@ -58,7 +58,7 @@ class AddNewFriendPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        Utils.toEmpty(userInfo.name) ?? '',
+                        Utils.toEmpty(userInfo.getNick()) ?? '',
                         style: AppTheme().appTextStyle.textStyleTitleText,
                       ),
                       8.verticalSpace,

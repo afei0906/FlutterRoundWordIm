@@ -305,14 +305,14 @@ class UserInfo extends ISuspensionBean {
   @override
   String getSuspensionTag() {
     // tag ?? =
-    if (Utils.isEmpty(chatIndex)) {
-      final String pinyin = PinyinHelper.getPinyinE(loginName.toString());
-      String tag = pinyin.substring(0, 1).toUpperCase();
-      if (!RegExp("[A-Z]").hasMatch(tag)) {
-        tag = "#";
-      }
-      chatIndex ??= tag;
-    }
-    return chatIndex.toString();
+    // if (Utils.isEmpty(chatIndex)) {
+    //   final String pinyin = PinyinHelper.getPinyinE(loginName.toString());
+    //   String tag = pinyin.substring(0, 1).toUpperCase();
+    //   if (!RegExp("[A-Z]").hasMatch(tag)) {
+    //     tag = "#";
+    //   }
+    //   chatIndex ??= tag;
+    // }
+    return Utils.toEmpty(chatIndex) ?? '';
   }
 }

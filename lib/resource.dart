@@ -7,6 +7,9 @@
 class Resource {
   const Resource._();
 
+  /// {@macro assets_generator.assetsImagesBgChatPng.preview}
+  static const String assetsImagesBgChatPng = 'assets/images/bg_chat.png';
+
   /// {@macro assets_generator.assetsImagesFindListItemPng.preview}
   static const String assetsImagesFindListItemPng =
       'assets/images/find_list_item.png';
@@ -76,6 +79,14 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultAddSvg.preview}
   static const String assetsSvgDefaultAddSvg = 'assets/svg/default/add.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultBoxNoSelectSvg.preview}
+  static const String assetsSvgDefaultBoxNoSelectSvg =
+      'assets/svg/default/box_no_select.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultBoxSelectSvg.preview}
+  static const String assetsSvgDefaultBoxSelectSvg =
+      'assets/svg/default/box_select.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultCameraPhotoSvg.preview}
   static const String assetsSvgDefaultCameraPhotoSvg =
       'assets/svg/default/camera_photo.svg';
@@ -123,6 +134,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultFindMoreSvg.preview}
   static const String assetsSvgDefaultFindMoreSvg =
       'assets/svg/default/find_more.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultGroupCloseSvg.preview}
+  static const String assetsSvgDefaultGroupCloseSvg =
+      'assets/svg/default/group_close.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultLogoSvg.preview}
   static const String assetsSvgDefaultLogoSvg = 'assets/svg/default/logo.svg';

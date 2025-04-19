@@ -20,7 +20,7 @@ class UserIssuesLogic extends GetxController {
     if (state.formType == 2) {
       return "${state.emailFirstController.text}@${Utils.toEmpty(state.emailLastController.text) ?? emailList.first}";
     } else if (state.formType == 1) {
-      return "${state.countryCodeModel.code}${state.phoneController.text}";
+      return state.phoneController.text;
     }
     return "";
   }
@@ -126,7 +126,8 @@ extension ShowIssuesX on UserIssuesLogic {
   void submit() {
     if (state.isSubmit.isTrue) {
       VerifyCodeConfig.showCode(2, (v) async {
-        PasswordProtectRequest passwordProtectRequest = PasswordProtectRequest(
+        final PasswordProtectRequest passwordProtectRequest =
+            PasswordProtectRequest(
           captchaVerification: v,
           loginName: getAccount(),
           checkIssueList: [],
@@ -140,13 +141,15 @@ extension ShowIssuesX on UserIssuesLogic {
             qname: tempList[i].qname,
           ));
         }
-        String? newPas =
+        final String? newPas =
             await LoginSignApi.resetPasswordByUserIssue(passwordProtectRequest);
         if (newPas != null) {
           Get.toNamed(Routes.signSuss, arguments: {
             "formType": state.formType == 1 ? 0 : 1,
             "type": 2,
-            "pass": newPas
+            "pass": newPas,
+            "phoneAre": state.countryCodeModel,
+            "loginName":getAccount()
           });
         }
       });

@@ -10,6 +10,13 @@ class LoginEmailLogic extends GetxController {
       state.emailFirstController.text = Get.arguments["emailFirst"] as String;
       state.emailLastController.text = Get.arguments["emailLast"] as String;
       update();
+    } else if (UserStore.to.localLoginInfo != null &&
+        UserStore.to.localLoginInfo?.type == 1) {
+      state.emailFirstController.text =
+          UserStore.to.localLoginInfo?.emailFirst ?? '';
+      state.emailLastController.text =
+          UserStore.to.localLoginInfo?.emailLast ?? '';
+      update();
     }
 
     super.onInit();
@@ -42,6 +49,10 @@ class LoginEmailLogic extends GetxController {
       loginRequest.captchaVerification = v;
       bool isOk = await LoginSignApi.login(loginRequest);
       if (isOk) {
+        UserStore.to.setLocalLoginInfo(LocalLoginInfo(
+            type: 1,
+            emailFirst: state.emailFirstController.text,
+            emailLast: state.emailLastController.text));
         UserStore.to.getUserInfo();
         Get.offNamed(Routes.main);
       }
@@ -50,8 +61,6 @@ class LoginEmailLogic extends GetxController {
 
   void forgetPassword() {
     PasswordProtectConfig.showForgetPas(2);
-
-
   }
 
   void createAccount() {

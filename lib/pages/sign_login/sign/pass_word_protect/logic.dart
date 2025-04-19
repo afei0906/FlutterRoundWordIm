@@ -9,6 +9,7 @@ class PassWordProtectLogic extends GetxController {
       state.formType = Get.arguments["formType"] as int? ?? state.formType;
       state.captchaVerification = Get.arguments["captchaVerification"];
       state.loginName = Get.arguments["loginName"];
+      state.phoneArea = Get.arguments["phoneArea"];
     }
     featData();
     for (int i = 0; i < state.count.value; i++) {
@@ -66,17 +67,21 @@ class PassWordProtectLogic extends GetxController {
       final List<DictItem> tempList = state.dictItemMap.values.toList();
       for (int i = 0; i < tempList.length; i++) {
         passwordProtectRequest.checkIssueList?.add(CheckIssueList(
-          qcode:tempList[i].dictValue,
-          qanswer:state.controllerMap[i]?.text,
-          qnumber:tempList[i].id,
-          qname:tempList[i].dictLabel,
+          qcode: tempList[i].dictValue,
+          qanswer: state.controllerMap[i]?.text,
+          qnumber: tempList[i].id,
+          qname: tempList[i].dictLabel,
         ));
       }
-     bool isOk= await LoginSignApi.saveUserIssues(passwordProtectRequest);
+      bool isOk = await LoginSignApi.saveUserIssues(passwordProtectRequest);
       // (route) => route.settings.name == Routes.splash,
-      if(isOk) {
-        Get.toNamed(Routes.signSuss,
-            arguments: {"formType": state.formType, "type": 1});
+      if (isOk) {
+        Get.toNamed(Routes.signSuss, arguments: {
+          "formType": state.formType,
+          "type": 1,
+          "loginName": state.loginName,
+          'phoneArea': state.phoneArea
+        });
       }
     }
   }

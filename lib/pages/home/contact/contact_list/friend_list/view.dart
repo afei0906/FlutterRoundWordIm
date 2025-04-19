@@ -1,9 +1,17 @@
 part of '../../../index.dart';
 
 class FriendListPage extends StatelessWidget {
-  FriendListPage(this.logic, this.state, {Key? key}) : super(key: key);
+  //
+  FriendListPage(this.logic, this.state,
+      {Key? key, this.formType = 'UserList', this.selectList, this.callBack})
+      : super(key: key);
   final FriendListLogic logic;
   final FriendListState state;
+
+  ///formType  UserList 联系人，新建对话   CreteGroup 创建群聊列表
+  String formType;
+  RxList<FriendInfo>? selectList;
+  Function? callBack;
 
   final PageStorageBucket bucket = PageStorageBucket();
 
@@ -59,8 +67,8 @@ class FriendListPage extends StatelessWidget {
   }
 
   Widget _itemWidget(BuildContext itemContext, int index) {
-    final UserInfo userInfo = state.dataList[index];
-    if (userInfo.id == -1) {
+    final FriendInfo userInfo = state.dataList[index];
+    if (userInfo.friendId == -1) {
       return Container(
         height: 174.h,
       );
@@ -82,7 +90,11 @@ class FriendListPage extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        logic.toFriendsInfo(state.dataList[index]);
+        if (formType == "CreteGroup") {
+          callBack?.call(state.dataList[index]);
+        } else {
+          logic.toFriendsInfo(state.dataList[index]);
+        }
       },
       child: Column(
         children: [
@@ -113,13 +125,23 @@ class FriendListPage extends StatelessWidget {
                 ),
                 12.horizontalSpace,
                 Text(
-                  Utils.toEmpty(userInfo.nick) ?? '',
+                  userInfo.getNick(),
                   style:
                       AppTheme().appTextStyle.textExtraLightStyleBlack.copyWith(
                             fontSize: 14.sp,
                             fontWeight: ThemeFontWeight.medium.weight,
                           ),
                 ),
+                const Spacer(),
+                if (formType == 'CreteGroup')
+                  ThemeImageWidget(
+                    path:
+                        logic.hasUser(userInfo, selectList ?? RxList()) != null
+                            ? Resource.assetsSvgDefaultBoxSelectSvg
+                            : Resource.assetsSvgDefaultBoxNoSelectSvg,
+                    width: 24.w,
+                    height: 24.w,
+                  ),
               ],
             ),
           ).marginOnly(

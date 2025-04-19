@@ -11,4 +11,5 @@ class SignSussState {
   dynamic captchaVerification;
   dynamic loginName;
   dynamic passWord;
+  dynamic phoneArea;
 }

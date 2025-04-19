@@ -100,6 +100,8 @@ class ChatListLogic extends GetxController
   }
 
   Future<void> toCreateGroup() async {
+    CreateGroupLogic.to.selectList.clear();
+    CreateGroupLogic.to.isNext=false.obs;
     SmartDialog.show(
         clickMaskDismiss: false,
         builder: (_) {

@@ -1,6 +1,5 @@
 library notes;
 
-import 'package:firebase_in_app_messaging/firebase_in_app_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';

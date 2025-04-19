@@ -36,17 +36,40 @@ class SplashLogic extends GetxController {
   }
 
   void toLogin() {
-    // Get.offNamedUntil(
-    //     Routes.signSuss, (route) => route.settings.name == Routes.splash,
-    //     arguments: {"type": 0, "formType": 0});
+    if (UserStore.to.localLoginInfo == null) {
+      if (ConfigStore.to.isOpenPhone()) {
+        Get.toNamed(Routes.loginPhone);
+      } else if (ConfigStore.to.isOpenEmail()) {
+        Get.toNamed(Routes.loginEmail);
+      } else {
+        SmartDialog.showToast(LocaleKeys.text_0083.tr,
+            alignment: Alignment.center);
+      }
+      return;
+    }
 
-    if (ConfigStore.to.isOpenPhone()) {
-      Get.toNamed(Routes.loginPhone);
-    } else if (ConfigStore.to.isOpenEmail()) {
-      Get.toNamed(Routes.loginEmail);
-    } else {
-      SmartDialog.showToast(LocaleKeys.text_0083.tr,
-          alignment: Alignment.center);
+    if (UserStore.to.localLoginInfo?.type == 0) {
+      if (ConfigStore.to.isOpenPhone()) {
+        Get.toNamed(Routes.loginPhone);
+      } else if (ConfigStore.to.isOpenEmail()) {
+        Get.toNamed(Routes.loginEmail);
+      } else {
+        SmartDialog.showToast(LocaleKeys.text_0083.tr,
+            alignment: Alignment.center);
+      }
+      return;
+    }
+
+    if (UserStore.to.localLoginInfo?.type == 1) {
+      if (ConfigStore.to.isOpenEmail()) {
+        Get.toNamed(Routes.loginEmail);
+      } else if (ConfigStore.to.isOpenPhone()) {
+        Get.toNamed(Routes.loginPhone);
+      } else {
+        SmartDialog.showToast(LocaleKeys.text_0083.tr,
+            alignment: Alignment.center);
+      }
+      return;
     }
   }
 

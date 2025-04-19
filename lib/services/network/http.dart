@@ -9,7 +9,7 @@ class HttpService extends GetxService {
   final Duration _receiveTimeout = const Duration(seconds: 30);
   final Duration _sendTimeout = const Duration(minutes: 30);
 
-  late final  PersistCookieJar cookieJar; // 独立管理 Cookies
+  late final PersistCookieJar cookieJar; // 独立管理 Cookies
 
   @override
   void onInit() async {
@@ -302,11 +302,7 @@ class _TokenQueuedInterceptor extends QueuedInterceptor {
 }
 
 class _RequestInterceptor extends InterceptorsWrapper {
-
-
   _RequestInterceptor();
-
-
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
@@ -320,7 +316,6 @@ class _RequestInterceptor extends InterceptorsWrapper {
         true,
       );
     } else {
-
       super.onResponse(response, handler);
     }
   }
@@ -328,8 +323,7 @@ class _RequestInterceptor extends InterceptorsWrapper {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     SmartDialog.dismiss();
-    Console.log(
-        "err.url = ${err.requestOptions.baseUrl}${err.requestOptions.path}\n"
+    log("err.url = ${err.requestOptions.baseUrl}${err.requestOptions.path}\n"
         "err.method = ${err.requestOptions.method}\n"
         "err.requestData = ${err.requestOptions.data}\n"
         "err.message = ${err.response?.data}\n"

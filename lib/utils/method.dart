@@ -3,21 +3,7 @@ part of 'index.dart';
 class Method {
   static const MethodChannel _channel = MethodChannel('flutter_launcher');
 
-  static Future<void> inAppLaunch() async {
-    if (Platform.isIOS) {
-      log("iOS in app review");
-      await _channel.invokeMethod('inAppLaunch', {});
-    }
-    if (Platform.isAndroid) {
-      log("Android in app review");
-      final InAppReview inAppReview = InAppReview.instance;
-      final isAvailable = await inAppReview.isAvailable();
-      if (isAvailable) {
-        log("Request review");
-        inAppReview.requestReview();
-      }
-    }
-  }
+  static Future<void> inAppLaunch() async {}
 
   static Future<void> gotoAppStore() async {
     if (Platform.isIOS) {
@@ -56,14 +42,11 @@ class Method {
   }
 
   static Future<XFile?> pickImage() async {
-      Get.back();
-      final String pictures =
-          await _channel.invokeMethod('openImage') as String;
-      if (pictures == 'No_Result') {
-        return null;
-      }
-      return XFile(pictures);
+    Get.back();
+    final String pictures = await _channel.invokeMethod('openImage') as String;
+    if (pictures == 'No_Result') {
+      return null;
     }
-
-
+    return XFile(pictures);
+  }
 }

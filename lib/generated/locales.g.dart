@@ -10,7 +10,6 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
-
   static const text_0001 = 'text_0001';
   static const text_0002 = 'text_0002';
   static const text_0003 = 'text_0003';
@@ -138,7 +137,6 @@ class LocaleKeys {
   static const text_0125 = 'text_0125';
   static const text_0126 = 'text_0126';
   static const text_0127 = 'text_0127';
-  static const text_0128 = 'text_0128';
   static const text_0130 = 'text_0130';
   static const text_0131 = 'text_0131';
   static const text_0132 = 'text_0132';
@@ -186,14 +184,21 @@ class LocaleKeys {
   static const text_0176 = 'text_0176';
   static const text_0177 = 'text_0177';
   static const text_0178 = 'text_0178';
+  static const text_0179 = 'text_0179';
+  static const text_0180 = 'text_0180';
+  static const text_0181 = 'text_0181';
+  static const text_0182 = 'text_0182';
+  static const text_0183 = 'text_0183';
+  static const text_0184 = 'text_0184';
+  static const text_0185 = 'text_0185';
+  static const text_0186 = 'text_0186';
+  static const text_0187 = 'text_0187';
+  static const text_0188 = 'text_0188';
+  static const text_0189 = 'text_0189';
 }
 
 class Locales {
   static const zhcn = {
-    'text_0178': '没有搜索结果',
-    'text_0177': '无法识别的的结果',
-    'text_0176': '@number个群聊',
-    'text_0175': '已签到',
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
     'text_0003': '用户服务协议',
@@ -323,7 +328,6 @@ class Locales {
     'text_0125': '复制@word成功',
     'text_0126': '商城',
     'text_0127': '搜索',
-    'text_0128': '创建群聊',
     'text_0130': '联系人',
     'text_0131': '新朋友',
     'text_0132': '我的群聊',
@@ -367,5 +371,20 @@ class Locales {
     'text_0172': '安全管理',
     'text_0173': '在线客服',
     'text_0174': '我的设置',
+    'text_0175': '已签到',
+    'text_0176': '@number个群聊',
+    'text_0177': '无法识别的的结果',
+    'text_0178': '没有搜索结果',
+    'text_0179': '没有选择好友',
+    'text_0180': '上一步',
+    'text_0181': '新建群聊',
+    'text_0182': '设置群聊名称',
+    'text_0183': '加我好友是需要验证',
+    'text_0184': '允许别人搜索到我',
+    'text_0185': '消息提醒',
+    'text_0186': '通讯录黑名单',
+    'text_0187': '清理所有缓存',
+    'text_0188': '环球IM',
+    'text_0189': '退出登录',
   };
 }

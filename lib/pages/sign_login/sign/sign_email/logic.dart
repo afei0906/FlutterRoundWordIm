@@ -114,7 +114,8 @@ class SignEmailLogic extends GetxController {
                 "type": 0,
                 "formType": 0,
                 "captchaVerification": registerRequest.captchaVerification,
-                "loginName":email
+                "loginName":email,
+                "phoneArea": null
               });
         }
 

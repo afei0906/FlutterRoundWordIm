@@ -337,6 +337,14 @@ class AppTextStyle {
       color: AppTheme.titleText,
       fontSize: 12.sp);
 
+  late TextStyle textErrorStyleBlack = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.medium.weight,
+      letterSpacing: letter,
+      color: AppTheme.error,
+      fontSize: 12.sp);
+
+
   late TextStyle textStyleTernary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.light.weight,

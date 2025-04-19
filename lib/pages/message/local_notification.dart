@@ -17,7 +17,7 @@ class LocalNotification {
   }
 
   FlutterLocalNotificationsPlugin np = FlutterLocalNotificationsPlugin();
-  static FirebaseInAppMessaging fiam = FirebaseInAppMessaging.instance;
+
 
 // 私有的自定义命名式构造方法，通过它实现一个类;
   LocalNotification._initialize() {

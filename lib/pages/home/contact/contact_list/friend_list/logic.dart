@@ -3,7 +3,17 @@ part of '../../../index.dart';
 mixin FriendListLogic {
   FriendListState state = FriendListState();
 
-  void toFriendsInfo(UserInfo u) {}
+  FriendInfo? hasUser(FriendInfo u, RxList<FriendInfo> selectList) {
+    final FriendInfo userInfo = selectList.firstWhere((test) {
+      return test.friendId == u.friendId;
+    }, orElse: () => FriendInfo());
+    if (Utils.isEmpty(userInfo.friendId)) {
+      return null;
+    }
+    return userInfo;
+  }
+
+  void toFriendsInfo(FriendInfo u) {}
 
   Future<void> featData() async {
     ContactStore.to.featFriendData(() {
@@ -28,7 +38,7 @@ mixin FriendListLogic {
       return;
     }
     state.dataList.clear();
-    final List<UserInfo> list = ContactStore.to.friendList.where((test) {
+    final List<FriendInfo> list = ContactStore.to.friendList.where((test) {
       return test.nick
           .toString()
           .toLowerCase()
