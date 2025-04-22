@@ -17,13 +17,20 @@ class AppTheme {
     appTextStyle = AppTextStyle();
   }
 
-  static const bgColor = Color(0xffffffff);
-  static const primary = Color(0xff126BF6);
+  static const colorTextDarkPrimary = Color(0xffffffff);
+  static const colorBrandPrimary = Color(0xff126BF6);
+  static const colorTextDefaultPrimary = Color(0xFF202329);
+  static const colorTextDefaultFourth = Color(0xFF868A8F);
+  static const colorTextDefaultTernary= Color(0xFF545D72);
+  static const colorBrandError = Color(0xFFE53935);
+  static const colorBorderLight = Color(0xffEDEEF2);
+
+
   static const primary2 = Color(0xff65A1FF);
   static const defaultText = Color(0x0D000000);
   static const secondaryText = Color(0xFF262626);
-  static const fourthText = Color(0xffA3A3A3);
-  static const ternaryText = Color(0xff525252);
+  static const colorBorderDark = Color(0xffA3A3A3);
+  static const colorTextTertiary = Color(0xff525252);
   static const titleText = Color(0xff0A0A0A);
   static const black = Color(0xff000000);
   static const loginLine = Color(0xffD9D9D9);
@@ -34,11 +41,9 @@ class AppTheme {
   static const onPrimary = Color(0xffB1B1B1);
   static const success = Color(0xFF28CE88);
   static const warning = Color(0xFFFFD575);
-  static const error = Color(0xFFE53935);
   static const info = Color(0xFF2FA7FF);
-  static const lineColor = Color(0xffEDEEF2);
   static const letter = 0.2;
-  static String? fontFamily = ThemeOfFont.fontName[AppTheme.notoSans];
+  static String? fontFamily = 'PingFang SC';//ThemeOfFont.fontName[AppTheme.notoSans];
 
   static FontTheme fontTheme = FontTheme.roboto;
   static FontTheme fontRough = FontTheme.rough;
@@ -71,12 +76,12 @@ class AppTheme {
   static ThemeData get light {
     final scheme = ColorScheme.light(
       onSurface: const Color(0xFF333333),
-      primary: primary,
+      primary: colorBrandPrimary,
       onSecondary: const Color(0xFF9A9AA8),
       onTertiary: const Color(0xFF8D97A6),
-      outline: lineColor,
+      outline: colorBorderLight,
       shadow: const Color(0xFFD0DAD6).withOpacity(0.22),
-      error: error,
+      error: colorBrandError,
       onPrimaryContainer: const Color(0xffE6E6E6),
     );
     return _getTheme(scheme);
@@ -85,14 +90,14 @@ class AppTheme {
   static ThemeData get dark {
     final scheme = ColorScheme.dark(
       surface: const Color(0xFF252525),
-      primary: primary,
+      primary: colorBrandPrimary,
       onPrimary: Colors.white,
       secondary: const Color(0xFFFFB800),
       onSecondary: Colors.white,
       tertiary: const Color(0xFF141414),
       outline: const Color(0xFF252525),
       shadow: const Color(0xFF777777).withOpacity(0.08),
-      error: error,
+      error: colorBrandError,
       onError: Colors.white,
     );
     return _getTheme(scheme);
@@ -151,7 +156,7 @@ class AppTheme {
       textTheme: TextTheme(
         titleLarge: const TextStyle(
           fontSize: 12,
-          color: primary,
+          color: colorBrandPrimary,
           fontWeight: FontWeight.w500,
         ),
         titleMedium: const TextStyle(
@@ -183,7 +188,7 @@ class AppTheme {
         ),
         selectedLabelStyle: TextStyle(
           fontSize: 12.sp,
-          color: primary,
+          color: colorBrandPrimary,
           fontWeight: ThemeFontWeight.medium.weight,
           fontFamily: fontFamily,
         ),
@@ -241,11 +246,11 @@ class AppTheme {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         errorBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: error),
+          borderSide: BorderSide(color: colorBrandError),
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         focusedErrorBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: error),
+          borderSide: BorderSide(color: colorBrandError),
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
@@ -255,10 +260,10 @@ class AppTheme {
         indicatorSize: TabBarIndicatorSize.label,
         indicatorColor: scheme.primary,
       ),
-      dividerColor: lineColor,
+      dividerColor: colorBorderLight,
       dividerTheme: const DividerThemeData(
         thickness: 0.5,
-        color: lineColor,
+        color: colorBorderLight,
       ),
       popupMenuTheme: PopupMenuThemeData(
         elevation: 4,
@@ -301,6 +306,31 @@ class AppTextStyle {
 
   static final fontFamily = ThemeOfFont.fontName[AppTheme.notoSans];
 
+
+
+
+  late TextStyle styleTextDefaultPrimary = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.medium.weight,
+      letterSpacing: letter,
+      color: AppTheme.colorTextDefaultPrimary,
+      fontSize: 16.sp);
+  late TextStyle styleTextDefaultFourth = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.regular.weight,
+      letterSpacing: letter,
+      color: AppTheme.colorTextDefaultFourth,
+      fontSize: 12.sp);
+  late TextStyle styleTextDefaultTernary = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.regular.weight,
+      letterSpacing: letter,
+      color: AppTheme.colorTextDefaultTernary,
+      fontSize: 12.sp);
+
+
+
+
   late TextStyle textStyleSecondary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.medium.weight,
@@ -320,14 +350,14 @@ class AppTextStyle {
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
       letterSpacing: letter,
-      color: AppTheme.primary,
+      color: AppTheme.colorBrandPrimary,
       fontSize: 16.sp);
 
   late TextStyle textExtraLightStylePrimary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.medium.weight,
       letterSpacing: letter,
-      color: AppTheme.primary,
+      color: AppTheme.colorBrandPrimary,
       fontSize: 12.sp);
 
   late TextStyle textExtraLightStyleBlack = TextStyle(
@@ -341,7 +371,7 @@ class AppTextStyle {
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.medium.weight,
       letterSpacing: letter,
-      color: AppTheme.error,
+      color: AppTheme.colorBrandError,
       fontSize: 12.sp);
 
 
@@ -349,7 +379,7 @@ class AppTextStyle {
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.light.weight,
       letterSpacing: letter,
-      color: AppTheme.ternaryText,
+      color: AppTheme.colorTextTertiary,
       height: 1.5,
       fontSize: 14.sp);
 
@@ -377,11 +407,11 @@ class AppTextStyle {
       color: Color(0xff8E8E93),
       fontSize: 16.sp);
 
-  late TextStyle textStyleSliderTitleText = TextStyle(
+  late TextStyle styleTextTertiary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
       letterSpacing: letter,
-      color: Color(0xff525252),
+      color: AppTheme.colorTextTertiary,
       fontSize: 16.sp);
 
   
@@ -389,14 +419,14 @@ class AppTextStyle {
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
       letterSpacing: letter,
-      color: AppTheme.fourthText,
+      color: AppTheme.colorBorderDark,
       fontSize: 15.sp);
 
-  late TextStyle textStyleBgColor = TextStyle(
+  late TextStyle styleTextDarkPrimary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.medium.weight,
       letterSpacing: letter,
-      color: AppTheme.bgColor,
+      color: AppTheme.colorTextDarkPrimary,
       fontSize: 16.sp);
 }
 
@@ -405,8 +435,8 @@ class AppButton {
       CustomButton(
         height: 48.h,
         width: double.infinity,
-        foregroundColor: AppTheme.primary,
-        backgroundColor: AppTheme.bgColor,
+        foregroundColor: AppTheme.colorBrandPrimary,
+        backgroundColor: AppTheme.colorTextDarkPrimary,
         type: CustomButtonType.ghost,
         shape: CustomButtonShape.radius,
         onPressed: onPressed,
@@ -425,17 +455,17 @@ class AppButton {
         height: 48.h,
         width: double.infinity,
         foregroundColor:
-            isPress ? AppTheme.primary : AppTheme.black.withOpacity(0.05),
+            isPress ? AppTheme.colorBrandPrimary : AppTheme.black.withOpacity(0.05),
         backgroundColor:
-            isPress ? AppTheme.primary : AppTheme.black.withOpacity(0.05),
+            isPress ? AppTheme.colorBrandPrimary : AppTheme.black.withOpacity(0.05),
         shape: CustomButtonShape.radius,
         onPressed: onPressed,
         child: Text(
           title,
           style: AppTheme()
               .appTextStyle
-              .textStyleBgColor
-              .copyWith(color:  isPress ? AppTheme.bgColor :  AppTheme.black.withOpacity(0.2)),
+              .styleTextDarkPrimary
+              .copyWith(color:  isPress ? AppTheme.colorTextDarkPrimary :  AppTheme.black.withOpacity(0.2)),
         ),
       );
 }

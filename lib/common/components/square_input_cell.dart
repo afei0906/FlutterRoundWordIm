@@ -68,7 +68,7 @@ class _SquareInputCellState extends State<SquareInputCell> {
     unFocusedCell = Center(
       child: Text(
         widget.text ?? '',
-        style: TextStyle(fontSize: 26.sp,letterSpacing: AppTheme.letter, color: AppTheme.primary),
+        style: TextStyle(fontSize: 26.sp,letterSpacing: AppTheme.letter, color: AppTheme.colorBrandPrimary),
       ),
     );
     focusedCell = Container(margin: const EdgeInsets.symmetric(horizontal: 21, vertical: 12), color: cursorColor,);

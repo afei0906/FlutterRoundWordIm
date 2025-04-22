@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage>
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  AppTheme.bgColor,
-                  AppTheme.bgColor,
+                  AppTheme.colorTextDarkPrimary,
+                  AppTheme.colorTextDarkPrimary,
                 ],
                 stops: [
                   0.2,
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage>
           path: path,
           width: 24.h,
           height: 24.h,
-          color: (controller.tabCurIndex == i.obs) ? AppTheme.primary : AppTheme.onPrimary,
+          color: (controller.tabCurIndex == i.obs) ? AppTheme.colorBrandPrimary : AppTheme.onPrimary,
         ),
       );
       final w = ColoredBox(

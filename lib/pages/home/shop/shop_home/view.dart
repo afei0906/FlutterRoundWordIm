@@ -57,7 +57,7 @@ class ShopHomePage extends StatelessWidget {
         ),
         16.horizontalSpace,
       ],
-      appBarColor: AppTheme.bgColor.withAlpha(0)
+      appBarColor: AppTheme.colorTextDarkPrimary.withAlpha(0)
     );
   }
 }

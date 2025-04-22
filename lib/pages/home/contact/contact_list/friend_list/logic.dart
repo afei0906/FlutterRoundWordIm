@@ -15,7 +15,7 @@ mixin FriendListLogic {
 
   void toFriendsInfo(FriendInfo u) {}
 
-  Future<void> featData() async {
+  Future<void> featFriendData() async {
     ContactStore.to.featFriendData(() {
       state.dataList.clear();
       state.dataList.addAll(ContactStore.to.friendList);

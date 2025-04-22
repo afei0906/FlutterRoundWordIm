@@ -21,7 +21,7 @@ class CustomUtils {
           children: [
             Icon(
               Icons.search,
-              color: AppTheme.fourthText,
+              color: AppTheme.colorBorderDark,
               size: 24.w,
             ).marginOnly(left: 12.h),
             Expanded(
@@ -43,6 +43,30 @@ class CustomUtils {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  static Widget avator(String url,
+      {double? width,
+      double? height,
+      int? type = 1, //用户头像，2是群组头像
+      String error = Resource.assetsImagesUserAvatarDefualtPng,
+      Color? color}) {
+    return Container(
+      width: width != null ? (width + 2) : 42.w,
+      height: height != null ? (height + 2) : 42.w,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.circular(width != null ? (width + 2) : 42.r),
+          color: color ?? AppTheme.sliderColor.withOpacity(0.3)),
+      child: ThemeImageWidget(
+        url: url,
+        error: error,
+        width: width ?? 40.w,
+        height: width ?? 40.w,
+        radius: width ?? 40.r,
       ),
     );
   }

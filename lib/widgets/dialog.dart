@@ -76,7 +76,7 @@ class CustomDialog extends StatelessWidget {
               width: double.infinity,
               height: 40.h,
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: AppTheme.lineColor)),
+                border: Border(top: BorderSide(color: AppTheme.colorBorderLight)),
               ),
               child: Row(
                 children: [
@@ -133,7 +133,7 @@ class CustomDialog extends StatelessWidget {
               width: double.infinity,
               height: 40.h,
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: AppTheme.lineColor)),
+                border: Border(top: BorderSide(color: AppTheme.colorBorderLight)),
               ),
               child: Row(
                 children: [
@@ -206,7 +206,7 @@ class CustomDialog extends StatelessWidget {
               width: double.infinity,
               height: 40.h,
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: AppTheme.lineColor)),
+                border: Border(top: BorderSide(color: AppTheme.colorBorderLight)),
               ),
               child: Row(
                 children: [
@@ -279,7 +279,7 @@ class CustomDialog extends StatelessWidget {
               width: double.infinity,
               height: 40.h,
               decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: AppTheme.lineColor)),
+                border: Border(top: BorderSide(color: AppTheme.colorBorderLight)),
               ),
               child: Row(
                 children: [
@@ -300,7 +300,7 @@ class CustomDialog extends StatelessWidget {
                   Container(
                     width: 1,
                     height: double.infinity,
-                    color: AppTheme.lineColor,
+                    color: AppTheme.colorBorderLight,
                   ),
                   Expanded(
                     child: InkWell(
@@ -341,7 +341,7 @@ class CustomDialog extends StatelessWidget {
       builder: (BuildContext context) {
         return Container(
           decoration: BoxDecoration(
-            color: AppTheme.bgColor,
+            color: AppTheme.colorTextDarkPrimary,
             borderRadius: BorderRadius.circular(8),
           ),
           width: 316,
@@ -410,8 +410,8 @@ class CustomDialog extends StatelessWidget {
                       width: double.infinity,
                       shape: CustomButtonShape.radius,
                       type: CustomButtonType.ghost,
-                      foregroundColor: AppTheme.primary,
-                      backgroundColor: AppTheme.bgColor,
+                      foregroundColor: AppTheme.colorBrandPrimary,
+                      backgroundColor: AppTheme.colorTextDarkPrimary,
                       onPressed: () {
                         onCancel?.call();
                       },
@@ -428,8 +428,8 @@ class CustomDialog extends StatelessWidget {
                     child: CustomButton(
                       width: double.infinity,
                       shape: CustomButtonShape.radius,
-                      foregroundColor: AppTheme.primary,
-                      backgroundColor: AppTheme.primary,
+                      foregroundColor: AppTheme.colorBrandPrimary,
+                      backgroundColor: AppTheme.colorBrandPrimary,
                       onPressed: () {
                         onConfirm?.call();
                       },
@@ -470,7 +470,7 @@ class CustomDialog extends StatelessWidget {
       builder: (BuildContext context) {
         return Container(
           decoration: BoxDecoration(
-            color: AppTheme.bgColor,
+            color: AppTheme.colorTextDarkPrimary,
             borderRadius: BorderRadius.circular(8),
           ),
           width: 316,
@@ -569,8 +569,8 @@ class CustomDialog extends StatelessWidget {
                       width: double.infinity,
                       shape: CustomButtonShape.radius,
                       type: CustomButtonType.ghost,
-                      foregroundColor: AppTheme.primary,
-                      backgroundColor: AppTheme.bgColor,
+                      foregroundColor: AppTheme.colorBrandPrimary,
+                      backgroundColor: AppTheme.colorTextDarkPrimary,
                       onPressed: () {
                         Get.back();
                         onCancel?.call();
@@ -588,8 +588,8 @@ class CustomDialog extends StatelessWidget {
                     child: CustomButton(
                       width: double.infinity,
                       shape: CustomButtonShape.radius,
-                      foregroundColor: AppTheme.primary,
-                      backgroundColor: AppTheme.primary,
+                      foregroundColor: AppTheme.colorBrandPrimary,
+                      backgroundColor: AppTheme.colorBrandPrimary,
                       onPressed: () {
                         onConfirm?.call();
                       },

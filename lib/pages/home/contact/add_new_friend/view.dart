@@ -9,7 +9,7 @@ class AddNewFriendPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.bgColor,
+      backgroundColor: AppTheme.colorTextDarkPrimary,
       appBar: appBar(),
       body: Obx(() {
         return ListView.builder(
@@ -37,21 +37,10 @@ class AddNewFriendPage extends StatelessWidget {
               decoration: CustomBoxDecoration.customDecoration(),
               child: Row(
                 children: [
-                  Container(
-                    width: 42.w,
-                    height: 42.w,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(42.r),
-                        color: AppTheme.sliderColor.withOpacity(0.3)),
-                    child: ThemeImageWidget(
-                      url: userInfo.avatar.toString() ?? '',
-                      error: Resource.assetsImagesUserAvatarDefualtPng,
-                      width: 40.w,
-                      height: 40.w,
-                      radius: 40.r,
-                    ),
-                  ),
+                  CustomUtils.avator(userInfo.avatar.toString()  ?? '',),
+
+
+
                   12.horizontalSpace,
                   Expanded(
                       child: Column(
@@ -75,7 +64,7 @@ class AddNewFriendPage extends StatelessWidget {
               ),
             ),
             Container(
-              color: AppTheme.lineColor,
+              color: AppTheme.colorBorderLight,
               height: 1,
               width: double.infinity,
             ).marginOnly(
@@ -90,7 +79,7 @@ class AddNewFriendPage extends StatelessWidget {
     return CusAppBar.floatLeading(Get.context!,
         automaticallyImplyLeading: true,
         title: LocaleKeys.text_0131.tr,
-        appBarColor: AppTheme.bgColor,
+        appBarColor: AppTheme.colorTextDarkPrimary,
         actions: [
           InkWell(
             onTap: logic.toAdd,

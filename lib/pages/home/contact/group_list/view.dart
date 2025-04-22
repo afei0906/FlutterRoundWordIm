@@ -9,7 +9,7 @@ class GroupListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.bgColor,
+      backgroundColor: AppTheme.colorTextDarkPrimary,
       appBar: appBar(),
       body: Obx(() {
         return ListView.builder(
@@ -24,14 +24,14 @@ class GroupListPage extends StatelessWidget {
   }
 
   Widget itemWidget(int index) {
-    if (index == state.dataList.length ) {
+    if (index == state.dataList.length) {
       return Container(
         width: Get.width,
         alignment: Alignment.center,
         height: 74.h,
         child: Text(
           "- ${LocaleKeys.text_0176.trParams({
-                "number": "${state.dataList.length }"
+                "number": "${state.dataList.length}"
               })} -",
           style: AppTheme().appTextStyle.textStyleCheck,
         ),
@@ -39,7 +39,7 @@ class GroupListPage extends StatelessWidget {
     }
     final GroupInfo groupInfo = state.dataList[index];
 
-    bool isGroup = groupInfo.groupRole.toString()=='1';
+    bool isGroup = groupInfo.groupRole.toString() == '1';
     return GestureDetector(
         onTap: () {
           logic.toGroupDetail(groupInfo);
@@ -51,20 +51,12 @@ class GroupListPage extends StatelessWidget {
               decoration: CustomBoxDecoration.customDecoration(),
               child: Row(
                 children: [
-                  Container(
-                    width: 50.w,
-                    height: 50.w,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50.r),
-                        color: AppTheme.sliderColor.withOpacity(0.3)),
-                    child: ThemeImageWidget(
-                      url: groupInfo.avatar.toString() ?? '',
-                      error: Resource.assetsImagesGroupAvatarDefualtpng,
-                      width: 48.w,
-                      height: 48.w,
-                      radius: 48.r,
-                    ),
+                  CustomUtils.avator(
+                    groupInfo.avatar.toString() ?? '',
+                    width: 48.w,
+                    height: 48.w,
+                    type: 2,
+                    error: Resource.assetsImagesGroupAvatarDefualtpng,
                   ),
                   12.horizontalSpace,
                   Expanded(
@@ -81,7 +73,8 @@ class GroupListPage extends StatelessWidget {
                           Container(
                             decoration: CustomBoxDecoration.customDecoration(
                                 color: isGroup
-                                    ? AppTheme.primary.withOpacity(0.15)
+                                    ? AppTheme.colorBrandPrimary
+                                        .withOpacity(0.15)
                                     : AppTheme.bgColor2,
                                 radius: 8),
                             child: Text(
@@ -117,7 +110,7 @@ class GroupListPage extends StatelessWidget {
               ),
             ),
             Container(
-              color: AppTheme.lineColor,
+              color: AppTheme.colorBorderLight,
               height: 1,
               width: double.infinity,
             ).marginOnly(
@@ -132,7 +125,7 @@ class GroupListPage extends StatelessWidget {
     return CusAppBar.floatLeading(Get.context!,
         automaticallyImplyLeading: true,
         title: LocaleKeys.text_0100.tr,
-        appBarColor: AppTheme.bgColor,
+        appBarColor: AppTheme.colorTextDarkPrimary,
         bottom: Column(
           children: [
             CustomUtils.onSearchView(

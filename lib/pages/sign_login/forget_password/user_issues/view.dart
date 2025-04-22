@@ -12,7 +12,7 @@ class UserIssuesPage extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
             resizeToAvoidBottomInset: false,
-            backgroundColor: AppTheme.bgColor,
+            backgroundColor: AppTheme.colorTextDarkPrimary,
             appBar: appBar(),
             body: Column(
               children: [
@@ -67,7 +67,7 @@ class UserIssuesPage extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 0.5,
-              color: AppTheme.bgColor,
+              color: AppTheme.colorTextDarkPrimary,
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 12),
                 width: double.infinity,

@@ -105,24 +105,11 @@ class FriendListPage extends StatelessWidget {
                   top: isTopRoudis ? Radius.circular(12.r) : Radius.zero,
                   bottom: isBotRoudis ? Radius.circular(12.r) : Radius.zero,
                 ),
-                color: AppTheme.bgColor),
+                color: AppTheme.colorTextDarkPrimary),
             child: Row(
               children: [
-                Container(
-                  width: 42.w,
-                  height: 42.w,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(42.r),
-                      color: AppTheme.sliderColor.withOpacity(0.3)),
-                  child: ThemeImageWidget(
-                    url: userInfo.avatar.toString() ?? '',
-                    error: Resource.assetsImagesUserAvatarDefualtPng,
-                    width: 40.w,
-                    height: 40.w,
-                    radius: 40.r,
-                  ),
-                ),
+                CustomUtils.avator(userInfo.avatar.toString() ?? ''),
+
                 12.horizontalSpace,
                 Text(
                   userInfo.getNick(),
@@ -151,10 +138,10 @@ class FriendListPage extends StatelessWidget {
           ),
           if (!isBotRoudis)
             Container(
-              color: AppTheme.bgColor.withOpacity(0),
+              color: AppTheme.colorTextDarkPrimary.withOpacity(0),
               width: double.infinity,
               child: Container(
-                color: AppTheme.lineColor,
+                color: AppTheme.colorBorderLight,
                 height: 1,
                 width: double.infinity,
               ).marginOnly(

@@ -106,7 +106,6 @@ class LocaleKeys {
   static const text_0094 = 'text_0094';
   static const text_0095 = 'text_0095';
   static const text_0096 = 'text_0096';
-  static const text_0097 = 'text_0097';
   static const text_0098 = 'text_0098';
   static const text_0099 = 'text_0099';
   static const text_0100 = 'text_0100';
@@ -195,6 +194,11 @@ class LocaleKeys {
   static const text_0187 = 'text_0187';
   static const text_0188 = 'text_0188';
   static const text_0189 = 'text_0189';
+  static const text_0190 = 'text_0190';
+  static const text_0191 = 'text_0191';
+  static const text_0192 = 'text_0192';
+  static const text_0193 = 'text_0193';
+  static const text_0194 = 'text_0194';
 }
 
 class Locales {
@@ -297,7 +301,6 @@ class Locales {
     'text_0094': '确定',
     'text_0095': '聊天',
     'text_0096': '商城',
-    'text_0097': '[图片]',
     'text_0098': '全部',
     'text_0099': '未读',
     'text_0100': '群聊',
@@ -386,5 +389,10 @@ class Locales {
     'text_0187': '清理所有缓存',
     'text_0188': '环球IM',
     'text_0189': '退出登录',
+    'text_0190': '超链接卡片消息',
+    'text_0191': '文件',
+    'text_0192': '音频',
+    'text_0193': '视频',
+    'text_0194': '名片',
   };
 }

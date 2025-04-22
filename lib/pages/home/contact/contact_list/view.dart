@@ -81,7 +81,7 @@ class ContactListPage extends StatelessWidget {
               path: png,
               width: 24.w,
               height: 24.w,
-              color: AppTheme.primary,
+              color: AppTheme.colorBrandPrimary,
             ),
             12.horizontalSpace,
             Text(
@@ -95,14 +95,14 @@ class ContactListPage extends StatelessWidget {
                 height: 20.w,
                 alignment: Alignment.center,
                 decoration: CustomBoxDecoration.customDecoration(
-                  color: AppTheme.error,
+                  color: AppTheme.colorBrandError,
                   radius: 30.r,
                 ),
                 child: Text(
                   count ?? '',
                   style: AppTheme()
                       .appTextStyle
-                      .textStyleBgColor
+                      .styleTextDarkPrimary
                       .copyWith(fontSize: 13.sp),
                 ),
               )

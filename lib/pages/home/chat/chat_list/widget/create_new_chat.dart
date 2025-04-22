@@ -43,7 +43,7 @@ class CreateNewChat extends StatelessWidget {
                             friendListLogic.toCreateGroup),
                         const Divider(
                           height: 1,
-                          color: AppTheme.lineColor,
+                          color: AppTheme.colorBorderLight,
                         ),
                         _topMune(
                             LocaleKeys.text_0102.tr,
@@ -51,7 +51,7 @@ class CreateNewChat extends StatelessWidget {
                             friendListLogic.toAdd),
                         const Divider(
                           height: 1,
-                          color: AppTheme.lineColor,
+                          color: AppTheme.colorBorderLight,
                         ),
                         _topMune(
                             LocaleKeys.text_0156.tr,
@@ -82,7 +82,7 @@ class CreateNewChat extends StatelessWidget {
               path: png,
               width: 24.w,
               height: 24.w,
-              color: AppTheme.primary,
+              color: AppTheme.colorBrandPrimary,
             ),
             12.horizontalSpace,
             Text(

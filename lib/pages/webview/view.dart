@@ -17,7 +17,7 @@ class _WebViewPageState extends State<WebViewPage> {
           return Container(
             width: double.infinity,
             decoration: const BoxDecoration(
-              border: Border(top: BorderSide(color: AppTheme.lineColor)),
+              border: Border(top: BorderSide(color: AppTheme.colorBorderLight)),
             ),
             child: Stack(
               children: [

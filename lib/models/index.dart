@@ -32,3 +32,8 @@ part 'group_info.dart';
 part 'find_info.dart';
 
 part 'local_login_info.dart';
+
+part 'conversation_list.dart';
+
+
+

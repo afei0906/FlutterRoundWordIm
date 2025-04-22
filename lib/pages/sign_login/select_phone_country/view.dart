@@ -15,7 +15,7 @@ class SelectPhoneCountryPage extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
             resizeToAvoidBottomInset: false,
-            backgroundColor: AppTheme.bgColor,
+            backgroundColor: AppTheme.colorTextDarkPrimary,
             appBar: appBar(),
             body: Column(
               children: [
@@ -83,7 +83,7 @@ class SelectPhoneCountryPage extends StatelessWidget {
       child: Container(
         decoration: const BoxDecoration(
             border: Border(
-                bottom: BorderSide(color: AppTheme.lineColor, width: 1))),
+                bottom: BorderSide(color: AppTheme.colorBorderLight, width: 1))),
         padding: EdgeInsets.symmetric(
           vertical: 12.h,
           horizontal: 16.h,
@@ -117,7 +117,7 @@ class SelectPhoneCountryPage extends StatelessWidget {
 
   PreferredSizeWidget appBar() {
     return CusAppBar.floatLeading(
-      appBarColor: AppTheme.bgColor,
+      appBarColor: AppTheme.colorTextDarkPrimary,
       Get.context!,
       title: LocaleKeys.text_0092.tr,
     );

@@ -2,6 +2,7 @@ part of 'index.dart';
 
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
+  RxBool isLoadUser=false.obs;
 
   RxBool _isLogin = false.obs;
 
@@ -24,7 +25,7 @@ class UserStore extends GetxController {
     // log(">>>>userInfoStr$userInfoStr");
     if (!Utils.isEmpty(userInfoStr)) {
       userInfo.value = UserInfo.fromJson(json.decode(userInfoStr));
-      getIsLoginValue();
+      // getIsLoginValue();
     }
     getLocalLoginInfo();
   }
@@ -41,6 +42,7 @@ class UserStore extends GetxController {
   Future<bool> getUserInfo() async {
     bool isOk = false;
     UserInfo? curUserInfo = await LoginSignApi.postUserCurr();
+    isLoadUser=true.obs;
     isOk = (curUserInfo != null);
     curUserInfo ??= userInfo.value;
     curUserInfo.token = userInfo.value.token;

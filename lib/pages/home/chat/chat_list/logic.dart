@@ -12,13 +12,22 @@ class ChatListLogic extends GetxController
     }
   }
 
-  @override
-  void onInit() {
-    featData();
-    super.onInit();
+  RxInt selectIndex = 0.obs;
+
+  TextEditingController searchController = TextEditingController();
+
+  final ChatListState chatListState = MessageStore.to.chatListState;
+
+  Future<void> changeIndex(int index) async {
+    selectIndex.value = index;
   }
 
-  final ChatListState chatListState = ChatListState();
+  @override
+  void onInit() {
+    featConversationList();
+    featFriendData();
+    super.onInit();
+  }
 
   void toAddNewChat() {
     if (!state.dataList.contains(state.d)) {
@@ -30,69 +39,6 @@ class ChatListLogic extends GetxController
           return CreateNewChat(this);
         },
         alignment: Alignment.bottomCenter);
-    // SmartDialog.show(
-    //     clickMaskDismiss: false,
-    //     builder: (_) {
-    //       return ColoredBox(
-    //           color: Colors.white,
-    //           child: Column(
-    //             mainAxisSize: MainAxisSize.min,
-    //             children: [
-    //               CusAppBar.leading(Get.context!,
-    //                   title: '',
-    //                   appBarColor: Colors.transparent,
-    //                   onBack: SmartDialog.dismiss),
-    //               Row(
-    //                 children: [
-    //                   Expanded(
-    //                       child: GestureDetector(
-    //                     onTap: toAddGroup,
-    //                     child: Column(
-    //                       mainAxisSize: MainAxisSize.min,
-    //                       children: [
-    //                         ThemeImageWidget(
-    //                           path: Resource.assetsSvgDefaultChatGroupAddSvg,
-    //                           width: 24.w,
-    //                           height: 24.w,
-    //                         ),
-    //                         8.verticalSpace,
-    //                         Text(
-    //                           LocaleKeys.text_0101.tr,
-    //                           style: AppTheme()
-    //                               .appTextStyle
-    //                               .textExtraLightStyleBlack,
-    //                         )
-    //                       ],
-    //                     ),
-    //                   )),
-    //                   Expanded(
-    //                       child: GestureDetector(
-    //                     onTap: toAddUser,
-    //                     child: Column(
-    //                       mainAxisSize: MainAxisSize.min,
-    //                       children: [
-    //                         ThemeImageWidget(
-    //                           path: Resource.assetsSvgDefaultChatUserAddSvg,
-    //                           width: 24.w,
-    //                           height: 24.w,
-    //                         ),
-    //                         8.verticalSpace,
-    //                         Text(
-    //                           LocaleKeys.text_0102.tr,
-    //                           style: AppTheme()
-    //                               .appTextStyle
-    //                               .textExtraLightStyleBlack,
-    //                         )
-    //                       ],
-    //                     ),
-    //                   )),
-    //                 ],
-    //               ),
-    //               22.verticalSpace
-    //             ],
-    //           ));
-    //     },
-    //     alignment: Alignment.topCenter);
   }
 
   void toScan() {
@@ -101,13 +47,39 @@ class ChatListLogic extends GetxController
 
   Future<void> toCreateGroup() async {
     CreateGroupLogic.to.selectList.clear();
-    CreateGroupLogic.to.isNext=false.obs;
+    CreateGroupLogic.to.isNext = false.obs;
     SmartDialog.show(
         clickMaskDismiss: false,
         builder: (_) {
           return CreateGroupWidget();
         },
         alignment: Alignment.bottomCenter);
+  }
+
+  String toContentType(ConversationList conversationList) {
+    /// 内容类型，1、普通文本消息，2、超链接卡片消息，3、文件，4、音频，5、视频，6、图片，9、名片
+    if (conversationList.contentType == "1") {
+      return Utils.toEmpty(conversationList.resume) ?? '';
+    }
+    if (conversationList.contentType == "2") {
+      return "[${LocaleKeys.text_0190.tr}]";
+    }
+    if (conversationList.contentType == "3") {
+      return "[${LocaleKeys.text_0191.tr}]";
+    }
+    if (conversationList.contentType == "4") {
+      return "[${LocaleKeys.text_0193.tr}]";
+    }
+    if (conversationList.contentType == "5") {
+      return "[${LocaleKeys.text_0193.tr}]";
+    }
+    if (conversationList.contentType == "6") {
+      return "[${LocaleKeys.text_0152.tr}]";
+    }
+    if (conversationList.contentType == "9") {
+      return "[${LocaleKeys.text_0194.tr}]";
+    }
+    return Utils.toEmpty(conversationList.resume) ?? '';
   }
 
   ///新建频道 todo
@@ -117,5 +89,9 @@ class ChatListLogic extends GetxController
 extension SearchChatLogicX on ChatListLogic {
   void onChanged() {
     update();
+  }
+
+  Future<void> featConversationList() async {
+    await MessageStore.to.initData();
   }
 }

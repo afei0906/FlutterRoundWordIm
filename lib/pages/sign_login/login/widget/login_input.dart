@@ -33,7 +33,7 @@ class LoginInput extends StatelessWidget {
       onTap: onClick,
       child: Container(
         decoration: BoxDecoration(
-          color: AppTheme.bgColor.withOpacity(0),
+          color: AppTheme.colorTextDarkPrimary.withOpacity(0),
           borderRadius: BorderRadius.all(Radius.circular(24.r)),
         ),
         padding: EdgeInsets.only(
@@ -59,7 +59,7 @@ class LoginInput extends StatelessWidget {
                 // 备用焦点方案
                 style: AppTheme().appTextStyle.textStyleTitleText,
                 keyboardType: keyboardType,
-                cursorColor: AppTheme.primary,
+                cursorColor: AppTheme.colorBrandPrimary,
                 inputFormatters: inputFormatters,
                 onSubmitted: onSubmitted,
                 decoration: InputDecoration(

@@ -19,7 +19,7 @@ class CreateGroupLogic extends GetxController with FriendListLogic {
 
   @override
   void onInit() {
-    featData();
+    featFriendData();
     super.onInit();
   }
 

@@ -285,7 +285,7 @@ class _BlockPuzzleCaptchaPageState extends State<BlockPuzzleCaptchaPage>
   Widget _closeContainer() {
     return Container(
       decoration: const BoxDecoration(
-        border: Border(top: BorderSide(width: 1, color: AppTheme.lineColor)),
+        border: Border(top: BorderSide(width: 1, color: AppTheme.colorBorderLight)),
       ),
       child: Row(
         children: [
@@ -308,7 +308,7 @@ class _BlockPuzzleCaptchaPageState extends State<BlockPuzzleCaptchaPage>
             child: Container(
               height: 50.h,
               width: 1,
-              decoration: const BoxDecoration(color: AppTheme.lineColor),
+              decoration: const BoxDecoration(color: AppTheme.colorBorderLight),
             ),
           ),
           Expanded(
@@ -356,7 +356,7 @@ class _BlockPuzzleCaptchaPageState extends State<BlockPuzzleCaptchaPage>
           Center(
             child: Text(
               LocaleKeys.text_0086.tr,
-              style: AppTheme().appTextStyle.textStyleSliderTitleText,
+              style: AppTheme().appTextStyle.styleTextTertiary,
             ),
           ),
           12.verticalSpace
@@ -442,7 +442,7 @@ class _BlockPuzzleCaptchaPageState extends State<BlockPuzzleCaptchaPage>
                                   "${(_checkMilliseconds / (60.0 * 12)).toStringAsFixed(2)}s"
                             })
                           : LocaleKeys.text_0090.tr,
-                      style: AppTheme().appTextStyle.textStyleBgColor.copyWith(
+                      style: AppTheme().appTextStyle.styleTextDarkPrimary.copyWith(
                           fontSize: 12.sp,
                           fontWeight: ThemeFontWeight.regular.weight),
                     ),
@@ -571,7 +571,7 @@ class _BlockPuzzleCaptchaPageState extends State<BlockPuzzleCaptchaPage>
                         margin: EdgeInsets.all(4.h),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                            color: AppTheme.primary,
+                            color: AppTheme.colorBrandPrimary,
                             borderRadius: BorderRadius.circular(55.r)),
                         child: IconButton(
                           icon: Icon(sliderIcon),

@@ -22,3 +22,4 @@ part 'config.dart';
 part 'language.dart';
 part 'user.dart';
 part 'contact.dart';
+part 'message.dart';

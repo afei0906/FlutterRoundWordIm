@@ -103,7 +103,7 @@ class _InputAccountState extends State<InputAccount> {
                 border: Border.all(
                   color: _focusNode.hasFocus
                       ? (widget.isShowError && getErrorText().tr.isNotEmpty
-                          ? AppTheme.error
+                          ? AppTheme.colorBrandError
                           : Colors.transparent)
                       : Colors.transparent,
                   width: 1.w,
@@ -193,7 +193,7 @@ class _InputAccountState extends State<InputAccount> {
               getErrorText().tr,
               style: TextStyle(
                 fontSize: 12.w,
-                color: AppTheme.error,
+                color: AppTheme.colorBrandError,
                 fontWeight: FontWeight.w400,
               ),
               textAlign: TextAlign.start,

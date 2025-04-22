@@ -174,7 +174,7 @@ class SignEmailPage extends StatelessWidget {
                             fillColor: MaterialStateProperty.resolveWith<Color>(
                                     (states) {
                                   if (states.contains(MaterialState.selected)) {
-                                    return AppTheme.primary; // 选中时的填充背景色
+                                    return AppTheme.colorBrandPrimary; // 选中时的填充背景色
                                   }
                                   return Colors.transparent; // 未选中时背景
                                 }),

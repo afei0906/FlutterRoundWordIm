@@ -52,7 +52,7 @@ class ThemeNavigationBar extends StatelessWidget
         child: AbsorbPointer(
           absorbing: absorbing,
           child: Material(
-              color: appBarColor ?? AppTheme.bgColor.withAlpha(0),
+              color: appBarColor ?? AppTheme.colorTextDarkPrimary.withAlpha(0),
               child: Container(
                 constraints: BoxConstraints.expand(
                   height: toolbarHeight +
@@ -67,7 +67,7 @@ class ThemeNavigationBar extends StatelessWidget
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: statusBarStyle,
       child: Material(
-        color: appBarColor ?? AppTheme.bgColor,
+        color: appBarColor ?? AppTheme.colorTextDarkPrimary,
         child: _buildNavWidget(context),
       ),
     );
@@ -79,7 +79,7 @@ class ThemeNavigationBar extends StatelessWidget
       child: Column(
         children: [
           AppBar(
-            backgroundColor: appBarColor ?? AppTheme.bgColor,
+            backgroundColor: appBarColor ?? AppTheme.colorTextDarkPrimary,
             toolbarHeight: toolbarHeight,
             elevation: 0,
             leading: automaticallyImplyLeading
@@ -89,7 +89,7 @@ class ThemeNavigationBar extends StatelessWidget
                       child: Icon(
                         Icons.arrow_back_ios_new,
                         size: 20.w,
-                        color: AppTheme.ternaryText,
+                        color: AppTheme.colorTextTertiary,
                       ),
                     ),
                   )

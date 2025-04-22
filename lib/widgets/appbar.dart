@@ -34,7 +34,7 @@ class CusAppBar {
                   child: Icon(
                     Icons.arrow_back_ios_new,
                     size: 20.w,
-                    color: AppTheme.ternaryText,
+                    color: AppTheme.colorTextTertiary,
                   ),
                 ),
               )
@@ -128,7 +128,7 @@ class CusAppBar {
     SystemUiOverlayStyle statusBarStyle = SystemUiOverlayStyle.dark,
   }) {
     return ThemeNavigationBar(
-      appBarColor: appBarColor ?? AppTheme.bgColor,
+      appBarColor: appBarColor ?? AppTheme.colorTextDarkPrimary,
       toolbarHeight: toolbarHeight,
       elevation: 0,
       leftWidget: automaticallyImplyLeading
@@ -157,7 +157,7 @@ class CusAppBar {
       leadingWidth: 80.w,
       titleWidget: titleWidget ?? Text(title),
       titleTextStyle: TextStyle(
-        color: AppTheme.bgColor,
+        color: AppTheme.colorTextDarkPrimary,
         fontSize: 18.sp,
         fontWeight: FontWeight.w600,
       ),
@@ -175,12 +175,12 @@ class CustomBoxDecoration {
     return BoxDecoration(
         borderRadius:
             BorderRadius.vertical(top: Radius.circular(radius ?? 16.r)),
-        color: color ?? AppTheme.bgColor);
+        color: color ?? AppTheme.colorTextDarkPrimary);
   }
 
   static BoxDecoration customDecoration({double? radius, Color? color}) {
     return BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 12.r),
-        color: color ?? AppTheme.bgColor);
+        color: color ?? AppTheme.colorTextDarkPrimary);
   }
 }

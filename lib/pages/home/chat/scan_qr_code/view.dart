@@ -89,7 +89,7 @@ class _ScanQrCodePageState extends State<ScanQrCodePage> {
                 child: Icon(
                   Icons.arrow_back_ios_new,
                   size: 20.w,
-                  color: AppTheme.bgColor,
+                  color: AppTheme.colorTextDarkPrimary,
                 ),
               ),
             ),

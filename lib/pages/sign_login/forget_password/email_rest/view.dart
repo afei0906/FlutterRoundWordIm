@@ -12,7 +12,7 @@ class EmailRestPage extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
             resizeToAvoidBottomInset: false,
-            backgroundColor: AppTheme.bgColor,
+            backgroundColor: AppTheme.colorTextDarkPrimary,
             appBar: appBar(),
             body: Column(
               children: [

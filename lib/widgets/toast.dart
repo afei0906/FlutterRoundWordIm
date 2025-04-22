@@ -83,7 +83,7 @@ class CustomToastFail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(Icons.close_rounded, color: AppTheme.error, size: 40);
+    return const Icon(Icons.close_rounded, color: AppTheme.colorBrandError, size: 40);
   }
 }
 

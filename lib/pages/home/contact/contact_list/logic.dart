@@ -17,7 +17,7 @@ class ContactListLogic extends GetxController
   @override
   void onInit() {
     super.onInit();
-    featData();
+    featFriendData();
     getApplyList();
   }
 

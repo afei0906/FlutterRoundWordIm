@@ -84,4 +84,9 @@ class Urls {
   ///发现页列表
   static const discoveryPage = 'app/discoveryPage';
 
+
+  ///会话
+  static const conversationList = 'conversation/list';
+
+
 }

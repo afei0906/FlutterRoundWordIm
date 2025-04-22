@@ -9,7 +9,7 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.bgColor,
+      backgroundColor: AppTheme.colorTextDarkPrimary,
       body: Container(
           width: double.infinity,
           height: double.infinity,

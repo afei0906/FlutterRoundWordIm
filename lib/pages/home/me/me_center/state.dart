@@ -5,8 +5,12 @@ class MeCenterState {
     ItemBean(0, LocaleKeys.text_0167, Resource.assetsImagesMeMyWalletPng, () {},
         isBotRoudis: true, isTopRoudis: true),
     ItemBean(
-        1, LocaleKeys.text_0168, Resource.assetsImagesMeMyCollectionPng, () {},
-        isTopRoudis: true),
+      1,
+      LocaleKeys.text_0168,
+      Resource.assetsImagesMeMyCollectionPng,
+      () {},
+      isTopRoudis: true,
+    ),
     ItemBean(
       2,
       LocaleKeys.text_0169,
@@ -46,8 +50,10 @@ class ItemBean {
   String? icon;
   bool isTopRoudis;
   bool isBotRoudis;
+  bool? selectBool;
   Function? callBack;
 
   ItemBean(this.id, this.title, this.icon, this.callBack,
-      {this.isTopRoudis = false, this.isBotRoudis = false});
+      {this.isTopRoudis = false, this.isBotRoudis = false, this.selectBool}) {
+  }
 }

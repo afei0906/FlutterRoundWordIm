@@ -36,21 +36,10 @@ class MeCenterPage extends StatelessWidget {
   Widget _userInfo() {
     return Row(
       children: [
-        Container(
-          width: 67.w,
-          height: 67.w,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(64.r),
-              color: AppTheme.bgColor.withOpacity(0.3)),
-          child: ThemeImageWidget(
-            url: UserStore.to.userInfo.value.avatar.toString(),
-            error: Resource.assetsImagesUserAvatarDefualtPng,
-            width: 64.w,
-            height: 64.w,
-            radius: 64.r,
-          ),
-        ),
+        CustomUtils.avator(UserStore.to.userInfo.value.avatar.toString(),
+            width: 65.w,
+            height: 65.w,
+            color: AppTheme.colorTextDarkPrimary.withOpacity(0.3)),
         12.horizontalSpace,
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +117,7 @@ class MeCenterPage extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r),
           gradient: const LinearGradient(
-            colors: [AppTheme.primary, AppTheme.primary2],
+            colors: [AppTheme.colorBrandPrimary, AppTheme.primary2],
           )),
       child: Row(
         children: [
@@ -143,10 +132,10 @@ class MeCenterPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(LocaleKeys.text_0165.tr,
-                  style: AppTheme().appTextStyle.textStyleBgColor),
+                  style: AppTheme().appTextStyle.styleTextDarkPrimary),
               6.verticalSpace,
               Text(LocaleKeys.text_0166.tr,
-                  style: AppTheme().appTextStyle.textStyleBgColor.copyWith(
+                  style: AppTheme().appTextStyle.styleTextDarkPrimary.copyWith(
                         fontSize: 12.sp,
                         fontWeight: ThemeFontWeight.regular.weight,
                       ))
@@ -183,7 +172,7 @@ class MeCenterPage extends StatelessWidget {
                         ? Radius.circular(12.r)
                         : Radius.zero,
                   ),
-                  color: AppTheme.bgColor),
+                  color: AppTheme.colorTextDarkPrimary),
               child: Row(
                 children: [
                   ThemeImageWidget(
@@ -217,10 +206,10 @@ class MeCenterPage extends StatelessWidget {
             ),
             if (!action.isBotRoudis)
               Container(
-                color: AppTheme.bgColor,
+                color: AppTheme.colorTextDarkPrimary,
                 width: double.infinity,
                 child: Container(
-                  color: AppTheme.lineColor,
+                  color: AppTheme.colorBorderLight,
                   height: 1,
                   width: double.infinity,
                 ).marginOnly(

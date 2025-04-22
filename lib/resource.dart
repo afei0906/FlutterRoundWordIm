@@ -98,6 +98,10 @@ class Resource {
   static const String assetsSvgDefaultChatGroupAddSvg =
       'assets/svg/default/chat_group_add.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultChatOnReadSvg.preview}
+  static const String assetsSvgDefaultChatOnReadSvg =
+      'assets/svg/default/chat_on_read.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultChatUserAddSvg.preview}
   static const String assetsSvgDefaultChatUserAddSvg =
       'assets/svg/default/chat_user_add.svg';

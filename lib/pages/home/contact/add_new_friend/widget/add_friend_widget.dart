@@ -56,10 +56,10 @@ class AddFriendWidget extends StatelessWidget {
                       width: 32.w,
                       height: 32.w,
                       decoration: CustomBoxDecoration.customDecoration(
-                          color: AppTheme.primary, radius: 32),
+                          color: AppTheme.colorBrandPrimary, radius: 32),
                       child: Icon(
                         Icons.search,
-                        color: AppTheme.bgColor,
+                        color: AppTheme.colorTextDarkPrimary,
                         size: 24.w,
                       ),
                     ),
@@ -109,21 +109,8 @@ class AddFriendWidget extends StatelessWidget {
       decoration: CustomBoxDecoration.customDecoration(),
       child: Column(
         children: [
-          Container(
-            width: 58.w,
-            height: 58.w,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(58.r),
-                color: AppTheme.sliderColor.withOpacity(0.3)),
-            child: ThemeImageWidget(
-              url: u.avatar.toString() ?? '',
-              error: Resource.assetsImagesUserAvatarDefualtPng,
-              width: 56.w,
-              height: 56.w,
-              radius: 56.r,
-            ),
-          ),
+          CustomUtils.avator(u.avatar.toString() ?? '',width: 56.w,height: 56.w),
+
           8.verticalSpace,
           Text(
            u.getNick(),

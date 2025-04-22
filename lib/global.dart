@@ -24,6 +24,7 @@ class Global {
       Get.put<UserStore>(UserStore());
       Get.put<LanguageStore>(LanguageStore());
       Get.put<ContactStore>(ContactStore());
+      Get.put<MessageStore>(MessageStore());
       SmartDialog.config
         ..toast = SmartConfigToast(
           // isExist: true,

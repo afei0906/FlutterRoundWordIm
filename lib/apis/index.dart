@@ -26,3 +26,5 @@ part 'friend_api.dart';
 part 'group_api.dart';
 
 part 'find_api.dart';
+
+part 'message_api.dart';
