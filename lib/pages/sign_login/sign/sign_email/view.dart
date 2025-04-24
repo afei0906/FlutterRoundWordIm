@@ -110,7 +110,7 @@ class SignEmailPage extends StatelessWidget {
                                 state.buttonText.value,
                                 style: AppTheme()
                                     .appTextStyle
-                                    .textStylePrimary
+                                    .styleBrandPrimary
                                     .copyWith(
                                     fontWeight: ThemeFontWeight.medium.weight,
                                     fontSize: 12.sp),

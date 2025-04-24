@@ -43,17 +43,16 @@ abstract class FriendApi {
   //      * 无效：过期/拒绝
   //      */
   //     int REJECT = 3;
-  static Future<List<FriendInfo>> applyList() async {
-    final res = await HttpService.to.post(
-      Urls.applyList,
-    );
+  static Future<List<ApplyFriendInfo>> applyList(bool showLoading) async {
+    final res =
+        await HttpService.to.post(Urls.applyList, showLoading: showLoading);
 
     if (res.code != 0) {
       showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
       final List? list = res.data as List?;
-      final List<FriendInfo> clientList = list
-              ?.map((e) => FriendInfo.fromJson(e as Map<String, dynamic>))
+      final List<ApplyFriendInfo> clientList = list
+              ?.map((e) => ApplyFriendInfo.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [];
       return clientList;
@@ -61,7 +60,7 @@ abstract class FriendApi {
     return [];
   }
 
-  static Future<List<FriendInfo>> userSearch(String key) async {
+  static Future<List<UserInfo>> userSearch(String key) async {
     final Map<String, dynamic> param = {
       "key": key,
     };
@@ -73,8 +72,8 @@ abstract class FriendApi {
         // showErrorMsg(res.code.toString(), res.msg ?? '');
       } else {
         final List? list = res.data as List?;
-        final List<FriendInfo> clientList = list
-                ?.map((e) => FriendInfo.fromJson(e as Map<String, dynamic>))
+        final List<UserInfo> clientList = list
+                ?.map((e) => UserInfo.fromJson(e as Map<String, dynamic>))
                 .toList() ??
             [];
         return clientList;
@@ -97,6 +96,49 @@ abstract class FriendApi {
     try {
       final res = await HttpService.to
           .post(Urls.apply, params: param, showLoading: true);
+
+      if (res.code != 0) {
+        showErrorMsg(res.code.toString(), res.msg ?? '');
+      } else {
+        return true;
+      }
+    } catch (e) {
+      e.printError();
+    }
+    return false;
+  }
+
+  static Future<bool> friendSure(dynamic applyId, {String? remarkName}) async {
+    final Map<String, dynamic> param = {
+      "applyId": applyId,
+      "remarkName": remarkName ?? LocaleKeys.text_0196.tr,
+    };
+
+    try {
+      final res = await HttpService.to
+          .post(Urls.friendSure, params: param, showLoading: true);
+
+      if (res.code != 0) {
+        showErrorMsg(res.code.toString(), res.msg ?? '');
+      } else {
+        return true;
+      }
+    } catch (e) {
+      e.printError();
+    }
+    return false;
+  }
+
+  static Future<bool> friendDeleteApply(
+    dynamic applyId,
+  ) async {
+    final Map<String, dynamic> param = {
+      "applyId": applyId,
+    };
+
+    try {
+      final res = await HttpService.to
+          .post(Urls.friendDeleteApply, params: param, showLoading: true);
 
       if (res.code != 0) {
         showErrorMsg(res.code.toString(), res.msg ?? '');

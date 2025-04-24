@@ -44,7 +44,7 @@ class SelectQuestion extends StatelessWidget {
                       margin: const EdgeInsets.only(left: 10, right: 10),
                       child: Text(
                         LocaleKeys.text_0094.tr,
-                        style: AppTheme().appTextStyle.textStylePrimary,
+                        style: AppTheme().appTextStyle.styleBrandPrimary,
                       ),
                     ),
                   )

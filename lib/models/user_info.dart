@@ -302,6 +302,10 @@ class UserInfo extends ISuspensionBean {
     return map;
   }
 
+  String getNick() {
+    return Utils.toEmpty(nick) ?? (Utils.toEmpty(remark) ?? '');
+  }
+
   @override
   String getSuspensionTag() {
     // tag ?? =

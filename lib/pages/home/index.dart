@@ -22,6 +22,7 @@ import '../../apis/index.dart';
 import '../../common/azlistview/index.dart';
 import '../../generated/locales.g.dart';
 import '../../models/index.dart';
+import '../../services/index.dart';
 import '../../theme.dart';
 import '../message/index.dart';
 import '../sign_login/login/index.dart';
@@ -37,6 +38,10 @@ part 'chat/chat_list/logic.dart';
 part 'chat/chat_list/view.dart';
 
 part 'chat/chat_list/state.dart';
+
+part 'chat/chat/widget/group_info_widget.dart';
+
+part 'chat/chat/widget/chat_widget.dart';
 
 part 'chat/chat/logic.dart';
 
@@ -79,6 +84,8 @@ part 'contact/add_new_friend/view.dart';
 part 'contact/add_new_friend/state.dart';
 
 part 'contact/add_new_friend/widget/add_friend_widget.dart';
+
+part 'contact/add_new_friend/widget/look_new_friend_info_widget.dart';
 
 part 'contact/add_new_friend/mixin/logic.dart';
 

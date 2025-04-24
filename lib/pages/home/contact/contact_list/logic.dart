@@ -18,11 +18,11 @@ class ContactListLogic extends GetxController
   void onInit() {
     super.onInit();
     featFriendData();
-    getApplyList();
+    getApplyList(false);
   }
 
   void toNewFriends() {
-    Get.toNamed(Routes.addNewFriendPage);
+    Get.toNamed(Routes.addNewFriendPage, arguments: applyList);
   }
 
   void toMyGroup() {

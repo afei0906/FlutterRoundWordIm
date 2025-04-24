@@ -3,7 +3,7 @@ part of 'index.dart';
 class MessageStore extends GetxController {
   static MessageStore get to => Get.find<MessageStore>();
 
-  final ChatListState chatListState = ChatListState();
+  ChatListState chatListState = ChatListState();
 
   RxList<ConversationList> covariantList = RxList();
 
@@ -48,5 +48,10 @@ class MessageStore extends GetxController {
     StorageService.to.setString(
         "${kLocalConversationList}_${UserStore.to.userInfo.value.id}",
         jsonEncode(data));
+  }
+
+  void clearData() {
+    chatListState = ChatListState();
+    covariantList.clear();
   }
 }

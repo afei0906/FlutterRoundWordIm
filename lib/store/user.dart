@@ -2,7 +2,7 @@ part of 'index.dart';
 
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
-  RxBool isLoadUser=false.obs;
+  RxBool isLoadUser = false.obs;
 
   RxBool _isLogin = false.obs;
 
@@ -42,7 +42,7 @@ class UserStore extends GetxController {
   Future<bool> getUserInfo() async {
     bool isOk = false;
     UserInfo? curUserInfo = await LoginSignApi.postUserCurr();
-    isLoadUser=true.obs;
+    isLoadUser = true.obs;
     isOk = (curUserInfo != null);
     curUserInfo ??= userInfo.value;
     curUserInfo.token = userInfo.value.token;
@@ -66,6 +66,8 @@ class UserStore extends GetxController {
   Future<void> logout() async {
     await StorageService.to.remove(kLocalUserInfo);
     await HttpService.to.clearCookie();
+    ContactStore.to.clearData();
+    MessageStore.to.clearData();
     _isLogin = false.obs;
     if (UserStore.to.localLoginInfo?.type == 0) {
       if (ConfigStore.to.isOpenPhone()) {
@@ -86,6 +88,7 @@ class UserStore extends GetxController {
         Get.offNamed(Routes.splash);
       }
     }
+    Get.offNamed(Routes.splash);
   }
 
   Future<void> delete() async {
@@ -104,5 +107,11 @@ class UserStore extends GetxController {
       localLoginInfo = LocalLoginInfo.fromJson(json.decode(jsonStr));
     }
     return localLoginInfo;
+  }
+
+  Future<void> initData() async {
+    await getUserInfo();
+    ContactStore.to.featServerFriendData();
+    MessageStore.to.getConversationServerData();
   }
 }

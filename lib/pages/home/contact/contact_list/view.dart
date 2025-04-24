@@ -4,7 +4,10 @@ class ContactListPage extends StatelessWidget {
   ContactListPage({Key? key}) : super(key: key);
 
   final ContactListLogic logic = ContactListLogic.to;
-  final FriendListState state = Get.find<ContactListLogic>().state;
+  final FriendListState state = Get
+      .find<ContactListLogic>()
+      .state;
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,25 +44,27 @@ class ContactListPage extends StatelessWidget {
         bottom: Column(
           children: [
             CustomUtils.onSearchView(
-                    state.searchController, LocaleKeys.text_0133.tr,
-                    onChanged: logic.onSubmitted,
-                    onSubmitted: logic.onSubmitted)
+                state.searchController, LocaleKeys.text_0133.tr,
+                onChanged: logic.onSubmitted,
+                onSubmitted: logic.onSubmitted)
+                .marginSymmetric(horizontal: 16.w),
+            12.verticalSpace,
+            Obx(() {
+              return _topMune(
+                  LocaleKeys.text_0131.tr,
+                  Resource.assetsSvgDefaultChatUserAddSvg,
+                  (logic.applyList.isNotEmpty
+                      ? logic.applyList.length.toString()
+                      : null),
+                  logic.toNewFriends);
+            })
                 .marginSymmetric(horizontal: 16.w),
             12.verticalSpace,
             _topMune(
-                    LocaleKeys.text_0131.tr,
-                    Resource.assetsSvgDefaultChatUserAddSvg,
-                    (logic.applyList.isNotEmpty
-                        ? logic.applyList.length.toString()
-                        : null),
-                    logic.toNewFriends)
-                .marginSymmetric(horizontal: 16.w),
-            12.verticalSpace,
-            _topMune(
-                    LocaleKeys.text_0132.tr,
-                    Resource.assetsSvgDefaultChatGroupAddSvg,
-                    null,
-                    logic.toMyGroup)
+                LocaleKeys.text_0132.tr,
+                Resource.assetsSvgDefaultChatGroupAddSvg,
+                null,
+                logic.toMyGroup)
                 .marginSymmetric(horizontal: 16.w),
           ],
         ),

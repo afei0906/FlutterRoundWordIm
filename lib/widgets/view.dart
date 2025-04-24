@@ -96,7 +96,7 @@ class ViewUtils {
               onTap: onBack,
               child: Text(
                 rightStr,
-                style: AppTheme().appTextStyle.textStylePrimary.copyWith(
+                style: AppTheme().appTextStyle.styleBrandPrimary.copyWith(
                       fontSize: 15.sp,
                       fontWeight: ThemeFontWeight.medium.weight,
                     ),

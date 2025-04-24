@@ -7,6 +7,7 @@ class CreateGroupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    logic.state.searchController.clear();
     return Obx(() {
       return Container(
         height: Get.height - 50,

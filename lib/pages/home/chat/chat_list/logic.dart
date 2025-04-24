@@ -41,6 +41,19 @@ class ChatListLogic extends GetxController
         alignment: Alignment.bottomCenter);
   }
 
+  void toChat(ConversationList conversationList) {
+    Get.toNamed(Routes.chatPage, arguments: {
+      "formType": ChatFormType.messageList,
+      "chatRequest": ChatRequest(
+          channelType: conversationList.chatMode,
+          channelId: conversationList.bizId,
+          mid: conversationList.lastMsgId,
+          title: Utils.toEmpty(conversationList.name) ?? '',
+          avatar: Utils.toEmpty(conversationList.avatar) ?? ''
+      )
+    });
+  }
+
   void toScan() {
     Get.toNamed(Routes.scanQrCodePage);
   }

@@ -10,6 +10,7 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
+
   static const text_0001 = 'text_0001';
   static const text_0002 = 'text_0002';
   static const text_0003 = 'text_0003';
@@ -199,10 +200,22 @@ class LocaleKeys {
   static const text_0192 = 'text_0192';
   static const text_0193 = 'text_0193';
   static const text_0194 = 'text_0194';
+  static const text_0195 = 'text_0195';
+  static const text_0196 = 'text_0196';
+  static const text_0197 = 'text_0197';
+  static const text_0198 = 'text_0198';
+  static const text_0199 = 'text_0199';
+  static const text_0200 = 'text_0200';
 }
 
 class Locales {
   static const zhcn = {
+    'text_0200': '同意了你的好友申请',
+    'text_0198': '已忽略申请',
+    'text_0199': '你与@name已成为好友，可以去聊天啦',
+    'text_0196': '同意好友申请',
+    'text_0197': '申请成为你的好友',
+    'text_0195': '查看',
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
     'text_0003': '用户服务协议',

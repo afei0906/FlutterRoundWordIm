@@ -144,7 +144,7 @@ class EmailRestPage extends StatelessWidget {
                 onTap: logic.getCode,
                 child: Text(
                   state.buttonText.value,
-                  style: AppTheme().appTextStyle.textStylePrimary.copyWith(
+                  style: AppTheme().appTextStyle.styleBrandPrimary.copyWith(
                       fontWeight: ThemeFontWeight.medium.weight,
                       fontSize: 12.sp),
                 ),

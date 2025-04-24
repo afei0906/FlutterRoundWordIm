@@ -84,7 +84,7 @@ class GroupListPage extends StatelessWidget {
                               style: isGroup
                                   ? AppTheme()
                                       .appTextStyle
-                                      .textStylePrimary
+                                      .styleBrandPrimary
                                       .copyWith(fontSize: 14.sp)
                                   : AppTheme()
                                       .appTextStyle

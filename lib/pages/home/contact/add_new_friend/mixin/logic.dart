@@ -3,15 +3,16 @@ part of '../../../index.dart';
 mixin AddFriendLogic {
   TextEditingController searchFriendController = TextEditingController();
   RxString searchStr = RxString("");
-  Rx<FriendInfo> userInfo = FriendInfo().obs;
+  Rx<UserInfo> userInfo = UserInfo().obs;
   RxBool isSearch = false.obs;
 
-  RxList<FriendInfo> applyList = RxList();
+  RxList<ApplyFriendInfo> applyList = RxList();
 
   void toAdd() {
     searchStr.value = "";
+    isSearch = false.obs;
     searchFriendController.text = searchStr.value;
-    userInfo = FriendInfo().obs;
+    userInfo = UserInfo().obs;
     SmartDialog.show(
       clickMaskDismiss: false,
       builder: (_) {
@@ -37,7 +38,7 @@ mixin AddFriendLogic {
 
   Future<void> userSearch() async {
     if (!Utils.isEmpty(searchFriendController.text)) {
-      final List<FriendInfo> list =
+      final List<UserInfo> list =
           await FriendApi.userSearch(searchFriendController.text);
       isSearch.value = true;
       if (list.isNotEmpty) {
@@ -47,15 +48,18 @@ mixin AddFriendLogic {
   }
 
   Future<void> apply() async {
-    final bool isApply = await FriendApi.apply(userInfo.value.friendId);
+    final bool isApply = await FriendApi.apply(userInfo.value.id);
     if (isApply) {
       SmartDialog.dismiss(status: SmartStatus.allDialog);
     }
   }
 
-  Future<void> getApplyList() async {
-    FriendApi.applyList().then((onValue) {
-      applyList.value = onValue;
+  Future<void> getApplyList(bool showLoading) async {
+    HttpThrottle.to.getThrottleByUrl(Urls.applyList).run(() {
+      FriendApi.applyList(showLoading).then((onValue) {
+        applyList.value = onValue;
+        applyList.refresh();
+      });
     });
   }
 }

@@ -15,6 +15,10 @@ class HomeLogic extends GetxController {
 
   void changeTabCurIndex(int index) {
     tabCurIndex.value = index;
+    switch (index) {
+      case 1:
+        ContactListLogic.to.getApplyList(false);
+    }
   }
 
   List<Widget> tabWidget = [

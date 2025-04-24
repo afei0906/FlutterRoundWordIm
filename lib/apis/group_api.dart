@@ -35,7 +35,7 @@ abstract class GroupApi {
     };
 
     final res = await HttpService.to
-        .post(Urls.groupCreate, params: param, isShowMsg: true);
+        .post(Urls.groupCreate, params: param, showLoading: true);
 
     if (res.code != 0) {
       showErrorMsg(res.code.toString(), res.msg ?? '');

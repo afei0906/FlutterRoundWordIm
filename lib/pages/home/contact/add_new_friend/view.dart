@@ -13,7 +13,7 @@ class AddNewFriendPage extends StatelessWidget {
       appBar: appBar(),
       body: Obx(() {
         return ListView.builder(
-          itemCount: logic.applyList.length,
+          itemCount: state.applyList.length,
           itemBuilder: (context, index) {
             return itemWidget(index);
           },
@@ -24,7 +24,7 @@ class AddNewFriendPage extends StatelessWidget {
   }
 
   Widget itemWidget(int index) {
-    final FriendInfo userInfo = logic.applyList[index];
+    final ApplyFriendInfo userInfo = state.applyList[index];
 
     return GestureDetector(
         onTap: () {
@@ -37,17 +37,16 @@ class AddNewFriendPage extends StatelessWidget {
               decoration: CustomBoxDecoration.customDecoration(),
               child: Row(
                 children: [
-                  CustomUtils.avator(userInfo.avatar.toString()  ?? '',),
-
-
-
+                  CustomUtils.avator(
+                    userInfo.avatar.toString() ?? '',
+                  ),
                   12.horizontalSpace,
                   Expanded(
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        Utils.toEmpty(userInfo.getNick()) ?? '',
+                        Utils.toEmpty(userInfo.nick) ?? '',
                         style: AppTheme().appTextStyle.textStyleTitleText,
                       ),
                       8.verticalSpace,
@@ -55,11 +54,43 @@ class AddNewFriendPage extends StatelessWidget {
                         LocaleKeys.text_0138.tr,
                         style: AppTheme()
                             .appTextStyle
-                            .textStylePrimary
+                            .styleBrandPrimary
                             .copyWith(fontSize: 14.sp),
                       )
                     ],
-                  ))
+                  )),
+                  8.horizontalSpace,
+                  IntrinsicWidth(
+                    child: AppButton.fillPrimaryButton(
+                        height: 30.h,
+                        LocaleKeys.text_0137.tr,
+                        shape: CustomButtonShape.smallRadius,
+                        style: AppTheme()
+                            .appTextStyle
+                            .styleBrandPrimary
+                            .copyWith(
+                                fontSize: 12.sp,
+                                fontWeight: ThemeFontWeight.medium.weight), () {
+                      logic.refuseFriend(userInfo);
+                    }, isPress: false),
+                  ),
+                  8.horizontalSpace,
+                  IntrinsicWidth(
+                    child: AppButton.fillPrimaryButton(
+                      height: 30.h,
+                      LocaleKeys.text_0195.tr,
+                      shape: CustomButtonShape.smallRadius,
+                      style: AppTheme()
+                          .appTextStyle
+                          .styleTextDarkPrimary
+                          .copyWith(
+                              fontSize: 12.sp,
+                              fontWeight: ThemeFontWeight.medium.weight),
+                      () {
+                        logic.lookFriend(userInfo);
+                      },
+                    ),
+                  )
                 ],
               ),
             ),

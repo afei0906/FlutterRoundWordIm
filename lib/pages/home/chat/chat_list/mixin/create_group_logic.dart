@@ -41,15 +41,21 @@ class CreateGroupLogic extends GetxController with FriendListLogic {
 
   void toPre() {
     isNext.value = false;
+    update();
   }
 
-  void toNext() async {
+  Future<void> toNext() async {
     if (selectList.isEmpty) {
       SmartDialog.showToast(LocaleKeys.text_0179.tr,
           alignment: Alignment.center);
       return;
     }
-    isNext.value = true;
+    log("${isNext.value}");
+    if (isNext.isFalse) {
+      isNext.value = true;
+      return;
+    }
+
     if (Utils.isEmpty(createGroupController.text)) {
       SmartDialog.showToast(LocaleKeys.text_0182.tr,
           alignment: Alignment.center);
@@ -62,12 +68,27 @@ class CreateGroupLogic extends GetxController with FriendListLogic {
 
     final GroupInfo? groupInfo =
         await GroupApi.groupCreate(createGroupController.text, members);
+
     if (groupInfo != null) {
-      SmartDialog.showToast("创建群组成功", alignment: Alignment.center);
+      groupInfo.joinNum = members.length + 1;
+      groupInfo.createTime = Date.fromTime(DateTime.now(), 'yyyy-MM-dd HH:mm');
+      ContactStore.to.addGroupInfo(groupInfo);
+      await SmartDialog.dismiss(
+        status: SmartStatus.allDialog,
+      );
+      MessageStore.to.initData();
+      createGroupController.clear();
       Get.offNamedUntil(
-          Routes.chatPage, (route) => route.settings.name == Routes.splash,
-          arguments: {"groupInfo": groupInfo});
-      SmartDialog.dismiss(status: SmartStatus.allDialog);
+          Routes.chatPage, (route) => route.settings.name == Routes.main,
+          arguments: {
+            "formType": ChatFormType.createGroup,
+            "chatRequest": ChatRequest(
+                channelType: 2,
+                channelId: groupInfo.id,
+                mid: 0,
+                title: Utils.toEmpty(groupInfo.name) ?? '',
+                avatar: Utils.toEmpty(groupInfo.avatar) ?? ''),
+          });
     }
   }
 }

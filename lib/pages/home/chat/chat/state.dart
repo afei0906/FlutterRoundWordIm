@@ -1,6 +1,10 @@
 part of '../../index.dart';
+
+enum ChatFormType { createGroup, messageList, userInfo, groupInfo }
+
 class ChatState {
-  ChatState() {
-    ///Initialize variables
-  }
+  ChatFormType chatFormType = ChatFormType.messageList;
+  ChatRequest? chatRequest;
+
+  String title="";
 }

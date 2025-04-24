@@ -100,13 +100,13 @@ class SelectPhoneCountryPage extends StatelessWidget {
                 child: Text(
                   countryCodeModel.name ?? '',
                   style: isSelect
-                      ? AppTheme().appTextStyle.textStylePrimary
+                      ? AppTheme().appTextStyle.styleBrandPrimary
                       : AppTheme().appTextStyle.textStyleTernary,
                 )),
             Text(
               countryCodeModel.code ?? '',
               style: isSelect
-                  ? AppTheme().appTextStyle.textStylePrimary
+                  ? AppTheme().appTextStyle.styleBrandPrimary
                   : AppTheme().appTextStyle.textStyleTernary,
             )
           ],

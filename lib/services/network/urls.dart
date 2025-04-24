@@ -67,6 +67,10 @@ class Urls {
   static const applyList = 'friend/applyList';
   ///好友申请
   static const apply = 'friend/apply';
+  ///同意好友
+  static const friendSure = 'friend/sure';
+  ///删除申请(忽略/拒绝）
+  static const friendDeleteApply= '/friend/deleteApply';
 
 
   ///用户搜索
@@ -87,6 +91,10 @@ class Urls {
 
   ///会话
   static const conversationList = 'conversation/list';
+
+  ///获取消息列表
+  static const getMsgList = 'message/getMsgList';
+
 
 
 }

@@ -45,7 +45,7 @@ class LoginPhoneLogic extends GetxController {
             type: 0,
             phoneAre: state.countryCodeModel.code,
             phone: state.phoneController.text));
-        UserStore.to.getUserInfo();
+        UserStore.to.initData();
         Get.offNamed(Routes.main);
       }
     });

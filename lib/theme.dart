@@ -21,29 +21,33 @@ class AppTheme {
   static const colorBrandPrimary = Color(0xff126BF6);
   static const colorTextDefaultPrimary = Color(0xFF202329);
   static const colorTextDefaultFourth = Color(0xFF868A8F);
-  static const colorTextDefaultTernary= Color(0xFF545D72);
+  static const colorTextDefaultTernary = Color(0xFF545D72);
   static const colorBrandError = Color(0xFFE53935);
   static const colorBorderLight = Color(0xffEDEEF2);
-
+  static const colorTextDefaultSecondary = Color(0xff373D4C);
+  static const colorFillPageGray = Color(0xFFF0F2F3);
 
   static const primary2 = Color(0xff65A1FF);
   static const defaultText = Color(0x0D000000);
   static const secondaryText = Color(0xFF262626);
   static const colorBorderDark = Color(0xffA3A3A3);
   static const colorTextTertiary = Color(0xff525252);
+  static const colorBlueDark = Color(0xFF6B9FDA);
+
   static const titleText = Color(0xff0A0A0A);
   static const black = Color(0xff000000);
   static const loginLine = Color(0xffD9D9D9);
   static const checkColor = Color(0xffD4D4D4);
   static const sliderColor = Color(0xffDCE2E3);
-  static const bgColor2= Color(0xffF0F3F4);
+  static const bgColor2 = Color(0xffF0F3F4);
 
   static const onPrimary = Color(0xffB1B1B1);
   static const success = Color(0xFF28CE88);
   static const warning = Color(0xFFFFD575);
   static const info = Color(0xFF2FA7FF);
   static const letter = 0.2;
-  static String? fontFamily = 'PingFang SC';//ThemeOfFont.fontName[AppTheme.notoSans];
+  static String? fontFamily =
+      'PingFang SC'; //ThemeOfFont.fontName[AppTheme.notoSans];
 
   static FontTheme fontTheme = FontTheme.roboto;
   static FontTheme fontRough = FontTheme.rough;
@@ -306,9 +310,6 @@ class AppTextStyle {
 
   static final fontFamily = ThemeOfFont.fontName[AppTheme.notoSans];
 
-
-
-
   late TextStyle styleTextDefaultPrimary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.medium.weight,
@@ -328,9 +329,6 @@ class AppTextStyle {
       color: AppTheme.colorTextDefaultTernary,
       fontSize: 12.sp);
 
-
-
-
   late TextStyle textStyleSecondary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.medium.weight,
@@ -345,8 +343,7 @@ class AppTextStyle {
       color: AppTheme.secondaryText,
       fontSize: 14.sp);
 
-
-  late TextStyle textStylePrimary = TextStyle(
+  late TextStyle styleBrandPrimary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
       letterSpacing: letter,
@@ -374,7 +371,6 @@ class AppTextStyle {
       color: AppTheme.colorBrandError,
       fontSize: 12.sp);
 
-
   late TextStyle textStyleTernary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.light.weight,
@@ -383,7 +379,6 @@ class AppTextStyle {
       height: 1.5,
       fontSize: 14.sp);
 
-
   late TextStyle textStyleCheck = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
@@ -391,7 +386,6 @@ class AppTextStyle {
       color: AppTheme.checkColor,
       height: 1.5,
       fontSize: 12.sp);
-
 
   late TextStyle textStyleTitleText = TextStyle(
       fontFamily: fontFamily,
@@ -414,7 +408,6 @@ class AppTextStyle {
       color: AppTheme.colorTextTertiary,
       fontSize: 16.sp);
 
-  
   late TextStyle textStyleHintText = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
@@ -428,44 +421,61 @@ class AppTextStyle {
       letterSpacing: letter,
       color: AppTheme.colorTextDarkPrimary,
       fontSize: 16.sp);
+
+  late TextStyle styleTextDefaultSecondary = TextStyle(
+      fontFamily: fontFamily,
+      fontWeight: ThemeFontWeight.medium.weight,
+      letterSpacing: letter,
+      color: AppTheme.colorTextDefaultSecondary,
+      fontSize: 14.sp);
 }
 
 class AppButton {
-  static CustomButton brandPrimaryButton(String title, Function()? onPressed) =>
+  static CustomButton brandPrimaryButton(String title, Function()? onPressed,
+          {double? height,
+          TextStyle? style,
+          CustomButtonShape? shape}) =>
       CustomButton(
-        height: 48.h,
+        height: height ?? 48.h,
         width: double.infinity,
         foregroundColor: AppTheme.colorBrandPrimary,
         backgroundColor: AppTheme.colorTextDarkPrimary,
         type: CustomButtonType.ghost,
-        shape: CustomButtonShape.radius,
+        shape: shape ?? CustomButtonShape.radius,
         onPressed: onPressed,
         child: Text(
           title,
-          style: AppTheme()
-              .appTextStyle
-              .textStylePrimary
-              .copyWith(fontWeight: ThemeFontWeight.medium.weight),
+          style: style ??
+              AppTheme()
+                  .appTextStyle
+                  .styleBrandPrimary
+                  .copyWith(fontWeight: ThemeFontWeight.medium.weight),
         ),
       );
 
   static CustomButton fillPrimaryButton(String title, Function()? onPressed,
-          {bool isPress = true}) =>
+          {bool isPress = true,
+          double? height,
+          TextStyle? style,
+          CustomButtonShape? shape}) =>
       CustomButton(
-        height: 48.h,
+        height: height ?? 48.h,
         width: double.infinity,
-        foregroundColor:
-            isPress ? AppTheme.colorBrandPrimary : AppTheme.black.withOpacity(0.05),
-        backgroundColor:
-            isPress ? AppTheme.colorBrandPrimary : AppTheme.black.withOpacity(0.05),
-        shape: CustomButtonShape.radius,
+        foregroundColor: isPress
+            ? AppTheme.colorBrandPrimary
+            : AppTheme.black.withOpacity(0.05),
+        backgroundColor: isPress
+            ? AppTheme.colorBrandPrimary
+            : AppTheme.black.withOpacity(0.05),
+        shape: shape ?? CustomButtonShape.radius,
         onPressed: onPressed,
         child: Text(
           title,
-          style: AppTheme()
-              .appTextStyle
-              .styleTextDarkPrimary
-              .copyWith(color:  isPress ? AppTheme.colorTextDarkPrimary :  AppTheme.black.withOpacity(0.2)),
+          style: style ??
+              AppTheme().appTextStyle.styleTextDarkPrimary.copyWith(
+                  color: isPress
+                      ? AppTheme.colorTextDarkPrimary
+                      : AppTheme.black.withOpacity(0.2)),
         ),
       );
 }

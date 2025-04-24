@@ -51,7 +51,7 @@ class CustomUtils {
       {double? width,
       double? height,
       int? type = 1, //用户头像，2是群组头像
-      String error = Resource.assetsImagesUserAvatarDefualtPng,
+      String? error,
       Color? color}) {
     return Container(
       width: width != null ? (width + 2) : 42.w,
@@ -63,7 +63,10 @@ class CustomUtils {
           color: color ?? AppTheme.sliderColor.withOpacity(0.3)),
       child: ThemeImageWidget(
         url: url,
-        error: error,
+        error: error ??
+            (type == 1
+                ? Resource.assetsImagesUserAvatarDefualtPng
+                : Resource.assetsImagesGroupAvatarDefualtpng),
         width: width ?? 40.w,
         height: width ?? 40.w,
         radius: width ?? 40.r,

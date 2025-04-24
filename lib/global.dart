@@ -19,6 +19,7 @@ class Global {
     await Future.wait([
       Get.putAsync<StorageService>(() => StorageService().init()),
     ]).whenComplete(() {
+      Get.put<HttpThrottle>(HttpThrottle());
       Get.put<ConfigStore>(ConfigStore());
       Get.put<HttpService>(HttpService());
       Get.put<UserStore>(UserStore());

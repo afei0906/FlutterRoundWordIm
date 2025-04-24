@@ -80,6 +80,16 @@ class ContactStore extends GetxController {
     ;
   }
 
+  Future<void> addGroupInfo(GroupInfo groupInfo) async {
+    GroupInfo? temp =
+        groupList.firstWhereOrNull((test) => test.id == groupInfo.id);
+    if (temp != null) {
+      groupList.remove(temp);
+    }
+    groupList.add(groupInfo);
+    groupList.refresh();
+  }
+
   Future<void> featServerGroupData({String? keyword}) async {
     groupList.value = await GroupApi.myGroupList(keyword: keyword);
     // // A-Z sort.
@@ -114,5 +124,10 @@ class ContactStore extends GetxController {
     StorageService.to.setString(
         "${kLocalGroupList}_${UserStore.to.userInfo.value.id}",
         jsonEncode(data));
+  }
+
+  void clearData() {
+    friendList.clear();
+    groupList.clear();
   }
 }

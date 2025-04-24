@@ -75,7 +75,7 @@ class AddFriendWidget extends StatelessWidget {
                             text: addFriendLogic.searchStr.value,
                             style: AppTheme()
                                 .appTextStyle
-                                .textStylePrimary
+                                .styleBrandPrimary
                                 .copyWith(
                                   fontWeight: ThemeFontWeight.medium.weight,
                                 ),
@@ -87,7 +87,7 @@ class AddFriendWidget extends StatelessWidget {
                 ).marginSymmetric(horizontal: 16.w, vertical: 16.h),
               ),
             if (addFriendLogic.isSearch.isTrue &&
-                Utils.isEmpty(addFriendLogic.userInfo.value.friendId))
+                Utils.isEmpty(addFriendLogic.userInfo.value.id))
               Text(
                 LocaleKeys.text_0149.tr,
                 style: AppTheme().appTextStyle.textStyleHintText.copyWith(
@@ -96,7 +96,7 @@ class AddFriendWidget extends StatelessWidget {
                     ),
               ).marginOnly(top: 50.w),
             if (addFriendLogic.isSearch.isTrue &&
-                !Utils.isEmpty(addFriendLogic.userInfo.value.friendId))
+                !Utils.isEmpty(addFriendLogic.userInfo.value.id))
               _userWidget(addFriendLogic.userInfo.value).marginOnly(top: 50.w),
           ],
         ),
@@ -104,7 +104,7 @@ class AddFriendWidget extends StatelessWidget {
     });
   }
 
-  Widget _userWidget(FriendInfo u) {
+  Widget _userWidget(UserInfo u) {
     return Container(
       decoration: CustomBoxDecoration.customDecoration(),
       child: Column(

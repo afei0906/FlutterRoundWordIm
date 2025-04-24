@@ -53,7 +53,7 @@ class LoginEmailLogic extends GetxController {
             type: 1,
             emailFirst: state.emailFirstController.text,
             emailLast: state.emailLastController.text));
-        UserStore.to.getUserInfo();
+        UserStore.to.initData();
         Get.offNamed(Routes.main);
       }
     });

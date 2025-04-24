@@ -4,7 +4,7 @@ enum CustomButtonType { filled, ghost, borderless }
 
 enum CustomButtonSize { large, medium, small }
 
-enum CustomButtonShape { radius, stadium }
+enum CustomButtonShape { radius, stadium,smallRadius }
 
 class CustomButton extends StatelessWidget {
   final Widget child;
@@ -75,17 +75,21 @@ class CustomButton extends StatelessWidget {
         return RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         );
+      case CustomButtonShape.smallRadius:
+        return RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        );
     }
   }
 
   EdgeInsetsGeometry? get _padding {
     switch (size) {
       case CustomButtonSize.large:
-        return EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.w);
+        return EdgeInsets.symmetric(horizontal: 18.w, );
       case CustomButtonSize.medium:
-        return EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w);
+        return EdgeInsets.symmetric(horizontal: 16.w, );
       case CustomButtonSize.small:
-        return EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.w);
+        return EdgeInsets.symmetric(horizontal: 12.w,);
     }
   }
 
