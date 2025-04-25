@@ -53,35 +53,41 @@ class LookNewFriendInfoWidget extends StatelessWidget {
             ),
           ).marginSymmetric(horizontal: 16.w),
           30.verticalSpace,
-          Row(
-            children: [
-              Expanded(
-                child: AppButton.brandPrimaryButton(
+          if (friendInfo.status == 2)
+            Row(
+              children: [
+                Expanded(
+                  child: AppButton.brandPrimaryButton(
                     height: 40.h,
                     LocaleKeys.text_0137.tr,
                     shape: CustomButtonShape.smallRadius,
                     style: AppTheme().appTextStyle.styleBrandPrimary.copyWith(
                         fontSize: 12.sp,
-                        fontWeight: ThemeFontWeight.medium.weight), () {
-                  onRefuse.call();
-                }, ),
-              ),
-              16.horizontalSpace,
-              Expanded(
-                child: AppButton.fillPrimaryButton(
-                  height: 40.h,
-                  LocaleKeys.text_0196.tr,
-                  shape: CustomButtonShape.smallRadius,
-                  style: AppTheme().appTextStyle.styleTextDarkPrimary.copyWith(
-                      fontSize: 12.sp,
-                      fontWeight: ThemeFontWeight.medium.weight),
-                  () {
-                    onApply.call();
-                  },
+                        fontWeight: ThemeFontWeight.medium.weight),
+                    () {
+                      onRefuse.call();
+                    },
+                  ),
                 ),
-              )
-            ],
-          ).marginSymmetric(horizontal: 16.w),
+                16.horizontalSpace,
+                Expanded(
+                  child: AppButton.fillPrimaryButton(
+                    height: 40.h,
+                    LocaleKeys.text_0196.tr,
+                    shape: CustomButtonShape.smallRadius,
+                    style: AppTheme()
+                        .appTextStyle
+                        .styleTextDarkPrimary
+                        .copyWith(
+                            fontSize: 12.sp,
+                            fontWeight: ThemeFontWeight.medium.weight),
+                    () {
+                      onApply.call();
+                    },
+                  ),
+                )
+              ],
+            ).marginSymmetric(horizontal: 16.w),
           30.verticalSpace,
         ],
       ),

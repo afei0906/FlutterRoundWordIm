@@ -40,7 +40,7 @@ class EmailRestPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(12.r)),
         child: SizedBox(
           width: double.infinity,
-          height: 48,
+          height: 48.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

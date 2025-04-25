@@ -24,7 +24,8 @@ class ChatPage extends StatelessWidget {
             children: [
               Expanded(
                   child: state.chatFormType == ChatFormType.createGroup
-                      ? GroupInfoWidget(logic.getGroupInfo(), (int index,GroupInfo groupInfo) {
+                      ? GroupInfoWidget(logic.getGroupInfo(),
+                          (int index, GroupInfo groupInfo) {
                           if (index == 0) {
                             logic.addGroupMember(groupInfo);
                           } else {
@@ -32,6 +33,7 @@ class ChatPage extends StatelessWidget {
                           }
                         })
                       : ChatWidget(logic)),
+
               // 底部输入区域
               _buildBottomInput(),
             ],

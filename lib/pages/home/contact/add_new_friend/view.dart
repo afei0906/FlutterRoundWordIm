@@ -60,20 +60,37 @@ class AddNewFriendPage extends StatelessWidget {
                     ],
                   )),
                   8.horizontalSpace,
-                  IntrinsicWidth(
-                    child: AppButton.fillPrimaryButton(
-                        height: 30.h,
-                        LocaleKeys.text_0137.tr,
-                        shape: CustomButtonShape.smallRadius,
-                        style: AppTheme()
-                            .appTextStyle
-                            .styleBrandPrimary
-                            .copyWith(
-                                fontSize: 12.sp,
-                                fontWeight: ThemeFontWeight.medium.weight), () {
-                      logic.refuseFriend(userInfo);
-                    }, isPress: false),
-                  ),
+
+                  ///  // /
+                  //     // * 通过
+                  //     // */
+                  //     // int PASS = 1;
+                  //     //
+                  //     // /
+                  //     // * 申请中
+                  //     // */
+                  //     // int APPLY = 2;
+                  //     //
+                  //     // /**
+                  //     //  * 无效：过期/拒绝
+                  //     //  */
+                  //     // int REJECT = 3;
+                  if (userInfo.status == 2)
+                    IntrinsicWidth(
+                      child: AppButton.fillPrimaryButton(
+                          height: 30.h,
+                          LocaleKeys.text_0137.tr,
+                          shape: CustomButtonShape.smallRadius,
+                          style: AppTheme()
+                              .appTextStyle
+                              .styleBrandPrimary
+                              .copyWith(
+                                  fontSize: 12.sp,
+                                  fontWeight: ThemeFontWeight.medium.weight),
+                          () {
+                        logic.refuseFriend(userInfo);
+                      }, isPress: false),
+                    ),
                   8.horizontalSpace,
                   IntrinsicWidth(
                     child: AppButton.fillPrimaryButton(
