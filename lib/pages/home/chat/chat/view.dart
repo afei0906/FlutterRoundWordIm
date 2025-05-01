@@ -9,47 +9,69 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.colorTextDarkPrimary,
-      body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            fit: BoxFit.fill,
-            alignment: Alignment.topCenter,
-            image: AssetImage(Resource.assetsImagesBgChatPng),
-          )),
-          child: Column(
-            children: [
-              Expanded(
-                  child: state.chatFormType == ChatFormType.createGroup
-                      ? GroupInfoWidget(logic.getGroupInfo(),
-                          (int index, GroupInfo groupInfo) {
-                          if (index == 0) {
-                            logic.addGroupMember(groupInfo);
-                          } else {
-                            logic.showGroupInfo(groupInfo);
-                          }
-                        })
-                      : ChatWidget(logic)),
-
-              // 底部输入区域
-              _buildBottomInput(),
-            ],
-          )),
-      appBar: appBar(),
+    return GetBuilder<ChatLogic>(
+      assignId: true,
+      builder: (logic) {
+        return Scaffold(
+          backgroundColor: AppTheme.colorTextDarkPrimary,
+          body: GestureDetector(
+              onTap: logic.clickRoot,
+              child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        alignment: Alignment.topCenter,
+                        image: AssetImage(Resource.assetsImagesBgChatPng),
+                      )),
+                  child: Column(
+                    children: [
+                      Expanded(
+                          child:
+                          state.chatFormType == ChatFormType.createGroup
+                              ? GroupInfoWidget(state.groupInfo,
+                                  (int index, GroupInfo groupInfo) {
+                                if (index == 0) {
+                                  logic.addGroupMember(groupInfo);
+                                } else {
+                                  logic.showGroupInfo(groupInfo);
+                                }
+                              })
+                              : ChatWidget(logic)),
+                      // 底部输入区域
+                      ChatInput(
+                        onSendMessage: (String text, MessageType m,
+                            {List<String>? atUsers}) {},
+                      ),
+                    ],
+                  ))),
+          appBar: appBar(),
+        );
+      },
     );
   }
 
   PreferredSizeWidget appBar() {
     return CusAppBar.floatLeading(Get.context!,
-        title: state.chatRequest?.title ?? '',
+        // title: state.chatRequest?.title ?? '',
         leadingWidth: 80.w,
-        leftWidget: Text(
-          LocaleKeys.text_0095.tr,
-          style: AppTheme().appTextStyle.textStyleSecondary,
-        ).marginOnly(left: 16.w),
+        titleWidget: GestureDetector(
+          onTap: logic.clickRoot,
+          child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                  text: state.chatRequest?.title ?? '',
+                  style: AppTheme().appTextStyle.textStyleTitleText,
+                  children: [
+                    if (state.chatRequest?.channelType.toString() == "2")
+                      TextSpan(
+                        text:
+                            '\n${Utils.toEmpty(state.groupInfo?.joinNum) ?? ''} ${LocaleKeys.text_0144.tr}',
+                        style: AppTheme().appTextStyle.styleTextDefaultFourth,
+                      )
+                  ])),
+        ),
         actions: [
           GestureDetector(
             onTap: logic.toDetail,
@@ -61,9 +83,5 @@ class ChatPage extends StatelessWidget {
           ),
           16.horizontalSpace
         ]);
-  }
-
-  Widget _buildBottomInput() {
-    return Container();
   }
 }

@@ -28,8 +28,7 @@ abstract class MessageApi {
   /// compareType "\"大于 gt\", \" 小于lt\", \"eq\", \"gteq\", \"lteq\""
   /// pageSize; 个数
   /// sortType 正序asc / 倒序desc
-  static Future<List<ConversationList>> getMsgList(
-      ChatRequest? chatRequest) async {
+  static Future<List<Message>> getMsgList(ChatRequest? chatRequest) async {
     var param = chatRequest?.toRequestJson();
     final res = await HttpService.to.post(Urls.getMsgList, params: param);
 
@@ -37,12 +36,29 @@ abstract class MessageApi {
       showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
       final List? list = res.data as List?;
-      MessageStore.to.saveConversationData(res.data);
+
+      final List<Message> clientList = list
+              ?.map((e) => Message.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [];
+      return clientList;
+    }
+    return [];
+  }
+
+  static Future<List<ConversationList>> messageSend(
+      MessageRequest? messageRequest) async {
+    var param = messageRequest?.toJson();
+    final res = await HttpService.to.post(Urls.messageSend, params: param);
+
+    if (res.code != 0) {
+      showErrorMsg(res.code.toString(), res.msg ?? '');
+    } else {
+      final List? list = res.data as List?;
       final List<ConversationList> clientList = list
               ?.map((e) => ConversationList.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [];
-      MessageStore.to.covariantList.value = clientList;
       return clientList;
     }
     return [];

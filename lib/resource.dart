@@ -79,6 +79,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultAddSvg.preview}
   static const String assetsSvgDefaultAddSvg = 'assets/svg/default/add.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultAddPlusCircleSvg.preview}
+  static const String assetsSvgDefaultAddPlusCircleSvg =
+      'assets/svg/default/add_plus_circle.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultBoxNoSelectSvg.preview}
   static const String assetsSvgDefaultBoxNoSelectSvg =
       'assets/svg/default/box_no_select.svg';
@@ -94,17 +98,61 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultChatSvg.preview}
   static const String assetsSvgDefaultChatSvg = 'assets/svg/default/chat.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultChatArchiveSvg.preview}
+  static const String assetsSvgDefaultChatArchiveSvg =
+      'assets/svg/default/chat_archive.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatCallSvg.preview}
+  static const String assetsSvgDefaultChatCallSvg =
+      'assets/svg/default/chat_call.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatCameraAltSvg.preview}
+  static const String assetsSvgDefaultChatCameraAltSvg =
+      'assets/svg/default/chat_camera_alt.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatCardGiftcardSvg.preview}
+  static const String assetsSvgDefaultChatCardGiftcardSvg =
+      'assets/svg/default/chat_card_giftcard.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatCreditCardSvg.preview}
+  static const String assetsSvgDefaultChatCreditCardSvg =
+      'assets/svg/default/chat_credit_card.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatGroupSvg.preview}
+  static const String assetsSvgDefaultChatGroupSvg =
+      'assets/svg/default/chat_group.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultChatGroupAddSvg.preview}
   static const String assetsSvgDefaultChatGroupAddSvg =
       'assets/svg/default/chat_group_add.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatInsertDriveFileSvg.preview}
+  static const String assetsSvgDefaultChatInsertDriveFileSvg =
+      'assets/svg/default/chat_insert_drive_file.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatMoneySvg.preview}
+  static const String assetsSvgDefaultChatMoneySvg =
+      'assets/svg/default/chat_money.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultChatOnReadSvg.preview}
   static const String assetsSvgDefaultChatOnReadSvg =
       'assets/svg/default/chat_on_read.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultChatPhotoSvg.preview}
+  static const String assetsSvgDefaultChatPhotoSvg =
+      'assets/svg/default/chat_photo.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatSwapHorizSvg.preview}
+  static const String assetsSvgDefaultChatSwapHorizSvg =
+      'assets/svg/default/chat_swap_horiz.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultChatUserAddSvg.preview}
   static const String assetsSvgDefaultChatUserAddSvg =
       'assets/svg/default/chat_user_add.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatVideocamSvg.preview}
+  static const String assetsSvgDefaultChatVideocamSvg =
+      'assets/svg/default/chat_videocam.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultCloseSvg.preview}
   static const String assetsSvgDefaultCloseSvg = 'assets/svg/default/close.svg';
@@ -143,6 +191,10 @@ class Resource {
   static const String assetsSvgDefaultGroupCloseSvg =
       'assets/svg/default/group_close.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultKeybordCoreSvg.preview}
+  static const String assetsSvgDefaultKeybordCoreSvg =
+      'assets/svg/default/keybord_core.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultLogoSvg.preview}
   static const String assetsSvgDefaultLogoSvg = 'assets/svg/default/logo.svg';
 
@@ -164,6 +216,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultScanSvg.preview}
   static const String assetsSvgDefaultScanSvg = 'assets/svg/default/scan.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultSendCoreSvg.preview}
+  static const String assetsSvgDefaultSendCoreSvg =
+      'assets/svg/default/send_core.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultShopListSvg.preview}
   static const String assetsSvgDefaultShopListSvg =
       'assets/svg/default/shop_list.svg';
@@ -183,4 +239,12 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultSignSussSvg.preview}
   static const String assetsSvgDefaultSignSussSvg =
       'assets/svg/default/sign_suss.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultSmileyCoreSvg.preview}
+  static const String assetsSvgDefaultSmileyCoreSvg =
+      'assets/svg/default/smiley_core.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultVoiceCoreSvg.preview}
+  static const String assetsSvgDefaultVoiceCoreSvg =
+      'assets/svg/default/voice_core.svg';
 }

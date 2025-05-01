@@ -20,12 +20,20 @@ import 'package:store/store/index.dart';
 import 'package:store/utils/index.dart';
 import 'package:store/widgets/index.dart';
 
-
 import '../generated/locales.g.dart';
 
 export 'package:dio/dio.dart';
 
 part 'network/http.dart';
+
 part 'local/storage.dart';
+
 part 'network/env.dart';
+
 part 'network/urls.dart';
+
+part 'webcocket/websocket_service.dart';
+
+part 'webcocket/binary_message_helper.dart';
+
+part 'webcocket/im_command.dart';

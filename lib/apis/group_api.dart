@@ -44,4 +44,18 @@ abstract class GroupApi {
     }
     return null;
   }
+
+  static Future<GroupDetail?> groupDetail(String? groupId) async {
+    final Map<String, dynamic> param = {
+      "groupId": groupId,
+    };
+    final res = await HttpService.to.post(Urls.groupDetail, params: param);
+
+    if (res.code != 0) {
+      showErrorMsg(res.code.toString(), res.msg ?? '');
+    } else {
+      return GroupDetail.fromJson(res.data);
+    }
+    return null;
+  }
 }

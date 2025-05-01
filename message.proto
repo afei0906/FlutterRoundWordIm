@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+
+
+message MessageNotify {
+    int32 channel_type = 1;          // Channel type
+    int64 channel_id = 2;            // Chat list ID
+    string fid = 3;                  // Client-provided file ID
+
+    int32 msg_type = 4; // Message type: 1 for normal, 2 for operation
+
+    // Code message for msg_type = 2
+    int32 oper = 5;                  // Operation code: 30 for friend request
+
+    string biz_data = 6;             // Business data
+
+    int64 mid = 7;                   // Message ID, globally unique
+    string content = 8;              // Chat content
+    int64 time = 9;                  // Message sending time
+
+    int32 content_type = 10;         // Content type: 1-text, 2-link card, 3-file, 4-audio, 5-video
+    bool sys_flag = 11;              // System message flag: true if sent by system
+
+    string sys_msg_key = 12;         // System message template key
+    string oper_nick = 13;           // System message operator
+    string to_nicks = 14;            // System message recipient
+
+    string server_ip = 15;           // Server IP
+    string trace_id = 16;            // Trace ID
+    string remark = 17;              // Remark
+
+    bool single_flag = 18;          // Is single-channel message: 1-yes, 2-no
+    int64 single_uid = 19;           // User ID for single-person message
+
+    int64 from_msg_id = 20;          // Forwarded message source ID
+    int64 reply_mid = 21;            // Reply message ID
+    string reply_msg_resume = 22;    // Reply message summary
+    int64 reply_uid = 23;            // Reply user ID
+    string reply_nick = 24;          // Reply user nickname
+
+    string nick = 25;                // Sender nickname
+    string avatar = 26;              // Sender avatar
+    int64 from = 27;                 // Sender information
+    int64 uid = 28;                  // Sender user ID
+    string at = 29;                  // Mentioned user information
+}

@@ -16,7 +16,9 @@ class UserStore extends GetxController {
   // bool get hasToken => _token.isNotEmpty;
   Rx<UserInfo> userInfo = UserInfo().obs;
 
+  EmotionState emotionState = EmotionState();
   LocalLoginInfo? localLoginInfo;
+  WebSocketService? wsService;
 
   @override
   void onInit() {
@@ -25,6 +27,7 @@ class UserStore extends GetxController {
     // log(">>>>userInfoStr$userInfoStr");
     if (!Utils.isEmpty(userInfoStr)) {
       userInfo.value = UserInfo.fromJson(json.decode(userInfoStr));
+      // _token = userInfo.value.token;
       // getIsLoginValue();
     }
     getLocalLoginInfo();
@@ -52,6 +55,9 @@ class UserStore extends GetxController {
         .setString(kLocalUserInfo, json.encode(userInfo.value.toJson()));
     if (!isOk) {
       logout();
+    } else {
+      emotionState.init();
+      _initWebSocket();
     }
     return isOk;
   }
@@ -68,6 +74,8 @@ class UserStore extends GetxController {
     await HttpService.to.clearCookie();
     ContactStore.to.clearData();
     MessageStore.to.clearData();
+    emotionState = EmotionState();
+    wsService?.disconnect();
     _isLogin = false.obs;
     if (UserStore.to.localLoginInfo?.type == 0) {
       if (ConfigStore.to.isOpenPhone()) {
@@ -113,5 +121,28 @@ class UserStore extends GetxController {
     await getUserInfo();
     ContactStore.to.featServerFriendData();
     MessageStore.to.getConversationServerData();
+  }
+
+  Future<void> _initWebSocket() async {
+    wsService ??= WebSocketService();
+    await wsService?.connect();
+    // 监听消息
+    wsService?.messageStream.listen((message) {
+      final (command, content) = message;
+
+      if (command == ImCommand.recv && content != null) {
+        MessageNotify messageNotify = MessageNotify.fromBuffer(content);
+        // 解析protobuf消息
+        // String base64Str = base64Encode(content);
+
+        log(">>>>>!!!${messageNotify.writeToJsonMap()}");
+      }
+    });
+  }
+
+  @override
+  void onClose() {
+    wsService?.disconnect();
+    super.onClose();
   }
 }

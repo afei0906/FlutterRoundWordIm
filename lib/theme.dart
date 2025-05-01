@@ -26,6 +26,7 @@ class AppTheme {
   static const colorBorderLight = Color(0xffEDEEF2);
   static const colorTextDefaultSecondary = Color(0xff373D4C);
   static const colorFillPageGray = Color(0xFFF0F2F3);
+  static const colorFillPageDeep = Color(0xFFDCE1E3);
 
   static const primary2 = Color(0xff65A1FF);
   static const defaultText = Color(0x0D000000);

@@ -4,6 +4,9 @@
 /// compareType : "compareType"
 /// pageSize : "pageSize"
 /// sortType : "sortType"
+///
+///  @Schema(description = "1：私聊；2：群聊")
+//     Integer channelType
 part of '../index.dart';
 
 class ChatRequest {
@@ -26,7 +29,7 @@ class ChatRequest {
     sortType = json['sortType'];
   }
 
-  dynamic channelType;
+  dynamic channelType; ///@Schema(description = "1：私聊；2：群聊")
   dynamic channelId;
   dynamic mid;
   dynamic compareType;

@@ -34,4 +34,8 @@ class Env {
       return 'http://gimapi.opghdm.cn/';
     }
   }
+
+  static String get wws {
+    return "wss://gimws.opghdm.cn";
+  }
 }

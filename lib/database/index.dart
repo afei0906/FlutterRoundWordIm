@@ -1,10 +1,17 @@
 library database;
 
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:store/utils/index.dart';
+
+import '../models/index.dart';
 
 
 
 
 
 
-part 'account.dart';
+
+part 'db_store.dart';
+part 'database_service.dart';
 

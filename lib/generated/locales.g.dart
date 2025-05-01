@@ -152,7 +152,6 @@ class LocaleKeys {
   static const text_0142 = 'text_0142';
   static const text_0143 = 'text_0143';
   static const text_0144 = 'text_0144';
-  static const text_0146 = 'text_0146';
   static const text_0147 = 'text_0147';
   static const text_0149 = 'text_0149';
   static const text_0150 = 'text_0150';
@@ -206,16 +205,51 @@ class LocaleKeys {
   static const text_0198 = 'text_0198';
   static const text_0199 = 'text_0199';
   static const text_0200 = 'text_0200';
+  static const text_0201 = 'text_0201';
+  static const text_0202 = 'text_0202';
+  static const text_0203 = 'text_0203';
+  static const text_0204 = 'text_0204';
+  static const text_0205 = 'text_0205';
+  static const text_0206 = 'text_0206';
+  static const text_0207 = 'text_0207';
+  static const text_0208 = 'text_0208';
+  static const text_0209 = 'text_0209';
+  static const text_0210 = 'text_0210';
+  static const text_0211 = 'text_0211';
+  static const text_0212 = 'text_0212';
+  static const text_0213 = 'text_0213';
+  static const text_0214 = 'text_0214';
+  static const text_0215 = 'text_0215';
+  static const text_0216 = 'text_0216';
+  static const text_0217 = 'text_0217';
+  static const text_0218 = 'text_0218';
+  static const text_0219 = 'text_0219';
+  static const text_0220 = 'text_0220';
+  static const text_0221 = 'text_0221';
+  static const text_0222 = 'text_0222';
+  static const text_0223 = 'text_0223';
+  static const text_0224 = 'text_0224';
+  static const text_0225 = 'text_0225';
+  static const text_0226 = 'text_0226';
+  static const text_0227 = 'text_0227';
+  static const text_0228 = 'text_0228';
+  static const text_0229 = 'text_0229';
+  static const text_0230 = 'text_0230';
+  static const text_0231 = 'text_0231';
+  static const text_0232 = 'text_0232';
+  static const text_0233 = 'text_0233';
 }
 
 class Locales {
   static const zhcn = {
-    'text_0200': '同意了你的好友申请',
-    'text_0198': '已忽略申请',
-    'text_0199': '你与@name已成为好友，可以去聊天啦',
-    'text_0196': '同意好友申请',
-    'text_0197': '申请成为你的好友',
-    'text_0195': '查看',
+    'text_0227': '相册',
+    'text_0228': '视频通话',
+    'text_0229': ' 红包',
+    'text_0230': ' 专属红包',
+    'text_0231': ' 转账',
+    'text_0232': ' 群名片',
+    'text_0233': ' 拍摄',
+    'text_0226': '发送',
     'text_0001': '环球IM 欢迎您！',
     'text_0002': '创建账户或登录现有账户，开启全新即时聊天体验！',
     'text_0003': '用户服务协议',
@@ -285,7 +319,7 @@ class Locales {
     'text_0067': '如果 @email 已注册环球IM账户，您将收到一封包含验证码的电子邮件。如3分钟未收到邮件，请核查您的邮箱垃圾桶。',
     'text_0068': '温馨提示：',
     'text_0069':
-        '如果您3分钟没有收到验证码邮件，请查阅您的邮件垃圾箱，有可能被您的邮箱误放入了垃圾箱，为了确保您的正常操作，您可以把邮件移动到邮件收件箱！',
+    '如果您3分钟没有收到验证码邮件，请查阅您的邮件垃圾箱，有可能被您的邮箱误放入了垃圾箱，为了确保您的正常操作，您可以把邮件移动到邮件收件箱！',
     'text_0070': '请设置新密码',
     'text_0071': '请再次输入新密码',
     'text_0072': '为账户 @email 设置新密码',
@@ -296,9 +330,9 @@ class Locales {
     'text_0077': '忘记手机号码？@text_0060',
     'text_0078': '如果 @phone已注册环球IM账户，您将收到一封包含验证码的短信。如3分钟未收到短信，请确认手机信号是否正常。',
     'text_0079':
-        '如果您3分钟内未收到验证码短信，可能被手机系统或安全软件误拦为骚扰短信，请查看短信拦截箱或垃圾信息，并标记为正常短信，以免影响接收。',
+    '如果您3分钟内未收到验证码短信，可能被手机系统或安全软件误拦为骚扰短信，请查看短信拦截箱或垃圾信息，并标记为正常短信，以免影响接收。',
     'text_0080': '输入您的昵称',
-    'text_0081': '域名不可用',
+    'text_0081': '域名不可用,请联系客服！',
     'text_0082': '加载中...',
     'text_0083': '没有开放登录权限',
     'text_0084': '没有开放注册权限',
@@ -359,7 +393,6 @@ class Locales {
     'text_0142': '@number人',
     'text_0143': '群管',
     'text_0144': '成员',
-    'text_0146': '取消',
     'text_0147': '搜索：@userName',
     'text_0149': '没有找到该用户',
     'text_0150': '分享名片',
@@ -407,5 +440,36 @@ class Locales {
     'text_0192': '音频',
     'text_0193': '视频',
     'text_0194': '名片',
+    'text_0195': '查看',
+    'text_0196': '同意好友申请',
+    'text_0197': '申请成为你的好友',
+    'text_0198': '已忽略申请',
+    'text_0199': '你与@name已成为好友，可以去聊天啦',
+    'text_0200': '同意了你的好友申请',
+    'text_0201': '退出',
+    'text_0202': '发送消息',
+    'text_0203': '通话结束',
+    'text_0204': '联系人信息',
+    'text_0205': '群成员',
+    'text_0206': '清空聊天记录',
+    'text_0207': '退出群聊',
+    'text_0208': '回复',
+    'text_0209': '复制',
+    'text_0210': '转发',
+    'text_0211': '收藏 ',
+    'text_0212': '删除',
+    'text_0213': '选择',
+    'text_0214': '删除消息',
+    'text_0215': '选择消息',
+    'text_0216': '已选择 @nunber 条消息',
+    'text_0217': '分享',
+    'text_0218': '仅仅删除我的消息',
+    'text_0219': '我和@name消息都删除',
+    'text_0220': '最近聊天',
+    'text_0221': '转发 @nunber  条消息给 @names',
+    'text_0222': '转发 @nunber  条消息至 @group',
+    'text_0223': '他的频道',
+    'text_0224': '推荐联系人给好友',
+    'text_0225': '邀请进群',
   };
 }

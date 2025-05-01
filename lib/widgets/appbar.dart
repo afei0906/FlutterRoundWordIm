@@ -39,7 +39,7 @@ class CusAppBar {
                 ),
               )
             : leftWidget,
-        titleStr: title,
+        titleWidget: titleWidget ?? Text(title),
         titleTextStyle:
             titleTextStyle ?? AppTheme().appTextStyle.textStyleTitleText,
         actions: actions,

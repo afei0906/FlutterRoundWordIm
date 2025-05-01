@@ -72,12 +72,15 @@ class ChatListPage extends StatelessWidget {
                                             width: 16.w,
                                             height: 16.w,
                                           ),
-                                        Text(
-                                          logic.toContentType(conversationList),
-                                          maxLines: 2,
-                                          style: AppTheme()
-                                              .appTextStyle
-                                              .styleTextDefaultFourth,
+                                        Flexible(
+                                          child: Text(
+                                            logic.toContentType(
+                                                conversationList),
+                                            maxLines: 2,
+                                            style: AppTheme()
+                                                .appTextStyle
+                                                .styleTextDefaultFourth,
+                                          ).marginOnly(right: 5.w),
                                         ),
                                       ],
                                     )

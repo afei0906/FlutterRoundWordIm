@@ -12,6 +12,7 @@ class ContactStore extends GetxController {
   Future<void> onInit() async {
     super.onInit();
     await featLocalFriendData();
+    await featLocalGroupData();
     // await _initContact();
   }
 
@@ -90,6 +91,15 @@ class ContactStore extends GetxController {
     groupList.refresh();
   }
 
+  List<GroupInfo> replaceGroupInfoById(
+    List<GroupInfo> originalList,
+    GroupInfo replacementUser,
+  ) {
+    return originalList.map((user) {
+      return user.id == replacementUser.id ? replacementUser : user;
+    }).toList();
+  }
+
   Future<void> featServerGroupData({String? keyword}) async {
     groupList.value = await GroupApi.myGroupList(keyword: keyword);
     // // A-Z sort.
@@ -112,8 +122,6 @@ class ContactStore extends GetxController {
           [];
       if (clientList.isNotEmpty) {
         groupList.value = clientList;
-        // A-Z sort.
-
         groupList.refresh();
         ContactListLogic.to.update();
       }

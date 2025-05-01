@@ -15,6 +15,8 @@ part 'request/password_protect_request.dart';
 
 part 'request/chat_request.dart';
 
+part 'request/message_request.dart';
+
 part 'response.dart';
 
 part 'dict_item.dart';
@@ -38,3 +40,7 @@ part 'local_login_info.dart';
 part 'conversation_list.dart';
 
 part 'apply_friend_info.dart';
+
+part 'message_type.dart';
+
+part 'message.dart';

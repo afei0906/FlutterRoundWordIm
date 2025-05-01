@@ -38,10 +38,10 @@ class PasswordProtectRequest {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    if(captchaVerification !=null) {
+    if (captchaVerification != null) {
       map['captchaVerification'] = captchaVerification;
     }
-    if(loginName !=null) {
+    if (loginName != null) {
       map['loginName'] = loginName;
     }
     if (checkIssueList != null) {
@@ -49,7 +49,6 @@ class PasswordProtectRequest {
     }
     return map;
   }
-
 
   Map<String, dynamic> toUserIssuesJson() {
     final map = <String, dynamic>{};
@@ -80,10 +79,10 @@ class CheckIssueList {
   });
 
   CheckIssueList.fromJson(dynamic json) {
-    qcode = json['qcode'];
-    qanswer = json['qanswer'];
-    qnumber = json['qnumber'];
-    qname = json['qname'];
+    qcode = json['code'];
+    qanswer = json['answer'];
+    qnumber = json['number'];
+    qname = json['name'];
   }
 
   dynamic qcode;
@@ -106,10 +105,10 @@ class CheckIssueList {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['qcode'] = qcode;
-    map['qanswer'] = qanswer;
-    map['qnumber'] = qnumber;
-    map['qname'] = qname;
+    map['code'] = qcode;
+    map['answer'] = qanswer;
+    map['number'] = qnumber;
+    map['name'] = qname;
     return map;
   }
 }

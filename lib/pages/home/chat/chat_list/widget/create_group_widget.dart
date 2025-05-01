@@ -132,7 +132,6 @@ class CreateGroupWidget extends StatelessWidget {
           children: [
             CustomUtils.avator(contact.avatar.toString() ?? '',width: 56.w,height: 56.w),
 
-
             Positioned(
                 right: 0,
                 child: GestureDetector(

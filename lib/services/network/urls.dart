@@ -57,8 +57,14 @@ class Urls {
   static const signIn = 'user/signIn';
 
 
+  ///用户表情列表
+  static const emotionList = 'user/emotion/list';
 
+  ///用户表情删除
+  static const emotionDelete= 'user/emotion/delete';
 
+  ///用户表情添加
+  static const emotionAdd= '/user/emotion/add';
 
 
   ///好友列表
@@ -83,6 +89,9 @@ class Urls {
   ///群组创建
   static const groupCreate = 'group/create';
 
+  ///群组详情
+  static const groupDetail = 'group/detail';
+
 
 
   ///发现页列表
@@ -95,6 +104,7 @@ class Urls {
   ///获取消息列表
   static const getMsgList = 'message/getMsgList';
 
-
+  ///发消息
+  static const messageSend = 'message/send';
 
 }

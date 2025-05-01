@@ -1,13 +1,17 @@
 library pages_chat;
 
+import 'package:flutter/foundation.dart' as foundation;
+import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:scan/scan.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:store/extension/index.dart';
@@ -29,6 +33,7 @@ part 'chat/chat/logic.dart';
 part 'chat/chat/state.dart';
 part 'chat/chat/view.dart';
 part 'chat/chat/widget/chat_widget.dart';
+part 'chat/chat/widget/chat_input.dart';
 part 'chat/chat/widget/group_info_widget.dart';
 part 'chat/chat_list/logic.dart';
 part 'chat/chat_list/mixin/create_group_logic.dart';

@@ -19,6 +19,7 @@ import '../../store/index.dart';
 import '../../theme.dart';
 import '../../utils/index.dart';
 import '../../widgets/index.dart';
+import '../home/index.dart';
 import '../sign_login/config/index.dart';
 import '../sign_login/sign/index.dart';
 

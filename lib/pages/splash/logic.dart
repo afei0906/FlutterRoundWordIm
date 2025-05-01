@@ -28,9 +28,17 @@ class SplashLogic extends GetxController {
         update();
       }
     } else {
-      await SmartDialog.showToast(LocaleKeys.text_0081.tr,
-          alignment: Alignment.center);
-      exit(0);
+      await SmartDialog.show(
+          clickMaskDismiss: false,
+          builder: (builder) {
+            return CustomUtils.customAlert(
+                title: LocaleKeys.text_0081.tr,
+                confirm: LocaleKeys.text_0201.tr,
+                onConfirm: () {
+                  SmartDialog.dismiss();
+                  exit(0);
+                });
+          });
     }
     SmartDialog.dismiss();
   }

@@ -28,3 +28,4 @@ part 'group_api.dart';
 part 'find_api.dart';
 
 part 'message_api.dart';
+part 'emotion_api.dart';

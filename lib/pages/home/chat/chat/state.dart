@@ -5,6 +5,7 @@ enum ChatFormType { createGroup, messageList, userInfo, groupInfo }
 class ChatState {
   ChatFormType chatFormType = ChatFormType.messageList;
   ChatRequest? chatRequest;
+  GroupInfo? groupInfo;
+  RxBool emojiShowing = false.obs;
 
-  String title="";
 }

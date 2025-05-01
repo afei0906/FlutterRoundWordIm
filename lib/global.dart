@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:store/services/index.dart';
 import 'package:store/store/index.dart';
 
+import 'database/index.dart';
+
 
 class Global {
   static final Global _instance = Global._internal();
@@ -21,6 +23,7 @@ class Global {
     ]).whenComplete(() {
       Get.put<HttpThrottle>(HttpThrottle());
       Get.put<ConfigStore>(ConfigStore());
+      Get.put<DatabaseService>(DatabaseService());
       Get.put<HttpService>(HttpService());
       Get.put<UserStore>(UserStore());
       Get.put<LanguageStore>(LanguageStore());
