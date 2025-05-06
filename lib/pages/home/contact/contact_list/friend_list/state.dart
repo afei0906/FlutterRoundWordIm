@@ -1,11 +1,9 @@
 part of '../../../index.dart';
 
 class FriendListState {
-  TextEditingController searchController = TextEditingController();
 
-  RxList<FriendInfo> dataList = RxList();
 
-  late ItemScrollController scroll = ItemScrollController();
+  RxList<FriendInfo> friendList = RxList();
 
   var d = FriendInfo(friendId: -1, chatIndex: "");
 }

@@ -14,3 +14,4 @@ import '../store/index.dart';
 import '../utils/index.dart';
 
 part 'logic.dart';
+part 'emotion_logic.dart';

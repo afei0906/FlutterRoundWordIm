@@ -16,8 +16,10 @@ class HomeLogic extends GetxController {
   void changeTabCurIndex(int index) {
     tabCurIndex.value = index;
     switch (index) {
+      case 0:
+        MessageStore.to.getConversationServerData();
       case 1:
-        ContactListLogic.to.getApplyList(false);
+        ContactListLogic.to.onInit();
     }
   }
 

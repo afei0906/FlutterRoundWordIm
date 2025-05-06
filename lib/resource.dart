@@ -187,6 +187,22 @@ class Resource {
   static const String assetsSvgDefaultFindMoreSvg =
       'assets/svg/default/find_more.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultFriendDelSvg.preview}
+  static const String assetsSvgDefaultFriendDelSvg =
+      'assets/svg/default/friend_del.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultFriendPhoneSvg.preview}
+  static const String assetsSvgDefaultFriendPhoneSvg =
+      'assets/svg/default/friend_phone.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultFriendTextSvg.preview}
+  static const String assetsSvgDefaultFriendTextSvg =
+      'assets/svg/default/friend_text.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultFriendVideoSvg.preview}
+  static const String assetsSvgDefaultFriendVideoSvg =
+      'assets/svg/default/friend_video.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultGroupCloseSvg.preview}
   static const String assetsSvgDefaultGroupCloseSvg =
       'assets/svg/default/group_close.svg';

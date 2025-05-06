@@ -7,5 +7,7 @@ class ChatState {
   ChatRequest? chatRequest;
   GroupInfo? groupInfo;
   RxBool emojiShowing = false.obs;
-
+  RxList<Message> messages=RxList();
+  final isLoading = false.obs;
+  final hasMore = true.obs;
 }

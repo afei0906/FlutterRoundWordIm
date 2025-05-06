@@ -7,6 +7,15 @@ class Urls {
   /// app配置
   static const appGetClientConf = 'app/getClientConf';
 
+  /// 获取aws配置
+  static const getAwsS3Conf = 'app/getAwsS3Conf';
+
+  /// 获取Minio配置
+  static const getMinioConf = 'app/getMinioConf';
+
+  /// 获取阿里云配置
+  static const getAliOssConf = 'app/getAliOssConf';
+
   /// 用户信息。进入APP调用
   static const userCurr = 'user/curr';
 
@@ -67,10 +76,20 @@ class Urls {
   static const emotionAdd= '/user/emotion/add';
 
 
+  ///其他用户信息
+  static const userInfo= 'user/info';
+
+
   ///好友列表
   static const myFriendList = 'friend/myFriendList';
   ///好友申请列表
   static const applyList = 'friend/applyList';
+
+  ///删除好友
+  static const deleteFriend = 'friend/deleteFriend';
+
+
+
   ///好友申请
   static const apply = 'friend/apply';
   ///同意好友
@@ -100,6 +119,13 @@ class Urls {
 
   ///会话
   static const conversationList = 'conversation/list';
+
+  ///会话更新
+  static const conversationUpdate = 'conversation/update';
+
+  ///会话删除
+  static const conversationDelete = 'conversation/delete';
+
 
   ///获取消息列表
   static const getMsgList = 'message/getMsgList';

@@ -47,6 +47,8 @@ class MessageNotify extends $pb.GeneratedMessage {
     $fixnum.Int64? from,
     $fixnum.Int64? uid,
     $core.String? at,
+    $core.bool? readFlag,
+    $fixnum.Int64? readTime,
   }) {
     final $result = create();
     if (channelType != null) {
@@ -136,13 +138,19 @@ class MessageNotify extends $pb.GeneratedMessage {
     if (at != null) {
       $result.at = at;
     }
+    if (readFlag != null) {
+      $result.readFlag = readFlag;
+    }
+    if (readTime != null) {
+      $result.readTime = readTime;
+    }
     return $result;
   }
   MessageNotify._() : super();
   factory MessageNotify.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MessageNotify.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageNotify', createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageNotify', package: const $pb.PackageName(_omitMessageNames ? '' : 'org.globalim.gimclient'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'channelType', $pb.PbFieldType.O3)
     ..aInt64(2, _omitFieldNames ? '' : 'channelId')
     ..aOS(3, _omitFieldNames ? '' : 'fid')
@@ -172,6 +180,8 @@ class MessageNotify extends $pb.GeneratedMessage {
     ..aInt64(27, _omitFieldNames ? '' : 'from')
     ..aInt64(28, _omitFieldNames ? '' : 'uid')
     ..aOS(29, _omitFieldNames ? '' : 'at')
+    ..aOB(30, _omitFieldNames ? '' : 'readFlag')
+    ..aInt64(31, _omitFieldNames ? '' : 'readTime')
     ..hasRequiredFields = false
   ;
 
@@ -457,6 +467,24 @@ class MessageNotify extends $pb.GeneratedMessage {
   $core.bool hasAt() => $_has(28);
   @$pb.TagNumber(29)
   void clearAt() => $_clearField(29);
+
+  @$pb.TagNumber(30)
+  $core.bool get readFlag => $_getBF(29);
+  @$pb.TagNumber(30)
+  set readFlag($core.bool v) { $_setBool(29, v); }
+  @$pb.TagNumber(30)
+  $core.bool hasReadFlag() => $_has(29);
+  @$pb.TagNumber(30)
+  void clearReadFlag() => $_clearField(30);
+
+  @$pb.TagNumber(31)
+  $fixnum.Int64 get readTime => $_getI64(30);
+  @$pb.TagNumber(31)
+  set readTime($fixnum.Int64 v) { $_setInt64(30, v); }
+  @$pb.TagNumber(31)
+  $core.bool hasReadTime() => $_has(30);
+  @$pb.TagNumber(31)
+  void clearReadTime() => $_clearField(31);
 }
 
 

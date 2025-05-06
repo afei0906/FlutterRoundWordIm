@@ -83,4 +83,17 @@ class MessageRequest {
     map['at'] = at;
     return map;
   }
+
+
+  Map<String, dynamic> toMsgJson() {
+    final map = <String, dynamic>{};
+    map['channelType'] = channelType;
+    map['channelId'] = channelId;
+    map['fid'] = fid;
+    map['replyMid'] = replyMid;
+    map['contentType'] = contentType;
+    map['content'] = payload;
+    map['at'] = at;
+    return map;
+  }
 }

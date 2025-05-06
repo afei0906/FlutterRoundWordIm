@@ -10,12 +10,14 @@ import 'dart:ui';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:store/extension/index.dart';
 import 'package:store/resource.dart';
 import 'package:store/services/index.dart';
 import 'package:store/utils/index.dart';
 
 import '../apis/index.dart';
 import '../common/azlistview/index.dart';
+import '../database/index.dart';
 import '../generated/locales.g.dart';
 import '../generated/message.pb.dart';
 import '../models/index.dart';

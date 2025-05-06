@@ -15,7 +15,9 @@ class ChatLogic extends GetxController {
       }
     }
 
-    getMsgList(state.chatRequest);
+    getMsgList(state.chatRequest).then((onValue) {
+      state.messages.value = onValue;
+    });
 
     super.onInit();
   }
@@ -63,22 +65,35 @@ class ChatLogic extends GetxController {
     // 可选，加载更新的消息
   }
 
-  void toDetail() {}
+  void toDetail() {
+    if (state.chatRequest?.channelType.toString() == "1") {
+      Get.toNamed(Routes.friendInfo, arguments: {
+        "userInfo": UserInfo(
+          id: state.chatRequest?.channelId,
+          nick: state.chatRequest?.title,
+          avatar: state.chatRequest?.avatar,
+        )
+      });
+    } else if (state.chatRequest?.channelType.toString() == "2") {
+      ///群聊
+      Get.toNamed(Routes.groupInfo,
+          arguments: {"channelId": state.chatRequest?.channelId});
+    }
+  }
 }
 
 extension ChatLogicx on ChatLogic {
-  //发送相关
-  void setMessage() async {
-    // if (Utils.isEmpty(state.chatController.text)) {
-    //   return;
-    // }
-    // MessageRequest messageRequest = MessageRequest(
-    //     channelType: state.chatRequest?.channelType,
-    //     channelId: state.chatRequest?.channelId,
-    //     fid: 0,
-    //     contentType: 1,
-    //     payload: state.chatController.text);
-    // await MessageApi.messageSend(messageRequest);
+  ///发送消息相关
+  Future<void> onSendMessage(String text, MessageType m,
+      {List<String>? atUsers}) async {
+    final MessageRequest messageRequest = MessageRequest(
+        channelType: state.chatRequest?.channelType,
+        channelId: state.chatRequest?.channelId,
+        fid: (await DatabaseService.to.dbStore.getMaxFid()) + 1,
+        contentType: m.value,
+        payload: text);
+
+    await MessageApi.messageSend(messageRequest);
   }
 }
 
@@ -87,12 +102,17 @@ extension ChatLogicHttp on ChatLogic {
     return GroupApi.groupDetail(groupId);
   }
 
-  Future<List<ConversationList>> messageSend(
-      MessageRequest messageRequest) async {
+  Future<bool?> messageSend(MessageRequest messageRequest) async {
     return MessageApi.messageSend(messageRequest);
   }
 
   Future<List<Message>> getMsgList(ChatRequest? chatRequest) async {
-    return MessageApi.getMsgList(chatRequest);
+    state.messages.value = await DatabaseService.to.dbStore.getMessages(
+        int.parse(Utils.toEmpty(chatRequest?.channelType) ?? '0'),
+        int.parse(Utils.toEmpty(chatRequest?.channelId) ?? '0'));
+    List<Message> list = await MessageApi.getMsgList(chatRequest);
+    DatabaseService.to.updateMsgList(list);
+
+    return list;
   }
 }

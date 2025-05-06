@@ -98,14 +98,16 @@ class CustomUtils {
                 style: AppTheme().appTextStyle.styleTextDefaultPrimary,
               ),
             ),
-          if (msg != null)
+          if (msg != null) ...[
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              margin: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 msg ?? '',
                 style: AppTheme().appTextStyle.styleTextDefaultFourth,
               ),
             ),
+            10.verticalSpace
+          ],
           const SizedBox(
             height: 10,
           ),

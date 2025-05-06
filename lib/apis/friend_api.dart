@@ -108,6 +108,27 @@ abstract class FriendApi {
     return false;
   }
 
+  static Future<bool> deleteFriend(
+    dynamic friendId,
+  ) async {
+    final Map<String, dynamic> param = {
+      "friendId": friendId,
+    };
+
+    try {
+      final res = await HttpService.to
+          .post(Urls.deleteFriend, params: param, showLoading: true);
+      if (res.code != 0) {
+        showErrorMsg(res.code.toString(), res.msg ?? '');
+      } else {
+        return true;
+      }
+    } catch (e) {
+      e.printError();
+    }
+    return false;
+  }
+
   static Future<bool> friendSure(dynamic applyId, {String? remarkName}) async {
     final Map<String, dynamic> param = {
       "applyId": applyId,

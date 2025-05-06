@@ -62,6 +62,8 @@ class Message {
     this.uid,
     this.at,
     this.localIpUtil,
+    this.readFlag,
+    this.readTime,
   });
 
   Message.fromJson(dynamic json) {
@@ -95,6 +97,8 @@ class Message {
     uid = json['uid'];
     at = json['at'];
     localIpUtil = json['localIpUtil'];
+    readFlag = json['readFlag'];
+    readTime = json['readTime'];
   }
 
   dynamic channelType;
@@ -127,6 +131,8 @@ class Message {
   dynamic uid;
   dynamic at;
   dynamic localIpUtil;
+  dynamic readFlag;
+  dynamic readTime;
 
   Message copyWith({
     dynamic channelType,
@@ -159,6 +165,8 @@ class Message {
     dynamic uid,
     dynamic at,
     dynamic localIpUtil,
+    dynamic readFlag,
+    dynamic readTime,
   }) =>
       Message(
         channelType: channelType ?? this.channelType,
@@ -191,6 +199,8 @@ class Message {
         uid: uid ?? this.uid,
         at: at ?? this.at,
         localIpUtil: localIpUtil ?? this.localIpUtil,
+        readFlag: readFlag ?? this.readFlag,
+        readTime: readTime ?? this.readTime,
       );
 
   Map<String, dynamic> toJson() {
@@ -225,6 +235,49 @@ class Message {
     map['uid'] = uid;
     map['at'] = at;
     map['localIpUtil'] = localIpUtil;
+    map['readFlag'] = readFlag;
+    map['readTime'] = readTime;
+
     return map;
   }
+
+  Message.MessageNotify(MessageNotify m) {
+    channelType = m.channelType;
+    channelId = m.channelId;
+    fid = m.fid;
+    msgType = m.msgType;
+    oper = m.oper;
+    bizData = m.bizData;
+    mid = m.mid;
+    content = m.content;
+    time = m.time;
+    contentType = m.contentType;
+    sysFlag = m.sysFlag;
+    sysMsgKey = m.sysMsgKey;
+    operNick = m.operNick;
+    toNicks = m.toNicks;
+    serverIp = m.serverIp;
+    traceId = m.traceId;
+    remark = m.remark;
+    singleFlag = m.singleFlag;
+    singleUid = m.singleUid;
+    fromMsgId = m.fromMsgId;
+    replyMid = m.replyMid;
+    replyMsgResume = m.replyMsgResume;
+    replyUid = m.replyUid;
+    replyNick = m.replyNick;
+    nick = m.nick;
+    avatar = m.avatar;
+    from = m.from;
+    uid = m.uid;
+    at = m.at;
+    readFlag = m.readFlag;
+    readTime = m.readTime;
+  }
+
+  bool get isSender =>
+      uid.toString() == UserStore.to.userInfo.value.id.toString();
+
+  MessageType get messageType =>
+      MessageType.fromValue(int.parse(Utils.toEmpty(contentType) ?? '0'));
 }

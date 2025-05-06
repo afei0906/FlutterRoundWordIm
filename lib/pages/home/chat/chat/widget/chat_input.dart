@@ -128,6 +128,9 @@ class _ChatInputState extends State<ChatInput> with WidgetsBindingObserver {
   }
 
   void _showAtUserList() {
+    if (state.chatRequest?.channelType.toString() == "1") {
+      return;
+    }
     showModalBottomSheet(
       context: context,
       builder: (context) => ListView(
@@ -473,20 +476,25 @@ class _ChatInputState extends State<ChatInput> with WidgetsBindingObserver {
           // 构建每个网格项 (功能按钮)
           itemBuilder: (context, index) {
             final item = currentPageItems[index];
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ThemeImageWidget(
-                  width: 56.h,
-                  height: 56.h,
-                  path: item.icon,
-                ),
-                8.verticalSpace,
-                Text(
-                  item.label,
-                  style: AppTheme().appTextStyle.styleTextDefaultTernary,
-                ),
-              ],
+            return GestureDetector(
+              onTap: () {
+                item.call.call();
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ThemeImageWidget(
+                    width: 56.h,
+                    height: 56.h,
+                    path: item.icon,
+                  ),
+                  8.verticalSpace,
+                  Text(
+                    item.label,
+                    style: AppTheme().appTextStyle.styleTextDefaultTernary,
+                  ),
+                ],
+              ),
             );
           },
         ).marginSymmetric(horizontal: 16.w),

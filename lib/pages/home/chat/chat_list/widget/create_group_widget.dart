@@ -7,7 +7,7 @@ class CreateGroupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    logic.state.searchController.clear();
+    logic.searchController.clear();
     return Obx(() {
       return Container(
         height: Get.height - 50,
@@ -25,11 +25,11 @@ class CreateGroupWidget extends StatelessWidget {
                 title: LocaleKeys.text_0157.tr,
                 rightStr: LocaleKeys.text_0065.tr,
                 msg:
-                    "${logic.selectList.length}/${logic.state.dataList.length}",
+                    "${logic.selectList.length}/${logic.dataList.length}",
                 onBack: logic.toNext)
             .marginSymmetric(vertical: 12.h),
         CustomUtils.onSearchView(
-          logic.state.searchController,
+          logic.searchController,
           LocaleKeys.text_0133.tr,
           onSubmitted: logic.onSubmitted,
           onChanged: logic.onSubmitted,

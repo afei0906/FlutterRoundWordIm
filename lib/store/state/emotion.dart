@@ -48,59 +48,39 @@ class EmotionState {
   RxList<FuncItem> getInputList(dynamic channelType) {
     return [
       ////相册
-      FuncItem(
-        Resource.assetsSvgDefaultChatPhotoSvg,
-        LocaleKeys.text_0227.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatPhotoSvg, LocaleKeys.text_0227.tr,
+          UserStore.to.toPhoto),
       //拍摄
-      FuncItem(
-          Resource.assetsSvgDefaultChatCameraAltSvg, LocaleKeys.text_0233.tr),
+      FuncItem(Resource.assetsSvgDefaultChatCameraAltSvg,
+          LocaleKeys.text_0233.tr, UserStore.to.toCameraAlt),
 
       //视频通话
-      FuncItem(
-        Resource.assetsSvgDefaultChatVideocamSvg,
-        LocaleKeys.text_0228.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatVideocamSvg,
+          LocaleKeys.text_0228.tr, UserStore.to.toVideocam),
       //语音通话
-      FuncItem(
-        Resource.assetsSvgDefaultChatCallSvg,
-        LocaleKeys.text_0153.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatCallSvg, LocaleKeys.text_0153.tr,
+          UserStore.to.toCall),
       //文件
-      FuncItem(
-        Resource.assetsSvgDefaultChatInsertDriveFileSvg,
-        LocaleKeys.text_0191.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatInsertDriveFileSvg,
+          LocaleKeys.text_0191.tr, UserStore.to.toInsertDriveFil),
       //红包
-      FuncItem(
-        Resource.assetsSvgDefaultChatCardGiftcardSvg,
-        LocaleKeys.text_0229.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatCardGiftcardSvg,
+          LocaleKeys.text_0229.tr, UserStore.to.toCardGiftcard),
       //专属红包
-      FuncItem(
-        Resource.assetsSvgDefaultChatMoneySvg,
-        LocaleKeys.text_0230.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatMoneySvg, LocaleKeys.text_0230.tr,
+          UserStore.to.toMoney),
       //转账
-      FuncItem(
-        Resource.assetsSvgDefaultChatSwapHorizSvg,
-        LocaleKeys.text_0231.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatSwapHorizSvg,
+          LocaleKeys.text_0231.tr, UserStore.to.toSwapHoriz),
       //名片
-      FuncItem(
-        Resource.assetsSvgDefaultChatCreditCardSvg,
-        LocaleKeys.text_0194.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatCreditCardSvg,
+          LocaleKeys.text_0194.tr, UserStore.to.toCreditCard),
       //群名片
-      FuncItem(
-        Resource.assetsSvgDefaultChatGroupSvg,
-        LocaleKeys.text_0232.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatGroupSvg, LocaleKeys.text_0232.tr,
+          UserStore.to.toGroup),
       //收藏
-      FuncItem(
-        Resource.assetsSvgDefaultChatArchiveSvg,
-        LocaleKeys.text_0211.tr,
-      ),
+      FuncItem(Resource.assetsSvgDefaultChatArchiveSvg, LocaleKeys.text_0211.tr,
+          UserStore.to.toChatArchive),
     ].obs;
   }
 }
@@ -108,6 +88,7 @@ class EmotionState {
 class FuncItem {
   final String icon;
   final String label;
+  Function call;
 
-  FuncItem(this.icon, this.label);
+  FuncItem(this.icon, this.label, this.call);
 }

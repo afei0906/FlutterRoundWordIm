@@ -134,6 +134,10 @@ class UserStore extends GetxController {
         MessageNotify messageNotify = MessageNotify.fromBuffer(content);
         // 解析protobuf消息
         // String base64Str = base64Encode(content);
+        final Message message = Message.MessageNotify(messageNotify);
+        DatabaseService.to.updateLocalMsg(message, isReplace: false);
+        MessageStore.to.chatListState.updateConversations(message,
+            isRead: message.channelId != UserStore.to.userInfo.value.id);
 
         log(">>>>>!!!${messageNotify.writeToJsonMap()}");
       }

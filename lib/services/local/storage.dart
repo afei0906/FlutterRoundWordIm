@@ -10,7 +10,7 @@ class StorageService extends GetxService {
   }
 
   Future<bool> setString(String key, String value) async {
-    return await _prefs.setString(key, value);
+    return  _prefs.setString(key, value);
   }
 
   Future<bool> setInt(String key, int value) async {

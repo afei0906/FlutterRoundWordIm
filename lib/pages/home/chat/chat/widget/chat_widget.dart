@@ -13,17 +13,37 @@ class ChatWidget extends StatelessWidget {
       }
     });
   }
+
   // builder
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Expanded(
+        child: Obx(
+      () => ListView.builder(
+        itemCount: controller.state.messages.length,
+        itemBuilder: (context, index) {
+          // if (index == controller.state.messages.length) {
+          //   if (controller.state.isLoading.value) {
+          //     return Center(child: CircularProgressIndicator());
+          //   }
+          //   if (controller.state.hasMore.value) {
+          //     return TextButton(
+          //       onPressed: controller.loadMoreMessages,
+          //       child: Text('Load More'),
+          //     );
+          //   }
+          //   return SizedBox();
+          // }
 
-    //   Obx(() => ListView(
-    //   controller: scrollController,
-    //   // itemCount: controller.state.length,
-    //   // itemBuilder: (_, index) {
-    //   //   return ChatBubble(message: controller.messages[index]);
-    //   // },
-    // ));
+          final message = controller.state.messages[index];
+          return MessageBubble(
+            message: message,
+            onLongPress: () => () {
+              // _showMessageOptions(context, message);
+            },
+          );
+        },
+      ),
+    ));
   }
 }

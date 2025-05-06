@@ -72,7 +72,7 @@ class ChatRequest {
     map['channelId'] = channelId;
     map['mid'] = mid ?? 0;
     map['compareType'] = compareType ?? "lteq";
-    map['pageSize'] = pageSize ?? 20;
+    map['pageSize'] = pageSize ?? 50;
     map['sortType'] = sortType ?? "desc";
     return map;
   }

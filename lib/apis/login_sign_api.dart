@@ -37,6 +37,43 @@ abstract class LoginSignApi {
     return [];
   }
 
+  ///
+  static Future<PicUpdateConfig?> getAwsS3Conf() async {
+    final res = await HttpService.to.post(
+      Urls.getAwsS3Conf,
+    );
+    if (res.code != 0) {
+      // showErrorMsg(res.code.toString(), res.msg ?? '');
+    } else {
+      return PicUpdateConfig.fromJson(res.data);
+    }
+    return null;
+  }
+
+  static Future<PicUpdateConfig?> getMinioConf() async {
+    final res = await HttpService.to.post(
+      Urls.getMinioConf,
+    );
+    if (res.code != 0) {
+      // showErrorMsg(res.code.toString(), res.msg ?? '');
+    } else {
+      return PicUpdateConfig.fromJson(res.data);
+    }
+    return null;
+  }
+
+  static Future<PicUpdateConfig?> getAliOssConf() async {
+    final res = await HttpService.to.post(
+      Urls.getAliOssConf,
+    );
+    if (res.code != 0) {
+      // showErrorMsg(res.code.toString(), res.msg ?? '');
+    } else {
+      return PicUpdateConfig.fromJson(res.data);
+    }
+    return null;
+  }
+
   static Future<UserInfo?> postUserCurr() async {
     final res = await HttpService.to.post(
       Urls.userCurr,
@@ -44,7 +81,7 @@ abstract class LoginSignApi {
     if (res.code != 0) {
       // showErrorMsg(res.code.toString(), res.msg ?? '');
     } else {
-      if(res.data !=null) {
+      if (res.data != null) {
         return UserInfo.fromJson(res.data);
       }
     }
@@ -186,8 +223,6 @@ abstract class LoginSignApi {
     return false;
   }
 
-
-
   static Future<List<CheckIssueList>?> getUserIssues(
       {String? loginName}) async {
     final res = await HttpService.to.post(Urls.getUserIssues,
@@ -204,6 +239,7 @@ abstract class LoginSignApi {
     }
     return null;
   }
+
   static Future<String?> resetPasswordByEmailVerifyCode(
       String loginName, String verifyCode) async {
     final res = await HttpService.to.post(Urls.resetPasswordByEmailVerifyCode,
@@ -219,6 +255,7 @@ abstract class LoginSignApi {
     }
     return null;
   }
+
   static Future<String?> resetPasswordByUserIssue(
       PasswordProtectRequest passwordProtectRequest) async {
     final res = await HttpService.to.post(Urls.resetPasswordByUserIssue,

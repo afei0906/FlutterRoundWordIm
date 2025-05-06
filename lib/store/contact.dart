@@ -3,7 +3,7 @@ part of 'index.dart';
 class ContactStore extends GetxController {
   static ContactStore get to => Get.find<ContactStore>();
 
-  RxList<FriendInfo> friendList = RxList();
+  FriendListState friendListState = FriendListState();
 
   RxList<GroupInfo> groupList = RxList();
   final throttle = Throttle(const Duration(milliseconds: 800));
@@ -33,14 +33,26 @@ class ContactStore extends GetxController {
     });
   }
 
+  Future<void> reMoveFriendById(dynamic id) async {
+    friendListState.friendList.removeWhere((test) {
+      return test.friendId == id;
+    });
+    friendListState.friendList.refresh();
+    ChatListLogic.to.dataList.removeWhere((test) {
+      return test.friendId == id;
+    });
+    ChatListLogic.to.dataList.refresh();
+  }
+
   Future<void> featServerFriendData({String? keyword}) async {
-    friendList.value = await FriendApi.myFriendList(keyword: keyword);
+    friendListState.friendList.value =
+        await FriendApi.myFriendList(keyword: keyword);
     // A-Z sort.
-    SuspensionUtil.sortListBySuspensionTag(friendList);
+    SuspensionUtil.sortListBySuspensionTag(friendListState.friendList);
 
     // show sus tag.
-    SuspensionUtil.setShowSuspensionStatus(friendList);
-    friendList.refresh();
+    SuspensionUtil.setShowSuspensionStatus(friendListState.friendList);
+    friendListState.friendList.refresh();
     // ContactListLogic.to.update();
   }
 
@@ -54,12 +66,12 @@ class ContactStore extends GetxController {
               .toList() ??
           [];
       if (clientList.isNotEmpty) {
-        friendList.value = clientList;
+        friendListState.friendList.value = clientList;
         // A-Z sort.
-        SuspensionUtil.sortListBySuspensionTag(friendList);
+        SuspensionUtil.sortListBySuspensionTag(friendListState.friendList);
         // show sus tag.
-        SuspensionUtil.setShowSuspensionStatus(friendList);
-        friendList.refresh();
+        SuspensionUtil.setShowSuspensionStatus(friendListState.friendList);
+        friendListState.friendList.refresh();
         // ContactListLogic.to.update();
       }
     }
@@ -135,7 +147,7 @@ class ContactStore extends GetxController {
   }
 
   void clearData() {
-    friendList.clear();
+    friendListState = FriendListState();
     groupList.clear();
   }
 }

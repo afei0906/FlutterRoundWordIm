@@ -16,7 +16,7 @@ class CreateNewChat extends StatelessWidget {
                   title: LocaleKeys.text_0155.tr, onBack: SmartDialog.dismiss)
               .marginSymmetric(vertical: 12.h),
           CustomUtils.onSearchView(
-            friendListLogic.state.searchController,
+            friendListLogic.searchController,
             LocaleKeys.text_0133.tr,
             onSubmitted: friendListLogic.onSubmitted,
             onChanged: friendListLogic.onSubmitted,

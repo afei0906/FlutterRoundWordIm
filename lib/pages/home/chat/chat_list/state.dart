@@ -5,11 +5,46 @@ class ChatListState {
   RxList<ConversationList> unreadConversations = RxList();
   RxList<ConversationList> sortedGroupChats = RxList();
 
-  void addCovariantList(RxList<ConversationList> covariantList) {
+  void addCovariantList(List<ConversationList> covariantList) {
     this.covariantList.clear();
     this.covariantList.addAll(sortByTopFlag(covariantList));
     unreadConversations.value = getUnreadConversations(this.covariantList);
     sortedGroupChats.value = getGroupChats(this.covariantList);
+  }
+
+  void deleteCovariantList(ConversationList conversationList) {
+    covariantList.remove(conversationList);
+    final List data = [];
+    covariantList.forEach((action) {
+      data.add(action.toJson());
+    });
+    StorageService.to.setString(
+        "${kLocalConversationList}_${UserStore.to.userInfo.value.id}",
+        jsonEncode(data));
+    unreadConversations.remove(conversationList);
+    sortedGroupChats.remove(conversationList);
+  }
+
+  void updateConversationData(ConversationList conversationList,
+      {dynamic topFlagCollapse, dynamic msgFreeFlagCollapse}) {
+    if (!Utils.isEmpty(topFlagCollapse)) {
+      if (topFlagCollapse.toString() == '1') {
+        covariantList.remove(conversationList);
+        covariantList.insert(0, conversationList);
+      } else {
+        final List<ConversationList> list = sortByTopFlag(covariantList);
+        covariantList.clear();
+        covariantList.addAll(list);
+      }
+    }
+    covariantList.refresh();
+    final List data = [];
+    covariantList.forEach((action) {
+      data.add(action.toJson());
+    });
+    StorageService.to.setString(
+        "${kLocalConversationList}_${UserStore.to.userInfo.value.id}",
+        jsonEncode(data));
   }
 
   RxList<ConversationList> getCurrentList(int i) {
@@ -59,5 +94,37 @@ class ChatListState {
     return conversations
         .where((conversation) => conversation.chatMode == 2)
         .toList();
+  }
+
+  void updateConversations(Message m, {bool isRead = true}) {
+    final ConversationList? c = covariantList.firstWhereOrNull((test) {
+      bool isHas = m.channelId.toString() == test.bizId.toString() &&
+          m.channelType.toString() == test.chatMode.toString();
+      test.contentType = m.contentType;
+      test.time = m.time;
+      test.resume = m.content;
+      if (isRead) {
+        test.notReadCount =
+            int.parse(Utils.toEmpty(test.notReadCount) ?? "0") + 1;
+      }
+      return isHas;
+    });
+    covariantList.refresh();
+    unreadConversations.refresh();
+    sortedGroupChats.refresh();
+    if (c == null) {
+      covariantList.insert(
+          0,
+          ConversationList(
+              chatMode: m.channelType,
+              bizId: m.channelType,
+              resume: m.content,
+              contentType: m.contentType,
+              name: m.nick,
+              avatar: m.avatar,
+              notReadCount: 1,
+              time: m.time));
+      addCovariantList(covariantList);
+    }
   }
 }

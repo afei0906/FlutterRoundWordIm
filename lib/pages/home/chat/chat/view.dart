@@ -21,28 +21,26 @@ class ChatPage extends StatelessWidget {
                   height: double.infinity,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                        fit: BoxFit.fill,
-                        alignment: Alignment.topCenter,
-                        image: AssetImage(Resource.assetsImagesBgChatPng),
-                      )),
+                    fit: BoxFit.fill,
+                    alignment: Alignment.topCenter,
+                    image: AssetImage(Resource.assetsImagesBgChatPng),
+                  )),
                   child: Column(
                     children: [
                       Expanded(
-                          child:
-                          state.chatFormType == ChatFormType.createGroup
+                          child: state.chatFormType == ChatFormType.createGroup
                               ? GroupInfoWidget(state.groupInfo,
                                   (int index, GroupInfo groupInfo) {
-                                if (index == 0) {
-                                  logic.addGroupMember(groupInfo);
-                                } else {
-                                  logic.showGroupInfo(groupInfo);
-                                }
-                              })
+                                  if (index == 0) {
+                                    logic.addGroupMember(groupInfo);
+                                  } else {
+                                    logic.showGroupInfo(groupInfo);
+                                  }
+                                })
                               : ChatWidget(logic)),
                       // 底部输入区域
                       ChatInput(
-                        onSendMessage: (String text, MessageType m,
-                            {List<String>? atUsers}) {},
+                        onSendMessage: logic.onSendMessage,
                       ),
                     ],
                   ))),

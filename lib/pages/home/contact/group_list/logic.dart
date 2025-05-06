@@ -17,7 +17,17 @@ class GroupListLogic extends GetxController {
     });
   }
 
-  void toGroupDetail(GroupInfo? groupInfo) {}
+  void toGroupDetail(GroupInfo? groupInfo) {
+    Get.toNamed(Routes.chatPage,  arguments: {
+      "formType": ChatFormType.groupInfo,
+      "chatRequest": ChatRequest(
+          channelType: 2,
+          channelId: groupInfo?.id,
+          mid: 0,
+          title: Utils.toEmpty(groupInfo?.name) ?? '',
+          avatar: Utils.toEmpty(groupInfo?.avatar) ?? ''),
+    });
+  }
 }
 
 extension GroupListLogicX on GroupListLogic {

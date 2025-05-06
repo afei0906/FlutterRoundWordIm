@@ -6,6 +6,8 @@ import 'dart:developer';
 import 'package:store/utils/index.dart';
 
 import '../common/azlistview/index.dart';
+import '../generated/message.pb.dart';
+import '../store/index.dart';
 
 part 'request/login_request.dart';
 
@@ -44,3 +46,5 @@ part 'apply_friend_info.dart';
 part 'message_type.dart';
 
 part 'message.dart';
+
+part 'pic_update_config.dart';

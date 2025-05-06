@@ -1,5 +1,6 @@
 library pages_chat;
 
+import 'dart:convert';
 import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -9,6 +10,7 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,6 +26,7 @@ import 'package:text_scroll/text_scroll.dart';
 
 import '../../apis/index.dart';
 import '../../common/azlistview/index.dart';
+import '../../database/index.dart';
 import '../../generated/locales.g.dart';
 import '../../models/index.dart';
 import '../../services/index.dart';
@@ -35,12 +38,14 @@ part 'chat/chat/view.dart';
 part 'chat/chat/widget/chat_widget.dart';
 part 'chat/chat/widget/chat_input.dart';
 part 'chat/chat/widget/group_info_widget.dart';
+part 'chat/chat/widget/message_bubble.dart';
 part 'chat/chat_list/logic.dart';
 part 'chat/chat_list/mixin/create_group_logic.dart';
 part 'chat/chat_list/state.dart';
 part 'chat/chat_list/view.dart';
 part 'chat/chat_list/widget/create_group_widget.dart';
 part 'chat/chat_list/widget/create_new_chat.dart';
+part 'chat/chat_list/widget/chat_list_item.dart';
 part 'chat/scan_qr_code/logic.dart';
 part 'chat/scan_qr_code/state.dart';
 part 'chat/scan_qr_code/view.dart';
@@ -73,3 +78,11 @@ part 'shop/shop_home/state.dart';
 part 'shop/shop_home/view.dart';
 part 'view.dart';
 part 'widget/view.dart';
+
+
+part 'chat/friend_info/logic.dart';
+part 'chat/friend_info/state.dart';
+part 'chat/friend_info/view.dart';
+part 'chat/group_info/logic.dart';
+part 'chat/group_info/state.dart';
+part 'chat/group_info/view.dart';

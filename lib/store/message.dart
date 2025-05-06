@@ -5,7 +5,7 @@ class MessageStore extends GetxController {
 
   ChatListState chatListState = ChatListState();
 
-  RxList<ConversationList> covariantList = RxList();
+  // RxList<ConversationList> covariantList = RxList();
 
   final throttle = Throttle(const Duration(milliseconds: 1000));
 
@@ -26,7 +26,7 @@ class MessageStore extends GetxController {
   Future<void> getConversationServerData() async {
     throttle.run(() async {
       await MessageApi.conversationList();
-      chatListState.addCovariantList(covariantList);
+      // chatListState.addCovariantList(covariantList);
     });
   }
 
@@ -35,13 +35,14 @@ class MessageStore extends GetxController {
         "${kLocalConversationList}_${UserStore.to.userInfo.value.id}");
     if (!Utils.isEmpty(jsonStr)) {
       final List? list = json.decode(jsonStr) as List?;
-      covariantList.value = list
-              ?.map((e) => ConversationList.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [];
+      final List<ConversationList> covariantList = (list
+                  ?.map((e) =>
+                      ConversationList.fromJson(e as Map<String, dynamic>))
+                  .toList() ??
+              [])
+          .obs;
       chatListState.addCovariantList(covariantList);
     }
-    covariantList.refresh();
   }
 
   Future<void> saveConversationData(dynamic data) async {
@@ -50,8 +51,18 @@ class MessageStore extends GetxController {
         jsonEncode(data));
   }
 
+  Future<void> updateConversationData(ConversationList conversationList,
+      {dynamic topFlagCollapse, dynamic msgFreeFlagCollapse}) async {
+    chatListState.updateConversationData(conversationList,
+        topFlagCollapse: topFlagCollapse,
+        msgFreeFlagCollapse: msgFreeFlagCollapse);
+  }
+
+  Future<void> deleteConversationData(ConversationList conversationList) async {
+    chatListState.deleteCovariantList(conversationList);
+  }
+
   void clearData() {
     chatListState = ChatListState();
-    covariantList.clear();
   }
 }

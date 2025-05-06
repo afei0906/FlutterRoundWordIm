@@ -30,8 +30,8 @@ class ChatListLogic extends GetxController
   }
 
   void toAddNewChat() {
-    if (!state.dataList.contains(state.d)) {
-      state.dataList.insert(0, state.d);
+    if (!dataList.contains(state.d)) {
+      dataList.insert(0, state.d);
     }
     SmartDialog.show(
         clickMaskDismiss: false,
@@ -42,6 +42,7 @@ class ChatListLogic extends GetxController
   }
 
   void toChat(ConversationList conversationList) {
+    // MessageApi.conversationUpdate(conversationList,topFlagCollapse:1);
     Get.toNamed(Routes.chatPage, arguments: {
       "formType": ChatFormType.messageList,
       "chatRequest": ChatRequest(
@@ -49,9 +50,20 @@ class ChatListLogic extends GetxController
           channelId: conversationList.bizId,
           mid: conversationList.lastMsgId,
           title: Utils.toEmpty(conversationList.name) ?? '',
-          avatar: Utils.toEmpty(conversationList.avatar) ?? ''
-      )
+          avatar: Utils.toEmpty(conversationList.avatar) ?? '')
     });
+  }
+
+  Future<void> delete(ConversationList conversationList) async {
+    conversationDelete(conversationList);
+  }
+
+  Future<void> topFlag(ConversationList conversationList, int i) async {
+    conversationUpdate(conversationList, topFlagCollapse: i);
+  }
+
+  Future<void> toMsgFreeFlag(ConversationList conversationList, int i) async {
+    conversationUpdate(conversationList, msgFreeFlagCollapse: i);
   }
 
   void toScan() {
@@ -106,5 +118,19 @@ extension SearchChatLogicX on ChatListLogic {
 
   Future<void> featConversationList() async {
     await MessageStore.to.initData();
+  }
+
+  Future<bool> conversationUpdate(ConversationList conversationList,
+      {dynamic topFlagCollapse, dynamic msgFreeFlagCollapse}) async {
+    return MessageApi.conversationUpdate(conversationList,
+        topFlagCollapse: topFlagCollapse,
+        msgFreeFlagCollapse: msgFreeFlagCollapse);
+  }
+
+  Future<bool> conversationDelete(ConversationList conversationList,
+      {dynamic topFlagCollapse, dynamic msgFreeFlagCollapse}) async {
+    return MessageApi.conversationDelete(
+      conversationList,
+    );
   }
 }

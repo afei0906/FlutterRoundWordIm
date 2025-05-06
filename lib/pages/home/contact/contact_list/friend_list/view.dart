@@ -22,9 +22,9 @@ class FriendListPage extends StatelessWidget {
         child: Obx(() {
           return AzListView(
             key: const PageStorageKey('my-list-key'),
-            data: state.dataList,
-            itemCount: state.dataList.length,
-            itemScrollController: state.scroll,
+            data: logic.dataList,
+            itemCount: logic.dataList.length,
+            itemScrollController: logic.scroll,
             itemBuilder: (BuildContext itemContext, int index) {
               return _itemWidget(context, index);
             },
@@ -35,9 +35,9 @@ class FriendListPage extends StatelessWidget {
                     .textExtraLightStylePrimary
                     .copyWith(fontWeight: ThemeFontWeight.semiBold.weight)),
             padding: EdgeInsets.zero,
-            indexBarData: SuspensionUtil.getTagIndexList(state.dataList),
+            indexBarData: SuspensionUtil.getTagIndexList(logic.dataList),
             susItemBuilder: (BuildContext context, int index) {
-              return susItem(state.dataList[index].getSuspensionTag())
+              return susItem(logic.dataList[index].getSuspensionTag())
                   .marginOnly(top: 10, left: 10);
             },
             isShowSus: false,
@@ -67,7 +67,7 @@ class FriendListPage extends StatelessWidget {
   }
 
   Widget _itemWidget(BuildContext itemContext, int index) {
-    final FriendInfo userInfo = state.dataList[index];
+    final FriendInfo userInfo = logic.dataList[index];
     if (userInfo.friendId == -1) {
       return Container(
         height: 174.h,
@@ -78,22 +78,22 @@ class FriendListPage extends StatelessWidget {
     if (index == 0) {
       isTopRoudis = true;
     } else if (userInfo.getSuspensionTag() !=
-        state.dataList[index - 1].getSuspensionTag()) {
+        logic.dataList[index - 1].getSuspensionTag()) {
       isTopRoudis = true;
     }
-    if (index == state.dataList.length - 1) {
+    if (index == logic.dataList.length - 1) {
       isBotRoudis = true;
     } else if (userInfo.getSuspensionTag() !=
-        state.dataList[index + 1].getSuspensionTag()) {
+        logic.dataList[index + 1].getSuspensionTag()) {
       isBotRoudis = true;
     }
 
     return GestureDetector(
       onTap: () {
         if (formType == "CreteGroup") {
-          callBack?.call(state.dataList[index]);
+          callBack?.call(logic.dataList[index]);
         } else {
-          logic.toFriendsInfo(state.dataList[index]);
+          logic.toFriendsInfo(logic.dataList[index]);
         }
       },
       child: Column(
@@ -109,7 +109,6 @@ class FriendListPage extends StatelessWidget {
             child: Row(
               children: [
                 CustomUtils.avator(userInfo.avatar.toString() ?? ''),
-
                 12.horizontalSpace,
                 Text(
                   userInfo.getNick(),
@@ -151,6 +150,6 @@ class FriendListPage extends StatelessWidget {
             ),
         ],
       ),
-    ).marginOnly(bottom: index == state.dataList.length - 1 ? 20.h : 0);
+    ).marginOnly(bottom: index == logic.dataList.length - 1 ? 20.h : 0);
   }
 }

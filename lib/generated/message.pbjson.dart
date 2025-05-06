@@ -46,6 +46,8 @@ const MessageNotify$json = {
     {'1': 'from', '3': 27, '4': 1, '5': 3, '10': 'from'},
     {'1': 'uid', '3': 28, '4': 1, '5': 3, '10': 'uid'},
     {'1': 'at', '3': 29, '4': 1, '5': 9, '10': 'at'},
+    {'1': 'read_flag', '3': 30, '4': 1, '5': 8, '10': 'readFlag'},
+    {'1': 'read_time', '3': 31, '4': 1, '5': 3, '10': 'readTime'},
   ],
 };
 
@@ -65,5 +67,6 @@ final $typed_data.Uint8List messageNotifyDescriptor = $convert.base64Decode(
     '1lGBYgASgJUg5yZXBseU1zZ1Jlc3VtZRIbCglyZXBseV91aWQYFyABKANSCHJlcGx5VWlkEh0K'
     'CnJlcGx5X25pY2sYGCABKAlSCXJlcGx5TmljaxISCgRuaWNrGBkgASgJUgRuaWNrEhYKBmF2YX'
     'RhchgaIAEoCVIGYXZhdGFyEhIKBGZyb20YGyABKANSBGZyb20SEAoDdWlkGBwgASgDUgN1aWQS'
-    'DgoCYXQYHSABKAlSAmF0');
+    'DgoCYXQYHSABKAlSAmF0EhsKCXJlYWRfZmxhZxgeIAEoCFIIcmVhZEZsYWcSGwoJcmVhZF90aW'
+    '1lGB8gASgDUghyZWFkVGltZQ==');
 

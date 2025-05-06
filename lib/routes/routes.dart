@@ -26,13 +26,15 @@ abstract class Routes {
   static const scanQrCodePage = '/scanQrCodePage';
   static const chatPage = '/chatPage';
 
+  static const friendInfo = '/friendInfo';
+  static const groupInfo = '/groupInfo';
+
   ///联系人相关
   static const addNewFriendPage = '/addNewFriendPage';
   static const groupListPage = '/groupListPage';
 
   ///我的
   static const mySettingPage = '/mySettingPage';
-
 
   static final List<GetPage> pages = [
     GetPage(
@@ -96,10 +98,17 @@ abstract class Routes {
       page: () => ChatPage(),
     ),
     GetPage(
+      name: friendInfo,
+      page: () => FriendInfoPage(),
+    ),
+    GetPage(
+      name: groupInfo,
+      page: () => GroupInfoPage(),
+    ),
+    GetPage(
       name: mySettingPage,
       page: () => MySettingPage(),
     ),
-
     GetPage(
       name: addNewFriendPage,
       page: () => AddNewFriendPage(),

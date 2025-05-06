@@ -138,6 +138,9 @@ class HttpService extends GetxService {
       );
       if (showLoading) SmartDialog.dismiss();
       showMsg(url, params, jsonEncode(response.data), isShowMsg);
+      if(response.headers["trace-id"]!=null) {
+        log("trace-id:${response.headers["trace-id"]}");
+      }
       return ResponseModel.fromJson(response.data);
     } catch (error) {
       // log("ffffffff>>>${(error as DioException).response?.statusCode}");

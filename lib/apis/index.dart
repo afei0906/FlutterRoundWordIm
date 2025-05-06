@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:store/store/index.dart';
 import 'package:store/utils/index.dart';
 
+import '../database/index.dart';
 import '../generated/locales.g.dart';
 import '../models/index.dart';
 import '../services/index.dart';

@@ -1,39 +1,46 @@
 part of 'index.dart';
 
 class DatabaseService extends GetxController {
+  static DatabaseService get to => Get.find();
   static const String tableName = 'messages';
-  Database? db;
+  late Database db;
+  late DbStore dbStore;
 
   Future<void> createTable(Database db) async {
     await db.execute('''
-      CREATE TABLE $tableName (
-        fid INTEGER ,
-        channel_type INTEGER,
-        channel_id INTEGER,
+      CREATE TABLE $tableName(
+        channelType INTEGER,
+        channelId INTEGER,
+        fid INTEGER,
+        msgType INTEGER,
+        oper TEXT,
+        bizData TEXT,
         mid INTEGER,
         content TEXT,
-        time BIGINT,
-        content_type INTEGER,
-        sys_flag INTEGER,
-        sys_msg_key TEXT,
-        oper_nick TEXT,
-        to_nicks TEXT,
-        trace_id TEXT,
-        single_flag INTEGER,
-        single_uid INTEGER,
-        from_msg_id INTEGER,
-        reply_mid INTEGER,
-        reply_msg_resume TEXT,
-        reply_uid INTEGER,
-        reply_nick TEXT,
+        time INTEGER,
+        contentType INTEGER,
+        sysFlag INTEGER,
+        sysMsgKey TEXT,
+        operNick TEXT,
+        toNicks TEXT,
+        serverIp TEXT,
+        traceId TEXT,
+        remark TEXT,
+        singleFlag INTEGER,
+        singleUid INTEGER,
+        fromMsgId INTEGER,
+        replyMid INTEGER,
+        replyMsgResume TEXT,
+        replyUid INTEGER,
+        replyNick TEXT,
         nick TEXT,
         avatar TEXT,
-        from_uid INTEGER,
+        `from` TEXT,
         uid INTEGER,
         at TEXT,
-        biz_data TEXT,
-        remark TEXT
-      )
+        localIpUtil TEXT,
+        readFlag TEXT,
+        readTime TEXT )
     ''');
   }
 
@@ -43,20 +50,35 @@ class DatabaseService extends GetxController {
       'chat.db',
       version: 1,
       onCreate: (db, version) async {
-        await DatabaseService().createTable(db);
+        await createTable(db);
         // 创建联合索引
         await db.execute('''
       CREATE INDEX idx_channel_message 
-      ON $tableName(channel_type, channel_id)
+      ON $tableName(channelType, channelId)
     ''');
 
         await db.execute('''
       CREATE INDEX midx_channel_message 
-      ON $tableName(channel_type, channel_id, mid)
+      ON $tableName(channelType, channelId, mid)
     ''');
       },
     );
-
+    dbStore = DbStore(db);
     super.onInit();
   }
+
+  Future<bool> insertLocalMsg(Message m) async {
+    return await dbStore.insertMessage(m) > 0;
+  }
+
+  Future<bool> updateLocalMsg(Message m,{bool isReplace=true}) async {
+    return await dbStore.updateMessageByFid(m,isReplace: isReplace) > 0;
+  }
+
+  Future<void> updateMsgList(List<Message> list) async{
+    list.forEach((action) async {
+      await DatabaseService.to.dbStore.featMessageByChannelAndMid(action);
+    });
+  }
+
 }
