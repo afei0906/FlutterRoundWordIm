@@ -37,10 +37,10 @@ class _GroupsSlidableWidgetState extends State<ChatSlidableWidget>
                 height: double.infinity,
                 color: AppTheme.colorBrandPrimary,
                 child: Text(
-                  widget.conversationList.topFlag.toString() == '1'
-                      ? LocaleKeys.text_0235.tr
-                      : LocaleKeys.text_0234.tr,
-                  style: AppTheme().appTextStyle.styleTextDarkPrimary.copyWith(
+                    widget.conversationList.topFlag.toString() == '1'
+                        ? LocaleKeys.text_0235.tr
+                        : LocaleKeys.text_0234.tr,
+                    style: AppTheme().appTextStyle.styleTextDarkPrimary.copyWith(
                         fontSize: 14.sp,
                         fontWeight: ThemeFontWeight.regular.weight,
                       ),

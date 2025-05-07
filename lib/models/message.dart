@@ -69,7 +69,7 @@ class Message {
   Message.fromJson(dynamic json) {
     channelType = json['channelType'];
     channelId = json['channelId'];
-    fid = json['fid'];
+    fid = Utils.toEmpty(json['fid'])??0;
     msgType = json['msgType'];
     oper = json['oper'];
     bizData = json['bizData'];
@@ -242,37 +242,37 @@ class Message {
   }
 
   Message.MessageNotify(MessageNotify m) {
-    channelType = m.channelType;
-    channelId = m.channelId;
-    fid = m.fid;
-    msgType = m.msgType;
-    oper = m.oper;
-    bizData = m.bizData;
-    mid = m.mid;
-    content = m.content;
-    time = m.time;
-    contentType = m.contentType;
-    sysFlag = m.sysFlag;
-    sysMsgKey = m.sysMsgKey;
-    operNick = m.operNick;
-    toNicks = m.toNicks;
-    serverIp = m.serverIp;
-    traceId = m.traceId;
-    remark = m.remark;
-    singleFlag = m.singleFlag;
-    singleUid = m.singleUid;
-    fromMsgId = m.fromMsgId;
-    replyMid = m.replyMid;
-    replyMsgResume = m.replyMsgResume;
-    replyUid = m.replyUid;
-    replyNick = m.replyNick;
-    nick = m.nick;
-    avatar = m.avatar;
-    from = m.from;
-    uid = m.uid;
-    at = m.at;
-    readFlag = m.readFlag;
-    readTime = m.readTime;
+    channelType = m.channelType.toString();
+    channelId = m.channelId.toString();
+    fid = m.fid.toString();
+    msgType = m.msgType.toString();
+    oper = m.oper.toString();
+    bizData = m.bizData.toString();
+    mid = m.mid.toString();
+    content = m.content.toString();
+    time = m.time.toString();
+    contentType = m.contentType.toString();
+    sysFlag = m.sysFlag.toString();
+    sysMsgKey = m.sysMsgKey.toString();
+    operNick = m.operNick.toString();
+    toNicks = m.toNicks.toString();
+    serverIp = m.serverIp.toString();
+    traceId = m.traceId.toString();
+    remark = m.remark.toString();
+    singleFlag = m.singleFlag.toString();
+    singleUid = m.singleUid.toString();
+    fromMsgId = m.fromMsgId.toString();
+    replyMid = m.replyMid.toString();
+    replyMsgResume = m.replyMsgResume.toString();
+    replyUid = m.replyUid.toString();
+    replyNick = m.replyNick.toString();
+    nick = m.nick.toString();
+    avatar = m.avatar.toString();
+    from = m.from.toString();
+    uid = m.uid.toString();
+    at = m.at.toString();
+    readFlag = m.readFlag.toString();
+    readTime = m.readTime.toString();
   }
 
   bool get isSender =>
@@ -280,4 +280,9 @@ class Message {
 
   MessageType get messageType =>
       MessageType.fromValue(int.parse(Utils.toEmpty(contentType) ?? '0'));
+
+
+  bool get isGroup => channelType.toString()=='2';
+
+  bool get isRead=> readFlag.toString()=='1';
 }

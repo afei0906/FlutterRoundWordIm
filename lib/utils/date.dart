@@ -52,24 +52,31 @@ abstract class Date {
         dateA.year == dateB.year;
   }
 
-  /// 解析ISO 8601格式的时间字符串
-  /// 例如: 2025-04-19T10:47:36.414+00:00
-  static String? parseISOTime(String? isoTime) {
-    if (Utils.isEmpty(isoTime ?? '')) return null;
-    DateTime dateTime=DateTime.parse(isoTime!);
-    return formatTime(dateTime);
+  static String? parseISOTimeByInt(int? isoTime, [String? pattern]) {
+    if (Utils.isEmpty(isoTime ?? 0)) return null;
+    DateTime dateTime = DateTime.parse(fromMilliToString(isoTime!));
+    return formatTime(dateTime,pattern);
   }
 
-  static String? fromDate(String? date, [String? pattern]){
+  /// 解析ISO 8601格式的时间字符串
+  /// 例如: 2025-04-19T10:47:36.414+00:00
+  static String? parseISOTime(String? isoTime, [String? pattern]) {
+    // log(">>>>111>>>>$isoTime");
+    if (Utils.isEmpty(isoTime ?? '')) return null;
+    DateTime dateTime = DateTime.parse(isoTime!);
+    return formatTime(dateTime,pattern);
+  }
+
+  static String? fromDate(String? date, [String? pattern]) {
     if (Utils.isEmpty(date ?? '')) return null;
-    final DateTime? dateTime=  fromStr(date,"yyyy-mm-dd HH:mm:ss");
+    final DateTime? dateTime = fromStr(date, "yyyy-mm-dd HH:mm:ss");
     return formatTime(dateTime!);
   }
 
   /// 格式化时间显示
   /// 如果时间大于今天0点，显示 HH:mm
   /// 如果时间小于今天0点，显示 yyyy-MM-dd
-  static String formatTime(DateTime dateTime) {
+  static String formatTime(DateTime dateTime, [String? pattern]) {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final inputDate = DateTime(dateTime.year, dateTime.month, dateTime.day);
@@ -79,7 +86,7 @@ abstract class Date {
       return DateFormat('HH:mm').format(dateTime);
     } else {
       // 如果不是今天，显示 yyyy-MM-dd
-      return DateFormat('yyyy/MM/dd').format(dateTime);
+      return DateFormat(pattern ?? 'yyyy/MM/dd').format(dateTime);
     }
   }
 }

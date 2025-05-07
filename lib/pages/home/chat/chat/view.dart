@@ -28,16 +28,20 @@ class ChatPage extends StatelessWidget {
                   child: Column(
                     children: [
                       Expanded(
-                          child: state.chatFormType == ChatFormType.createGroup
-                              ? GroupInfoWidget(state.groupInfo,
-                                  (int index, GroupInfo groupInfo) {
-                                  if (index == 0) {
-                                    logic.addGroupMember(groupInfo);
-                                  } else {
-                                    logic.showGroupInfo(groupInfo);
-                                  }
-                                })
-                              : ChatWidget(logic)),
+                          child: Column(
+                        children: [
+                          if (state.chatFormType == ChatFormType.createGroup)
+                            GroupInfoWidget(state.groupInfo,
+                                (int index, GroupInfo groupInfo) {
+                              if (index == 0) {
+                                logic.addGroupMember(groupInfo);
+                              } else {
+                                logic.showGroupInfo(groupInfo);
+                              }
+                            }),
+                          ChatWidget(logic)
+                        ],
+                      )),
                       // 底部输入区域
                       ChatInput(
                         onSendMessage: logic.onSendMessage,

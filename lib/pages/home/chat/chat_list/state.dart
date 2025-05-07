@@ -124,7 +124,9 @@ class ChatListState {
               avatar: m.avatar,
               notReadCount: 1,
               time: m.time));
-      addCovariantList(covariantList);
+      sortByTopFlag(covariantList);
     }
+    unreadConversations.value = getUnreadConversations(covariantList);
+    sortedGroupChats.value = getGroupChats(covariantList);
   }
 }

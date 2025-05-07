@@ -130,6 +130,10 @@ class Resource {
   static const String assetsSvgDefaultChatInsertDriveFileSvg =
       'assets/svg/default/chat_insert_drive_file.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultChatLeftSvg.preview}
+  static const String assetsSvgDefaultChatLeftSvg =
+      'assets/svg/default/chat_left.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultChatMoneySvg.preview}
   static const String assetsSvgDefaultChatMoneySvg =
       'assets/svg/default/chat_money.svg';
@@ -141,6 +145,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultChatPhotoSvg.preview}
   static const String assetsSvgDefaultChatPhotoSvg =
       'assets/svg/default/chat_photo.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultChatRightSvg.preview}
+  static const String assetsSvgDefaultChatRightSvg =
+      'assets/svg/default/chat_right.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultChatSwapHorizSvg.preview}
   static const String assetsSvgDefaultChatSwapHorizSvg =

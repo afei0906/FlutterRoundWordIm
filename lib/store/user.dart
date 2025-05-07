@@ -133,13 +133,14 @@ class UserStore extends GetxController {
       if (command == ImCommand.recv && content != null) {
         MessageNotify messageNotify = MessageNotify.fromBuffer(content);
         // 解析protobuf消息
-        // String base64Str = base64Encode(content);
         final Message message = Message.MessageNotify(messageNotify);
         DatabaseService.to.updateLocalMsg(message, isReplace: false);
-        MessageStore.to.chatListState.updateConversations(message,
+        Message m=  Message.fromJson(message.toJson());
+        m.time=Date.fromMilliToString(int.parse(Utils.toEmpty(m.time)??'0'));
+        MessageStore.to.chatListState.updateConversations(m,
             isRead: message.channelId != UserStore.to.userInfo.value.id);
 
-        log(">>>>>!!!${messageNotify.writeToJsonMap()}");
+        // log(">>>$content>>!!!${messageNotify.writeToJsonMap()}");
       }
     });
   }

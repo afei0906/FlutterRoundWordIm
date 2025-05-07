@@ -71,7 +71,7 @@ class ChatRequest {
     map['channelType'] = channelType;
     map['channelId'] = channelId;
     map['mid'] = mid ?? 0;
-    map['compareType'] = compareType ?? "lteq";
+    map['compareType'] = compareType ?? "lt";
     map['pageSize'] = pageSize ?? 50;
     map['sortType'] = sortType ?? "desc";
     return map;

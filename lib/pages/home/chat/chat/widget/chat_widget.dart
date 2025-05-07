@@ -18,32 +18,21 @@ class ChatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Obx(
-      () => ListView.builder(
-        itemCount: controller.state.messages.length,
-        itemBuilder: (context, index) {
-          // if (index == controller.state.messages.length) {
-          //   if (controller.state.isLoading.value) {
-          //     return Center(child: CircularProgressIndicator());
-          //   }
-          //   if (controller.state.hasMore.value) {
-          //     return TextButton(
-          //       onPressed: controller.loadMoreMessages,
-          //       child: Text('Load More'),
-          //     );
-          //   }
-          //   return SizedBox();
-          // }
-
-          final message = controller.state.messages[index];
-          return MessageBubble(
-            message: message,
-            onLongPress: () => () {
-              // _showMessageOptions(context, message);
-            },
-          );
-        },
+      child: Obx(
+        () => ListView(
+          controller: scrollController,
+          // 这里是关键，把滚动方向反转
+          reverse: true,
+          children: controller.state.messages
+              .map((msg) => MessageBubble(
+                    message: msg,
+                    onLongPress: () => () {
+                      // _showMessageOptions(context, message);
+                    },
+                  ))
+              .toList(),
+        ),
       ),
-    ));
+    );
   }
 }

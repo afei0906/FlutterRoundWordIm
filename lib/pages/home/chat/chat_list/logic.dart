@@ -82,6 +82,7 @@ class ChatListLogic extends GetxController
   }
 
   String toContentType(ConversationList conversationList) {
+    log(">>>>:${conversationList.toJson()}");
     /// 内容类型，1、普通文本消息，2、超链接卡片消息，3、文件，4、音频，5、视频，6、图片，9、名片
     if (conversationList.contentType == "1") {
       return Utils.toEmpty(conversationList.resume) ?? '';

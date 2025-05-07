@@ -119,6 +119,7 @@ abstract class MessageApi {
       // final Message message = Message.fromJson(res.data);
       // m.mid = message.mid;
       // DatabaseService.to.updateLocalMsg(m);
+      m.time=res.data['time'];
       MessageStore.to.chatListState.updateConversations(m);
       return true;
     }

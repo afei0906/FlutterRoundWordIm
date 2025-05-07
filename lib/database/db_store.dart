@@ -14,6 +14,8 @@ class DbStore {
     return 0;
   }
 
+
+
   Future<int> insertMessage(Message message) async {
     return db.insert(
       DatabaseService.tableName,
@@ -49,6 +51,7 @@ class DbStore {
         return 1;
       }
     } else {
+      // log(">>>>>>${ message.toJson()}");
       return db.insert(
         DatabaseService.tableName,
         message.toJson(),
@@ -165,8 +168,9 @@ class DbStore {
       orderBy: 'mid DESC',
       limit: limit,
     );
-
-    return maps.map((map) => Message.fromJson(map)).toList();
+    log(">>>local>>${jsonEncode(maps)}");
+    final list = maps.map((map) => Message.fromJson(map)).toList();
+    return list;
   }
 
 // 使用示例：将JSON转换为Message对象并存储到数据库
