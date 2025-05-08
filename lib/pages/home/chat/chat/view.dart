@@ -13,43 +13,43 @@ class ChatPage extends StatelessWidget {
       assignId: true,
       builder: (logic) {
         return Scaffold(
-          backgroundColor: AppTheme.colorTextDarkPrimary,
-          body: GestureDetector(
-              onTap: logic.clickRoot,
-              child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                    fit: BoxFit.fill,
-                    alignment: Alignment.topCenter,
-                    image: AssetImage(Resource.assetsImagesBgChatPng),
-                  )),
-                  child: Column(
-                    children: [
-                      Expanded(
-                          child: Column(
-                        children: [
-                          if (state.chatFormType == ChatFormType.createGroup)
-                            GroupInfoWidget(state.groupInfo,
-                                (int index, GroupInfo groupInfo) {
-                              if (index == 0) {
-                                logic.addGroupMember(groupInfo);
-                              } else {
-                                logic.showGroupInfo(groupInfo);
-                              }
-                            }),
-                          ChatWidget(logic)
-                        ],
-                      )),
-                      // 底部输入区域
-                      ChatInput(
-                        onSendMessage: logic.onSendMessage,
-                      ),
-                    ],
-                  ))),
-          appBar: appBar(),
-        );
+            backgroundColor: AppTheme.colorTextDarkPrimary,
+            body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                  fit: BoxFit.fill,
+                  alignment: Alignment.topCenter,
+                  image: AssetImage(Resource.assetsImagesBgChatPng),
+                )),
+                child: Column(
+                  children: [
+                    Expanded(
+                        child: GestureDetector(
+                            onTap: logic.clickRoot,
+                            child: Column(
+                              children: [
+                                if (state.chatFormType ==
+                                    ChatFormType.createGroup)
+                                  GroupInfoWidget(state.groupInfo,
+                                      (int index, GroupInfo groupInfo) {
+                                    if (index == 0) {
+                                      logic.addGroupMember(groupInfo);
+                                    } else {
+                                      logic.showGroupInfo(groupInfo);
+                                    }
+                                  }),
+                                ChatWidget(logic)
+                              ],
+                            ))),
+                    // 底部输入区域
+                    ChatInput(
+                      onSendMessage: logic.onSendMessage,
+                    ),
+                  ],
+                )),
+            appBar: appBar());
       },
     );
   }

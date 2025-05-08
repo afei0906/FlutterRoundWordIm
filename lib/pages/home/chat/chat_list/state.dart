@@ -101,7 +101,8 @@ class ChatListState {
       bool isHas = m.channelId.toString() == test.bizId.toString() &&
           m.channelType.toString() == test.chatMode.toString();
       test.contentType = m.contentType;
-      test.time = m.time;
+      test.time =
+          Date.fromMilliToString(int.parse(Utils.toEmpty(m.time) ?? '0'));
       test.resume = m.content;
       if (isRead) {
         test.notReadCount =
@@ -123,7 +124,8 @@ class ChatListState {
               name: m.nick,
               avatar: m.avatar,
               notReadCount: 1,
-              time: m.time));
+              time: Date.fromMilliToString(
+                  int.parse(Utils.toEmpty(m.time) ?? '0'))));
       sortByTopFlag(covariantList);
     }
     unreadConversations.value = getUnreadConversations(covariantList);

@@ -108,21 +108,19 @@ abstract class MessageApi {
     return [];
   }
 
-  static Future<bool> messageSend(MessageRequest? messageRequest) async {
+  static Future<String?> messageSend(MessageRequest? messageRequest) async {
     var param = messageRequest?.toJson();
-    Message m = Message.fromJson(messageRequest?.toMsgJson());
-    DatabaseService.to.insertLocalMsg(m);
-    final res = await HttpService.to.post(Urls.messageSend, params: param);
-    if (res.code != 0) {
-      showErrorMsg(res.code.toString(), res.msg ?? '');
-    } else {
-      // final Message message = Message.fromJson(res.data);
-      // m.mid = message.mid;
-      // DatabaseService.to.updateLocalMsg(m);
-      m.time=res.data['time'];
-      MessageStore.to.chatListState.updateConversations(m);
-      return true;
+    try {
+      final res = await HttpService.to.post(Urls.messageSend, params: param);
+      if (res.code != 0) {
+        showErrorMsg(res.code.toString(), res.msg ?? '');
+      } else {
+        return res.data['time'].toString();
+      }
+    }catch(e){
+      e.printError();
     }
-    return false;
+
+    return null;
   }
 }

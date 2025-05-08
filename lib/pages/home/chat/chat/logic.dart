@@ -9,6 +9,8 @@ class ChatLogic extends GetxController {
       state.chatRequest = Get.arguments["chatRequest"] as ChatRequest?;
       state.chatFormType = Get.arguments['formType'] as ChatFormType;
       state.mid = int.parse(Utils.toEmpty(state.chatRequest?.mid) ?? '0') + 1;
+      state.startMid =
+          int.parse(Utils.toEmpty(state.chatRequest?.mid) ?? '0') + 1;
 
       ///群聊
       if (state.chatRequest?.channelType.toString() == "2") {
@@ -49,7 +51,6 @@ class ChatLogic extends GetxController {
   void showGroupInfo(GroupInfo groupInfo) {}
 
   Future<void> loadMoreMessages() async {
-    log(">>>>>!!!${state.hasMore.value}");
     if (state.isLoading.value || !state.hasMore.value) return;
     state.isLoading.value = true;
 
@@ -79,27 +80,12 @@ class ChatLogic extends GetxController {
   }
 }
 
-extension ChatLogicx on ChatLogic {
-  ///发送消息相关
-  Future<void> onSendMessage(String text, MessageType m,
-      {List<String>? atUsers}) async {
-    final MessageRequest messageRequest = MessageRequest(
-        channelType: state.chatRequest?.channelType,
-        channelId: state.chatRequest?.channelId,
-        fid: (await DatabaseService.to.dbStore.getMaxFid()) + 1,
-        contentType: m.value,
-        payload: text);
-
-    await MessageApi.messageSend(messageRequest);
-  }
-}
-
 extension ChatLogicHttp on ChatLogic {
   Future<GroupDetail?> getGroupDetail(String groupId) async {
     return GroupApi.groupDetail(groupId);
   }
 
-  Future<bool?> messageSend(MessageRequest messageRequest) async {
+  Future<String?> messageSend(MessageRequest messageRequest) async {
     return MessageApi.messageSend(messageRequest);
   }
 
@@ -118,26 +104,104 @@ extension ChatLogicHttp on ChatLogic {
         lastMid: state.mid == 0 ? null : state.mid,
         limit: state.pageSize);
   }
+
+  void updateDate(Message message) {
+    log(">>>>0${message.isSender}");
+    if (message.channelType.toString() ==
+            state.chatRequest?.channelType.toString() &&
+        message.channelId.toString() ==
+            state.chatRequest?.channelId.toString()) {
+      log(">>>>1${message.isSender}");
+      if (message.isSender) {
+        Message? m = state.messages.firstWhereOrNull((test) {
+          return test.fid == message.fid;
+        });
+        if (m == null) {
+          state.messages.insert(0, message);
+        } else {
+          state.messages.remove(m);
+          state.messages.add(message);
+        }
+        state.messages.sort((a, b) => int.parse(Utils.toEmpty(b.mid) ?? "0")
+            .compareTo(int.parse(Utils.toEmpty(a.mid) ?? "0")));
+        state.messages.refresh();
+      } else {
+        log(">>>>2${message.isSender}");
+        Message? m = state.messages.firstWhereOrNull((test) {
+          return test.mid == message.mid;
+        });
+        if (m == null) {
+          state.messages.insert(0, message);
+        } else {
+          state.messages.remove(m);
+          state.messages.add(message);
+        }
+        state.messages.sort((a, b) => int.parse(Utils.toEmpty(b.mid) ?? "0")
+            .compareTo(int.parse(Utils.toEmpty(a.mid) ?? "0")));
+        state.messages.refresh();
+      }
+    }
+  }
 }
 
 extension ChatLogicX on ChatLogic {
+  ///发送消息相关
+  Future<void> onSendMessage(String text, MessageType m,
+      {List<String>? atUsers}) async {
+    final MessageRequest messageRequest = MessageRequest(
+        channelType: state.chatRequest?.channelType,
+        channelId: state.chatRequest?.channelId,
+        fid: (await DatabaseService.to.dbStore.getMaxFid()) + 1,
+        contentType: m.value,
+        payload: text);
+
+    Message message = Message.fromJson(messageRequest.toMsgJson());
+    message.time = DateTime.now().microsecondsSinceEpoch ~/ 1000;
+
+    message.uid = UserStore.to.userInfo.value.id;
+    DatabaseService.to.insertLocalMsg(message);
+
+    state.messages.insert(0, message);
+
+    state.messages.refresh();
+    final String? time = await messageSend(messageRequest);
+    if (Utils.isEmpty(time)) {
+      message.status = 2;
+      state.messages.refresh();
+    } else {
+      message.time =
+          Date.fromStr(time, 'yyyy-MM-dd HH:mm')?.microsecondsSinceEpoch ??
+              0 ~/ 1000;
+      MessageStore.to.getConversationServerData();
+    }
+  }
+
   Future<void> getMsgList() async {
     List<Message> local = await getLocalMsgList();
-    log('>>>>${local.length}');
     state.messages.addAll(local);
-    List<Message> server = await getServerMsgList();
-    log('>>>>${server.length}');
 
-    List<Message> m = mergeMessages(state.messages, server);
-    state.messages.value = m;
-    // state.messages.replaceRange(
-    //     state.messages.length - local.length, state.messages.length, m);
-    if (state.messages.isNotEmpty) {
-      state.endMid = int.parse(Utils.toEmpty(state.messages.last.mid) ?? '0');
+    // 检查是否还需要查服务器
+    if (MessageStore.to.isNeedToFetchRemote(state.chatRequest?.channelType,
+        state.chatRequest?.channelId, state.startMid, state.startMid - 15)) {
+      List<Message> server = await getServerMsgList();
+
+      List<Message> m = mergeMessages(state.messages, server);
+      state.messages.value = m;
+      // state.messages.replaceRange(
+      //     state.messages.length - local.length, state.messages.length, m);
+      if (state.messages.isNotEmpty) {
+        state.startMid =
+            int.parse(Utils.toEmpty(state.messages.last.mid) ?? '0');
+        MessageStore.to.saveMidByChannel(state.chatRequest?.channelType,
+            state.chatRequest?.channelId, state.mid, state.startMid);
+      }
+      // 5. 更新分页状态
+      state.hasMore.value = server.length >= state.pageSize;
+      state.messages.refresh();
+    } else {
+      state.hasMore.value = local.length >= state.pageSize;
+      state.messages.refresh();
     }
-    // 5. 更新分页状态
-    state.hasMore.value = server.length >= state.pageSize;
-    state.messages.refresh();
   }
 
   List<Message> mergeMessages(

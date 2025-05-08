@@ -35,26 +35,31 @@ class HomeLogic extends GetxController {
       "id": "0",
       "title": LocaleKeys.text_0005,
       "default": Resource.assetsSvgDefaultChatSvg,
+      "select": Resource.assetsSvgDefaultChatSelectSvg,
     },
     {
       "id": "1",
       "title": LocaleKeys.text_0006,
       "default": Resource.assetsSvgDefaultContantSvg,
+      "select": Resource.assetsSvgDefaultContantSelectSvg,
     },
     {
       "id": "2",
       "title": LocaleKeys.text_0126,
       "default": Resource.assetsSvgDefaultShoppingSvg,
+      "select": Resource.assetsSvgDefaultShoppingSelectSvg,
     },
     {
       "id": "3",
       "title": LocaleKeys.text_0007,
       "default": Resource.assetsSvgDefaultFindSvg,
+      "select": Resource.assetsSvgDefaultFindSelectSvg,
     },
     {
       "id": "4",
       "title": LocaleKeys.text_0008,
       "default": Resource.assetsSvgDefaultMeSvg,
+      "select": Resource.assetsSvgDefaultMeSelectSvg,
     }
   ];
 

@@ -14,7 +14,15 @@ class DbStore {
     return 0;
   }
 
+  Future<int> getMaxMid(dynamic channelType, dynamic channelId) async {
+    final result = await db.rawQuery(
+        'SELECT MAX(mid) AS maxMid FROM ${DatabaseService.tableName} where channelType=$channelType AND channelId=$channelId');
 
+    if (result.isNotEmpty) {
+      return result.first['maxMid'] as int? ?? 0;
+    }
+    return 0;
+  }
 
   Future<int> insertMessage(Message message) async {
     return db.insert(

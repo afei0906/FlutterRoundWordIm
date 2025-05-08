@@ -1,4 +1,11 @@
 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M16.7892 8C17.7523 8 18.2338 8 18.6244 8.17521C18.9686 8.32965 19.2622 8.57833 19.4711 8.89253C19.7082 9.24897 19.7873 9.72395 19.9457 10.6739L20.879 16.2739C21.0926 17.5559 21.1995 18.1968 21.0139 18.6964C20.8511 19.1347 20.5398 19.5022 20.1342 19.7349C19.672 20 19.0221 20 17.7225 20H7.27747C5.97785 20 5.32804 20 4.8658 19.7349C4.46017 19.5022 4.14889 19.1347 3.98607 18.6964C3.80053 18.1968 3.90736 17.5559 4.12101 16.2739L5.05435 10.6739C5.21267 9.72395 5.29184 9.24897 5.52887 8.89253C5.73781 8.57833 6.03137 8.32965 6.37564 8.17521C6.7662 8 7.24773 8 8.21081 8H16.7892Z" stroke="#A3A3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16.5 8C16.5 5.79086 14.7091 4 12.5 4C10.2909 4 8.5 5.79086 8.5 8" stroke="#A3A3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="vuesax/linear/shop">
+<g id="shop">
+<path id="Vector" d="M3.50977 11.22V15.71C3.50977 20.2 5.30977 22 9.79977 22H15.1898C19.6798 22 21.4798 20.2 21.4798 15.71V11.22" stroke="#868B90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M12.5 12C14.33 12 15.68 10.51 15.5 8.68L14.84 2H10.17L9.49999 8.68C9.31999 10.51 10.67 12 12.5 12Z" stroke="#868B90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M18.8098 12C20.8298 12 22.3098 10.36 22.1098 8.35L21.8298 5.6C21.4698 3 20.4698 2 17.8498 2H14.7998L15.4998 9.01C15.6698 10.66 17.1598 12 18.8098 12Z" stroke="#868B90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M6.13988 12C7.78988 12 9.27988 10.66 9.43988 9.01L9.65988 6.8L10.1399 2H7.08988C4.46988 2 3.46988 3 3.10988 5.6L2.83988 8.35C2.63988 10.36 4.11988 12 6.13988 12Z" stroke="#868B90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M12.5 17C10.83 17 10 17.83 10 19.5V22H15V19.5C15 17.83 14.17 17 12.5 17Z" stroke="#868B90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
 </svg>

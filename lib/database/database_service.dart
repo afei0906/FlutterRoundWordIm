@@ -40,7 +40,8 @@ class DatabaseService extends GetxController {
         at TEXT,
         localIpUtil TEXT,
         readFlag TEXT,
-        readTime TEXT )
+        readTime TEXT ,
+        status TEXT)
     ''');
   }
 
@@ -68,19 +69,21 @@ class DatabaseService extends GetxController {
   }
 
   Future<bool> insertLocalMsg(Message m) async {
+    if (Utils.isEmpty(m.mid)) {
+      m.mid = await dbStore.getMaxMid(m.channelType, m.channelId) + 1;
+      m.status = 0;
+    }
     return await dbStore.insertMessage(m) > 0;
   }
 
-  Future<bool> updateLocalMsg(Message m,{bool isReplace=true}) async {
-    return await dbStore.updateMessageByFid(m,isReplace: isReplace) > 0;
+  Future<bool> updateLocalMsg(Message m, {bool isReplace = true}) async {
+    m.status = 1;
+    return await dbStore.updateMessageByFid(m, isReplace: isReplace) > 0;
   }
 
-  Future<void> updateMsgList(List<Message> list) async{
+  Future<void> updateMsgList(List<Message> list) async {
     list.forEach((action) async {
       await DatabaseService.to.dbStore.featMessageByChannelAndMid(action);
     });
   }
-
-
-
 }

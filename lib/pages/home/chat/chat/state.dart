@@ -12,5 +12,6 @@ class ChatState {
   final hasMore = true.obs;
   int pageSize = 15;
   int mid = 0;
-  int endMid = 0;
+  // int endMid = -1;
+  int startMid = -1;
 }

@@ -135,10 +135,13 @@ class UserStore extends GetxController {
         // 解析protobuf消息
         final Message message = Message.MessageNotify(messageNotify);
         DatabaseService.to.updateLocalMsg(message, isReplace: false);
-        Message m=  Message.fromJson(message.toJson());
-        m.time=Date.fromMilliToString(int.parse(Utils.toEmpty(m.time)??'0'));
-        MessageStore.to.chatListState.updateConversations(m,
-            isRead: message.channelId != UserStore.to.userInfo.value.id);
+        MessageStore.to.getConversationServerData();
+        final bool isControllerRegistered =
+        GetInstance().isRegistered<ChatLogic>();
+        if (isControllerRegistered) {
+          Get.find<ChatLogic>().updateDate(message);
+        }
+
 
         // log(">>>$content>>!!!${messageNotify.writeToJsonMap()}");
       }

@@ -6,6 +6,7 @@ const String kLocalUserInfo = 'local_user_info';
 const String kLocalFriendList = 'local_friend_list';
 const String kLocalGroupList = 'local_group_list';
 const String kLocalConversationList = 'local_conversation_list';
+const String kLocalMsgServerMid = 'local_msg_server_mid';
 const String kLocalUserEmotion = 'local_user_emotion';
 const String kLocalPicConfig = 'local_pic_config';
 

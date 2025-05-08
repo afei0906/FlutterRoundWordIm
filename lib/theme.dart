@@ -19,8 +19,8 @@ class AppTheme {
 
   static const colorTextDarkPrimary = Color(0xffffffff);
   static const colorBrandPrimary = Color(0xff126BF6);
-  static const colorTextDefaultPrimary = Color(0xFF202329);
-  static const colorTextDefaultFourth = Color(0xFF868A8F);
+  static const colorTextDefaultPrimary = Color(0xFF20242A);
+  static const colorTextDefaultFourth = Color(0xFF868B90);
   static const colorTextDefaultTernary = Color(0xFF545D72);
   static const colorBrandError = Color(0xFFE53935);
   static const colorBorderLight = Color(0xffEDEEF2);

@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage>
       id: 'homeId',
       builder: (logic) {
         return Scaffold(
-          backgroundColor: const Color(0xffffffff),
+          backgroundColor: AppTheme.colorTextDarkPrimary,
           body: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage>
             height: 68.h + Get.mediaQuery.padding.bottom / 3,
             alignment: Alignment.topCenter,
             decoration: BoxDecoration(
-              color: const Color(0xffffffff),
+              color: AppTheme.colorFillPageGray,
               border: Border(
                 top: BorderSide(
                   color: Theme.of(Get.context!).dividerColor,
@@ -76,8 +76,8 @@ class _HomePageState extends State<HomePage>
               ),
               boxShadow: [
                 BoxShadow(
-                    color: const Color(0x0000001A).withOpacity(0.1),
-                    blurRadius: 10)
+                    color: const Color(0x0000001A).withOpacity(0.01),
+                    blurRadius: 2)
               ],
             ),
             child: Obx(() {
@@ -100,7 +100,9 @@ class _HomePageState extends State<HomePage>
     // log('aaaaa');
     final List<Widget> tempList = [];
     for (int i = 0; i < controller.tabItemList.length; i++) {
-      final String path = controller.tabItemList[i]['default'] ?? '';
+      final String path = controller.tabItemList[i]
+              [(controller.tabCurIndex == i.obs) ? 'select' : 'default'] ??
+          '';
 
       final Widget iconWidget = Container(
         margin: EdgeInsets.only(top: 10.h),
@@ -110,7 +112,9 @@ class _HomePageState extends State<HomePage>
           path: path,
           width: 24.h,
           height: 24.h,
-          color: (controller.tabCurIndex == i.obs) ? AppTheme.colorBrandPrimary : AppTheme.onPrimary,
+          // color: (controller.tabCurIndex == i.obs)
+          //     ? AppTheme.colorTextDefaultPrimary
+          //     : AppTheme.colorTextDefaultFourth,
         ),
       );
       final w = ColoredBox(
@@ -127,12 +131,14 @@ class _HomePageState extends State<HomePage>
                 '${controller.tabItemList[i]['title']}'.tr,
                 maxLines: 1,
                 style: controller.tabCurIndex.value == i
-                    ? Theme.of(Get.context!)
-                        .bottomNavigationBarTheme
-                        .selectedLabelStyle
-                    : Theme.of(Get.context!)
-                        .bottomNavigationBarTheme
-                        .unselectedLabelStyle,
+                    ? AppTheme()
+                        .appTextStyle
+                        .styleTextDefaultPrimary
+                        .copyWith(fontSize: 10.sp)
+                    : AppTheme()
+                        .appTextStyle
+                        .styleTextDefaultFourth
+                        .copyWith(fontSize: 10.sp),
               ),
             ),
           ],

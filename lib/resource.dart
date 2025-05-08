@@ -150,6 +150,10 @@ class Resource {
   static const String assetsSvgDefaultChatRightSvg =
       'assets/svg/default/chat_right.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultChatSelectSvg.preview}
+  static const String assetsSvgDefaultChatSelectSvg =
+      'assets/svg/default/chat_select.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultChatSwapHorizSvg.preview}
   static const String assetsSvgDefaultChatSwapHorizSvg =
       'assets/svg/default/chat_swap_horiz.svg';
@@ -177,6 +181,10 @@ class Resource {
   static const String assetsSvgDefaultContantSvg =
       'assets/svg/default/contant.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultContantSelectSvg.preview}
+  static const String assetsSvgDefaultContantSelectSvg =
+      'assets/svg/default/contant_select.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultCopySvg.preview}
   static const String assetsSvgDefaultCopySvg = 'assets/svg/default/copy.svg';
 
@@ -194,6 +202,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultFindMoreSvg.preview}
   static const String assetsSvgDefaultFindMoreSvg =
       'assets/svg/default/find_more.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultFindSelectSvg.preview}
+  static const String assetsSvgDefaultFindSelectSvg =
+      'assets/svg/default/find_select.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultFriendDelSvg.preview}
   static const String assetsSvgDefaultFriendDelSvg =
@@ -225,6 +237,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultMeSvg.preview}
   static const String assetsSvgDefaultMeSvg = 'assets/svg/default/me.svg';
 
+  /// {@macro assets_generator.assetsSvgDefaultMeSelectSvg.preview}
+  static const String assetsSvgDefaultMeSelectSvg =
+      'assets/svg/default/me_select.svg';
+
   /// {@macro assets_generator.assetsSvgDefaultMeShareRightSvg.preview}
   static const String assetsSvgDefaultMeShareRightSvg =
       'assets/svg/default/me_share_right.svg';
@@ -255,6 +271,10 @@ class Resource {
   /// {@macro assets_generator.assetsSvgDefaultShoppingSvg.preview}
   static const String assetsSvgDefaultShoppingSvg =
       'assets/svg/default/shopping.svg';
+
+  /// {@macro assets_generator.assetsSvgDefaultShoppingSelectSvg.preview}
+  static const String assetsSvgDefaultShoppingSelectSvg =
+      'assets/svg/default/shopping_select.svg';
 
   /// {@macro assets_generator.assetsSvgDefaultSignInSvg.preview}
   static const String assetsSvgDefaultSignInSvg =

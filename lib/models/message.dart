@@ -31,45 +31,45 @@
 part of 'index.dart';
 
 class Message {
-  Message({
-    this.channelType,
-    this.channelId,
-    this.fid,
-    this.msgType,
-    this.oper,
-    this.bizData,
-    this.mid,
-    this.content,
-    this.time,
-    this.contentType,
-    this.sysFlag,
-    this.sysMsgKey,
-    this.operNick,
-    this.toNicks,
-    this.serverIp,
-    this.traceId,
-    this.remark,
-    this.singleFlag,
-    this.singleUid,
-    this.fromMsgId,
-    this.replyMid,
-    this.replyMsgResume,
-    this.replyUid,
-    this.replyNick,
-    this.nick,
-    this.avatar,
-    this.from,
-    this.uid,
-    this.at,
-    this.localIpUtil,
-    this.readFlag,
-    this.readTime,
-  });
+  Message(
+      {this.channelType,
+      this.channelId,
+      this.fid,
+      this.msgType,
+      this.oper,
+      this.bizData,
+      this.mid,
+      this.content,
+      this.time,
+      this.contentType,
+      this.sysFlag,
+      this.sysMsgKey,
+      this.operNick,
+      this.toNicks,
+      this.serverIp,
+      this.traceId,
+      this.remark,
+      this.singleFlag,
+      this.singleUid,
+      this.fromMsgId,
+      this.replyMid,
+      this.replyMsgResume,
+      this.replyUid,
+      this.replyNick,
+      this.nick,
+      this.avatar,
+      this.from,
+      this.uid,
+      this.at,
+      this.localIpUtil,
+      this.readFlag,
+      this.readTime,
+      this.status});
 
   Message.fromJson(dynamic json) {
     channelType = json['channelType'];
     channelId = json['channelId'];
-    fid = Utils.toEmpty(json['fid'])??0;
+    fid = Utils.toEmpty(json['fid']) ?? 0;
     msgType = json['msgType'];
     oper = json['oper'];
     bizData = json['bizData'];
@@ -133,6 +133,7 @@ class Message {
   dynamic localIpUtil;
   dynamic readFlag;
   dynamic readTime;
+  dynamic status; //0发送中，1发送成功，2，发送失败
 
   Message copyWith({
     dynamic channelType,
@@ -167,6 +168,7 @@ class Message {
     dynamic localIpUtil,
     dynamic readFlag,
     dynamic readTime,
+    dynamic status,
   }) =>
       Message(
         channelType: channelType ?? this.channelType,
@@ -201,6 +203,7 @@ class Message {
         localIpUtil: localIpUtil ?? this.localIpUtil,
         readFlag: readFlag ?? this.readFlag,
         readTime: readTime ?? this.readTime,
+        status: status ?? this.status,
       );
 
   Map<String, dynamic> toJson() {
@@ -237,7 +240,7 @@ class Message {
     map['localIpUtil'] = localIpUtil;
     map['readFlag'] = readFlag;
     map['readTime'] = readTime;
-
+    map['status'] = status;
     return map;
   }
 
@@ -273,6 +276,7 @@ class Message {
     at = m.at.toString();
     readFlag = m.readFlag.toString();
     readTime = m.readTime.toString();
+    status = 1;
   }
 
   bool get isSender =>
@@ -281,8 +285,7 @@ class Message {
   MessageType get messageType =>
       MessageType.fromValue(int.parse(Utils.toEmpty(contentType) ?? '0'));
 
+  bool get isGroup => channelType.toString() == '2';
 
-  bool get isGroup => channelType.toString()=='2';
-
-  bool get isRead=> readFlag.toString()=='1';
+  bool get isRead => readFlag.toString() == '1';
 }

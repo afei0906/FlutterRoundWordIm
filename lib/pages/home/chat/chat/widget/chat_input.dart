@@ -209,6 +209,8 @@ class _ChatInputState extends State<ChatInput> with WidgetsBindingObserver {
                                   MessageType.text,
                                   atUsers: List.from(_atUsers),
                                 );
+                                _controller.text="";
+                                FocusScope.of(Get.context!).requestFocus();
                                 _controller.clear();
                                 _atUsers.clear();
                               }
