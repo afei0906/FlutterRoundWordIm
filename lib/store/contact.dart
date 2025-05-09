@@ -53,7 +53,7 @@ class ContactStore extends GetxController {
     // show sus tag.
     SuspensionUtil.setShowSuspensionStatus(friendListState.friendList);
     friendListState.friendList.refresh();
-    // ContactListLogic.to.update();
+    // ContactListLogic.to.upload();
   }
 
   Future<void> featLocalFriendData() async {
@@ -72,7 +72,7 @@ class ContactStore extends GetxController {
         // show sus tag.
         SuspensionUtil.setShowSuspensionStatus(friendListState.friendList);
         friendListState.friendList.refresh();
-        // ContactListLogic.to.update();
+        // ContactListLogic.to.upload();
       }
     }
   }

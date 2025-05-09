@@ -1,6 +1,7 @@
-# SplitGO
-
-
+# RoundWordIM
+flutter --version
+v:3.29.0 
+Dart 3.7.0 devTools 2.42.2
 
 ## Getting started
 

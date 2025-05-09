@@ -121,7 +121,7 @@ class Urls {
   static const conversationList = 'conversation/list';
 
   ///会话更新
-  static const conversationUpdate = 'conversation/update';
+  static const conversationUpdate = 'conversation/upload';
 
   ///会话删除
   static const conversationDelete = 'conversation/delete';

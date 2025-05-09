@@ -23,7 +23,7 @@ class ConfigStore extends GetxController {
 
   Future<void> featData() async {
     await LoginSignApi.postAppGetClientConf();
-    await LoginSignApi.getAwsS3Conf().then((onValue) {
+     LoginSignApi.getAwsS3Conf().then((onValue) {
       picUpConfig[awsS3] = onValue;
       setPicConfig();
     });

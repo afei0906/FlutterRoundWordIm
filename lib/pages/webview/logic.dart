@@ -48,7 +48,7 @@ class WebViewLogic extends GetxController {
   // void onWebTitleChanged(String newTitle) {
   //   if (newTitle.isEmpty || newTitle == title) return;
   //   title = newTitle;
-  //   update();
+  //   upload();
   // }
 
   @override

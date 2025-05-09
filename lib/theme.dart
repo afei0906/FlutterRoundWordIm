@@ -27,12 +27,9 @@ class AppTheme {
   static const colorTextDefaultSecondary = Color(0xff373D4C);
   static const colorFillPageGray = Color(0xFFF0F2F3);
   static const colorFillPageDeep = Color(0xFFDCE1E3);
-  static const colorGrey =Color(0xFF8BDA4C);
-  static const colorChatBg =Color(0xFFF1FDFF);
-  static const colorChatShadow =Color(0x19000000);
-
-
-
+  static const colorGrey = Color(0xFF8BDA4C);
+  static const colorChatBg = Color(0xFFF1FDFF);
+  static const colorChatShadow = Color(0x19000000);
 
   static const primary2 = Color(0xff65A1FF);
   static const defaultText = Color(0x0D000000);
@@ -357,7 +354,6 @@ class AppTextStyle {
       color: AppTheme.colorBrandError,
       fontSize: 14.sp);
 
-
   late TextStyle styleBrandPrimary = TextStyle(
       fontFamily: fontFamily,
       fontWeight: ThemeFontWeight.regular.weight,
@@ -447,9 +443,7 @@ class AppTextStyle {
 
 class AppButton {
   static CustomButton brandPrimaryButton(String title, Function()? onPressed,
-          {double? height,
-          TextStyle? style,
-          CustomButtonShape? shape}) =>
+          {double? height, TextStyle? style, CustomButtonShape? shape}) =>
       CustomButton(
         height: height ?? 48.h,
         width: double.infinity,

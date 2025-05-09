@@ -32,3 +32,5 @@ part 'contact.dart';
 part 'message.dart';
 part 'http_throttle.dart';
 part 'state/emotion.dart';
+part 'file_upload_service.dart';
+

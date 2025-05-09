@@ -114,6 +114,31 @@ class Utils {
     ];
     return wiket[index];
   }
+
+  // 计算文件MD5
+  static Future<String> computeFileMd5(File file) async {
+    try {
+      final Uint8List fileBytes = await file.readAsBytes();
+      final Digest digest = md5.convert(fileBytes);
+      return digest.toString();
+    } catch (e) {
+      // 文件过大时，分块计算MD5
+      if (e is OutOfMemoryError || e.toString().contains('OutOfMemory')) {
+        return getFileMd5Stream(file);
+      }
+      throw Exception('计算MD5失败: $e');
+    }
+  }
+
+  // 计算大文件MD5（分块计算）
+
+  static Future<String> getFileMd5Stream(File file) async {
+    if (!await file.exists()) return '';
+
+    final stream = file.openRead();
+    final md5Hash = await md5.bind(stream).first;
+    return md5Hash.toString();
+  }
 }
 
 String formatTime(DateTime dateTime, String formatStr) {
